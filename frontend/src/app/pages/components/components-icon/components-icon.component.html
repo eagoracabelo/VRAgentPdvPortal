@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="card col-md">
+    <header class="card__header">
+      <h3>Icon - Feedback de ações</h3>
+    </header>
+    <div class="card__content content">
+      <vrc-tabs>
+        <vrc-tab label="Documentação">
+          <markdown
+            src="./docs/components/vrc-icon.md"
+            (load)="onLoad($event)"
+            (error)="onError($event)"
+          ></markdown>
+        </vrc-tab>
+
+        <vrc-tab label="Exemplo">
+          <div class="row">
+            <div class="col-sm-3">Icone com toggle</div>
+            <div class="col-sm-9">
+              <vrc-icon
+                name="ver"
+                toggle="ver_desabilitado"
+                cssClass="show-password-right"
+              ></vrc-icon>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-3">
+              Icone com largura e altura fixa de 0.75rem e nome do icone
+              definido com referência ao DesignGuide
+            </div>
+            <div class="col-sm-9">
+              <vrc-icon name="comprador" width="20" height="20"></vrc-icon>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-3">Icone com rotate de 180deg</div>
+            <div class="col-sm-9">
+              <vrc-icon
+                name="comprador"
+                width="20"
+                height="20"
+                rotate="180"
+              ></vrc-icon>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-3">Icone com filter em vermelho</div>
+            <div class="col-sm-9">
+              <vrc-icon
+                name="comprador"
+                width="20"
+                height="20"
+                filter="invert(15%) sepia(91%) saturate(5322%) hue-rotate(359deg) brightness(107%) contrast(124%)"
+              ></vrc-icon>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-3">
+              Icone com css class definindo as propriedades
+            </div>
+            <div class="col-sm-9">
+              <vrc-icon
+                width="20"
+                height="20"
+                cssClass="my-icon-svg"
+              ></vrc-icon>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-3">Icone com url caminho do arquivo</div>
+            <div class="col-sm-9">
+              <vrc-icon
+                width="20"
+                height="20"
+                cssClass="my-icon-svg-url"
+                url="./icons/linux.svg"
+              ></vrc-icon>
+            </div>
+          </div>
+        </vrc-tab>
+      </vrc-tabs>
+    </div>
+  </div>
+</div>

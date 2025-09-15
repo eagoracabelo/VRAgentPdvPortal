@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="card col-md">
+    <header class="card__header">
+      <h3 class="title">Dialog modal</h3>
+    </header>
+    <div class="card__content content">
+      <vrc-tabs>
+        <vrc-tab label="Documentação">
+          <markdown
+            src="./docs/components/vrc-dialog-modal-custom.md"
+            (load)="onLoad($event)"
+            (error)="onError($event)"
+          >
+          </markdown>
+        </vrc-tab>
+
+        <vrc-tab label="Exemplos">
+          <div class="exemplo-modal--container">
+            <button class="btn btn--default" (click)="showDialogModalCuston()">
+              Exibir Custom Modal
+            </button>
+
+            <p>Retorno Modal: {{ returnModal$ | async }}</p>
+          </div>
+
+          <div class="exemplo-modal--container">
+            <button
+              class="btn btn--default"
+              (click)="showDialogMultipleModal()"
+            >
+              Exibir Multiple Modal
+            </button>
+
+            <p>Retorno Modal: {{ returnMultiModal$ | async }}</p>
+          </div>
+        </vrc-tab>
+      </vrc-tabs>
+    </div>
+  </div>
+</div>

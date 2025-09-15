@@ -1,0 +1,40 @@
+<div class="command-executor">
+    <div class="card">
+        <div class="card-header">
+            <h3>Executor de Comandos</h3>
+            <p class="text-muted">Execute comandos no minion {{ minionId }}</p>
+        </div>
+
+        <div class="card-body">
+            <form [formGroup]="commandForm" (ngSubmit)="executeCommand()">
+                <div class="form-group">
+                    <label for="command">Comando</label>
+                    <input type="text" id="command" formControlName="command" class="form-control"
+                        placeholder="Digite o comando a ser executado"
+                        [class.is-invalid]="commandForm.get('command')?.invalid && commandForm.get('command')?.touched">
+                    <div class="invalid-feedback"
+                        *ngIf="commandForm.get('command')?.invalid && commandForm.get('command')?.touched">
+                        Comando é obrigatório
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" [disabled]="commandForm.invalid || loading">
+                        <i class="fas fa-play" *ngIf="!loading"></i>
+                        <i class="fas fa-spinner fa-spin" *ngIf="loading"></i>
+                        {{ loading ? 'Executando...' : 'Executar' }}
+                    </button>
+                </div>
+            </form>
+
+            <div class="command-history" *ngIf="commandHistory.length > 0">
+                <h4>Histórico de Comandos</h4>
+                <div class="history-items">
+                    <span *ngFor="let cmd of commandHistory" class="history-item" (click)="selectFromHistory(cmd)">
+                        {{ cmd }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

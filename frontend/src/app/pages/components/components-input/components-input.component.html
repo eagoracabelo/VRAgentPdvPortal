@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="card col-md">
+    <header class="card__header">
+      <h3 class="title">Input</h3>
+    </header>
+    <div class="card__content content">
+      <vrc-tabs>
+        <vrc-tab label="Documentação">
+          <markdown
+            src="./docs/components/vrc-input.md"
+            (load)="onLoad($event)"
+            (error)="onError($event)"
+          ></markdown>
+        </vrc-tab>
+
+        <vrc-tab label="Exemplo">
+          <vrc-input currency="R$" label="Currency = R$"></vrc-input>
+
+          <vrc-input [rtl]="true" label="rtl = true"></vrc-input>
+
+          <vrc-input id="input01" label="Nome"></vrc-input>
+
+          <form [formGroup]="formGroup">
+            <vrc-input
+              formControlName="text"
+              id="input02"
+              type="password"
+              label="Senha"
+            ></vrc-input>
+          </form>
+        </vrc-tab>
+      </vrc-tabs>
+    </div>
+  </div>
+  <vrc-form-debug [form]="formGroup"></vrc-form-debug>
+</div>

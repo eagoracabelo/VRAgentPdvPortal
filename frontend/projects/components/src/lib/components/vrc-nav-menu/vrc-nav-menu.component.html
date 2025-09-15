@@ -1,0 +1,31 @@
+<div class="navbar-menu">
+  <div
+    [hidden]="!isNavbarMenuOpen"
+    class="navbar-menu__overlay"
+    (click)="toggleNavbarMenu()"
+  ></div>
+  <button class="btn navbar-menu__btn" (click)="toggleNavbarMenu()">
+    <vrc-icon [name]="iconName"></vrc-icon>
+  </button>
+  @if (isNavbarMenuOpen) {
+    <div class="navbar-menu__content">
+      <div class="tooltip--container">
+        <div class="tooltip__arrow"></div>
+        <div class="tooltip__title">
+          <span>{{ 'NAV-MENU.PROFILE-CONFIGURATIONS' | vrctranslator }}</span>
+        </div>
+        <div class="tooltip__separator"></div>
+        <div class="tooltip__content">
+          <ng-content></ng-content>
+
+          <div>
+            <button class="btn navbar-menu__button-sair" (click)="logout()">
+              <vrc-icon name="sair"></vrc-icon>
+              {{ 'BUTTONS.LOGOUT' | vrctranslator }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

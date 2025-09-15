@@ -1,0 +1,33 @@
+<div class="modal modal--add-edit">
+  <vrc-icon
+    name="fechar"
+    width="12"
+    height="12"
+    filter="var(--filter-e86800)"
+    class="close"
+    (click)="onClose()"
+  ></vrc-icon>
+
+  <section class="modal__header">
+    <h4>{{ title }}</h4>
+    <div class="modal__separator"></div>
+  </section>
+
+  <section class="modal__content">
+    <vrc-input [label]="'Link'" [(ngModel)]="vrcInputValue"></vrc-input>
+  </section>
+
+  <section class="modal__options">
+    <div class="modal__left--container">
+      <button class="btn btn__outline--secondary" (click)="onCancel()">
+        <span>{{ cancelText }}</span>
+      </button>
+    </div>
+
+    <div class="modal__right--container">
+      <button class="btn btn--primary btn--not-icon" (click)="onConfirm()">
+        <span>{{ confirmText }}</span>
+      </button>
+    </div>
+  </section>
+</div>

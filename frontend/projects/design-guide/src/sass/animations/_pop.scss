@@ -1,0 +1,11 @@
+@keyframes pop {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.pop {
+  animation: pop 200ms forwards;
+}

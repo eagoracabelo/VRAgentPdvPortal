@@ -1,0 +1,57 @@
+.select-selected {
+  background: var(--background-select-head);
+  border: .063rem solid var(--color-neutral-default-121212);
+  border-radius: .125rem;
+  color: var(--color-theme);
+
+  &::after {
+    position: absolute;
+    content: "";
+    top: 2.625rem;
+    right: .625rem;
+    width: 0;
+    height: 0;
+    border: .375rem solid transparent;
+    border-color: var(--color-theme) transparent transparent transparent;
+  }
+}
+
+.select-selected.select-arrow-active {
+  &::after {
+    border-color: transparent transparent var(--color-theme) transparent;
+    top: 2.25rem;
+  }
+}
+
+.select-items div,
+.select-selected {
+  color: var(--color-theme);
+  height: 1.875rem;
+  font: normal .75rem/.875rem Roboto-nomal-700, sans-serif;
+  letter-spacing: 0;
+  padding: .375rem 1rem;
+  border: var(--border-select);
+  cursor: pointer;
+
+  &:not(.select-selected) {
+    border-top: none;
+  }
+}
+
+.select-items {
+  position: absolute;
+  background: var(--background-select-body);
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover,
+.same-as-selected {
+  background: var(--background-select-body-hover);
+}

@@ -1,0 +1,16 @@
+<div class="nav__menu">
+  <form [formGroup]="formGroup">
+    <div>
+      <span class="navbar-menu__section-title">
+        {{ 'NAV-MENU.LANGUAGE' | translator }}
+      </span>
+      <vrc-select
+        class="language-select"
+        placeholder="Escolha o idioma"
+        [data]="availableLanguages"
+        [formControl]="formGroup.get('language')"
+        (update)="changeLanguage($event)"
+      ></vrc-select>
+    </div>
+  </form>
+</div>

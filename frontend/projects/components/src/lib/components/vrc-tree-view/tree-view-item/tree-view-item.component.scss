@@ -1,0 +1,128 @@
+.tree-view-item--container {
+  color: var(--color-text);
+
+  .tree-view-item--choices {
+    margin-top: 0;
+    margin-left: 1.5rem;
+    margin-bottom: 0;
+
+    > li {
+      &:not(:last-child) {
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
+  &.active {
+    color: var(--color-background-default-fefefe);
+    outline: 0;
+    text-decoration: none;
+
+    .tree-view-item {
+      background-color: var(--color-primary-600);
+
+      .tree-view-item-expand--container {
+        > i {
+          filter: var(--filter-white);
+        }
+      }
+
+      > span {
+        color: var(--color-background-default-fefefe);
+      }
+    }
+    &:hover {
+      .tree-view-item {
+        .tree-view-item--text {
+          color: var(--color-text-hover);
+        }
+      }
+    }
+  }
+
+  .tree-view-item {
+    color: var(--color-gray-900);
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    line-height: 1.42857143;
+    padding: 0.188rem 1.25rem;
+    padding-left: 0.625rem;
+    min-height: 2.5rem;
+    cursor: pointer;
+    border-bottom: 0.063rem solid #4d4d4d20;
+
+    .checkbox {
+      display: flex;
+      align-items: baseline;
+
+      .checkbox__label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:after {
+          position: relative;
+          top: auto;
+          left: auto;
+          margin-top: -0.1rem;
+        }
+
+        &.minus-check {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &:after {
+            position: relative;
+            border-width: 0 0rem 0.21rem 0;
+            transform: none;
+            top: auto;
+            left: auto;
+            height: auto;
+            margin-top: 0;
+            width: 0.6rem;
+          }
+        }
+      }
+    }
+
+    .tree-view-item--text {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      min-height: 2.5rem;
+    }
+
+    .tree-view-item-expand--container {
+      display: flex;
+      height: 1.5rem;
+      align-items: center;
+
+      > i {
+        width: 1rem;
+        height: 1rem;
+        background-size: 1rem 1rem;
+        margin-right: 1rem;
+        filter: var(--filter-expand-icon);
+      }
+    }
+
+    &:hover {
+      background-color: var(--background-selected-hover);
+      color: var(--color-text-hover);
+      outline: 0;
+      text-decoration: none;
+
+      .tree-view-item-expand--container {
+        > i {
+          filter: var(--filter-expand-icon-hover);
+        }
+      }
+    }
+  }
+}

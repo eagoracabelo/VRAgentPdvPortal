@@ -1,0 +1,88 @@
+<div class="form-group" [ngClass]="classeCss">
+  @if (!hideLabel) {
+    <label
+      [class.tooltip-label]="tooltip"
+      class="control-label"
+      [attr.for]="id + '-fieldRequired'"
+    >
+      {{ label }}
+      <span [hidden]="!isRequired" class="required">*</span>
+      @if (tooltip) {
+        <vrc-tooltip
+          class="tooltip"
+          [message]="tooltip.message"
+          [width]="tooltip.width"
+          [small]="tooltip.small"
+          [topRight]="tooltip.topRight"
+          [bottomRight]="tooltip.bottomRight"
+          [topLeft]="tooltip.topLeft"
+          [bottomLeft]="tooltip.bottomLeft"
+        >
+        </vrc-tooltip>
+      }
+    </label>
+  }
+
+  @if (!!!mask) {
+    <input
+      class="form-control border-input fieldRequired"
+      [class.error]="isError"
+      [class.required]="isRequired"
+      [id]="id + '-fieldRequired'"
+      [readOnly]="isReadOnly"
+      [disabled]="isDisabled"
+      [placeholder]="placeholder"
+      [type]="type"
+      [name]="name"
+      [autofocus]="autofocus"
+      [autocomplete]="autofocus"
+      spellcheck="false"
+      autocorrect="off"
+      [(ngModel)]="value"
+      (blur)="onBlur()"
+      (focus)="onFocus()"
+      (keyup)="formatInput()"
+      (keypress)="validateNumber($event)"
+      (ngModelChange)="changeWhenWrote($event)"
+    />
+  } @else {
+    <input
+      class="form-control border-input fieldRequired"
+      [class.error]="isError"
+      [class.required]="isRequired"
+      [id]="id + '-fieldRequired'"
+      [readOnly]="isReadOnly"
+      [disabled]="isDisabled"
+      [placeholder]="placeholder"
+      [type]="type"
+      [name]="name"
+      [autofocus]="autofocus"
+      [autocomplete]="autofocus"
+      spellcheck="false"
+      autocorrect="off"
+      [(ngModel)]="value"
+      (blur)="onBlur()"
+      (focus)="onFocus()"
+      [imask]="mask"
+      [unmask]="unmasked"
+      (keyup)="formatInput()"
+      (keypress)="validateNumber($event)"
+      (ngModelChange)="changeWhenWrote($event)"
+    />
+  }
+
+  @if (showTimeIcon) {
+    <i class="vr vr-relogio_time custom-display"></i>
+  }
+  @if (!hideErrorMessage) {
+    <vrc-error-msg
+      [message]="errorMessage"
+      [tooltipSideError]="tooltipSideError"
+      [tooltipOverlay]="tooltipOverlay"
+      [tooltipBottomRight]="tooltipBottomRight"
+      [tooltipBottomLeft]="tooltipBottomLeft"
+      [tooltipTopRight]="tooltipTopRight"
+      [tooltipTopLeft]="tooltipTopLeft"
+    ></vrc-error-msg>
+  }
+</div>

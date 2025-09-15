@@ -1,0 +1,68 @@
+<div class="dt-main">
+  <vrc-datatable
+    [rows]="rows"
+    [columnMode]="ColumnMode.force"
+    rowHeight="auto"
+    [externalPaging]="true"
+    [count]="page.totalElements"
+    [selectAllRowsOnPage]="false"
+    (page)="setPage($event)"
+    [scrollbarH]="true"
+    (exportAll)="onExportAll($event)"
+    [fireEventButtons]="fireEventButtons"
+    [fixedFireEventButtons]="true"
+    [disableExportAll]="false"
+    [onlyLandscapeView]="true"
+    [preSelectedColumns]="preSelectedColumns"
+  >
+    <vrc-datatable-column name="Id" dataType="id"></vrc-datatable-column>
+
+    <vrc-datatable-column
+      name="PadStart"
+      dataType="id"
+      padStart="15"
+    ></vrc-datatable-column>
+
+    <vrc-datatable-column
+      name="Numerico"
+      dataType="numerico"
+      [summaryCurrency]="true"
+    ></vrc-datatable-column>
+
+    <vrc-datatable-column name="Texto" dataType="texto"></vrc-datatable-column>
+
+    <vrc-datatable-column
+      name="Inteiro"
+      dataType="inteiro"
+    ></vrc-datatable-column>
+
+    <vrc-datatable-column name="cep" dataType="cep"></vrc-datatable-column>
+    <vrc-datatable-column name="cpf" dataType="cpf"></vrc-datatable-column>
+    <vrc-datatable-column name="cnpj" dataType="cnpj"></vrc-datatable-column>
+    <vrc-datatable-column name="ncm" dataType="ncm"></vrc-datatable-column>
+
+    <vrc-datatable-column
+      name="Mercadologico"
+      dataType="mercadologico"
+    ></vrc-datatable-column>
+
+    <vrc-datatable-column name="Data" dataType="data"></vrc-datatable-column>
+    <vrc-datatable-column name="Hora" dataType="hora"></vrc-datatable-column>
+
+    <vrc-datatable-column
+      name="Data/Hora"
+      dataType="dataHora"
+    ></vrc-datatable-column>
+
+    <vrc-datatable-column
+      name="Telefone"
+      dataType="telefone"
+    ></vrc-datatable-column>
+
+    <vrc-datatable-column
+      name="Customizado"
+      dataType="texto"
+      [dataCustomMask]="customMask"
+    ></vrc-datatable-column>
+  </vrc-datatable>
+</div>

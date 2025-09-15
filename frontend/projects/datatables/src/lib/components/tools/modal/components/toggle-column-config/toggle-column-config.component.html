@@ -1,0 +1,57 @@
+<div class="datatable-toggle-column-config-header">
+  <h5 id="change-column-text">{{ 'TOGGLE-COLUMN.ALTERAR' | vrdtranslator }}</h5>
+</div>
+<table aria-label="Ocultar exibir colunas">
+  <tbody>
+    <tr class="hide-show-column">
+      <td>
+        <label class="datatable-checkbox checkbox-default">
+          <input
+            id="mainCheckbox"
+            type="checkbox"
+            (change)="handleSelections($event.target.checked)"
+          />
+          <span class="checkbox"></span>
+        </label>
+      </td>
+      <td id="hide-show-text">
+        {{ 'TOGGLE-COLUMN.CONFIG.OCULTAR-EXIBIR' | vrdtranslator }}
+      </td>
+    </tr>
+    <ng-template
+      ngFor
+      let-column
+      [ngForOf]="columns"
+      [ngForTrackBy]="trackByFn"
+    >
+      @if (isHideColumn(column)) {
+        <tr>
+          <td>
+            <label class="datatable-checkbox checkbox-default">
+              <input
+                type="checkbox"
+                [checked]="column.active"
+                (change)="isChecked($event, column)"
+              />
+              <span class="checkbox"></span>
+            </label>
+          </td>
+          <td>{{ getColumnNameTranslated(column.name) }}</td>
+        </tr>
+      }
+    </ng-template>
+  </tbody>
+</table>
+<div class="datatable-toggle-column-config-btns">
+  <button
+    id="restore-default"
+    class="datatable-tool-btn restore"
+    type="button"
+    (click)="restoreDefault()"
+  >
+    {{ 'TOGGLE-COLUMN.CONFIG.RESTAURAR' | vrdtranslator }}
+  </button>
+  <button id="apply" class="datatable-tool-btn" type="button" (click)="apply()">
+    {{ 'TOGGLE-COLUMN.CONFIG.APLICAR' | vrdtranslator }}
+  </button>
+</div>

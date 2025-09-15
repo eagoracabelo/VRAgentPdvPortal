@@ -1,0 +1,288 @@
+:root[theme="light"] {
+  /*------------------------LIGHT-----------------------------------*/
+  // New Layout
+  // Neutral/Defaults
+  --color-background-default-fefefe: #fefefe;
+  --color-complementar: #e8eaed;
+  --color-default-menu-f1f3f4: #f1f3f4;
+
+  --color-text: var(--color-gray-700);
+
+  --filter-text: var(--filter-3);
+  --filter-danger: var(--filter-12);
+
+  --color-text-default-outline: var(--color-neutral-default-121212);
+  --filter-text-default-outline: var(--filter-0);
+
+  --background-color-theme: var(--color-background-default-fefefe);
+
+  --color-code-theme: var(--color-text);
+  --color-placeholder: rgba(0, 0, 0, 0.4);
+  --border-color-theme: var(--color-gray-400);
+
+  --background-code-theme: var(--color-gray-100);
+
+  // Alert
+  --color-alert-50-fefae7: #fefae7;
+  --color-alert-100-fff2b2: #fff2b2;
+  --color-alert-200-fce886: #fce886;
+  --color-alert-300-ffe45e: #ffe45e;
+  --color-alert-400-fbdb39: #fbdb39;
+  --color-alert-500-eec600: #eec600;
+  --color-alert-600-e8c100: #e8c100;
+  --color-alert-700-b29500: #b29500;
+  --color-alert-800-9c8200: #9c8200;
+  --color-alert-900-6a5903: #6a5903;
+  --color-alert-e87d00 : #e87d00;
+
+  // Success
+  --color-success-50-e7fef3: #e7fef3;
+  --color-success-100-b2ffda: #b2ffda;
+  --color-success-200-86fcc3: #86fcc3;
+  --color-success-300-5effb1: #5effb1;
+  --color-success-400-39fb9d: #39fb9d;
+  --color-success-500-00ee7b: #00ee7b;
+  --color-success-600-00e878: #00e878;
+  --color-success-700-00b25c: #00b25c;
+  --color-success-800-009c51: #009c51;
+  --color-success-900-036a38: #036a38;
+
+  // Error
+  --color-error-50-fee7e7: #fee7e7;
+  --color-error-100-ffb2b2: #ffb2b2;
+  --color-error-200-fc8686: #fc8686;
+  --color-error-300-ff5e5e: #ff5e5e;
+  --color-error-400-fb3939: #fb3939;
+  --color-error-500-ee0000: #ee0000;
+  --color-error-600-e80000: #e80000;
+  --color-error-700-b20000: #b20000;
+  --color-error-800-9c0000: #9c0000;
+  --color-error-900-6a0303: #6a0303;
+
+  // Gray WT
+  --color-gray-50: #eceff1;
+  --color-gray-100: #cfd8dc;
+  --color-gray-200: #b0bec5;
+  --color-gray-300: #90a4ae;
+  --color-gray-400: #78909c;
+  --color-gray-500: #607d8b;
+  --color-gray-600: #546e7a;
+  --color-gray-700: #455a64;
+  --color-gray-800: #37474f;
+  --color-gray-900: #263238;
+  --color-tertiary: #FEFEFE;
+  --color-secondary: #E8EAED;
+  --color-background: #F1F3F4;
+
+  // Primary
+  --color-primary-50: #fef1e7;
+  --color-primary-100: #ffd5b2;
+  --color-primary-200: #fcbb86;
+  --color-primary-300: #ffa65e;
+  --color-primary-400: #fb9039;
+  --color-primary-500: #ee6b00;
+  --color-primary-600: #e86800;
+  --color-primary-700: #b35100;
+  --color-primary-800: #9c4600;
+  --color-primary-900: #6a3103;
+
+  // Tooltip
+  --color-text-tooltip-title: var(--color-gray-900);
+  --color-text-tooltip-content: var(--color-gray-700);
+
+  // Label
+  --color-label: var(--color-gray-900);
+
+  // Form disabled
+  --background-input-disabled: var(--color-secondary);
+  --background-select-disabled: var(--color-secondary);
+  --background-textarea-disabled: var(--color-dk-hover-12-dp);
+
+  // Form default
+  --background-input: var(--color-tertiary);
+  --background-select: var(--color-gray-50);
+  --background-textarea: var(--color-dk-hover-12-dp);
+  --border-color-form-element: var(--color-gray-200);
+
+  // Search input
+  --background-input--search: #FFFFFF;
+  --filter-input--search--icon: invert(79%) sepia(8%) saturate(370%) hue-rotate(155deg) brightness(96%) contrast(85%);
+
+  // Footer
+  --background-footer: var(--color-gray-50);
+  --text-footer: var(--color-gray-800);
+  --divisor-footer: var(--color-gray-300);
+
+  // Radio Button
+  --background-radio-button: transparent;
+  --box-shadow-radio-button: inset 0rem 0rem 0rem .188rem
+    var(--color-background-default-fefefe);
+
+  // Select
+  --background-select-head: var(--color-gray-100) 0% 0% no-repeat
+    padding-box;
+  --background-select-body: var(--color-gray-200) 0% 0% no-repeat
+    padding-box;
+  --background-select-body-hover: rgba(18, 18, 18, 0.1) 0% 0% no-repeat
+    padding-box;
+
+  // Textarea
+  --background-textarea: var(--color-background-default-fefefe) 0% 0% no-repeat
+    padding-box;
+
+  // Card
+  --background-color-theme--card-header: rgba(241, 241, 241, 1);
+  --border-theme--card: .031rem solid rgba(144, 164, 174, 0.3);;
+  --box-shadow-theme--card: 0rem .082rem .327rem rgba(0, 0, 0, 0.08);
+  --border-bottom-header-card: .063rem solid var(--color-neutral-default-ffffff);
+
+  // Table
+  --color-table-striped: var(--color-gray-600);
+  --border-color-table: var(--color-gray-400);
+  --background-table-hover: rgba(171, 171, 171, 0.1);
+
+  // Code
+  --color-theme--code: var(--color-10);
+
+  // Pagination
+  --color-pagination: var(--color-neutral-default-121212);
+  --border-color-pagination: .063rem solid var(--color-gray-900);
+  --filter-arrow-pagination: var(--filter-2);
+
+  // Scroll
+  --box-shadow-scrollbar-track: rgba(0, 0, 0, 0);
+  --box-shadow-scrollbar-thumb: rgba(0, 0, 0, 0);
+  --background-color-scrollbar: var(--color-gray-50);
+  --background-color-scrollbar-thumb: var(--color-gray-200);
+
+  // Layout
+  --background-grid: var(--color-neutral-default-ffffff) 0% 0% no-repeat
+    padding-box;
+  --background-navbar: var(--color-gray-400) 0% 0% no-repeat padding-box;
+  --border-default: .063rem solid var(--color-gray-300);
+
+  // Navbar
+  --nav-menu-border: .063rem solid var(--color-gray-100);
+  --nav-menu-box-shadow: 0rem 0rem .5rem var(--color-gray-100);
+  --nav-menu-text-color-label: var(--color-gray-800);
+  --main-navbar-background: var(--color-gray-50);
+  --main-navbar-box-shadow: 0rem .125rem .25rem rgba(0, 0, 0, 0.08);
+  --main-navbar-menu-btn-background: var(--color-gray-600);
+  --main-navbar-menu-btn-border: .063rem solid transparent;
+  --main-navbar-menu-btn-filter: brightness(0) saturate(100%) invert(85%) sepia(12%) saturate(245%) hue-rotate(155deg) brightness(88%) contrast(86%);
+
+  // Sidebar
+  --main-sidebar-background: var(--color-gray-50);
+  --main-sidebar-toggle-arrow-color: var(--color-background-default-fefefe);
+  --main-sidebar-toggle-arrow-border-color: var(--color-gray-300);
+  --main-sidebar-submenu-background-color: var(--color-gray-100);
+  --main-sidebar-submenu-span-color: var(--color-gray-700);
+  --main-sidebar-submenu-background: var(--color-background-default-fefefe);
+  --main-sidebar-submenu-background-hover: var(--color-gray-50);
+  --main-sidebar-menu-title-color: var(--color-gray-900);
+  --main-sidebar-separator-color: var(--color-gray-50);
+
+  // Control Sidebar
+  --background-control-sidebar: var(--color-gray-100) 0% 0% no-repeat
+    padding-box;
+  --box-shadow-control-sidebar: 0rem .313rem .75rem rgba(0, 0, 0, 0.15);
+
+  // Switch
+  --background-switch: var(--color-gray-300);
+  --color-switch-label: var(--color-gray-600);
+  --background-switch-cicle: var(--color-neutral-default-ffffff);
+
+  // Switch Theme
+  --background-switch-theme: var(--color-default-menu-f1f3f4);
+  --background-switch-theme-circle: var(--color-primary-300);
+  --border-switch-theme: .025rem solid var(--color-gray-100);
+
+  // Copyright
+  --color-copyright: var(--color-gray-400);
+  --filter-copyright: invert(0%) sepia(0%) saturate(0%) hue-rotate(265deg)
+    brightness(98%) contrast(98%);
+
+  // Tabs
+  --border-tab: 0.063rem solid var(--color-gray-200);
+  --background-tab: var(--color-tertiary);
+  --color-tab: var(--color-gray-700);
+  --background-tab-active: var(--color-primary-50);
+  --border-tab-active: 0.125rem solid var(--color-primary-600);
+  --color-tab-active: var(--color-primary-600);
+  --background-tab-hover: var(--color-gray-50);
+
+  // Not Found
+  --background-color-notfound: var(--color-gray-200) !important;
+
+  // User Menu
+  --border-color-user-menu: var(--color-gray-200);
+
+  // Datepicker => Calendar
+  --background-datepicker-calendar: var(--color-tertiary) 0% 0% no-repeat
+    padding-box;
+  --background-datepicker-calendar-hover: var(--color-gray-50) 0% 0%
+    no-repeat padding-box;
+  --border-datepicker-calendar: .063rem solid var(--color-gray-600);
+  --filter-icon-datepicker-calendar: var(--filter-6);
+  --filter-icon-datepicker-calendar-hover: var(--filter-4);
+
+  // Autocomplete
+  --box-shadow-autocomplete: 0 .125rem .25rem -0.063rem rgba(0, 0, 0, 0.2),
+    0 .25rem .313rem 0 rgba(0, 0, 0, 0.14), 0 .063rem .625rem 0 rgba(0, 0, 0, 0.12);
+  --background-autocomplete: var(--color-tertiary);
+  --background-autocomplete-hover: var(--color-gray-50);
+
+  // General - Others
+  --background-color-presentation: var(--color-gray-50);
+  --color-icon-default: var(--filter-4);
+  --background-item--hover: var(--color-gray-100);
+
+  /* ------------ PUSH NOTIFICATIONS ------------ */
+  --background-push-notifications: var(--color-tertiary);
+  --color-push-notifications: var(--color-text);
+  --filter-close-icon-push-notitications: none;
+  // Success
+  --border-push-notifications-success: 0.0625rem solid var(--color-success-700-00b25c);
+  --background-push-notifications-success: var(--color-success-50-e7fef3);
+  // Error
+  --border-push-notifications-error: 0.0625rem solid var(--color-error-600-e80000);
+  --background-push-notifications-error: var(--color-error-50-fee7e7);
+  // Warning
+  --border-push-notifications-warning: 0.0625rem solid var(--color-alert-e87d00);
+  --background-push-notifications-warning: var(--color-alert-50-fefae7);
+  // Info
+  --border-push-notifications-info: 0.0625rem solid var(--color-primary-600);
+  --background-push-notifications-info: var(--color-primary-50);
+  /* -------------------------------------------- */
+
+  // TreeSelect
+  --background-color-selected-item: var(--color-gray-50);
+  --filter-expand-icon: var(--filter-455a64);
+  --background-item-hover: var(--color-gray-50);
+  --color-text-hover: var(--color-gray-900);
+  --filter-expand-icon-hover: var(--filter-expand-icon);
+  --border-color-checkbox-hover: var(--color-gray-300);
+  --background-selected-hover: var(--color-gray-50);
+
+  /*------------TOOLTIP------------------*/
+  --filter-tooltip-icon: var(--filter-default);
+  --background-color-tooltip: var(--color-gray-50);
+  --color-tooltip: var(--color-gray-900);
+  --border-color-tooltip: var(--color-primary-400);
+  --background-color-tooltip-error: var(--color-error-50-fee7e7);
+
+  /*------------CUSTOM TABS------------------*/
+   --filter-icon-custom-tabs: invert(80%) sepia(97%) saturate(1002%) hue-rotate(1deg) brightness(99%) contrast(86%);
+
+   /*------------HIGHLIGHT DATATABLES------------------*/
+   --highlight-preco-color: #FB3939;
+   --highlight-margem-color: #FBDB39;
+
+  // Process
+
+  --color-process-aguardando: #ee7f00;
+  --color-process-producao: var(--color-success-700-00b25c);
+  --color-process-conferencia: #29b6cc;
+  --color-process-concluido: var(--color-gray-700);
+  --color-process-armazenado: #2e53e5;
+}

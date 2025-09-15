@@ -1,0 +1,142 @@
+%tooltip-message {
+  .message {
+    height: fit-content;
+    width: max-content;
+    padding: 0.4rem 0.7rem;
+    font-size: 0.8rem;
+    border: 0.0625rem solid var(--border-color-tooltip);
+    background-color: var(--background-color-tooltip);
+    color: var(--color-tooltip);
+    font-weight: normal;
+    box-shadow: 0.1875rem 0.1875rem 0.3125rem #00000038;
+    overflow-wrap: break-word;
+    white-space: unset;
+    z-index: 9999;
+    border-radius: 0.5rem 0.5rem 0.5rem 0;
+
+    &.error-message {
+      border: 0.0625rem solid var(--color-error-600-e80000);
+      background-color: var(--background-color-tooltip-error);
+    }
+  }
+
+  ul > li:last-child {
+    margin-bottom: 0;
+  }
+
+  ul:last-child {
+    margin-bottom: 0;
+  }
+}
+
+%tooltip-border-bottomRight {
+  border-radius: 0 0.5rem 0.5rem 0.5rem;
+}
+
+%tooltip-border-bottomLeft {
+  border-radius: 0.5rem 0 0.5rem 0.5rem;
+}
+
+%tooltip-border-topRight {
+  border-radius: 0.5rem 0.5rem 0.5rem 0;
+}
+
+%tooltip-border-topLeft {
+  border-radius: 0.5rem 0.5rem 0 0.5rem;
+}
+
+.tooltip {
+  width: 1.2rem;
+  height: 1.2rem;
+  position: relative;
+
+  &:hover {
+    .message {
+      display: block;
+    }
+  }
+
+  &.small {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .tooltip-icon {
+    cursor: pointer;
+    filter: var(--filter-tooltip-icon);
+    background-size: 1.2rem;
+    width: 1.2rem;
+    height: 1.2rem;
+
+    &.error-icon {
+      filter: var(--filter-12);
+    }
+
+    &.small-icon {
+      background-size: 1rem;
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  .message {
+    position: absolute;
+    display: none;
+  }
+
+  @extend %tooltip-message;
+
+  .bottomRight {
+    right: unset;
+    bottom: unset;
+    left: 120%;
+    top: 100%;
+    @extend %tooltip-border-bottomRight;
+  }
+
+  .topRight {
+    top: unset;
+    right: unset;
+    left: 120%;
+    bottom: 100%;
+    @extend %tooltip-border-topRight;
+  }
+
+  .topLeft {
+    top: unset;
+    left: unset;
+    right: 120%;
+    bottom: 100%;
+    @extend %tooltip-border-topLeft;
+  }
+
+  .bottomLeft {
+    bottom: unset;
+    left: unset;
+    right: 120%;
+    top: 100%;
+    @extend %tooltip-border-bottomLeft;
+  }
+}
+
+::ng-deep {
+  .tooltip-overlay-panel {
+    @extend %tooltip-message;
+
+    &.tooltip-panel-bottomRight .message {
+      @extend %tooltip-border-bottomRight;
+    }
+
+    &.tooltip-panel-bottomLeft .message {
+      @extend %tooltip-border-bottomLeft;
+    }
+
+    &.tooltip-panel-topRight .message {
+      @extend %tooltip-border-topRight;
+    }
+
+    &.tooltip-panel-topLeft .message {
+      @extend %tooltip-border-topLeft;
+    }
+  }
+}

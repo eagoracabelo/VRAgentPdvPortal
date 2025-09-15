@@ -1,0 +1,21 @@
+#app {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+}
+
+.navbar {
+    background-color: #007bff;
+    color: white;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    .navbar-brand h1 {
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+}
+
+.main-content {
+    padding: 2rem;
+}

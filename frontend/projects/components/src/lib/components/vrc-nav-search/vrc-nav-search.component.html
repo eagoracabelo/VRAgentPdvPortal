@@ -1,0 +1,34 @@
+<div class="search__button">
+  <form [formGroup]="formGroup">
+    <vrc-autocomplete
+      [placeholder]="'COMMONS.FIND' | vrctranslator"
+      formControlName="search"
+      [classeCss]="'search__autocomplete'"
+    >
+      @for (search of routefilteredList; track $index) {
+        <vrc-option
+          [value]="search.rota"
+          [text]="search.label"
+          [ariaValueText]="search.rota"
+        >
+          <span [ariaValueText]="search.rota" class="label-page">{{
+            search.label
+          }}</span>
+
+          <div [ariaValueText]="search.rota">
+            <span [ariaValueText]="search.rota" class="label-new-page">
+              <vrc-icon
+                name="link_externo"
+                class="label-new-page"
+                filter="invert(40%) sepia(95%) saturate(1295%) hue-rotate(4deg)
+              brightness(97%) contrast(101%)"
+              ></vrc-icon
+              >{{ 'BUTTONS.OPEN-NEW-PAGE' | vrctranslator }}</span
+            >
+          </div>
+        </vrc-option>
+      }
+    </vrc-autocomplete>
+    <vrc-icon name="pesquisa"></vrc-icon>
+  </form>
+</div>

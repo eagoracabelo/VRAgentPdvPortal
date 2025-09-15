@@ -1,0 +1,43 @@
+<div class="dt-main">
+  <div class="card--container">
+    <vrc-datatable
+      class="server-scrolling"
+      [rows]="rows"
+      [columnMode]="ColumnMode.force"
+      [headerHeight]="headerHeight"
+      [rowHeight]="rowHeight"
+      [footerHeight]="null"
+      [count]="rows.length"
+      [selectAllRowsOnPage]="false"
+      [scrollbarV]="true"
+      [loadingIndicator]="isLoading"
+      [showToolsBar]="false"
+      [zindexRowOverNextRow]="true"
+      (scroll)="onScroll($event.offsetY)"
+    >
+      <vrc-datatable-column name="Name"></vrc-datatable-column>
+      <vrc-datatable-column name="Gender"></vrc-datatable-column>
+      <vrc-datatable-column
+        name="select"
+        prop="SELECT"
+        cellClass="overflow-visible"
+        [width]="22.0"
+      >
+        <ng-template let-row="row" vrc-datatable-cell-template>
+          <div class="col-sm-12">
+            <vrc-select
+              class="reset-form-group"
+              [data]="items$ | async"
+              [translate]="false"
+              [hideLabel]="true"
+              [overlay]="true"
+            >
+              {{ 'SELECT' }}
+            </vrc-select>
+          </div>
+        </ng-template>
+      </vrc-datatable-column>
+      <vrc-datatable-column name="Company"></vrc-datatable-column>
+    </vrc-datatable>
+  </div>
+</div>

@@ -1,0 +1,381 @@
+<div class="form-group" [ngClass]="classeCss">
+  @if (!hideLabel) {
+    <label
+      #label
+      [class.tooltip-label]="tooltip"
+      class="control-label select2-label"
+      (click)="toggleOpenAndClose()"
+      [attr.for]="id"
+    >
+      <ng-content></ng-content>
+      <span [hidden]="!isRequired" class="required">*</span>
+      @if (tooltip) {
+        <vrc-tooltip
+          class="tooltip"
+          [message]="tooltip.message"
+          [width]="tooltip.width"
+          [small]="tooltip.small"
+          [topRight]="tooltip.topRight"
+          [bottomRight]="tooltip.bottomRight"
+          [topLeft]="tooltip.topLeft"
+          [bottomLeft]="tooltip.bottomLeft"
+        >
+        </vrc-tooltip>
+      }
+    </label>
+  }
+  <div
+    class="select2 select2-container select2-container--default select2-container--focus"
+    [class.select2-container--focus]="focused"
+    [class.select2-container--below]="!select2above"
+    [class.select2-container--above]="select2above"
+    [class.select2-container--open]="isOpen"
+    [class.select2-container--disabled]="isDisabled"
+    (blur)="onBlur()"
+    [id]="id"
+    [title]="title"
+  >
+    <div
+      class="selection"
+      #selection
+      #trigger="cdkOverlayOrigin"
+      [attr.tabindex]="!this.isOpen ? tabIndex : '-1'"
+      (click)="toggleOpenAndClose()"
+      (focus)="focusin()"
+      (blur)="focusout()"
+      (keydown)="openKey($event)"
+      cdkOverlayOrigin
+      [class.select2-focused]="focused"
+    >
+      <div
+        [id]="id + '-fieldRequired'"
+        class="select2-selection"
+        [class.select2-selection--multiple]="multiple"
+        [class.select2-selection--single]="!multiple"
+        [class.required]="isRequired"
+        [class.error]="isError"
+        role="combobox"
+      >
+        @if (!multiple) {
+          <div class="select2-selection__rendered">
+            @if (select2Option && !selectedOptionTemplate) {
+              <span
+                class="selected-text-container"
+                [innerHTML]="select2Option.label"
+              ></span>
+            }
+            @if (select2Option && selectedOptionTemplate) {
+              <span class="selected-text-container">
+                <ng-container
+                  [ngTemplateOutlet]="selectedOptionTemplate"
+                  [ngTemplateOutletContext]="{ selectedOption: select2Option }"
+                >
+                </ng-container>
+              </span>
+            }
+            <span
+              [class.select2-selection__placeholder__option]="option"
+              class="select2-selection__placeholder"
+              >{{ placeholder }}</span
+            >
+          </div>
+        }
+        @if (!multiple) {
+          <span class="select2-selection__arrow" role="presentation"> </span>
+        }
+        @if (multiple) {
+          <div class="select2-selection__rendered">
+            <span
+              [class.select2-selection__placeholder__option]="
+                select2Options?.length > 0
+              "
+              class="select2-selection__placeholder"
+              >{{ placeholder }}</span
+            >
+            @for (op of option; track $index; let idx = $index) {
+              <span class="select2-selection__chip__container">
+                @if (maxVisibleItem == 0 || idx < maxVisibleItem) {
+                  <span class="select2-selection__choice">
+                    <span class="btn selected-item-item">
+                      @if (!selectedOptionTemplate) {
+                        <span
+                          [innerHTML]="op.label"
+                          class="selected-text-container"
+                        ></span>
+                      }
+                      @if (selectedOptionTemplate) {
+                        <span class="selected-text-container">
+                          <ng-container
+                            [ngTemplateOutlet]="selectedOptionTemplate"
+                            [ngTemplateOutletContext]="{ selectedOption: op }"
+                          >
+                          </ng-container>
+                        </span>
+                      }
+                      @if (multiple && !isDisabled && !op.disabled) {
+                        <span
+                          class="vr vr-fechar select2-selection__choice__remove"
+                          (click)="removeSelection($event, op)"
+                        ></span>
+                      }
+                    </span>
+                  </span>
+                }
+              </span>
+            }
+          </div>
+        }
+        @if (showExceeded) {
+          <div class="enabled">
+            <div class="more-items-icon">+ {{ exceedAmount }}</div>
+          </div>
+        }
+        @if (multiple) {
+          <span class="select2-selection__arrow" role="presentation"></span>
+        }
+        @if (enableExternalSearch) {
+          <div
+            class="external-search-icon-wrapper"
+            [class.disable]="isDisabled"
+            (click)="externalSearch($event)"
+          >
+            <vrc-icon
+              name="pesquisa"
+              class="external-search-icon"
+              [class.disable]="isDisabled"
+            ></vrc-icon>
+          </div>
+        }
+      </div>
+    </div>
+
+    @if (!overlay) {
+      <ng-container *ngTemplateOutlet="containerTemplate"></ng-container>
+    }
+
+    <div class="select2-subscript-wrapper">
+      <ng-content select="select2-hint"></ng-content>
+    </div>
+  </div>
+  @if (!isOpen) {
+    <vrc-error-msg
+      [message]="errorMessage"
+      [tooltipSideError]="tooltipSideError"
+      [tooltipOverlay]="tooltipOverlay"
+    ></vrc-error-msg>
+  }
+</div>
+
+<ng-template
+  cdkConnectedOverlay
+  cdkConnectedOverlayHasBackdrop
+  cdkConnectedOverlayBackdropClass="select2-overlay-backdrop"
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="this.isOpen && overlay"
+  [cdkConnectedOverlayMinWidth]="overlayWidth"
+  [cdkConnectedOverlayHeight]="overlayHeight"
+  [cdkConnectedOverlayPositions]="_positions"
+  (backdropClick)="toggleOpenAndClose()"
+>
+  <ng-container *ngTemplateOutlet="containerTemplate"></ng-container>
+</ng-template>
+
+<ng-template #containerTemplate>
+  <div
+    class="select2-container select2-container--default select2-container-dropdown"
+    [class.select2-container--open]="isOpen"
+    [class.select2-overlay]="overlay"
+    [class.select2-position-auto]="listPosition === 'auto'"
+  >
+    <div
+      #dropdown
+      class="select2-dropdown"
+      [class.select2-dropdown--below]="!select2above"
+      [class.select2-dropdown--above]="select2above"
+    >
+      <div
+        class="select2-search select2-search--dropdown"
+        [class.select2-search--hide]="hideSearch()"
+      >
+        <div class="search__button">
+          <input
+            #searchInput
+            [id]="id + '-search-field'"
+            [value]="searchText"
+            (keydown)="keyDown($event)"
+            (keyup)="searchUpdate($event)"
+            (change)="prevChange($event)"
+            class="select2-search__field input_search"
+            type="search"
+            role="textbox"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            [attr.tabindex]="this.isOpen ? tabIndex : '-1'"
+            [placeholder]="placeHolderSearch"
+            [imask]="mask"
+            [unmask]="unmasked"
+          />
+          <span class="vr vr-pesquisa"></span>
+        </div>
+      </div>
+      <div class="select2-results">
+        <ul
+          #results
+          class="scroll select2-results__options"
+          [style.max-height]="resultMaxHeight"
+          role="tree"
+          tabindex="-1"
+          (keydown)="keyDown($event)"
+        >
+          @for (groupOrOption of filteredData; track $index; let i = $index) {
+            @if (groupOrOption.options) {
+              <li class="select2-results__option" role="group">
+                @if (!hasTemplate(groupOrOption, 'group')) {
+                  <strong
+                    [attr.class]="
+                      'select2-results__group' +
+                      (groupOrOption.classes ? ' ' + groupOrOption.classes : '')
+                    "
+                    [innerHTML]="groupOrOption.label"
+                  ></strong>
+                } @else {
+                  <ng-container
+                    *ngTemplateOutlet="
+                      getTemplate(groupOrOption, 'group');
+                      context: groupOrOption
+                    "
+                  >
+                  </ng-container>
+                }
+
+                <ul
+                  class="scroll select2-results__options select2-results__options--nested"
+                >
+                  @for (
+                    option of groupOrOption?.options;
+                    track $index;
+                    let j = $index
+                  ) {
+                    <li
+                      #result
+                      [id]="option.id || id + '-option-' + i + '-' + j"
+                      [class]="getOptionStyle(option)"
+                      role="treeitem"
+                      [attr.aria-selected]="isSelected(option)"
+                      [attr.aria-disabled]="setIsDisabled(option)"
+                      (mouseenter)="mouseenter(option)"
+                      (click)="click(option)"
+                    >
+                      @if (!hasTemplate(option, 'option')) {
+                        <div
+                          class="select2-label-content"
+                          [innerHTML]="option.label"
+                        ></div>
+                      } @else {
+                        <ng-container
+                          *ngTemplateOutlet="
+                            getTemplate(option, 'option');
+                            context: option
+                          "
+                        >
+                        </ng-container>
+                      }
+                    </li>
+                  }
+                </ul>
+              </li>
+            }
+            @if (!groupOrOption.options && !isCheckbox) {
+              <li
+                #result
+                [id]="groupOrOption.id || id + '-option-' + i"
+                [class]="getOptionStyle(groupOrOption)"
+                role="treeitem"
+                [attr.aria-selected]="isSelected(groupOrOption)"
+                [attr.aria-disabled]="setIsDisabled(groupOrOption)"
+                (mouseenter)="mouseenter(groupOrOption)"
+                (click)="click(groupOrOption)"
+              >
+                @if (!hasTemplate(groupOrOption, 'option')) {
+                  <div
+                    [innerHTML]="groupOrOption.label"
+                    class="select2-label-content"
+                  ></div>
+                } @else {
+                  <ng-container
+                    *ngTemplateOutlet="
+                      getTemplate(groupOrOption, 'option');
+                      context: groupOrOption
+                    "
+                  >
+                  </ng-container>
+                }
+              </li>
+            }
+            @if (!groupOrOption.options && isCheckbox) {
+              <li
+                #result
+                [id]="groupOrOption.id || id + '-option-' + i"
+                [class]="getOptionStyleDoubleCheck(groupOrOption)"
+                role="treeitem"
+                [attr.aria-selected]="isSelected(groupOrOption)"
+                [attr.aria-disabled]="setIsDisabled(groupOrOption)"
+                (mouseenter)="mouseenter(groupOrOption)"
+              >
+                @if (!hasTemplate(groupOrOption, 'option')) {
+                  <div class="select2-label-content">
+                    <div class="item-row">
+                      <div class="col-check">
+                        <label class="checkbox">
+                          <input
+                            (click)="click(groupOrOption)"
+                            type="checkbox"
+                            [checked]="markChecked(groupOrOption)"
+                            [disabled]="groupOrOption.disabled"
+                          />
+                          <span class="checkbox__label"></span>
+                        </label>
+                      </div>
+                      <div
+                        class="col-label"
+                        [class.disabled-label]="groupOrOption.disabled"
+                        (click)="click(groupOrOption)"
+                      >
+                        {{ groupOrOption.label }}
+                      </div>
+                      @if (hasMainSelector) {
+                        <div class="col-icon">
+                          <span
+                            [class]="selectIcon(groupOrOption)"
+                            (click)="markAsMain(groupOrOption)"
+                          ></span>
+                        </div>
+                      }
+                    </div>
+                  </div>
+                } @else {
+                  <ng-container
+                    *ngTemplateOutlet="
+                      getTemplate(groupOrOption, 'option');
+                      context: groupOrOption
+                    "
+                  >
+                  </ng-container>
+                }
+              </li>
+            }
+          }
+        </ul>
+      </div>
+      @if (resetAllSelected) {
+        <div class="select2-reset" [class.disabled]="!option">
+          <span (click)="reset($event)">
+            {{ resetAllSelectedLabel }}
+          </span>
+        </div>
+      }
+    </div>
+  </div>
+</ng-template>

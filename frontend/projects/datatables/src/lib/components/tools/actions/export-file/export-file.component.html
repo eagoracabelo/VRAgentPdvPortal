@@ -1,0 +1,90 @@
+<div class="datatable-tools-export">
+  <div
+    [hidden]="!isDatatablesToolsExportOpen"
+    class="datatable-tools-export-overlay"
+    (click)="toggleDatatablesToolsExport()"
+  ></div>
+  <button
+    class="btn datatable-tools-btn"
+    [title]="'EXPORT-FILE.EXPORT' | vrdtranslator"
+    (click)="toggleDatatablesToolsExport()"
+    [ngClass]="{ active: isDatatablesToolsExportOpen }"
+  >
+    <vrc-icon class="vr-exportar_tabela"></vrc-icon>
+  </button>
+  <ul
+    [hidden]="!isDatatablesToolsExportOpen"
+    class="datatable-tools-export-content"
+  >
+    <li id="test-text-1">
+      {{ 'EXPORT-FILE.EXPORTAR-ENVIAR' | vrdtranslator }}
+    </li>
+    <li>
+      <div>
+        <span id="test-text-2">{{
+          'EXPORT-FILE.EXPORTAR' | vrdtranslator
+        }}</span>
+        <span id="test-text-3">{{
+          'EXPORT-FILE.SELECIONAR-FORMATO' | vrdtranslator
+        }}</span>
+        <div>
+          <span class="radio">
+            <input
+              type="radio"
+              name="radiofile"
+              value=""
+              id="radio-relatorio"
+              (change)="setFileType(types.pdf)"
+            />
+            <label class="radio__label" for="radio-relatorio">
+              <span id="test-text-4">{{
+                'EXPORT-FILE.RELATORIO' | vrdtranslator
+              }}</span>
+            </label>
+          </span>
+
+          <span class="radio">
+            <input
+              type="radio"
+              name="radiofile"
+              value=""
+              id="radio-excel"
+              (change)="setFileType(types.xls)"
+            />
+            <label class="radio__label" for="radio-excel">
+              <span id="test-text-5">{{
+                'EXPORT-FILE.EXCEL' | vrdtranslator
+              }}</span>
+            </label>
+          </span>
+
+          <span class="radio">
+            <input
+              type="radio"
+              name="radiofile"
+              value=""
+              id="radio-arquivo"
+              (change)="setFileType(types.txt)"
+            />
+            <label class="radio__label" for="radio-arquivo">
+              <span id="test-text-6">{{
+                'EXPORT-FILE.ARQUIVO' | vrdtranslator
+              }}</span>
+            </label>
+          </span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <button
+        id="test-text-7"
+        class="datatable-tool-btn"
+        type="button"
+        [disabled]="!fileType || rows.length === 0"
+        (click)="applyFile()"
+      >
+        {{ 'EXPORT-FILE.APLICAR' | vrdtranslator }}
+      </button>
+    </li>
+  </ul>
+</div>

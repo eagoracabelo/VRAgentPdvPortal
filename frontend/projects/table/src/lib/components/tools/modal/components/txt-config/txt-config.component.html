@@ -1,0 +1,46 @@
+<div class="table-export-config-type">
+  <div>{{ 'EXPORT-CONFIG.PAGINA' | translate }}</div>
+</div>
+<table class="export-file" aria-label="Exportar arquivos">
+  <thead>
+    <tr>
+      <th>
+        <label class="table-checkbox">
+          <input
+            type="checkbox"
+            [checked]="isAllCheckBoxChecked()"
+            (change)="checkedAll($event)"
+          />
+          <span class="checkbox"></span>
+        </label>
+      </th>
+      <th>{{ 'EXPORT-CONFIG.COLUNA' | translate }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-template ngFor let-head [ngForOf]="heads" [ngForTrackBy]="trackByFn">
+      <tr>
+        <td>
+          <label class="table-checkbox">
+            <input
+              type="checkbox"
+              [checked]="isCheckBoxChecked(head)"
+              (change)="isChecked($event, head)"
+            />
+            <span class="checkbox"></span>
+          </label>
+        </td>
+        <td>{{ head | uppercase }}</td>
+      </tr>
+    </ng-template>
+  </tbody>
+</table>
+<div>
+  <button
+    type="button"
+    [disabled]="selectedColumn.length === 0"
+    (click)="applyPrint()"
+  >
+    {{ 'EXPORT-CONFIG.GERAR' | translate }}
+  </button>
+</div>

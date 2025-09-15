@@ -1,0 +1,392 @@
+<div class="dt-main">
+  <div class="card--container">
+    <div class="row">
+      <div class="col-sm-4">
+        <vrc-select
+          [data]="tipoExibicao"
+          [translate]="false"
+          (update)="update($event)"
+          [value]="tipoExibicaoValue"
+        >
+          {{ 'TIPO EXIBIÇÃO' }}
+        </vrc-select>
+      </div>
+    </div>
+
+    <vrc-datatable
+      #tableExtratoMovimentacao
+      [rows]="rows"
+      [groupRowsBy]="'numeroPdv'"
+      [scrollbarH]="true"
+      [columnMode]="ColumnMode.force"
+      rowHeight="auto"
+      [selectAllRowsOnPage]="false"
+      [externalPaging]="false"
+      [selected]="selected"
+      [selectionType]="SelectionType.checkbox"
+      [footerHeight]="2"
+      (page)="setPage($event)"
+      [activeMoveColumn]="false"
+      (select)="onSelect($event)"
+      [activeExportFile]="false"
+      [preventDefaultClickEnable]="false"
+      [summaryRow]="true"
+      [summaryPosition]="'bottom'"
+      [summaryHeight]="3"
+      [showToolsBar]="false"
+    >
+      <vrc-datatable-group-header #myGroupHeader>
+        <ng-template
+          let-row="row"
+          let-group="group"
+          let-expanded="expanded"
+          vrc-datatable-group-header-template
+        >
+          <div class="group-title" (click)="toggleExpandGroup(group)">
+            <vrc-icon
+              name="seta_simples_direita"
+              class="expand-group-icon"
+              [class.expanded]="expanded"
+            >
+            </vrc-icon>
+            PDV - {{ group.key }}
+          </div>
+        </ng-template>
+      </vrc-datatable-group-header>
+
+      <vrc-datatable-row-detail #myDetailRow [rowHeight]="3">
+        <ng-template
+          let-row="row"
+          let-expanded="expanded"
+          vrc-datatable-row-detail-template
+        >
+          <div class="total-row">
+            <div class="total-row-columns row-detail">
+              <span>{{ 'TOTAL' }} </span>
+            </div>
+            @for (column of configOfColumnsRowsTotalGroup; track $index) {
+              <div>
+                <div class="total-row-columns" [style.width.rem]="column.width">
+                  <span>{{
+                    getSummaryTotalByGroup(row.key)[column.control]
+                      | currency: 'BRL'
+                  }}</span>
+                </div>
+              </div>
+            }
+          </div>
+        </ng-template>
+      </vrc-datatable-row-detail>
+
+      <vrc-datatable-row-add>
+        <ng-template let-row="row" vrc-datatable-row-add-template>
+          @if (row.itens?.length > 0 && row.treeStatus === 'expanded') {
+            <vrc-datatable
+              [rows]="row.itens"
+              [columnMode]="ColumnMode.force"
+              [headerHeight]="2.625"
+              [rowHeight]="2"
+              [footerHeight]="null"
+              [count]="row.itens.length"
+              [showToolsBar]="false"
+              [activeMoveColumn]="false"
+              [activeExportFile]="false"
+              [preventDefaultClickEnable]="false"
+              [selectAllRowsOnPage]="false"
+              [externalPaging]="false"
+              [scrollbarV]="false"
+              [scrollbarH]="false"
+              [showToolsBar]="false"
+            >
+              <vrc-datatable-column
+                [resizeable]="false"
+                [draggable]="false"
+                [sortable]="false"
+                [width]="10"
+              ></vrc-datatable-column>
+              <vrc-datatable-column
+                [resizeable]="false"
+                [draggable]="false"
+                [sortable]="false"
+                [label]="'PRODUTO'"
+                name="Produto"
+                prop="idProduto"
+                dataType="id"
+                padStart="6"
+              ></vrc-datatable-column>
+              <vrc-datatable-column
+                [resizeable]="false"
+                [draggable]="false"
+                [sortable]="false"
+                [label]="'BARRAS'"
+                name="Barras"
+                prop="codigoBarras"
+              ></vrc-datatable-column>
+              <vrc-datatable-column
+                [resizeable]="false"
+                [draggable]="false"
+                [sortable]="false"
+                [label]="'DESCRICAO'"
+                name="Descricao"
+                prop="descricaoCompleta"
+              ></vrc-datatable-column>
+              <vrc-datatable-column
+                [resizeable]="false"
+                [draggable]="false"
+                [sortable]="false"
+                [label]="'VENDA'"
+                name="venda"
+                prop="precoVendaUnitario"
+              >
+                <ng-template let-row="row" vrc-datatable-cell-template>
+                  {{ row.precoVendaUnitario | currency: 'BRL' }}
+                </ng-template>
+              </vrc-datatable-column>
+              <vrc-datatable-column
+                [resizeable]="false"
+                [draggable]="false"
+                [sortable]="false"
+                [label]="'CANCELADO'"
+                name="Cancelado"
+                prop="cancelado"
+              ></vrc-datatable-column>
+              <vrc-datatable-column
+                [resizeable]="false"
+                [draggable]="false"
+                [sortable]="false"
+                [label]="'DESCONTO'"
+                name="Desconto"
+                prop="deconto"
+              >
+                <ng-template let-row="row" vrc-datatable-cell-template>
+                  {{ row.deconto | currency: 'BRL' }}
+                </ng-template>
+              </vrc-datatable-column>
+              <vrc-datatable-column
+                [resizeable]="false"
+                [draggable]="false"
+                [sortable]="false"
+                [label]="'ACRESCIMO'"
+                name="Acrescimo"
+                prop="acrescimo"
+              >
+                <ng-template let-row="row" vrc-datatable-cell-template>
+                  {{ row.acrescimo | currency: 'BRL' }}
+                </ng-template>
+              </vrc-datatable-column>
+              <vrc-datatable-column
+                [resizeable]="false"
+                [draggable]="false"
+                [sortable]="false"
+                [label]="'BRUTO'"
+                name="Bruto"
+                prop="totalBruto"
+              >
+                <ng-template let-row="row" vrc-datatable-cell-template>
+                  {{ row.totalBruto | currency: 'BRL' }}
+                </ng-template>
+              </vrc-datatable-column>
+              <vrc-datatable-column
+                [resizeable]="false"
+                [draggable]="false"
+                [sortable]="false"
+                name="Liquido"
+                prop="totalLiquido"
+              >
+                <ng-template let-row="row" vrc-datatable-cell-template>
+                  {{ row.totalLiquido | currency: 'BRL' }}
+                </ng-template>
+              </vrc-datatable-column>
+            </vrc-datatable>
+          }
+        </ng-template>
+      </vrc-datatable-row-add>
+
+      <vrc-datatable-column
+        [resizeable]="false"
+        [sortable]="false"
+        [draggable]="false"
+        [canAutoResize]="false"
+        [summaryTemplate]="extratoVendasSummaryCell"
+      >
+        <ng-template
+          let-row="row"
+          let-expanded="expanded"
+          vrc-datatable-cell-template
+        >
+          <a
+            href="javascript:void(0)"
+            [class.datatable-icon-right]="false"
+            [class.datatable-icon-down]="false"
+            title="Expand/Collapse Row"
+            (click)="toggleExpandRow(row)"
+          >
+          </a>
+        </ng-template>
+        <ng-template #extratoVendasSummaryCell let-row="row" let-value="value">
+          <div class="total-geral-row total-geral-row-title">
+            <span>{{ 'TOTAL GERAL' }}</span>
+          </div>
+        </ng-template>
+      </vrc-datatable-column>
+
+      <vrc-datatable-column
+        [width]="2.5"
+        [sortable]="false"
+        [resizeable]="false"
+        [draggable]="false"
+      >
+        <ng-template let-row="row" vrc-datatable-cell-template>
+          @if (tipoExibicaoValue === '2') {
+            <button
+              class="datatable-tree-button"
+              [disabled]="row.treeStatus === 'disabled'"
+              (click)="onTreeAction(row)"
+              title="Analitica"
+            >
+              <span>
+                @if (row.treeStatus === 'loading') {
+                  <vrc-icon name="atualizar"></vrc-icon>
+                }
+                @if (row.treeStatus === 'collapsed') {
+                  <vrc-icon name="divisa_cima"></vrc-icon>
+                }
+                @if (
+                  row.treeStatus === 'expanded' || row.treeStatus === 'disabled'
+                ) {
+                  <vrc-icon name="divisa_inferior"></vrc-icon>
+                }
+              </span>
+            </button>
+          }
+        </ng-template>
+      </vrc-datatable-column>
+
+      <vrc-datatable-column
+        [label]="'DATA HORA'"
+        name="dataHora"
+        prop="dataHora"
+        [sortable]="false"
+        [resizeable]="false"
+        [draggable]="false"
+      >
+        <ng-template let-row="row" vrc-datatable-cell-template>
+          {{ row.dataHora | date: 'dd/MM/yyyy HH:mm' }}
+        </ng-template>
+      </vrc-datatable-column>
+
+      <vrc-datatable-column
+        [label]="'N CUPOM'"
+        name="numeroCupom"
+        prop="numeroCupom"
+        [sortable]="false"
+        [resizeable]="false"
+        [draggable]="false"
+      >
+      </vrc-datatable-column>
+
+      <vrc-datatable-column
+        name="valorBruto"
+        prop="valorBruto"
+        [summaryCurrency]="true"
+        [label]="'VALOR BRUTO'"
+        [width]="20"
+        [resizeable]="false"
+        [draggable]="false"
+        [summaryTemplate]="valorBrutoTotalSummaryCell"
+      >
+        <ng-template let-row="row" vrc-datatable-cell-template>
+          {{ row.valorBruto | currency: 'BRL' }}
+        </ng-template>
+        <ng-template
+          #valorBrutoTotalSummaryCell
+          let-row="row"
+          let-value="value"
+        >
+          <div class="total-geral-row">
+            <span>{{
+              extratoVendaTotalGeral.valorBruto | currency: 'BRL'
+            }}</span>
+          </div>
+        </ng-template>
+      </vrc-datatable-column>
+
+      <vrc-datatable-column
+        name="valorAcrescimo"
+        prop="valorAcrescimo"
+        [summaryCurrency]="true"
+        [label]="'ACRESCIMO'"
+        [width]="20"
+        [resizeable]="false"
+        [draggable]="false"
+        [summaryTemplate]="valorAcrescimoSummaryCell"
+      >
+        <ng-template let-row="row" vrc-datatable-cell-template>
+          {{ row.valorAcrescimo | currency: 'BRL' }}
+        </ng-template>
+        <ng-template #valorAcrescimoSummaryCell let-row="row" let-value="value">
+          <div class="total-geral-row">
+            <span>{{
+              extratoVendaTotalGeral.valorAcrescimo | currency: 'BRL'
+            }}</span>
+          </div>
+        </ng-template>
+      </vrc-datatable-column>
+
+      <vrc-datatable-column
+        name="valorDesconto"
+        prop="valorDesconto"
+        [summaryCurrency]="true"
+        [label]="'DESCONTO'"
+        [width]="20"
+        [resizeable]="false"
+        [draggable]="false"
+        [summaryTemplate]="valorDescontoSummaryCell"
+      >
+        <ng-template let-row="row" vrc-datatable-cell-template>
+          {{ row.valorDesconto | currency: 'BRL' }}
+        </ng-template>
+        <ng-template #valorDescontoSummaryCell let-row="row" let-value="value">
+          <div class="total-geral-row">
+            <span>{{
+              extratoVendaTotalGeral.valorDesconto | currency: 'BRL'
+            }}</span>
+          </div>
+        </ng-template>
+      </vrc-datatable-column>
+
+      <vrc-datatable-column
+        [label]="'VALOR LIQUIDO'"
+        name="valorLiquido"
+        prop="valorLiquido"
+        [width]="20"
+        [resizeable]="false"
+        [draggable]="false"
+        [summaryTemplate]="valorLiquidoSummaryCell"
+      >
+        <ng-template let-row="row" vrc-datatable-cell-template>
+          {{ row.valorLiquido | currency: 'BRL' }}
+        </ng-template>
+        <ng-template #valorLiquidoSummaryCell let-row="row" let-value="value">
+          <div class="total-geral-row">
+            <span>{{
+              extratoVendaTotalGeral.valorLiquido | currency: 'BRL'
+            }}</span>
+          </div>
+        </ng-template>
+      </vrc-datatable-column>
+
+      <vrc-datatable-column
+        prop="cancelado"
+        [label]="'CANCELADO'"
+        name="cancelado"
+        [resizeable]="false"
+        [draggable]="false"
+      >
+        <ng-template let-row="row" vrc-datatable-cell-template>
+          {{ row.cancelado }}
+        </ng-template>
+      </vrc-datatable-column>
+    </vrc-datatable>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="modal--shortcuts">
+  <vrc-icon
+    name="fechar"
+    width="12"
+    height="12"
+    filter="var(--filter-e86800)"
+    class="close"
+    (click)="onClose()"
+  ></vrc-icon>
+
+  <section class="modal__header">
+    <h4>{{ 'MODAL.ATALHOS-DO-TECLADO' | vrctranslator }}</h4>
+    <div class="modal__separator"></div>
+  </section>
+
+  <section class="modal__content">
+    <div class="filter--container">
+      <div class="filter--content">
+        <div class="filter--icon">
+          <i aria-hidden="true" class="vr vr-pesquisa"></i>
+        </div>
+        <div class="filter--input">
+          <input
+            type="text"
+            [placeholder]="'COMMONS.BUSCAR-ATALHO' | vrctranslator"
+            [formControl]="filterControl"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="shortcuts">
+      @for (shortcut of shortcuts | filterShortcut: filter; track $index) {
+        <div vrFormatShortcut [shortcut]="shortcut"></div>
+      }
+    </div>
+  </section>
+
+  <section class="modal__options">
+    <button class="btn btn--primary btn--not-icon" (click)="onClose()">
+      <span>{{ 'BUTTONS.CLOSE' | vrctranslator }}</span>
+    </button>
+  </section>
+</div>

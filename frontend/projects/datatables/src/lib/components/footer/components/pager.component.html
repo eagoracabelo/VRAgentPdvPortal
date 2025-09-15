@@ -1,0 +1,54 @@
+<ul class="dt-pager">
+  <li [class.disabled]="!canPrevious()" class="pages-action">
+    <a
+      role="button"
+      aria-label="go to first page"
+      href="javascript:void(0)"
+      (click)="selectPage(1)"
+    >
+      <vrc-icon class="vr-seta_anterior"></vrc-icon>
+    </a>
+  </li>
+  <li [class.disabled]="!canPrevious()" class="pages-action">
+    <a
+      role="button"
+      aria-label="go to previous page"
+      href="javascript:void(0)"
+      (click)="prevPage()"
+    >
+      <vrc-icon class="vr-seta_simples_esquerda"></vrc-icon>
+    </a>
+  </li>
+  @for (pg of pages; track $index) {
+    <li
+      role="button"
+      [attr.aria-label]="'page ' + pg.number"
+      class="pages"
+      [class.active]="pg.number === page"
+    >
+      <a href="javascript:void(0)" (click)="selectPage(pg.number)">
+        {{ pg.text }}
+      </a>
+    </li>
+  }
+  <li [class.disabled]="!canNext()" class="pages-action">
+    <a
+      role="button"
+      aria-label="go to next page"
+      href="javascript:void(0)"
+      (click)="nextPage()"
+    >
+      <vrc-icon class="vr-seta_simples_direita"></vrc-icon>
+    </a>
+  </li>
+  <li [class.disabled]="!canNext()" class="pages-action">
+    <a
+      role="button"
+      aria-label="go to last page"
+      href="javascript:void(0)"
+      (click)="selectPage(totalPages)"
+    >
+      <vrc-icon class="vr-seta_proximo"></vrc-icon>
+    </a>
+  </li>
+</ul>

@@ -1,0 +1,32 @@
+<div class="modal">
+  <section class="modal__header">
+    <h3>{{ title }}</h3>
+
+    <vrc-icon
+      name="fechar"
+      width="12"
+      height="12"
+      filter="var(--color-icon)"
+      class="close"
+      (click)="onClose()"
+    ></vrc-icon>
+  </section>
+
+  <section class="modal__content">
+    <vrc-input [(ngModel)]="vrcInputValue"></vrc-input>
+  </section>
+
+  <section>
+    <p>Retorno Modal: {{ returnModal$ | async }}</p>
+  </section>
+
+  <section class="modal__options">
+    <button class="btn btn--default" (click)="onConfirmAndNotClose()">
+      {{ confirmAndAddText }}
+    </button>
+    <button class="btn btn--default" (click)="onConfirm()">
+      {{ confirmText }}
+    </button>
+    <button class="btn btn--default" (click)="openNew()">Open New Modal</button>
+  </section>
+</div>

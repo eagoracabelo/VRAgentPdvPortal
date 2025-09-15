@@ -1,0 +1,41 @@
+<div class="table-header-cell-template-wrap" [style.text-align]="textAlign">
+  @if (isTarget) {
+    <ng-template
+      [ngTemplateOutlet]="targetMarkerTemplate"
+      [ngTemplateOutletContext]="targetMarkerContext"
+    >
+    </ng-template>
+  }
+
+  @if (isCheckboxable) {
+    <label class="table-checkbox">
+      <input
+        type="checkbox"
+        [checked]="allRowsSelected"
+        (change)="select.emit(!allRowsSelected)"
+      />
+      <span class="checkbox"></span>
+    </label>
+  }
+
+  @if (!column.headerTemplate) {
+    <span class="table-header-cell-wrapper">
+      <span
+        class="table-header-cell-label"
+        (click)="onSort($event)"
+        [innerHTML]="name"
+      >
+      </span>
+    </span>
+  }
+
+  @if (column.headerTemplate) {
+    <ng-template
+      [ngTemplateOutlet]="column.headerTemplate"
+      [ngTemplateOutletContext]="cellContext"
+    >
+    </ng-template>
+  }
+
+  <span (click)="onSort($event)" [class]="sortClass"> </span>
+</div>

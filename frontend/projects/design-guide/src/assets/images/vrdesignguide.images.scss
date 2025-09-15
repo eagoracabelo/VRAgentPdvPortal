@@ -1,0 +1,98 @@
+@mixin image($name, $width: 4.5rem, $height: 4.5rem) {
+  width: $width;
+  height: $height;
+  background: url('../../assets/images/#{$name}');
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: $width $height;
+  position: initial;
+}
+
+.vr-documento_texto {
+  @include image('svg/documento_texto.svg');
+}
+
+.vr-documento_xlsx {
+  @include image('svg/documento_xlsx.svg');
+}
+
+.vr-canary {
+  @include image('svg/canary.svg');
+}
+
+//copyright
+.logo-vr-dark {
+  @include image('copyright/logo-vr-dark.png', 6.25rem, 3.75rem);
+}
+
+.logo-vr-light {
+  @include image('copyright/logo-vr-light.png', 6.25rem, 3.75rem);
+}
+
+.tipo-vr-dark {
+  @include image('copyright/tipo-vr-dark.png', 11.313rem, 5.313rem);
+}
+
+.tipo-vr-light {
+  @include image('copyright/tipo-vr-light.png', 11.313rem, 5.313rem);
+}
+
+// listagem produto pdv
+.acougue {
+  @include image('listagem-produto-pdv/acougue.svg');
+}
+
+.compras {
+  @include image('listagem-produto-pdv/compras.svg');
+}
+
+.frutas {
+  @include image('listagem-produto-pdv/frutas.svg');
+}
+
+.legumes {
+  @include image('listagem-produto-pdv/legumes.svg');
+}
+
+.padaria {
+  @include image('listagem-produto-pdv/padaria.svg');
+}
+
+.verduras {
+  @include image('listagem-produto-pdv/verduras.svg');
+}
+
+// logotipos
+.vrmasterweb {
+  @include image('logotipos/svg/vrmasterweb.svg');
+}
+
+.vrsoftware {
+  @include image('logotipos/svg/vrsoftware.svg', 18.813rem, 3.75rem);
+}
+
+.vrdesignguide {
+  @include image('logotipos/svg/vrdesignguide.svg');
+}
+
+.vrcomponents {
+  @include image('logotipos/svg/vrcomponents.svg');
+}
+
+// login
+.carrinho-supermercado {
+  @include image('login/carrinho-supermercado.png', 12.938rem, 14.75rem);
+}
+
+// page images
+.page-not-found {
+  @include image('page-images/page-not-found.png', 39.375rem, 21.875rem);
+}
+
+.page-access-denied {
+  @include image('page-images/page-access-denied.png', 19.813rem, 22.375rem);
+}
+
+.under-construction {
+  @include image('page-images/under-construction.png', 24rem, 24rem);
+}

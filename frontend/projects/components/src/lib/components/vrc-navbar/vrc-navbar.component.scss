@@ -1,0 +1,14 @@
+.main-navbar {
+  position: fixed;
+
+  > .main-navbar__navbar {
+    padding: 0.438rem 1.5rem;
+  }
+}
+
+.logo-image {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  background-size: 2rem 2rem;
+}

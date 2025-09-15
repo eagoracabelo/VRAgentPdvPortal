@@ -1,0 +1,60 @@
+<div class="dt-main">
+  <vrc-table
+    [rows]="rows"
+    [columnMode]="ColumnMode.force"
+    [headerHeight]="3.125"
+    [footerHeight]="3.125"
+    rowHeight="auto"
+  >
+    <vrc-table-column name="Id" dataType="id"></vrc-table-column>
+    <vrc-table-column
+      name="First Name"
+      label="First Name"
+      prop="first_name"
+    ></vrc-table-column>
+    <vrc-table-column
+      name="Last Name"
+      label="Last Name"
+      prop="last_name"
+    ></vrc-table-column>
+    <vrc-table-column name="Email" minWidth="18.75"></vrc-table-column>
+    <vrc-table-column name="gender"></vrc-table-column>
+    <vrc-table-column
+      name="produtoId"
+      label="ProdutoId"
+      prop="product.id"
+    ></vrc-table-column>
+    <vrc-table-column
+      name="produto"
+      label="Produto"
+      prop="product.car"
+    ></vrc-table-column>
+
+    <vrc-table-column
+      [widthFixed]="true"
+      [width]="7.5"
+      [sortable]="false"
+      [canAutoResize]="false"
+      [resizeable]="false"
+      [exportable]="false"
+      name="acoes"
+      prop="acoes"
+      label="Ações"
+    >
+      <ng-template let-row="row" vrc-table-cell-template>
+        <div class="center-icons">
+          <a [title]="'Editar'" (click)="onEdit(row)">
+            <span
+              ><i class="vr vr-editar icon-edit" aria-hidden="true"></i
+            ></span>
+          </a>
+          <a [title]="'Excluir'" (click)="onRemove(row)">
+            <span
+              ><i class="vr vr-lixo icon-trash" aria-hidden="true"></i
+            ></span>
+          </a>
+        </div>
+      </ng-template>
+    </vrc-table-column>
+  </vrc-table>
+</div>

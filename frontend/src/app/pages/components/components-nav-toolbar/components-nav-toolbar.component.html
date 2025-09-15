@@ -1,0 +1,32 @@
+<div class="row" [ngClass]="{ toolbar__aligner: isExample }">
+  <div class="card col-md">
+    <header class="card__header">
+      <h3 class="title">Nav Toolbar</h3>
+    </header>
+    <div class="card__content content">
+      <vrc-tabs (selected)="alignCard($event)">
+        <vrc-tab label="Documentação">
+          <markdown
+            src="./docs/components/vrc-nav-toolbar.md"
+            (load)="onLoad($event)"
+            (error)="onError($event)"
+          >
+          </markdown>
+        </vrc-tab>
+
+        <vrc-tab label="Exemplo">
+          <div class="row">
+            <span style="margin-left: 1rem"
+              >A nav toolbar fica disponível logo abaixo da sidebar, observe os
+              botões adicionados dentro da barra.</span
+            >
+            <vrc-nav-toolbar [title]="'Nav Toolbar'">
+              <button class="btn btn-default">Botão 1</button>
+              <button class="btn btn-default">Botão 2</button>
+            </vrc-nav-toolbar>
+          </div>
+        </vrc-tab>
+      </vrc-tabs>
+    </div>
+  </div>
+</div>

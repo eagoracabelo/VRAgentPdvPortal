@@ -1,0 +1,258 @@
+<div class="row">
+  <div class="card col-md">
+    <header class="card__header">
+      <h3 class="title">VrTreeView</h3>
+    </header>
+
+    <div class="card__content content">
+      <vrc-tabs>
+        <vrc-tab label="Documentação">
+          <markdown
+            src="./docs/components/vrc-tree-view.md"
+            (load)="onLoad($event)"
+            (error)="onError($event)"
+          ></markdown>
+        </vrc-tab>
+        <vrc-tab label="Exemplo Sem Formulário">
+          <div class="example--container">
+            <div class="example__treeview">
+              <vrc-tree-view
+                [defaultFilterOption]="config1.defaultFilterOption"
+                [filterItems]="filterItems"
+                [items]="items"
+                [allowFilter]="config1.allowFilter"
+                [allowParentSelection]="config1.allowParentSelection"
+                [multiple]="config1.allowMultiple"
+                [expandMode]="config1.expandMode"
+                [filterCaseSensitive]="config1.filterCaseSensitive"
+                [filterPlaceholder]="config1.filterPlaceholder"
+                [isDisabled]="config1.isDisabled"
+                (update)="update($event)"
+              >
+                <span>LOJAS</span>
+              </vrc-tree-view>
+            </div>
+
+            <div class="control-panel--container">
+              <div class="control-panel">
+                <input
+                  type="checkbox"
+                  name="allowFilter1"
+                  value="config1.allowFilter"
+                  (click)="toggleAllowFilter1()"
+                />
+                <label for="allowFilter1">ShowFilter</label>
+              </div>
+
+              <div class="control-panel">
+                <input
+                  type="checkbox"
+                  name="allowParent1"
+                  value="config1.allowParentSelection"
+                  (click)="toggleAllowParent1()"
+                  [checked]="config1.allowParentSelection"
+                  [disabled]="!config1.allowMultiple"
+                />
+                <label for="allowParent1">allowParentSelection</label>
+              </div>
+
+              <div class="control-panel">
+                <input
+                  type="checkbox"
+                  name="multiple1"
+                  value="config1.allowMultiple"
+                  (click)="toggleMultiple1()"
+                />
+                <label for="multiple1">AllowMultiple</label>
+              </div>
+
+              <div class="control-panel">
+                <input
+                  type="checkbox"
+                  name="filterCaseSensitive1"
+                  value="config1.filterCaseSensitive"
+                  (click)="toggleFilterCaseSensitive1()"
+                />
+                <label for="filterCaseSensitive1">FilterCaseSensitive</label>
+              </div>
+
+              <div class="control-panel">
+                <input
+                  type="checkbox"
+                  name="disabled1"
+                  value="config1.isDisabled"
+                  (click)="toggleDisabled1()"
+                />
+                <label for="disabled1">Disabled</label>
+              </div>
+
+              <div class="control-panel">
+                <label for="ExpandMode1">ExpandMode:</label>
+                <select
+                  #expandMode1
+                  name="ExpandMode1"
+                  (change)="onExpandMode1(expandMode1.value)"
+                  [value]="config1.expandMode"
+                >
+                  <option value="All">All</option>
+                  <option value="None">None</option>
+                  <option value="Selection">Selection</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="example__data">
+              <h4>Mapped Value</h4>
+              <pre>{{ selectedMappedItems | json }}</pre>
+            </div>
+            <div class="example__data">
+              <h4>Raw Value</h4>
+              <pre>{{ selectedRawItems | json }}</pre>
+            </div>
+          </div>
+
+          <div class="example--container">
+            <div class="example__treeview">
+              <h6>Exemplo com template personalizado</h6>
+              <vrc-tree-view
+                [defaultFilterOption]="config1.defaultFilterOption"
+                [filterItems]="filterItems"
+                [items]="items"
+                [allowFilter]="config1.allowFilter"
+                [allowParentSelection]="config1.allowParentSelection"
+                [multiple]="config1.allowMultiple"
+                [templates]="templates"
+                [expandMode]="config1.expandMode"
+                [filterCaseSensitive]="config1.filterCaseSensitive"
+                [filterPlaceholder]="config1.filterPlaceholder"
+                [isDisabled]="config1.isDisabled"
+                (update)="update($event)"
+              >
+                <span>LOJAS</span>
+                <ng-template
+                  #templates
+                  let-data="data"
+                  let-label="data.label.split('/')"
+                >
+                  <div class="template-container">
+                    <span class="template-span-left">
+                      {{ label[0] }}
+                    </span>
+
+                    <span class="template-span-right">
+                      {{ label[1] }}
+                    </span>
+
+                    @if (data?.children) {
+                      <span class="template-span-right">
+                        (Children: {{ data.children.length }})
+                      </span>
+                    }
+                  </div>
+                </ng-template>
+              </vrc-tree-view>
+            </div>
+          </div>
+        </vrc-tab>
+        <vrc-tab label="Exemplo Com Formulário">
+          <div class="example--container">
+            <div class="example__treeview">
+              <form [formGroup]="formGroup">
+                <vrc-tree-view
+                  [defaultFilterOption]="config2.defaultFilterOption"
+                  [filterItems]="filterItems"
+                  [items]="items"
+                  [allowFilter]="config2.allowFilter"
+                  [allowParentSelection]="config2.allowParentSelection"
+                  [multiple]="config2.allowMultiple"
+                  [expandMode]="config2.expandMode"
+                  [filterCaseSensitive]="config2.filterCaseSensitive"
+                  [filterPlaceholder]="config2.filterPlaceholder"
+                  [isDisabled]="config2.isDisabled"
+                  (update)="update($event)"
+                  [control]="formGroup.get('treeviewForm')"
+                  formControlName="treeviewForm"
+                >
+                  <span>LOJAS</span>
+                </vrc-tree-view>
+              </form>
+            </div>
+
+            <div class="control-panel--container">
+              <div class="control-panel">
+                <input
+                  type="checkbox"
+                  name="allowFilter2"
+                  value="config2.allowFilter"
+                  (click)="toggleAllowFilter2()"
+                />
+                <label for="allowFilter2">ShowFilter</label>
+              </div>
+
+              <div class="control-panel">
+                <input
+                  type="checkbox"
+                  name="allowParent2"
+                  value="config2.allowParentSelection"
+                  [checked]="config2.allowParentSelection"
+                  (click)="toggleAllowParent2()"
+                  [disabled]="!config2.allowMultiple"
+                />
+                <label for="allowParent2">allowParentSelection</label>
+              </div>
+
+              <div class="control-panel">
+                <input
+                  type="checkbox"
+                  name="multiple2"
+                  value="config2.allowMultiple"
+                  (click)="toggleMultiple2()"
+                />
+                <label for="multiple2">AllowMultiple</label>
+              </div>
+
+              <div class="control-panel">
+                <input
+                  type="checkbox"
+                  name="filterCaseSensitive2"
+                  value="config2.filterCaseSensitive"
+                  (click)="toggleFilterCaseSensitive2()"
+                />
+                <label for="filterCaseSensitive2">FilterCaseSensitive</label>
+              </div>
+
+              <div class="control-panel">
+                <input
+                  type="checkbox"
+                  name="disabled2"
+                  value="config2.isDisabled"
+                  (click)="toggleDisabled2()"
+                />
+                <label for="disabled2">Disabled</label>
+              </div>
+
+              <div class="control-panel">
+                <label for="ExpandMode2">ExpandMode:</label>
+                <select
+                  #expandMode2
+                  name="ExpandMode2"
+                  (change)="onExpandMode2(expandMode2.value)"
+                  [value]="config2.expandMode"
+                >
+                  <option value="All">All</option>
+                  <option value="None">None</option>
+                  <option value="Selection">Selection</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="example__data">
+              <h4>Value</h4>
+              <pre>{{ formGroup.get('treeviewForm')?.value | json }}</pre>
+            </div>
+          </div>
+        </vrc-tab>
+      </vrc-tabs>
+    </div>
+  </div>
+</div>

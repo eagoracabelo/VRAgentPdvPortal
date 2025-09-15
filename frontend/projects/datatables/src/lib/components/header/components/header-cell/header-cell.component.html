@@ -1,0 +1,60 @@
+<div
+  class="datatable-header-cell-template-wrap"
+  [style.text-align]="textAlign"
+  [style.justify-content]="textAlign"
+>
+  @if (isTarget) {
+    <ng-template
+      [ngTemplateOutlet]="targetMarkerTemplate"
+      [ngTemplateOutletContext]="targetMarkerContext"
+    >
+    </ng-template>
+  }
+
+  @if (isCheckboxable) {
+    <label
+      class="datatable-checkbox checkbox"
+      [ngStyle]="
+        checkAllItems ? { cursor: 'not-allowed' } : { cursor: 'pointer' }
+      "
+    >
+      <input
+        type="checkbox"
+        [checked]="allRowsSelected || (partialRowsSelected && !allRowsSelected)"
+        (change)="select.emit(partialRowsSelected)"
+        [disabled]="checkAllItems"
+      />
+      <span
+        class="checkbox__label checkbox"
+        [class.minus-check]="!allRowsSelected && partialRowsSelected"
+      ></span>
+    </label>
+  }
+
+  @if (!column.headerTemplate) {
+    <span class="datatable-header-cell-wrapper">
+      <span
+        class="datatable-header-cell-label draggable span-cell"
+        (click)="onSort($event)"
+        [innerHTML]="name"
+        [ngClass]="{
+          hidden: isHidden(),
+        }"
+      >
+      </span>
+    </span>
+  }
+
+  @if (column.headerTemplate) {
+    <ng-template
+      [ngTemplateOutlet]="column.headerTemplate"
+      [ngTemplateOutletContext]="cellContext"
+    >
+    </ng-template>
+  }
+
+  @if (!isEditColumn) {
+    <span (click)="onSort($event)"></span>
+  }
+  <vrc-icon [name]="sortClass"></vrc-icon>
+</div>

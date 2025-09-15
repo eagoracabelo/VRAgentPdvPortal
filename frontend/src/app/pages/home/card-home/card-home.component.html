@@ -1,0 +1,20 @@
+<div class="card--container">
+  <header class="card__header">
+    <h2>{{ title() }}</h2>
+  </header>
+
+  <div class="div__separator"></div>
+
+  <div class="card__content">
+    <ng-content></ng-content>
+  </div>
+
+  <div class="card__footer">
+    <div class="card_footer-content">
+      <a [routerLink]="buttonLink()" class="btn btn__outline--primary">
+        <span>Acessar</span>
+        <i class="vr vr-seta_direita"></i>
+      </a>
+    </div>
+  </div>
+</div>

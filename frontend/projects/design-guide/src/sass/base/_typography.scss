@@ -1,0 +1,243 @@
+/**
+ * Basic typography style for text
+ */
+// Headings
+// -------------------------
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  line-height: $line-height;
+  color: $headings-color;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+h1,
+.h1 {
+  font-size: $font-size-h1;
+  line-height: $line-height-h1;
+}
+
+h2,
+.h2 {
+  font-size: $font-size-h2;
+  line-height: $line-height-h2;
+}
+
+h3,
+.h3 {
+  font-size: $font-size-h3;
+  line-height: $line-height-h3;
+}
+
+h4,
+.h4 {
+  font-size: $font-size-h4;
+  line-height: $line-height-h4;
+}
+
+h5,
+.h5 {
+  font-size: $font-size-h5;
+  line-height: $line-height-h5;
+}
+
+h6,
+.h6 {
+  font-size: $font-size-h6;
+  line-height: $line-height-h6;
+}
+
+p,
+span {
+  // subtitle - normal
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  font-weight: $font-weight-base;
+  margin-top: 0;
+
+  &.text--small {
+    font-size: $font-size-small;
+    line-height: $line-height-small;
+  }
+
+  &.text--large {
+    font-size: $font-size-large;
+    line-height: $line-height-large;
+  }
+}
+
+// button text
+.btn,
+.button {
+  font-size: $font-size-button-small;
+  line-height: $line-height-button-small;
+  font-weight: $font-weight-button;
+
+  > span {
+    font-size: $font-size-button-small;
+    line-height: $line-height-button-small;
+    font-weight: $font-weight-button;
+  }
+}
+
+.btn__text--small {
+  font-size: $font-size-button-small;
+  line-height: $line-height-button-small;
+  font-weight: $font-weight-button;
+}
+
+.btn__text--large {
+  font-size: $font-size-button-large;
+  line-height: $line-height-button-large;
+  font-weight: $font-weight-button;
+}
+
+.btn__text--normal {
+  font-size: $font-size-button-base;
+  line-height: $line-height-button-base;
+  font-weight: $font-weight-button;
+}
+
+blockquote {
+  margin: 0 0 2.4rem 1.2rem;
+  border-left: 0.3rem solid var(--color-gray-300);
+  padding: 2.4rem 1.2rem;
+
+  p:last-child {
+    padding-bottom: 0;
+  }
+}
+
+small,
+sub,
+sup {
+  // subtitle - small
+  font-size: $font-size-small;
+  font-weight: $font-weight-small;
+  line-height: 1;
+}
+
+caption,
+figcaption {
+  font-size: $font-size-caption-normal;
+  line-height: $line-height-caption-normal;
+
+  &.text--overline {
+    font-size: $font-size-caption-overline;
+    line-height: $line-height-caption-overline;
+  }
+}
+
+em,
+cite,
+i {
+  font-style: italic;
+}
+
+q {
+  &:before {
+    content: "'";
+  }
+
+  &:after {
+    content: "'";
+  }
+
+  & > q {
+    font-style: italic;
+  }
+}
+
+dfn,
+abbr {
+  border-bottom: 0.1rem dotted var(--color-gray-200-90a4ae);
+  cursor: default;
+}
+
+dfn,
+abbr {
+  border-bottom: 0.1rem dotted var(--color-gray-200-90a4ae);
+  cursor: default;
+}
+
+input {
+  &[type='email'],
+  &[type='number'],
+  &[type='search'],
+  &[type='text'],
+  &[type='tel'],
+  &[type='url'],
+  &[type='password'] {
+    font-size: $font-size-small;
+    line-height: $line-height-small;
+    font-weight: $font-weight-base;
+  }
+}
+
+label.checkbox {
+  font-size: $font-size-small;
+  line-height: $line-height-small;
+  font-weight: $font-weight-base;
+}
+
+label.radio__label {
+  span {
+    font-size: $font-size-small;
+    line-height: $line-height-small;
+    font-weight: $font-weight-base;
+  }
+}
+
+.switch {
+  label {
+    font-size: $font-size-small;
+    line-height: $line-height-small;
+    font-weight: $font-weight-base;
+  }
+}
+
+textarea {
+  font-size: $font-size-small;
+  line-height: $line-height-small;
+  font-weight: $font-weight-base;
+}
+
+table tbody tr td,
+.table tbody tr td {
+  font-size: $font-size-small;
+  line-height: $line-height-small;
+  font-weight: $font-weight-base;
+}
+
+.page-footer {
+  > span {
+    font-size: $font-size-small;
+    line-height: $line-height-footer;
+    font-weight: $font-weight-base;
+  }
+
+  > div {
+    font-size: $font-size-small;
+    line-height: $line-height-footer;
+    font-weight: $font-weight-base;
+  }
+}
+
+select {
+  font-size: $font-size-small;
+  line-height: $line-height-small;
+  font-weight: $font-weight-base;
+}

@@ -1,0 +1,71 @@
+<div class="card--container">
+  <header class="card__header">
+    <h2 class="title">Animações</h2>
+  </header>
+
+  <div class="div__separator"></div>
+
+  <div class="card__body--container">
+    <div class="card__title">
+      <h2>Exemplo de Animações</h2>
+    </div>
+
+    <div class="card__body card__column col-sm-2">
+      <select (change)="changeAnimation($event)">
+        <option value="none" selected disabled hidden>
+          Selecion uma anição para vizualizar
+        </option>
+        <option value="up">up</option>
+        <option value="down">down</option>
+        <option value="pop">pop</option>
+        <option value="fade">fade</option>
+        <option value="pulse">pulse</option>
+      </select>
+      <div class="presentation__container">
+        <div #divAnimation class="presentation">
+          <p>MODAL</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card__body--container">
+    <div class="card__title">
+      <h2>Animação padrão</h2>
+    </div>
+    <div class="card__body">
+      <span>
+        As animações possuem classes que podem ser aplicadas diretamente nas
+        tags
+      </span>
+    </div>
+  </div>
+
+  <div class="card__body--container">
+    <div class="card__title">
+      <h2>Unindo as animações</h2>
+    </div>
+    <div class="card__body">
+      <span>
+        Caso deseje utilizar duas ou mais animações em uma unica tag será
+        necessário utilizar o seletor "animations" do css e aplicar diretamente
+        o keyframe no arquivo de css
+      </span>
+    </div>
+  </div>
+
+  <div class="card__body--container">
+    <div class="card__title">
+      <h2>Exemplo de Código</h2>
+    </div>
+    <div class="card__body">
+      <div class="col-xs-12">
+        <section class="code-preview">
+          <pre>
+            <vr-code-mirror [value]=template></vr-code-mirror>
+          </pre>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

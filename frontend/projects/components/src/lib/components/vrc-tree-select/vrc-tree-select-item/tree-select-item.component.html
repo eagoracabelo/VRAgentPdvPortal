@@ -1,0 +1,80 @@
+<div
+  class="tree-select-item--container"
+  [class.active]="item.isSelected && !needCheckBox && !hasLevel"
+  (click)="select($event)"
+>
+  <div
+    class="tree-select-item"
+    [class.active]="item.isSelected && !needCheckBox && hasLevel"
+  >
+    @if (!hasLevel) {
+      <span class="tree-select-item-expand--container">
+        <i
+          class="vr"
+          [class.vr-divisa_direita]="item.hasChild && !isOpen"
+          [class.vr-divisa_inferior]="item.hasChild && isOpen"
+        ></i>
+      </span>
+
+      @if (needCheckBox && allowParentSelection) {
+        <label class="checkbox">
+          <input
+            type="checkbox"
+            [checked]="item.isSelected || isPartialSelect"
+          />
+          <span
+            class="checkbox__label"
+            [class.minus-check]="isPartialSelect"
+          ></span>
+        </label>
+      }
+
+      @if (needCheckBox && !allowParentSelection && !item.hasChild) {
+        <label class="checkbox">
+          <input type="checkbox" [checked]="item.isSelected" />
+          <span class="checkbox__label"></span>
+        </label>
+      }
+
+      @if (allowParentSelection) {
+        <span class="tree-select-item--text">{{ item.text }}</span>
+      }
+
+      @if (!allowParentSelection && !item.hasChild) {
+        <span class="tree-select-item--text">
+          {{ item.text }}
+        </span>
+      }
+
+      @if (!allowParentSelection && item.hasChild) {
+        <span class="tree-select-item--text">{{ item.text }}</span>
+      }
+    } @else {
+      <span class="tree-select-item-expand--container">
+        <i
+          class="vr"
+          [class.vr-divisa_direita]="item.hasChild && !isOpen"
+          [class.vr-divisa_inferior]="item.hasChild && isOpen"
+        ></i>
+      </span>
+      @if (!allowParentSelection) {
+        <span class="tree-select-item--text">
+          {{ item.text }}
+        </span>
+      }
+    }
+  </div>
+
+  @if (item.hasChild && isOpen) {
+    <ul class="tree-select-item--choices" role="menu">
+      @for (o of item.children | itemPipe; track $index) {
+        <li role="menuitem">
+          <tree-select-item
+            [item]="o"
+            [onTouchedCallBack]="onTouchedCallBack"
+          ></tree-select-item>
+        </li>
+      }
+    </ul>
+  }
+</div>

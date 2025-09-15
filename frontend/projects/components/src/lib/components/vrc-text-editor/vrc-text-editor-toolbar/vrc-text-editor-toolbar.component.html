@@ -1,0 +1,97 @@
+<div class="text-editor-toolbar">
+  <div class="text-editor-toolbar-set" [class.isDisabled]="isDisabled">
+    <vrc-text-editor-select
+      [(ngModel)]="block"
+      (change)="onExecute(block)"
+      [isDisabled]="isDisabled"
+      tabindex="-1"
+    ></vrc-text-editor-select>
+
+    <vrc-text-editor-button
+      [isDisabled]="isDisabled"
+      [title]="'Negrito'"
+      [iconName]="'negrito'"
+      id="bold-btn"
+      (buttonClick)="onExecute('bold')"
+    ></vrc-text-editor-button>
+
+    <vrc-text-editor-button
+      [isDisabled]="isDisabled"
+      id="italic-btn"
+      [title]="'Itálico'"
+      [iconName]="'italico'"
+      (buttonClick)="onExecute('italic')"
+    ></vrc-text-editor-button>
+
+    <vrc-text-editor-button
+      [isDisabled]="isDisabled"
+      id="underline-btn"
+      [title]="'Sublinhado'"
+      [iconName]="'sublinhado'"
+      (buttonClick)="onExecute('underline')"
+    ></vrc-text-editor-button>
+
+    <vrc-text-editor-button
+      [isDisabled]="isDisabled"
+      id="toggleCase-btn"
+      [title]="'Maiúsculo/Minúsculo'"
+      [iconName]="'tamanho_da_fonte'"
+      (buttonClick)="onExecute('toggleCase')"
+    ></vrc-text-editor-button>
+
+    <vrc-text-editor-button
+      [isDisabled]="isDisabled"
+      id="justifyLeft-btn"
+      [title]="'Alinhar à esquerda'"
+      [iconName]="'alinhar_esquerda'"
+      (buttonClick)="onExecute('justifyLeft')"
+    ></vrc-text-editor-button>
+
+    <vrc-text-editor-button
+      [isDisabled]="isDisabled"
+      id="justifyCenter-btn"
+      [title]="'Alinhar ao centro'"
+      [iconName]="'alinhar_centro'"
+      (buttonClick)="onExecute('justifyCenter')"
+    ></vrc-text-editor-button>
+
+    <vrc-text-editor-button
+      [isDisabled]="isDisabled"
+      id="justifyRight-btn"
+      [title]="'Alinhar à direita'"
+      [iconName]="'alinhar_direita'"
+      (buttonClick)="onExecute('justifyRight')"
+    ></vrc-text-editor-button>
+
+    <vrc-text-editor-button
+      id="link-btn"
+      [title]="'Criar link'"
+      [iconName]="'adicionar_hiperlink'"
+      [isDisabled]="isDisabled || !selectedText || linkSelected"
+      (buttonClick)="onInsertUrl()"
+    ></vrc-text-editor-button>
+
+    <vrc-text-editor-button
+      id="unlink-btn"
+      [title]="'Remover link'"
+      [iconName]="'remover_hiperlink'"
+      [isDisabled]="isDisabled || !linkSelected"
+      (buttonClick)="onExecute('unlink')"
+    ></vrc-text-editor-button>
+
+    <vrc-text-editor-button
+      [isDisabled]="isDisabled"
+      id="clearFormatting-btn"
+      [title]="'Limpar formatação'"
+      [iconName]="'fechar'"
+      (buttonClick)="onExecute('removeFormat')"
+    ></vrc-text-editor-button>
+  </div>
+  @if (publicationDate) {
+    <div class="text-editor-toolbar-publish">
+      <p>
+        Data de publicação: {{ publicationDate | date: 'dd/MM/yyy HH:mm' }}h
+      </p>
+    </div>
+  }
+</div>

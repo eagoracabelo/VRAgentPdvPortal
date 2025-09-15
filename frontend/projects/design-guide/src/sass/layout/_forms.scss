@@ -1,0 +1,42 @@
+// Forms
+
+.form-group {
+  position: relative;
+  margin-bottom: .938rem;
+}
+
+.input-group {
+  position: relative;
+  display: table;
+  border-collapse: separate;
+
+  .input-group-addon {
+    display: table-cell;
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: .375rem .75rem;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--color-gray-600);
+    text-align: center;
+    background-color: #eee;
+    border: .063rem solid var(--color-gray-100);
+    border-radius: .25rem;
+
+    &:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  .form-control {
+    display: table-cell;
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 100%;
+    margin-bottom: 0;
+  }
+}

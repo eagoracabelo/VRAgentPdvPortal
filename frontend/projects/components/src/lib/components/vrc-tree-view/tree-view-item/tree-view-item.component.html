@@ -1,0 +1,75 @@
+<div
+  class="tree-view-item--container"
+  [class.active]="item.selectionMode === 'Check' && !needCheckBox"
+>
+  <div class="tree-view-item">
+    <span class="tree-view-item-expand--container" (click)="toggleOpen($event)">
+      <i
+        class="vr"
+        [class.vr-divisa_direita]="item.hasChild && !isOpen"
+        [class.vr-divisa_inferior]="item.hasChild && isOpen"
+      ></i>
+    </span>
+
+    @if (needCheckBox && allowParentSelection) {
+      <label class="checkbox" (click)="select($event)">
+        <input
+          type="checkbox"
+          [checked]="
+            item.selectionMode === 'Check' || item.selectionMode === 'Minus'
+          "
+        />
+        <span
+          class="checkbox__label"
+          [class.minus-check]="item.selectionMode === 'Minus'"
+        ></span>
+      </label>
+    }
+
+    @if (needCheckBox && !allowParentSelection && !item.hasChild) {
+      <label class="checkbox" (click)="select($event)">
+        <input type="checkbox" [checked]="item.selectionMode === 'Check'" />
+        <span class="checkbox__label"></span>
+      </label>
+    }
+
+    @if (!templates) {
+      @if (allowParentSelection) {
+        <span class="tree-view-item--text" (click)="select($event)">{{
+          item.text
+        }}</span>
+      }
+
+      @if (!allowParentSelection && !item.hasChild) {
+        <span class="tree-view-item--text" (click)="select($event)">{{
+          item.text
+        }}</span>
+      }
+
+      @if (!allowParentSelection && item.hasChild) {
+        <span class="tree-view-item--text">{{ item.text }}</span>
+      }
+    } @else {
+      <ng-container
+        *ngTemplateOutlet="
+          templates;
+          context: { data: item.data, label: item.text }
+        "
+      ></ng-container>
+    }
+  </div>
+
+  @if (item.hasChild && isOpen) {
+    <ul class="tree-view-item--choices" role="menu">
+      @for (o of item.children | itemPipe; track $index) {
+        <li role="menuitem">
+          <tree-view-item
+            [item]="o"
+            [templates]="templates"
+            [onTouchedCallBack]="onTouchedCallBack"
+          ></tree-view-item>
+        </li>
+      }
+    </ul>
+  }
+</div>

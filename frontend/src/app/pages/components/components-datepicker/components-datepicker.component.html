@@ -1,0 +1,322 @@
+<div class="row">
+  <div class="card col-md">
+    <header class="card__header">
+      <h3 class="title">Datepicker</h3>
+    </header>
+    <div class="card__content content">
+      <vrc-tabs>
+        <vrc-tab label="Documentação">
+          <markdown
+            src="./docs/components/vrc-datepicker.md"
+            (load)="onLoad($event)"
+            (error)="onError($event)"
+          ></markdown>
+        </vrc-tab>
+
+        <vrc-tab label="Exemplo Date Picker">
+          <div style="width: 100%">
+            <div class="row">
+              <div class="col-sm-2">
+                <vrc-datepicker
+                  id="dt01"
+                  [useNonWorkingDays]="true"
+                  label="Data"
+                  [disablePastDates]="true"
+                >
+                </vrc-datepicker>
+              </div>
+              <div class="col-sm-10">
+                <vrc-datepicker
+                  id="dt02"
+                  [(ngModel)]="data"
+                  [useNonWorkingDays]="false"
+                  label="Data"
+                ></vrc-datepicker>
+              </div>
+            </div>
+
+            <form [formGroup]="formGroup">
+              <div class="row">
+                <vrc-datepicker
+                  class="col-sm-2"
+                  label="Data Field"
+                  formControlName="date"
+                  (valueText$)="value = $event"
+                >
+                </vrc-datepicker>
+                <vrc-input
+                  label="Text Value"
+                  class="col-sm-2"
+                  [isReadOnly]="true"
+                  formControlName="text"
+                ></vrc-input>
+                <vrc-input
+                  label="Data Value"
+                  class="col-sm-5"
+                  [isReadOnly]="true"
+                  [ngModelOptions]="{ standalone: true }"
+                  [(ngModel)]="getField('date')?.value.start"
+                ></vrc-input>
+              </div>
+            </form>
+          </div>
+          <vrc-form-debug [form]="formGroup"></vrc-form-debug>
+        </vrc-tab>
+
+        <vrc-tab label="Exemplo Month Date Picker">
+          <div style="display: flex; flex-direction: column; gap: 10px">
+            <div style="width: 100%">
+              <h4>Formulário - Obrigatório</h4>
+
+              <form [formGroup]="formGroupMonth">
+                <div class="col-sm-2">
+                  <vrc-datepicker
+                    id="dt21"
+                    [useNonWorkingDays]="true"
+                    label="Data"
+                    [isMonthSelection]="true"
+                    formControlName="dateRequired"
+                    (valueText$)="monthValueTextFormRequired = $event"
+                  >
+                  </vrc-datepicker>
+                </div>
+
+                <vrc-input
+                  class="col-sm-2"
+                  label="Text Value"
+                  [isReadOnly]="true"
+                  [value]="monthValueTextFormRequired"
+                ></vrc-input>
+              </form>
+            </div>
+
+            <div style="width: 100%">
+              <h4>Formulário - Opcional</h4>
+
+              <form [formGroup]="formGroupMonth">
+                <div class="col-sm-2">
+                  <vrc-datepicker
+                    id="dt21"
+                    [useNonWorkingDays]="true"
+                    label="Data"
+                    [isMonthSelection]="true"
+                    formControlName="date"
+                    (valueText$)="monthValueTextForm = $event"
+                  >
+                  </vrc-datepicker>
+                </div>
+
+                <vrc-input
+                  class="col-sm-2"
+                  label="Text Value"
+                  [isReadOnly]="true"
+                  [value]="monthValueTextForm"
+                ></vrc-input>
+              </form>
+            </div>
+
+            <div style="width: 100%">
+              <h4>Sem formulário</h4>
+              <div class="row">
+                <vrc-datepicker
+                  class="col-sm-2"
+                  [isMonthSelection]="true"
+                  label="Data"
+                  [(ngModel)]="monthValue"
+                  (valueText$)="monthValueText = $event"
+                ></vrc-datepicker>
+
+                <vrc-input
+                  class="col-sm-2"
+                  label="Text Value"
+                  [isReadOnly]="true"
+                  [value]="monthValueText"
+                ></vrc-input>
+              </div>
+            </div>
+          </div>
+        </vrc-tab>
+
+        <vrc-tab label="Exemplo Date Range">
+          <h4>Sem formulário</h4>
+          <div class="row">
+            <vrc-datepicker
+              class="col-sm-2"
+              [(ngModel)]="rangeValue"
+              [isDateRange]="true"
+              label="Data"
+              (valueText$)="rangeValueText = $event"
+            ></vrc-datepicker>
+            <vrc-input
+              class="col-sm-2"
+              label="Text Value"
+              [isReadOnly]="true"
+              [value]="rangeValueText"
+            ></vrc-input>
+            <vrc-input
+              class="col-sm-7"
+              label="Data Value"
+              [isReadOnly]="true"
+              [value]="formattedRangeValue"
+            ></vrc-input>
+          </div>
+
+          <h4>Com atalhos</h4>
+          <div class="row">
+            <vrc-datepicker
+              class="col-sm-2"
+              [(ngModel)]="rangeValueAtalhos"
+              [isDateRange]="true"
+              label="Data"
+              (valueText$)="rangeValueTextAtalhos = $event"
+              [showShortcuts]="true"
+              [disablePastDates]="true"
+            ></vrc-datepicker>
+            <vrc-input
+              class="col-sm-2"
+              label="Text Value"
+              [isReadOnly]="true"
+              [value]="rangeValueTextAtalhos"
+            ></vrc-input>
+            <vrc-input
+              class="col-sm-7"
+              label="Data Value"
+              [isReadOnly]="true"
+              [value]="formattedRangeValueAtalhos"
+            ></vrc-input>
+          </div>
+
+          <div class="row">
+            <h4>Com formulário</h4>
+            <form [formGroup]="formGroupRange">
+              <vrc-datepicker
+                class="col-sm-2"
+                [isDateRange]="true"
+                label="Data"
+                formControlName="dateRange"
+                (valueText$)="rangeValueTextForm = $event"
+              ></vrc-datepicker>
+              <vrc-input
+                class="col-sm-2"
+                label="Text Value"
+                [isReadOnly]="true"
+                [value]="rangeValueTextForm"
+              ></vrc-input>
+              <vrc-input
+                class="col-sm-7"
+                label="Data Value"
+                [isReadOnly]="true"
+                [value]="getDateRange()"
+              ></vrc-input>
+            </form>
+          </div>
+
+          <div class="row">
+            <h4>Disabled</h4>
+            <vrc-datepicker
+              class="col-sm-2"
+              [isDateRange]="true"
+              label="Data"
+              [isDisabled]="true"
+            ></vrc-datepicker>
+          </div>
+          <vrc-form-debug [form]="formGroupRange"></vrc-form-debug>
+        </vrc-tab>
+
+        <vrc-tab label="Exemplo Date Time">
+          <div style="width: 100%">
+            <div class="row">
+              <div class="col-sm-2">
+                <vrc-datepicker
+                  id="dt03"
+                  [isDateTime]="true"
+                  [useNonWorkingDays]="true"
+                  label="Data"
+                >
+                </vrc-datepicker>
+              </div>
+              <div class="col-sm-10">
+                <vrc-datepicker
+                  id="dt04"
+                  [(ngModel)]="data"
+                  [isDateTime]="true"
+                  [useNonWorkingDays]="false"
+                  label="Data"
+                ></vrc-datepicker>
+              </div>
+            </div>
+
+            <form [formGroup]="formGroupDateTime">
+              <div class="row">
+                <vrc-datepicker
+                  class="col-sm-2"
+                  label="Data Field"
+                  formControlName="date"
+                  [control]="formGroupDateTime.get('date')"
+                  [isDateTime]="true"
+                  (valueText$)="dateTimeValue = $event"
+                >
+                </vrc-datepicker>
+                <vrc-input
+                  label="Text Value"
+                  class="col-sm-2"
+                  [isReadOnly]="true"
+                  formControlName="text"
+                ></vrc-input>
+                <vrc-input
+                  label="Data Value"
+                  class="col-sm-5"
+                  [isReadOnly]="true"
+                  [ngModelOptions]="{ standalone: true }"
+                  [(ngModel)]="getDateTimeField('date')?.value.start"
+                ></vrc-input>
+              </div>
+            </form>
+          </div>
+          <vrc-form-debug [form]="formGroupDateTime"></vrc-form-debug>
+        </vrc-tab>
+
+        <vrc-tab label="Exemplo Posicionamento">
+          <div class="calendar-position--container">
+            <div>
+              <select
+                #calendarPos
+                (change)="setCalendarPosition(calendarPos.value)"
+                [value]="calendarPosition"
+              >
+                @for (opt of calendarPositionOptions; track $index) {
+                  <option [ngValue]="opt.value">
+                    {{ opt.value }}
+                  </option>
+                }
+              </select>
+            </div>
+            <div>
+              <vrc-datepicker
+                class="col-sm-2"
+                label="DatePicker"
+                [calendarPosition]="calendarPosition"
+              >
+              </vrc-datepicker>
+
+              <vrc-datepicker
+                class="col-sm-2"
+                [isDateRange]="true"
+                label="DateRange"
+                [calendarPosition]="calendarPosition"
+              ></vrc-datepicker>
+
+              <vrc-datepicker
+                [isDateTime]="true"
+                [useNonWorkingDays]="true"
+                label="DateTime"
+                [calendarPosition]="calendarPosition"
+              >
+              </vrc-datepicker>
+            </div>
+          </div>
+        </vrc-tab>
+      </vrc-tabs>
+    </div>
+  </div>
+</div>

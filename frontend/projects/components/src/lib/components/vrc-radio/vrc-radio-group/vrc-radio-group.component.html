@@ -1,0 +1,33 @@
+<div [id]="id" class="form-group radio_group" [ngClass]="classeCss">
+  @for (option of options; track $index; let i = $index) {
+    <span class="radio">
+      <input
+        type="radio"
+        [checked]="option?.value === value"
+        [disabled]="option?.disabled || isDisabled"
+        [attr.id]="id + '-' + i"
+        [attr.name]="name || id"
+      />
+      <label
+        (click)="change(option.value)"
+        class="radio__label radio__input"
+        [attr.for]="id + '-' + i"
+      >
+        <span [innerHTML]="option?.content | safeHtml"></span>
+      </label>
+      @if (option?.tooltip) {
+        <vrc-tooltip
+          class="tooltip radio__tooltip"
+          [message]="option.tooltip.message"
+          [width]="option.tooltip.width"
+          [small]="option.tooltip.small"
+          [topRight]="option.tooltip.topRight"
+          [bottomRight]="option.tooltip.bottomRight"
+          [topLeft]="option.tooltip.topLeft"
+          [bottomLeft]="option.tooltip.bottomLeft"
+        >
+        </vrc-tooltip>
+      }
+    </span>
+  }
+</div>

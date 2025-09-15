@@ -1,0 +1,59 @@
+<ng-container>
+  <div class="fire-events">
+    @if (selectionType === 'checkbox') {
+      <span class="selected-items">
+        {{ selectedCount }}
+        {{ 'FIRE-EVENT-SELECTED.ITENS-SELECIONADOS' | vrdtranslator }}
+      </span>
+    }
+
+    @for (button of fireEventButtons; track $index) {
+      <div class="fire-events-button">
+        <div
+          [hidden]="!button.isOpen"
+          class="fire-event-button-dropdown-overlay"
+          (click)="toggleDropdown(button)"
+        ></div>
+        <button
+          (click)="
+            !button.dropdown
+              ? fireEvent(button.event, button.alwaysActive)
+              : toggleDropdown(button)
+          "
+          class="btn btn--fire-event"
+          [title]="
+            selectedCount === 0
+              ? ('MESSAGE.SELECIONADOS-HABILITAR' | vrdtranslator)
+              : ''
+          "
+          [disabled]="shouldDisableButton(button)"
+          [class.disabled]="shouldDisableButton(button)"
+        >
+          {{ button.label }}
+          <vrc-icon
+            [name]="button.icon"
+            filter="invert(40%) sepia(95%) saturate(1295%) hue-rotate(4deg) brightness(97%) contrast(101%)"
+          ></vrc-icon>
+        </button>
+
+        @if (button.dropdown && button.dropdown.length > 0) {
+          @if (button.isOpen) {
+            <ul class="fire-button-dropdown">
+              @for (dropdown of button?.dropdown; track $index) {
+                <li (click)="fireEvent(dropdown.event)">
+                  {{ dropdown.label }}
+                </li>
+              }
+            </ul>
+          }
+        }
+      </div>
+    }
+
+    @if (!fixedFireEventButtons) {
+      <button (click)="onResetSelected()" class="btn btn--fire-event-cancel">
+        {{ 'COMMONS.CANCELAR' | vrdtranslator }}
+      </button>
+    }
+  </div>
+</ng-container>

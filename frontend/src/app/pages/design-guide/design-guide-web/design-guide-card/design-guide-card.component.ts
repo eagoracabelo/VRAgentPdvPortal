@@ -1,0 +1,52 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'vr-design-guide-card',
+  templateUrl: './design-guide-card.component.html',
+  styleUrls: ['./design-guide-card.component.scss'],
+})
+export class DesignGuideCardComponent implements OnInit {
+  template!: string;
+
+  ngOnInit(): void {
+    this.template = `
+<div class="card--container">
+  <header class="card__header">
+    <h2>Cards</h2>
+  </header>
+
+  <div class="div__separator"></div>
+
+  <div class="card__content">
+    <h2>What is Lorem Ipsum?</h2>
+    <strong>Mussum Ipsum</strong>, cacilds vidis litro abertis. Per aumento de
+    cachacis, eu reclamis. Mauris nec dolor in eros commodo tempor. Aenean
+    aliquam molestie leo, vitae iaculis nisl. Leite de capivaris, leite de mula
+    manquis sem cabeça. Posuere libero varius. Nullam a nisl ut ante blandit
+    hendrerit. Aenean sit amet nisi. Quem num gosta di mé, boa gentis num é.
+    Casamentiss faiz malandris se pirulitá. Admodum accumsan disputationi eu
+    sit. Vide electram sadipscing et per. Diuretics paradis num copo é motivis
+    de denguis. Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis
+    que eu levo! Delegadis gente finis, bibendum egestas augue arcu ut est.
+    Detraxit consequat et quo num tendi nada. Manduma pindureta quium dia nois
+    paga. Interagi no mé, cursus quis, vehicula ac nisi. Nec orci ornare
+    consequat. Praesent lacinia ultrices consectetur. Sed non ipsum felis.
+    Atirei o pau no gatis, per gatis num morreus. Si u mundo tá muito paradis?
+    Toma um mé que o mundo vai girarzis! Aenean aliquam molestie leo, vitae
+    iaculis nisl. Viva Forevis aptent taciti sociosqu ad litora torquent.
+    Cevadis im ampola pa arma uma pindureta. Em pé sem cair, deitado sem dormir,
+    sentado sem cochilar e fazendo pose.
+
+    <div class="col-sm-12">
+      <section>
+        <pre>
+                <vr-code-mirror [value]=template></vr-code-mirror>
+            </pre>
+      </section>
+    </div>
+  </div>
+</div>
+
+  `;
+  }
+}

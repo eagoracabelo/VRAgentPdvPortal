@@ -1,0 +1,12 @@
+<ng-container>
+  <div class="move-selected-events">
+    <button (click)="dispatchEvent()" class="btn btn--move-selected-event">
+      {{ 'COMMONS.MOVER' | vrdtranslator }}
+      <vrc-icon
+        [name]="'mover'"
+        filter="invert(40%) sepia(95%) saturate(1295%) hue-rotate(4deg)
+                   brightness(97%) contrast(101%)"
+      ></vrc-icon>
+    </button>
+  </div>
+</ng-container>

@@ -1,0 +1,25 @@
+{
+  "name": "VRAgent PDV Frontend",
+  "dockerComposeFile": "../docker-compose.dev.yml",
+  "service": "frontend",
+  "workspaceFolder": "/app",
+  "shutdownAction": "stopCompose",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "angular.ng-template",
+        "ms-vscode.vscode-typescript-next",
+        "bradlc.vscode-tailwindcss",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-json"
+      ],
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash",
+        "typescript.preferences.importModuleSpecifier": "relative"
+      }
+    }
+  },
+  "forwardPorts": [4200],
+  "postCreateCommand": "npm install",
+  "remoteUser": "node"
+}

@@ -1,0 +1,15 @@
+<span id="test-text-1"> {{ 'PAGE-SIZE.MOSTRAR' | vrdtranslator }} </span>
+<select
+  pageSize
+  [storageKeyPageSize]="storageKeyPageSize"
+  [pageSizeOptions]="pageSizeOptions"
+  [selectedPageSize]="selectedPageSize"
+  (pageSizeChange)="pageSizeChange.emit($event)"
+>
+  @for (size of pageSizeOptions; track $index) {
+    <option [value]="size">
+      {{ size }}
+    </option>
+  }
+</select>
+<span id="test-text-2"> {{ 'PAGE-SIZE.POR-PAGINA' | vrdtranslator }} </span>

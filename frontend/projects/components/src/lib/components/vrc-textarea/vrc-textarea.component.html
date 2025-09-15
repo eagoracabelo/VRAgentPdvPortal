@@ -1,0 +1,40 @@
+<div class="form-group" [ngClass]="classeCss">
+  <label [class.tooltip-label]="tooltip" class="control-label" [attr.for]="id">
+    {{ label }}
+    <span [hidden]="!isRequired" class="required">*</span>
+    @if (tooltip) {
+      <vrc-tooltip
+        class="tooltip"
+        [message]="tooltip.message"
+        [width]="tooltip.width"
+        [small]="tooltip.small"
+        [topRight]="tooltip.topRight"
+        [bottomRight]="tooltip.bottomRight"
+        [topLeft]="tooltip.topLeft"
+        [bottomLeft]="tooltip.bottomLeft"
+      >
+      </vrc-tooltip>
+    }
+  </label>
+  <br />
+  <textarea
+    class="form-control border-input"
+    [id]="id + '-fieldRequired'"
+    [name]="name"
+    [ngClass]="{ error: isError, required: isRequired }"
+    [readOnly]="isReadOnly"
+    [disabled]="isDisabled"
+    [placeholder]="placeholder"
+    [autofocus]="autofocus"
+    [spellcheck]="spellcheck"
+    [rows]="rows"
+    [wrap]="wrap"
+    [maxlength]="maxlength"
+    [minlength]="minlength"
+    [(ngModel)]="value"
+    (blur)="onBlur()"
+  >
+  </textarea>
+  <br />
+  <vrc-error-msg [message]="errorMessage"></vrc-error-msg>
+</div>

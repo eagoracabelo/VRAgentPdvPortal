@@ -1,0 +1,92 @@
+[
+  {
+    "idLoja": 1,
+    "idEmpresa": 1,
+    "descricaoEmpresa": "Empresa Test",
+    "descricaoLoja": "Loja Test",
+    "frequenciaVisita": 111111,
+    "prazoEntrega": 22222,
+    "prazoSeguranca": 3333333
+  },
+  {
+    "idLoja": 2,
+    "idEmpresa": 2,
+    "descricaoEmpresa": "Empresa Test",
+    "descricaoLoja": "Loja Test 2",
+    "frequenciaVisita": 444444,
+    "prazoEntrega": 55555,
+    "prazoSeguranca": 6666666
+  },
+  {
+    "idLoja": 3,
+    "idEmpresa": 3,
+    "descricaoEmpresa": "Empresa Test",
+    "descricaoLoja": "Loja Test 3",
+    "frequenciaVisita": 777777,
+    "prazoEntrega": 88888,
+    "prazoSeguranca": 9999999
+  },
+  {
+    "idLoja": 4,
+    "idEmpresa": 4,
+    "descricaoEmpresa": "Empresa Test",
+    "descricaoLoja": "Loja Test 4",
+    "frequenciaVisita": 101010,
+    "prazoEntrega": 12121,
+    "prazoSeguranca": 1313131
+  },
+  {
+    "idLoja": 5,
+    "idEmpresa": 5,
+    "descricaoEmpresa": "Empresa Test",
+    "descricaoLoja": "Loja Test 5",
+    "frequenciaVisita": 141414,
+    "prazoEntrega": 15151,
+    "prazoSeguranca": 1616161
+  },
+  {
+    "idLoja": 6,
+    "idEmpresa": 6,
+    "descricaoEmpresa": "Empresa Test",
+    "descricaoLoja": "Loja Test 6",
+    "frequenciaVisita": 171717,
+    "prazoEntrega": 18181,
+    "prazoSeguranca": 1919191
+  },
+  {
+    "idLoja": 7,
+    "idEmpresa": 7,
+    "descricaoEmpresa": "Empresa Test",
+    "descricaoLoja": "Loja Test 7",
+    "frequenciaVisita": 202020,
+    "prazoEntrega": 21212,
+    "prazoSeguranca": 2222222
+  },
+  {
+    "idLoja": 8,
+    "idEmpresa": 8,
+    "descricaoEmpresa": "Empresa Test",
+    "descricaoLoja": "Loja Test 8",
+    "frequenciaVisita": 232323,
+    "prazoEntrega": 24242,
+    "prazoSeguranca": 2525252
+  },
+  {
+    "idLoja": 9,
+    "idEmpresa": 9,
+    "descricaoEmpresa": "Empresa Test",
+    "descricaoLoja": "Loja Test 9",
+    "frequenciaVisita": 262626,
+    "prazoEntrega": 27272,
+    "prazoSeguranca": 2828282
+  },
+  {
+    "idLoja": 10,
+    "idEmpresa": 10,
+    "descricaoEmpresa": "Empresa Test",
+    "descricaoLoja": "Loja Test 10",
+    "frequenciaVisita": 292929,
+    "prazoEntrega": 30303,
+    "prazoSeguranca": 3131313
+  }
+]

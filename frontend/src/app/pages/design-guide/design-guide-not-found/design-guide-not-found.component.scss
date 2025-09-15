@@ -1,0 +1,68 @@
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: var(--color-default);
+}
+
+button.btn {
+  color: var(--color-text-default);
+}
+
+#notfound {
+  position: relative;
+  height: 100vh;
+  background-color: var(--background-color-notfound);
+}
+
+#notfound .notfound {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.notfound {
+  color: var(--color-default);
+  max-width: 32.5rem;
+  width: 100%;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.notfound .notfound-404 {
+  position: relative;
+  height: 15rem;
+  z-index: -10;
+}
+
+.notfound .notfound-404 h1 {
+  font-family: "Montserrat", sans-serif;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-size: 15.75rem;
+  font-weight: 900;
+  margin: 0rem;
+  color: var(--color-default);
+  text-transform: uppercase;
+  letter-spacing: -2.5rem;
+  margin-left: -1.25rem;
+}
+
+.notfound .notfound-404 h1 {
+  text-shadow: -0.5rem 0rem 0rem var(--color-neutral-default-ffffff);
+}
+
+.notfound h3 {
+  font-family: "Cabin", sans-serif;
+  position: relative;
+  font-size: 2em;
+  text-transform: uppercase;
+  color: var(--color-default);
+  padding: 0 .75rem;
+}

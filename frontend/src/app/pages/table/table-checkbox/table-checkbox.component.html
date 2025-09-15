@@ -1,0 +1,47 @@
+<div class="dt-main">
+  <vrc-table
+    [rows]="rows"
+    [columnMode]="ColumnMode.force"
+    [headerHeight]="3.125"
+    [footerHeight]="3.125"
+    rowHeight="auto"
+    [selected]="selected"
+    [selectionType]="SelectionType.checkbox"
+    [selectAllRowsOnPage]="false"
+    [displayCheck]="displayCheck"
+    (select)="onSelect($event)"
+    (activate)="onActivate($event)"
+    [scrollbarH]="true"
+    [clickableRows]="true"
+  >
+    <vrc-table-column
+      [width]="3.75"
+      [sortable]="false"
+      [canAutoResize]="false"
+      [draggable]="false"
+      [resizeable]="false"
+      [headerCheckboxable]="true"
+      [checkboxable]="true"
+    >
+    </vrc-table-column>
+    <vrc-table-column name="Id" dataType="id"></vrc-table-column>
+    <vrc-table-column name="First Name" prop="first_name"></vrc-table-column>
+    <vrc-table-column name="Last Name" prop="last_name"></vrc-table-column>
+    <vrc-table-column name="Email" minWidth="18.75"></vrc-table-column>
+    <vrc-table-column name="company"></vrc-table-column>
+    <vrc-table-column name="gender"></vrc-table-column>
+    <vrc-table-column name="date" dataType="dataHora"></vrc-table-column>
+    <vrc-table-column name="value" dataType="numerico"></vrc-table-column>
+    <vrc-table-column name="version"></vrc-table-column>
+    <vrc-table-column name="Ip Address" prop="ip_address"></vrc-table-column>
+    <vrc-table-column name="phone"></vrc-table-column>
+    <vrc-table-column name="job" [minWidth]="12.5"></vrc-table-column>
+    <vrc-table-column name="app_name" prop="app_name"></vrc-table-column>
+    <vrc-table-column
+      name="creadit_card"
+      prop="creadit_card"
+    ></vrc-table-column>
+    <vrc-table-column name="city" [minWidth]="12.5"></vrc-table-column>
+    <vrc-table-column name="country" [minWidth]="12.5"></vrc-table-column>
+  </vrc-table>
+</div>

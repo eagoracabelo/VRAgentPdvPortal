@@ -1,0 +1,87 @@
+:root[theme='light'] {
+  /*------------------------LIGHT-----------------------------------*/
+
+  // common datatable colors
+  --vrc-datatable-background: var(--color-9);
+  --vrc-datatable-box-shadow: 0 0.313rem 0.313rem -0.188rem rgba(0, 0, 0, 0.2),
+    0 0.5rem 0.625rem 0.063rem rgba(0, 0, 0, 0.14),
+    0 0.188rem 0.875rem 0.125rem rgba(0, 0, 0, 0.12);
+  --vrc-datatable-row-odd-background: #f2f2f2;
+  --background-color-default-hover: rgba(171, 171, 171, 0.1);
+
+  // default row and cell background colors
+  --vrc-datatable-default-background: #fff;
+  --vrc-datatable-default-background-hover: #dddddd;
+  --vrc-datatable-default-background-focus: #ddd;
+  --border-bottom-color-table: #cfd8dc80;
+
+  // default background colors for cell selection style
+  --vrc-datatable-cellselection-background-hover: #eee;
+  --vrc-datatable-cellselection-background-focus: #ddd;
+
+  // background and text colors for selected cell / row
+  --vrc-datatable-selected-active-background: #304ffe;
+  --vrc-datatable-selected-active-color: #fff;
+  --vrc-datatable-selected-active-background-hover: #193ae4;
+  --vrc-datatable-selected-active-color-hover: #fff;
+  --vrc-datatable-selected-active-background-focus: #2041ef;
+  --vrc-datatable-selected-active-color-focus: #fff;
+
+  // colors for tools elements
+  --datatable-tools-border-bottom-color: #02020210;
+  --restore-tool-btn-color: var(--color-gray-600);
+  --restore-tool-btn-background: transparent;
+  --restore-tool-btn-background-hover: var(--color-gray-50);
+  --restore-tool-btn-border: var(--color-gray-600);
+
+  // color for hide/show column
+  --hide-show-background: var(--color-gray-50);
+
+  // colors for header elements
+  --datatable-header-cell-background: transparent;
+  --datatable-header-cell-color: var(--color-text);
+  --datatable-header-border-bottom-color: rgba(102, 102, 102, 0.3);
+
+  // colors for table body elements
+  --datatable-row-detail-background: #f5f5f5;
+  --datatable-body-cell-color: var(--color-text);
+  --datatable-group-header-background: #f5f5f5;
+  --datatable-group-header-border-top-color: #d9d8d9;
+  --datatable-group-header-border-bottom-color: #d9d8d9;
+
+  // colors for footer elements
+  --datatable-footer-cell-color: var(--color-text);
+  --datatable-pager-color: var(--color-text);
+  --datatable-pager-disabled-color: var(--color-4);
+  --datatable-pager-disabled-background: transparent;
+  --datatable-pager-active-background: var(--color-default);
+  --datatable-pager-buttons-background: transparent;
+  --datatable-pager-buttons-background--hover: var(--color-gray-50);
+  --datatable-pager-buttons-background--disabled: var(--color-secondary);
+  --datatable-pager-buttons-filter: invert(30%) sepia(34%) saturate(336%)
+    hue-rotate(154deg) brightness(96%) contrast(86%);
+  --datatable-pager-buttons-filter--disabled: invert(74%) sepia(28%)
+    saturate(175%) hue-rotate(155deg) brightness(82%) contrast(90%);
+
+  // colors for summary row elements
+  --datatable-summary-row-background: #ddd;
+  --datatable-summary-row-background-hover: #ddd;
+
+  // export tools
+  --datatable-export-filter-icon: invert(100%) sepia(0%) saturate(7435%)
+    hue-rotate(1deg) brightness(113%) contrast(113%);
+  --datatable-export-background-overlay: rgba(40, 40, 40, 0.3);
+  --datatable-export-background: var(--color-9);
+  --datatable-export-box-shadow: 0 0 0.938rem #00000033;
+  --datatable-export-border-content: var(--color-6);
+  --datatable-export-border: #dcdcdc;
+  --datatable-export-color: var(--color-2);
+  --datatable-export-color-text: var(--color-3);
+
+  // colors for checkbox elements
+  --datatable-checkbox-border-color: var(--color-gray-600);
+  --datatable-checkbox-checked-border-color: #fff;
+
+  // error row
+  --background-error-row: var(--color-primary-50);
+}

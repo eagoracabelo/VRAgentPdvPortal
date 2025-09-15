@@ -3,32 +3,38 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
-    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "declaration": false,
     "experimentalDecorators": true,
+    "moduleResolution": "node",
     "importHelpers": true,
     "target": "ES2022",
-    "module": "preserve"
+    "module": "ES2022",
+    "allowSyntheticDefaultImports": true,
+    "lib": ["ES2022", "dom"],
+    "typeRoots": ["@types", "node_modules/@types"],
+    "types": ["jasmine", "node"],
+    "paths": {
+      "@vrsoftbr/vr-components": ["./projects/components/src/public-api.ts"],
+      "@vrsoftbr/vrc-datatables": ["./projects/datatables/src/public-api.ts"],
+      "@vrsoftbr/vr-table": ["./projects/table/src/public-api.ts"]
+    }
   },
+  "include": ["src", "package.json", "projects/**/*.ts"],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "typeCheckHostBindings": true,
-    "strictTemplates": true
-  },
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.spec.json"
-    }
-  ]
+    "strictTemplates": false,
+    "allowSyntheticDefaultImports": true
+  }
 }

@@ -1,0 +1,83 @@
+.card--container {
+  display: flex;
+  margin: 1.5rem;
+  flex-direction: column;
+  border: var(--border-theme--card);
+  border-radius: $global-radius;
+  padding: 2rem 1.5rem;
+  background-color: var(--background-color-theme--card);
+  box-shadow: var(--box-shadow-theme--card);
+
+  .div__separator {
+    background-color: var(--color-gray-400);
+    width: 100%;
+    height: .063rem;
+    opacity: 0.6;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .card__header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    .card__font--container {
+      > span {
+        width: 15.125rem;
+        height: 6.5rem;
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12.5rem;
+        line-height: 6.5rem;
+        letter-spacing: .009rem;
+      }
+    }
+  }
+
+  .card__body--container {
+    padding-bottom: 4rem;
+
+    .card__title {
+      padding-bottom: .5rem;
+    }
+
+    .card__body {
+      display: flex;
+      padding: 1.5rem 0;
+      flex-wrap: wrap;
+
+      &.card__column {
+        flex-direction: column;
+      }
+
+      &.card__row {
+        flex-direction: row;
+      }
+
+      .card__div--flex {
+        display: flex;
+      }
+
+      .card__body--left {
+        display: flex;
+        flex-direction: column;
+
+        > span {
+          width: 12.5rem;
+
+          &:first-child {
+            font-weight: 700;
+            padding-bottom: 1.5rem;
+          }
+        }
+      }
+
+      .card__body--right {
+        display: flex;
+        align-items: flex-end;
+      }
+    }
+  }
+}

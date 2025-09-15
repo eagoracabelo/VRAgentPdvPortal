@@ -1,0 +1,48 @@
+.disabled {
+  color: var(--color-gray-600);
+  background: var(--background-input-disabled);
+  border: .063rem solid var(--border-color-form-element-disabled);
+  cursor: not-allowed;
+}
+
+.readonly {
+  @extend .disabled;
+}
+
+input {
+  &[disabled] {
+    @extend .disabled;
+
+    &.required {
+      border-bottom: 0.0188rem solid var(--border-color-form-element-disabled);
+    }
+  }
+
+  &[readonly] {
+    @extend .disabled;
+  }
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+
+input.required {
+  border-bottom: 0.0188rem solid var(--border-bottom-color-input-required);
+}
+
+input:focus{
+  border-bottom:0.063rem solid var(--border-bottom-color-input-required)
+}
+
+input:not(:placeholder-shown){
+  border-bottom: 0.063rem solid var(--border-color-form-element)
+}
+
+span.required {
+  margin: 0rem .125rem 0rem .25rem;
+  font-weight: 900;
+  font-size: .75rem;
+}

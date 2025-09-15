@@ -1,0 +1,53 @@
+<div class="minions-list">
+    <div class="list-header">
+        <div class="search-container">
+            <input type="text" placeholder="Buscar minion..." class="search-input" #searchInput
+                (input)="filterMinions(searchInput.value)">
+            <i class="fas fa-search search-icon"></i>
+        </div>
+    </div>
+
+    <div class="minions-grid">
+        <div class="minion-card" *ngFor="let minion of filteredMinions; trackBy: trackByMinionId"
+            [class]="getStatusClass(minion.status)">
+
+            <div class="minion-header">
+                <div class="minion-info">
+                    <h3 class="minion-id">{{ minion.id }}</h3>
+                    <span class="minion-status" [class]="getStatusClass(minion.status)">
+                        {{ getStatusLabel(minion.status) }}
+                    </span>
+                </div>
+                <div class="minion-actions">
+                    <button *ngIf="minion.status === MinionStatus.PENDING" class="btn btn-success btn-sm"
+                        (click)="acceptKey(minion.id)" title="Aceitar chave">
+                        <i class="fas fa-check"></i>
+                    </button>
+                    <button *ngIf="minion.status === MinionStatus.ACCEPTED" class="btn btn-primary btn-sm"
+                        (click)="manageMinion(minion)" title="Gerenciar minion">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="minion-details" *ngIf="minion.status === MinionStatus.ACCEPTED">
+                <div class="detail-item">
+                    <span class="label">Última conexão:</span>
+                    <span class="value">{{ minion.lastSeen | date:'dd/MM/yyyy HH:mm' || 'Não disponível' }}</span>
+                </div>
+                <div class="detail-item" *ngIf="minion.version">
+                    <span class="label">Versão:</span>
+                    <span class="value">{{ minion.version }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="empty-state" *ngIf="filteredMinions.length === 0">
+        <div class="empty-icon">
+            <i class="fas fa-server"></i>
+        </div>
+        <h3>Nenhum minion encontrado</h3>
+        <p>Não há minions correspondentes aos critérios de busca.</p>
+    </div>
+</div>

@@ -1,0 +1,175 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+@use 'sass:math';
+
+@import '../abstracts/functions';
+
+// Font Family
+$font-family-roboto: 'Roboto-normal-700', sans-serif;
+$font-base: $font-family-roboto;
+
+// default
+$line-height: 1.5rem !default;
+$global-radius: 0.5rem !default;
+
+$font-size: 1rem !default;
+
+$border-color: var(--border-color-theme) !default;
+$font-color: var(--color-theme) !default;
+$background-color: var(--background-color-theme) !default;
+
+$main-navbar-height: 3rem !default;
+
+// Typography
+// Headline
+$font-size-h1: 3.5rem !default;
+$font-size-h2: 3rem !default;
+$font-size-h3: 2.5rem !default;
+$font-size-h4: 2rem !default;
+$font-size-h5: 1.5rem !default;
+$font-size-h6: 1rem !default;
+
+$line-height-h1: 4rem !default;
+$line-height-h2: 3.5rem !default;
+$line-height-h3: 3rem !default;
+$line-height-h4: 2.5rem !default;
+$line-height-h5: 2rem !default;
+$line-height-h6: 1.5rem !default;
+
+$headings-font-family: inherit !default;
+$headings-font-weight: 700 !default;
+$headings-color: inherit !default;
+
+// Breakpoints
+$bp-larger-than-tablet: 'min-width: 46.875rem' !default;
+$bp-larger-than-desktop: 'min-width: 62.5rem' !default;
+$bp-larger-than-desktophd: 'min-width: 75rem' !default;
+
+// Base / Subtitle
+$font-size-base: $font-size;
+$font-size-large: 1.125rem !default;
+$font-size-small: 0.875rem !default;
+
+$font-weight-base: 400 !default;
+$font-weight-small: 500 !default;
+
+$line-height-base: $line-height !default;
+$line-height-computed: $line-height !default;
+$line-height-large: 1.5rem !default;
+$line-height-small: 1.25rem !default;
+
+// Button
+$font-size-button-base: $font-size !default;
+$font-size-button-large: $font-size-large !default;
+$font-size-button-small: $font-size-small !default;
+
+$font-weight-button: 700 !default;
+
+$line-height-button-base: $line-height-small !default;
+$line-height-button-large: $line-height-large !default;
+$line-height-button-small: 1rem !default;
+
+// Caption
+$font-size-caption-overline: 0.5rem !default;
+$font-size-caption-normal: 0.75rem !default;
+
+$line-height-caption-overline: 0.75rem !default;
+$line-height-caption-normal: 1rem !default;
+
+// Footer
+$line-height-footer: 1rem !default;
+
+//Z-Index
+$z-index-0: -1;
+$z-index-1: 10;
+$z-index-2: 20;
+$z-index-3: 30;
+$z-index-4: 40;
+$z-index-5: 50;
+$z-index-6: 60;
+$z-index-7: 70;
+$z-index-8: 80;
+$z-index-9: 90;
+$z-index-10: 100;
+
+$white: var(--color-neutral-default-ffffff) !default;
+
+// Grid Variables
+$container-width: 120.5rem !default;
+$container-width-larger-than-mobile: 85% !default;
+$container-width-larger-than-phablet: 80% !default;
+$total-columns: 12 !default;
+$column-width: math.div(
+  9,
+  $total-columns
+) !default; // calculates individual column width based off of # of columns
+$column-margin: 2% !default; // space between column grids
+
+// Flex Grid Variables
+$flex-grid__column--fixed-width: 9rem !default;
+$flex-grid--column-margin: 2% !default;
+
+/// Relative or absolute URL where all assets are served from
+/// @type String
+/// @example scss - When using a CDN
+///   $base-url: 'http://cdn.example.com/assets/';
+$base-url: '/assets/' !default;
+
+//== Media queries breakpoints
+//
+//## Define the breakpoints at which your layout will change, adapting to different screen sizes.
+
+// Small screen / tablet
+$screen-sm: 48rem !default;
+$screen-sm-min: $screen-sm !default;
+$screen-tablet: $screen-sm-min !default;
+
+// Medium screen / desktop
+$screen-md: 62rem !default;
+$screen-md-min: $screen-md !default;
+$screen-desktop: $screen-md-min !default;
+
+// Large screen / wide desktop
+$screen-lg: 75rem !default;
+$screen-lg-min: $screen-lg !default;
+$screen-lg-desktop: $screen-lg-min !default;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max: ($screen-sm-min - 1) !default;
+$screen-sm-max: ($screen-md-min - 1) !default;
+$screen-md-max: ($screen-lg-min - 1) !default;
+
+//== Grid system
+//
+//## Define your custom responsive grid.
+
+//** Number of columns in the grid.
+$grid-columns: 12 !default;
+//** Padding between columns. Gets divided in half for the left and right.
+$grid-gutter-width: 0.5rem !default;
+// Navbar collapse
+//** Point at which the navbar becomes uncollapsed.
+$grid-float-breakpoint: $screen-sm-min !default;
+//** Point at which the navbar begins collapsing.
+$grid-float-breakpoint-max: ($grid-float-breakpoint - 1) !default;
+
+//== Container sizes
+//
+//## Define the maximum width of `.container` for different screen sizes.
+
+// Small screen / tablet
+$container-tablet: (45rem + $grid-gutter-width) !default;
+//** For `$screen-sm-min` and up.
+$container-sm: $container-tablet !default;
+
+// Medium screen / desktop
+$container-desktop: (58.75rem + $grid-gutter-width) !default;
+//** For `$screen-md-min` and up.
+$container-md: $container-desktop !default;
+
+// Large screen / wide desktop
+$container-large-desktop: (71.25rem + $grid-gutter-width) !default;
+//** For `$screen-lg-min` and up.
+$container-lg: $container-large-desktop !default;

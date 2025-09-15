@@ -1,0 +1,126 @@
+<div class="row">
+  <div class="card col-md">
+    <header class="card__header">
+      <h3>Tooltip</h3>
+    </header>
+    <div class="card__content content">
+      <vrc-tabs>
+        <vrc-tab label="Documentação">
+          <markdown
+            src="./docs/components/vrc-tooltip.md"
+            (load)="onLoad($event)"
+            (error)="onError($event)"
+          ></markdown>
+        </vrc-tab>
+
+        <vrc-tab label="Exemplo">
+          <div class="row margin_row">
+            <h3>Tooltip default</h3>
+            <div>
+              <h6>Sem nenhum input</h6>
+              <div>
+                <span>Passe o mouse em cima</span>
+                <vrc-tooltip></vrc-tooltip>
+              </div>
+            </div>
+          </div>
+          <div class="row margin_row">
+            <h3>Tooltip default</h3>
+            <div>
+              <h6>Caso seja passado uma string vazia como mensagem</h6>
+              <div>
+                <span>Passe o mouse em cima</span>
+                <vrc-tooltip icon="check_fill" [message]="''"></vrc-tooltip>
+              </div>
+            </div>
+          </div>
+          <div class="row margin_row">
+            <h3>Tooltip default</h3>
+            <div>
+              <h6>Utilizando o input [icon]="check_fill"</h6>
+              <div>
+                <span>Passe o mouse em cima</span>
+                <vrc-tooltip icon="check_fill"></vrc-tooltip>
+              </div>
+            </div>
+          </div>
+          <div class="row margin_row">
+            <h3>Tooltip small</h3>
+            <div>
+              <h6>Utilizando o input [small]="true"</h6>
+              <div>
+                <span>Passe o mouse em cima</span>
+                <vrc-tooltip [small]="true"></vrc-tooltip>
+              </div>
+            </div>
+          </div>
+          <div class="row margin_row">
+            <h3>Tooltip com messagem</h3>
+            <div>
+              <h6>Utilizando o input [message]="'Um teste de mensagem'"</h6>
+              <div>
+                <span>Passe o mouse em cima</span>
+                <vrc-tooltip [message]="'Um teste de mensagem'"></vrc-tooltip>
+              </div>
+            </div>
+          </div>
+          <div class="row margin_row">
+            <h3>Tooltip com tamanho definido</h3>
+            <div>
+              <h6>Utilizando o input [width]="10"</h6>
+              <div>
+                <span>Passe o mouse em cima</span>
+                <vrc-tooltip
+                  [message]="
+                    'Essa eh uma mensagem muito grande que precisa que o tamanho seja definido.'
+                  "
+                  [width]="10"
+                ></vrc-tooltip>
+              </div>
+            </div>
+          </div>
+          <div class="row margin_row">
+            <h3>Tooltip error</h3>
+            <div>
+              <h6>Utilizando o input [error]=true</h6>
+              <div>
+                <span>Passe o mouse em cima</span>
+                <vrc-tooltip [error]="true"></vrc-tooltip>
+              </div>
+            </div>
+          </div>
+          <div class="row margin_row">
+            <h3>Tooltip diagonal superior direita</h3>
+            <div>
+              <h6>Utilizando o input [topRight]="true"</h6>
+              <div>
+                <span>Passe o mouse em cima</span>
+                <vrc-tooltip [topRight]="true"></vrc-tooltip>
+              </div>
+            </div>
+          </div>
+          <div class="row margin_row">
+            <h3>Tooltip diagonal superior esquerda</h3>
+            <div>
+              <h6>Utilizando o input [topLeft]="true"</h6>
+              <div>
+                <span>Passe o mouse em cima</span>
+                <vrc-tooltip [topLeft]="true"></vrc-tooltip>
+              </div>
+            </div>
+          </div>
+          <div class="row margin_row">
+            <h3>Tooltip diagonal inferior esquerda</h3>
+            <div>
+              <h6>Utilizando o input [bottomLeft]="true"</h6>
+              <div>
+                <span>Passe o mouse em cima</span>
+                <vrc-tooltip [bottomLeft]="true"></vrc-tooltip>
+              </div>
+            </div>
+          </div>
+        </vrc-tab>
+      </vrc-tabs>
+    </div>
+  </div>
+</div>

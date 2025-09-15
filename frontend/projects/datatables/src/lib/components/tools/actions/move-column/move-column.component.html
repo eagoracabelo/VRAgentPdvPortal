@@ -1,0 +1,29 @@
+@if (edit) {
+  <button id="test-text-2" class="btn btn--cancel" (click)="editColumn()">
+    {{ 'MOVE-COLUMN.CANCELAR' | vrdtranslator }}
+  </button>
+
+  <toggle-column
+    (eventToggleColumn)="eventToggleColumn($event)"
+    (resetToggleColumn)="resetToggleColumn($event)"
+    (tempToggleColumn)="tempToggleColumn($event)"
+    [columns]="columns"
+    [storageColumns]="storageColumns"
+  ></toggle-column>
+
+  @if (storageKeyMoveColumn) {
+    <button id="test-text-3" class="btn btn--default" (click)="saveStorage()">
+      {{ 'MOVE-COLUMN.SALVAR' | vrdtranslator }}
+    </button>
+  }
+}
+<div>
+  <button
+    class="btn datatable-tools-btn"
+    [title]="'MOVE-COLUMN.EDITAR' | vrdtranslator"
+    (click)="editColumn()"
+    [ngClass]="{ active: edit }"
+  >
+    <vrc-icon class="vr-editar_tabela"></vrc-icon>
+  </button>
+</div>

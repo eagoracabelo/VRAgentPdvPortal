@@ -1,0 +1,14 @@
+.row .margin_row {
+  margin-bottom: 1.5rem;
+  > div {
+    margin-left: 1rem;
+    > div {
+      display: flex;
+      align-items: center;
+
+      span {
+        margin-right: 0.7rem;
+      }
+    }
+  }
+}

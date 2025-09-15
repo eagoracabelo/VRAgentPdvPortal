@@ -1,0 +1,38 @@
+import { Component, Injector, OnDestroy, OnInit } from '@angular/core';
+
+import { IExportData } from '../../../common/export-data';
+import { ModalConfig } from '../../config/modal-config';
+import { ModalRef } from '../../references/modal-ref';
+import { BaseConfigComponent } from '../base/base-config';
+import { TableColumn } from './../../../../../types/table-column.type';
+
+@Component({
+  selector: 'table-export-config-pdf',
+  templateUrl: './pdf-config.component.html',
+  host: {
+    class: 'table-export-config',
+  },
+})
+export class PdfConfigComponent
+  extends BaseConfigComponent
+  implements OnInit, OnDestroy
+{
+  uuid = self.crypto.randomUUID();
+
+  constructor(
+    protected override config: ModalConfig<TableColumn[]>,
+    public override modal: ModalRef<IExportData>,
+    protected override readonly injector: Injector,
+  ) {
+    super(config, modal, injector);
+    this.formatData(config);
+  }
+
+  override ngOnInit(): void {
+    super.ngOnInit();
+  }
+
+  override ngOnDestroy(): void {
+    super.ngOnDestroy();
+  }
+}

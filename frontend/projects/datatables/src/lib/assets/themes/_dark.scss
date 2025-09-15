@@ -1,0 +1,91 @@
+:root {
+  /*------------------------DARK-----------------------------------*/
+
+  // common datatable colors
+  --vrc-datatable-box-shadow: 0 0.313rem 0.313rem -0.188rem rgba(0, 0, 0, 0.2),
+    0 0.5rem 0.625rem 0.063rem rgba(0, 0, 0, 0.14),
+    0 0.188rem 0.875rem 0.125rem rgba(0, 0, 0, 0.12);
+  --vrc-datatable-background: var(--color-background);
+  --vrc-datatable-row-odd-background: var(--background-table-odd);
+  --background-color-default-hover: var(--color-dk-hover-16-dp);
+
+  // default row and cell background colors
+  --background-color-table-row: var(--color-tertiary);
+  --background-color-table-row--odd: var(--color-background);
+  --border-bottom-color-table: #4d4d4d80;
+  --vrc-datatable-default-background: #fff;
+  --vrc-datatable-default-background-hover: var(--color-dk-hover-16-dp);
+  --vrc-datatable-default-background-focus: #ddd;
+
+  // default background colors for cell selection style
+  --vrc-datatable-cellselection-background-hover: #eee;
+  --vrc-datatable-cellselection-background-focus: #ddd;
+
+  // background and text colors for selected cell / row
+  --vrc-datatable-selected-active-background: #304ffe;
+  --vrc-datatable-selected-active-color: #fff;
+  --vrc-datatable-selected-active-background-hover: #193ae4;
+  --vrc-datatable-selected-active-color-hover: #fff;
+  --vrc-datatable-selected-active-background-focus: #2041ef;
+  --vrc-datatable-selected-active-color-focus: #fff;
+
+  // colors for tools elements
+  --datatable-tools-border-bottom-color: #d3d3d310;
+  --restore-tool-btn-color: var(--color-gray-900);
+  --restore-tool-btn-background: transparent;
+  --restore-tool-btn-background-hover: var(--color-gray-50);
+  --restore-tool-btn-border: var(--color-gray-600);
+
+  // color for hide/show column
+  --hide-show-background: var(--color-secondary);
+
+  // colors for header elements
+  --datatable-header-cell-background: transparent;
+  --datatable-header-cell-color: var(--color-text);
+  --datatable-header-border-bottom-color: rgba(136, 136, 136, 0.3);
+  --datatable-header-resize-handle-color: var(--color-gray-300);
+
+  // colors for table body elements
+  --datatable-row-detail-background: var(--color-tertiary);
+  --datatable-body-cell-color: var(--color-text);
+  --datatable-group-header-background: var(--color-tertiary);
+  --datatable-group-header-border-top-color: #000000;
+  --datatable-group-header-border-bottom-color: #d9d8d9;
+
+  // colors for footer elements
+  --datatable-footer-cell-color: var(--color-text);
+  --datatable-footer-borders-color: var(--color-gray-100);
+  --datatable-pager-color: var(--color-text);
+  --datatable-pager-disabled-color: var(--color-2);
+  --datatable-pager-disabled-background: transparent;
+  --datatable-pager-active-background: var(--color-default);
+  --datatable-pager-buttons-background: var(--color-tertiary);
+  --datatable-pager-buttons-background--hover: var(--color-dk-hover-16-dp);
+  --datatable-pager-buttons-background--disabled: var(--color-tertiary);
+  --datatable-pager-buttons-filter: invert(100%) sepia(26%) saturate(4381%)
+    hue-rotate(183deg) brightness(124%) contrast(76%);
+  --datatable-pager-buttons-filter--disabled: invert(40%) sepia(0%)
+    saturate(602%) hue-rotate(185deg) brightness(97%) contrast(91%);
+
+  // colors for summary row elements
+  --datatable-summary-row-background: #ddd;
+  --datatable-summary-row-background-hover: #ddd;
+
+  // export tools
+  --datatable-export-filter-icon: invert(100%) sepia(0%) saturate(7435%)
+    hue-rotate(1deg) brightness(113%) contrast(113%);
+  --datatable-export-background-overlay: rgba(251, 251, 251, 0.3);
+  --datatable-export-background: var(--color-1);
+  --datatable-export-box-shadow: 0 0 0.938rem #00000033;
+  --datatable-export-border-content: rgba(0, 0, 0, 0.5);
+  --datatable-export-border: var(--color-gray-50);
+  --datatable-export-color: var(--color-text);
+  --datatable-export-color-text: var(--color-text);
+
+  // colors for checkbox elements
+  --datatable-checkbox-border-color: var(--color-gray-600);
+  --datatable-checkbox-checked-border-color: #fff;
+
+  // error row
+  --background-error-row: var(--color-primary-100);
+}

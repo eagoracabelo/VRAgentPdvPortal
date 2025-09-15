@@ -1,0 +1,26 @@
+<div
+  class="table-footer-inner"
+  [ngClass]="{ 'selected-count': selectedMessage }"
+  [style.height.rem]="footerHeight"
+>
+  @if (footerTemplate) {
+    <ng-template
+      [ngTemplateOutlet]="footerTemplate.template"
+      [ngTemplateOutletContext]="{
+        selectedCount: selectedCount,
+      }"
+    >
+    </ng-template>
+  }
+
+  @if (!footerTemplate) {
+    <div class="page-count">
+      @if (selectedMessage) {
+        <span>
+          {{ selectedCount?.toLocaleString() }}
+          {{ selectedMessage | translate }}
+        </span>
+      }
+    </div>
+  }
+</div>

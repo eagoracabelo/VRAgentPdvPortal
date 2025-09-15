@@ -48,9 +48,13 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      args:
+        - GITHUB_TOKEN=${GITHUB_TOKEN} 
     container_name: vragentpdvportal-ui
+    environment:
+      - GITHUB_TOKEN=$GITHUB_TOKEN
     ports:
-      - "80:80"
+      - '4400:80'
     depends_on:
       - backend
     restart: unless-stopped

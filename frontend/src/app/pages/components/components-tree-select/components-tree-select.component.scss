@@ -1,0 +1,25 @@
+.single-selection--container {
+  display: flex;
+  flex-direction: column;
+
+  .single-selection--row {
+    display: flex;
+    gap: 3.125rem;
+
+    .control-panel {
+      input[type='range'],
+      label,
+      select {
+        margin-left: 0.5rem;
+      }
+    }
+
+    .tree-select--container {
+      width: 25rem;
+
+      &:not(:last-child) {
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+}

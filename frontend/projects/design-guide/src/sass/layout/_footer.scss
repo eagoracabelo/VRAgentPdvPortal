@@ -1,0 +1,53 @@
+// -----------------------------------------------------------------------------
+// Contains all styles related to the footer of the site/application.
+// -----------------------------------------------------------------------------
+.main-footer {
+  -webkit-transition: -webkit-transform 0.3s ease-in-out,
+    margin 0.3s ease-in-out;
+  -moz-transition: -moz-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+  -o-transition: -o-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+  z-index: 820;
+  padding: .75rem 2.25rem;
+  color: var(--color_1);
+
+  .copyright {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    a {
+      img {
+        height: 1.625rem;
+        filter: var(--filter-copyright);
+      }
+    }
+
+    span {
+      color: var(--color-copyright);
+      padding-left: .188rem;
+      font-size: .625rem;
+    }
+  }
+}
+
+footer.page-footer {
+  position: fixed;
+  bottom: 0;
+  height: 1.5rem;
+  background-color: var(--background-footer);
+  width: 100%;
+  color: var(--text-footer);
+  display: flex;
+  justify-content: center;
+  z-index: 999;
+  align-items: center;
+  border-top: .013rem solid rgba(144, 164, 174, 0.3);
+
+  .footer-right {
+    position: fixed;
+    right: 3.75rem;
+    padding-left: 3.75rem;
+    border-left: .063rem solid var(--divisor-footer);
+  }
+}

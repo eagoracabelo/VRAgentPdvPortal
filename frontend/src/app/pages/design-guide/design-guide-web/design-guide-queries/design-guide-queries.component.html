@@ -1,0 +1,57 @@
+<div class="card--container">
+  <header class="card__header">
+    <h2>Queries</h2>
+  </header>
+
+  <div class="div__separator"></div>
+
+  <div class="card__body--container">
+    <div class="col-sm-12">
+      <p>
+        O VRDesignGuide usa consultas de mídia para atender à grade escalonável,
+        mas também tem uma lista de consultas para conveniência de estilo em
+        dispositivos. As consultas são móveis primeiro, o que significa que elas
+        segmentam <code>min-width</code>. Mobile-first As consultas são como a
+        grade do VRDesignGuide é construída e é o método preferível de organizar
+        o CSS. Significa
+        <u>
+          tudo estilos fora de uma consulta de mídia se aplicam a todos os
+          dispositivos
+        </u>
+        e, em seguida, dispositivos maiores são direcionados para aprimoramento.
+        Isso evita que pequenos dispositivos tenham que analisar toneladas de
+        CSS não usadas. Os tamanhos para as consultas são:
+      </p>
+    </div>
+    <div class="col-sm-6">
+      <ul>
+        <li><strong>Desktop HD</strong>: 1200px</li>
+        <li><strong>Desktop</strong>: 1000px</li>
+        <li><strong>Tablet</strong>: 750px</li>
+      </ul>
+    </div>
+    <div class="col-sm-6">
+      <ul>
+        <li><strong>Phablet</strong>: 550px</li>
+        <li><strong>Mobile</strong>: 400px</li>
+      </ul>
+    </div>
+
+    <div class="col-sm-12">
+      <pre>
+        <code>
+
+          /* Larger than tablet */
+          &#64;media (min-width: 750px) <span class="brackets"></span>
+
+          /* Larger than desktop */
+          &#64;media (min-width: 1000px) <span class="brackets"></span>
+
+          /* Larger than Desktop HD */
+          &#64;media (min-width: 1200px) <span class="brackets"></span>
+
+        </code>
+      </pre>
+    </div>
+  </div>
+</div>

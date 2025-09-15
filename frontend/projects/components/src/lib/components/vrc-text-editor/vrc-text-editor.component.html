@@ -1,0 +1,57 @@
+<div
+  class="text-editor"
+  #angularEditor
+  [style.width]="width"
+  [style.minWidth]="minWidth"
+  [style.maxWidth]="maxWidth"
+>
+  <vrc-text-editor-toolbar
+    #editorToolbar
+    id="editorToolbar"
+    (execute)="handleCommands($event)"
+    (openCreateLink)="onCreateLink()"
+    [isDisabled]="isDisabled"
+    [publicationDate]="publicationDate"
+    [selectedText]="selectedText"
+    [linkSelected]="linkSelected"
+  >
+  </vrc-text-editor-toolbar>
+
+  <div class="text-editor-wrapper" #editorWrapper>
+    <div
+      #editor
+      id="textArea"
+      class="text-editor-textarea"
+      [attr.contenteditable]="!isDisabled"
+      [attr.tabindex]="disabled ? -1 : 0"
+      [style.height]="height"
+      [style.minHeight]="minHeight"
+      [style.maxHeight]="maxHeight"
+      (input)="onContentChange($event.target)"
+      (focus)="focus()"
+      (blur)="blur()"
+      (click)="handleCommands()"
+      (keyup)="handleCommands()"
+      (mouseout)="saveSelection()"
+      (paste)="onPaste($event)"
+    ></div>
+    @if (showPlaceholder) {
+      <span (click)="focus()" class="text-editor-placeholder">{{
+        placeholder
+      }}</span>
+    }
+  </div>
+  @if (!isDisabled) {
+    <div class="text-editor-buttons">
+      @if (editing) {
+        <button class="btn btn-salvar" (click)="onSave()">Salvar</button>
+      }
+      @if (editing) {
+        <button class="btn btn-cancelar" (click)="onCancel()">Cancelar</button>
+      }
+      @if (!editing) {
+        <button class="btn btn-editar" (click)="focus()">Editar</button>
+      }
+    </div>
+  }
+</div>

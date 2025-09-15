@@ -1,0 +1,108 @@
+@if (columnGroups.length <= 1) {
+  <div
+    role="row"
+    orderable
+    (reorder)="onColumnReordered($event)"
+    (targetChanged)="onTargetChanged($event)"
+    [style.width.rem]="_columnGroupWidths.total"
+    class="datatable-header-inner"
+  >
+    @for (colGroup of _columnsByPin; track $index) {
+      <div
+        [class]="'datatable-row-' + colGroup.type"
+        [ngStyle]="_styleByGroup[colGroup.type]"
+      >
+        @for (column of colGroup?.columns; track $index) {
+          <datatable-header-cell
+            role="columnheader"
+            resizeable
+            [resizeEnabled]="column.resizeable"
+            (resize)="onColumnResized($event, column)"
+            long-press
+            [pressModel]="column"
+            [pressEnabled]="reorderable && column.draggable"
+            (longPressStart)="onLongPressStart($event)"
+            (longPressEnd)="onLongPressEnd($event)"
+            draggable
+            [dragX]="reorderable && column.draggable && column.dragging"
+            [dragY]="false"
+            [dragModel]="column"
+            [dragEventTarget]="dragEventTarget"
+            [headerHeight]="headerHeight"
+            [isTarget]="column.isTarget"
+            [targetMarkerTemplate]="targetMarkerTemplate"
+            [targetMarkerContext]="column.targetMarkerContext"
+            [column]="column"
+            [sorts]="sorts"
+            [selectionType]="selectionType"
+            [sortAscendingIcon]="sortAscendingIcon"
+            [sortDescendingIcon]="sortDescendingIcon"
+            [sortUnsetIcon]="sortUnsetIcon"
+            [allRowsSelected]="allRowsSelected"
+            [partialRowsSelected]="partialRowsSelected"
+            (sort)="onSort($event)"
+            (select)="select.emit($event)"
+            (columnContextmenu)="columnContextmenu.emit($event)"
+            [isEditColumn]="isEditColumn"
+            [checkAllItems]="checkAllItems"
+          >
+          </datatable-header-cell>
+        }
+      </div>
+    }
+  </div>
+}
+
+@if (columnGroups.length > 1) {
+  <div
+    role="row"
+    orderable
+    (reorder)="onColumnReordered($event)"
+    (targetChanged)="onTargetChanged($event)"
+    [style.width.rem]="_columnGroupWidths.total"
+    class="datatable-header-inner"
+  >
+    @for (colGroup of _columnsByPin; track $index) {
+      <div
+        [class]="'datatable-row-' + colGroup.type"
+        [ngStyle]="_styleByGroup[colGroup.type]"
+      >
+        @if (colGroup.columns.length > 0) {
+          <div class="group-columns">
+            @for (group of columnGroups; track $index) {
+              <div class="column-group" [style.width.rem]="group.width">
+                <span> {{ group.label }} &#8205; </span>
+                <div class="group-columns">
+                  @for (column of group.columns; track $index) {
+                    <datatable-header-cell
+                      role="columnheader"
+                      resizeable
+                      [resizeEnabled]="column.resizeable"
+                      (resize)="onColumnResized($event, column)"
+                      [headerHeight]="getHeaderHeight()"
+                      [isTarget]="column.isTarget"
+                      [targetMarkerTemplate]="targetMarkerTemplate"
+                      [targetMarkerContext]="column.targetMarkerContext"
+                      [column]="column"
+                      [sorts]="sorts"
+                      [selectionType]="selectionType"
+                      [sortAscendingIcon]="sortAscendingIcon"
+                      [sortDescendingIcon]="sortDescendingIcon"
+                      [sortUnsetIcon]="sortUnsetIcon"
+                      [allRowsSelected]="allRowsSelected"
+                      (sort)="onSort($event)"
+                      (select)="select.emit($event)"
+                      (columnContextmenu)="columnContextmenu.emit($event)"
+                      [isEditColumn]="isEditColumn"
+                    >
+                    </datatable-header-cell>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    }
+  </div>
+}

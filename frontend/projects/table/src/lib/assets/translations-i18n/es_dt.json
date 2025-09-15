@@ -1,0 +1,45 @@
+{
+  "TESTE": "TRABAJANDO",
+  "PAGE-SIZE": {
+    "MOSTRAR": "Mostrar",
+    "POR-PAGINA": "por página"
+  },
+  "MOVE-COLUMN": {
+    "EDITAR": "Editar tabla",
+    "CANCELAR": "Cancelar edición",
+    "SALVAR": "Guardar cambios en la tabla"
+  },
+  "TOGGLE-COLUMN": {
+    "OCULTAR": "Ocultar columna",
+    "CONFIG": {
+      "OCULTAR-EXIBIR": "OCULTAR / MOSTRAR COLUMNAS",
+      "APLICAR": "APLICAR"
+    }
+  },
+  "EXPORT-FILE": {
+    "EXPORTAR-ENVIAR": "Exportar y enviar archivos",
+    "EXPORTAR": "Exportar",
+    "SELECIONAR-FORMATO": "Seleccionar formato de archivo",
+    "RELATORIO": "Reporte",
+    "EXCEL": "Excel",
+    "ARQUIVO": "Archivo",
+    "APLICAR": "APLICAR"
+  },
+  "EXPORT-CONFIG": {
+    "PAGINA": "PÁGINA",
+    "ATUAL": "ACTUAL",
+    "TODAS": "TODOS",
+    "COLUNA": "COLUMNA",
+    "GERAR": "GENERAR",
+    "PDF": {
+      "IMPRESSAO": "IMPRESIÓN",
+      "RETRATO": "RETRATO",
+      "PAISAGEM": "PAISAJE"
+    }
+  },
+  "MESSAGE": {
+    "NO-DATA": "Datos no encontrados",
+    "TOTAL": "total",
+    "SELECTED": "seleccionado"
+  }
+}

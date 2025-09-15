@@ -1,0 +1,155 @@
+<div class="row">
+  <div class="card col-md">
+    <header class="card__header">
+      <h3 class="title">Card Value</h3>
+    </header>
+
+    <div class="card__content content">
+      <vrc-tabs>
+        <vrc-tab label="Documentação">
+          <markdown
+            src="./docs/components/vrc-card-value.md"
+            (load)="onLoad($event)"
+            (error)="onError($event)"
+          ></markdown>
+        </vrc-tab>
+
+        <vrc-tab label="Exemplo">
+          <div class="column">
+            <div class="card-example">
+              <h2>Exemplo 01 - Todos atributos default</h2>
+              <div class="info">
+                <vrc-card-value></vrc-card-value>
+                <pre>
+                  &lt;vrc-card-value&gt;&lt;/vrc-card-value&gt;
+                </pre>
+              </div>
+            </div>
+            <div class="card-example">
+              <h2>
+                Exemplo 02 - máscara, width defaults | com valor negativo, cor e
+                título
+              </h2>
+              <div class="info">
+                <vrc-card-value
+                  value="-1345.1"
+                  title="TOTAL VENCIDO"
+                  color="#e80000"
+                ></vrc-card-value>
+                <pre>
+                  &lt;vrc-card-value
+                    value="-1345.1"
+                    title="TOTAL VENCIDO"
+                    color="#e80000"
+                  &gt;&lt;/vrc-card-value&gt;
+                </pre>
+              </div>
+            </div>
+            <div class="card-example">
+              <h2>
+                Exemplo 03 - máscara e width defaults | com valor, cor e título
+              </h2>
+              <div class="info">
+                <vrc-card-value
+                  value="99,99"
+                  title="TOTAL BAIXADO"
+                  color="#29CC5F"
+                ></vrc-card-value>
+                <pre>
+                  &lt;vrc-card-value
+                    value="99,99"
+                    title="TOTAL BAIXADO"
+                    color="#29CC5F"
+                  &gt;&lt;/vrc-card-value&gt;
+                </pre>
+              </div>
+            </div>
+
+            <div class="card-example">
+              <h2>
+                Exemplo 04 - cor e title defaults | com valor, mask null, width
+                e título
+              </h2>
+              <div class="info">
+                <vrc-card-value
+                  value="133,50"
+                  title="UM TÍTULO MUITO MUITO GRANDE"
+                  width="15rem"
+                  [mask]="null"
+                ></vrc-card-value>
+                <pre>
+                  &lt;vrc-card-value
+                    value="133,50"
+                    title="UM TÍTULO MUITO MUITO GRANDE"
+                    width="15rem"
+                  &gt;&lt;/vrc-card-value&gt;
+                </pre>
+              </div>
+            </div>
+            <div class="card-example">
+              <h2>
+                Exemplo 05 - Grid - aplicando a propriedade width 100% nos cards
+              </h2>
+              <div class="grid">
+                <vrc-card-value width="100%"></vrc-card-value>
+                <vrc-card-value width="100%"></vrc-card-value>
+                <vrc-card-value width="100%"></vrc-card-value>
+              </div>
+            </div>
+            <div class="card-example">
+              <h2>Exemplo 06 - Valor livre</h2>
+              <input
+                type="text"
+                [(ngModel)]="value"
+                style="width: 12.25rem; margin-bottom: 1rem"
+              />
+              <vrc-card-value [value]="value"></vrc-card-value>
+            </div>
+            <div class="card-example">
+              <h2>Exemplo 07 - Secondary Value</h2>
+              <div class="info">
+                <vrc-card-value
+                  value="8"
+                  [mask]="null"
+                  secondaryValue="133,50"
+                  title="Título"
+                  color="#29CC5F"
+                >
+                </vrc-card-value>
+                <pre>
+                    &lt;vrc-card-value
+                      value="8"
+                      secondaryValue="133,50"
+                      title="Título"
+                      color="#29CC5F"
+                    &gt;&lt;/vrc-card-value&gt;
+                </pre>
+              </div>
+            </div>
+
+            <div class="card-example">
+              <h2>Exemplo 08 - Tooltip</h2>
+              <div class="info">
+                <vrc-card-value
+                  value="8"
+                  title="Título"
+                  color="#CC7229"
+                  [tooltip]="tooltip"
+                >
+                </vrc-card-value>
+                <pre>
+                    &lt;vrc-card-value
+                      value="8"
+                      title="Título"
+                      color="#CC7229"
+                      [tooltip]="tooltip"
+                    &gt;&lt;/vrc-card-value&gt;
+                </pre>
+              </div>
+            </div>
+          </div>
+        </vrc-tab>
+      </vrc-tabs>
+    </div>
+  </div>
+</div>

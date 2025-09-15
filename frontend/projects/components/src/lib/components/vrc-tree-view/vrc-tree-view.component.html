@@ -1,0 +1,55 @@
+@if (allowFilter) {
+  <div class="tree-view-filter--container">
+    <div class="tree-view-filter__select--container">
+      <select
+        name="filterSelect"
+        [(ngModel)]="selectedFilter"
+        [class.disabled]="isDisabled"
+        [disabled]="isDisabled"
+      >
+        <option value="-1">{{ defaultFilterOption }}</option>
+        @for (i of filterItems; track $index) {
+          <option [value]="i.value">
+            {{ i.label }}
+          </option>
+        }
+      </select>
+    </div>
+    <div
+      class="tree-view-filter__input--container"
+      [class.disabled]="isDisabled"
+    >
+      <div class="tree-view-filter__input--icon">
+        <i class="vr vr-pesquisa"></i>
+      </div>
+      <div class="tree-view-filter__input">
+        <input
+          type="text"
+          [placeholder]="filterPlaceholder"
+          [(ngModel)]="filter"
+          [disabled]="isDisabled"
+        />
+      </div>
+    </div>
+  </div>
+}
+
+<div tabindex="0" class="tree-view--container" [class.disabled]="isDisabled">
+  <div class="tree-view__title">
+    <ng-content></ng-content>
+  </div>
+
+  @if (internalItems && internalItems.length > 0 && !isDisabled) {
+    <ul class="tree-view" role="menu">
+      @for (o of internalItems | itemPipe; track $index) {
+        <li role="menuitem">
+          <tree-view-item
+            [item]="o"
+            [templates]="templates"
+            [onTouchedCallBack]="onTouchedCallback"
+          ></tree-view-item>
+        </li>
+      }
+    </ul>
+  }
+</div>

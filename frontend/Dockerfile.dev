@@ -1,0 +1,33 @@
+FROM node:20.16.0-alpine
+
+ENV NODE_ENV=development \
+    NODE_OPTIONS=--max-old-space-size=8192 \
+    TZ=America/Sao_Paulo
+
+RUN apk update && apk add --no-cache \
+    bash \
+    git \
+    && rm -rf /var/cache/apk/*
+
+RUN npm i -g @angular/cli@18.2.12 gulp-cli@3.0.0 gulp@5.0.0
+
+WORKDIR /app
+
+ARG GITHUB_TOKEN
+ENV GITHUB_TOKEN=${GITHUB_TOKEN}
+
+COPY package*.json ./
+COPY angular.json ./
+COPY tsconfig*.json ./
+
+RUN echo "@vrui:registry=https://npm.pkg.github.com" > .npmrc && \
+    echo "@vrsoftbr:registry=https://npm.pkg.github.com" >> .npmrc && \
+    echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" >> .npmrc
+
+RUN npm install --legacy-peer-deps
+
+COPY . .
+
+EXPOSE 4200
+
+CMD ["ng", "serve", "--host", "0.0.0.0", "--port", "4200", "--disable-host-check", "--poll=2000"]

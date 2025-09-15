@@ -1,0 +1,44 @@
+<div class="dt-main">
+  <vrc-datatable
+    #myTable
+    [groupRowsBy]="'gender'"
+    [rows]="rows"
+    [scrollbarH]="true"
+    [columnMode]="ColumnMode.force"
+    rowHeight="auto"
+    [count]="page.totalElements"
+    [selectAllRowsOnPage]="false"
+    [displayCheck]="displayCheck"
+    (page)="setPage($event)"
+    [clickableRows]="clickableRows"
+    (exportAll)="onExportAll($event)"
+    [showToolsBar]="false"
+    [disableExportAll]="false"
+  >
+    <vrc-datatable-column
+      [resizeable]="false"
+      [sortable]="false"
+      [draggable]="false"
+      [canAutoResize]="false"
+    >
+      <ng-template
+        let-row="row"
+        let-expanded="expanded"
+        vrc-datatable-cell-template
+      >
+        <a
+          href="javascript:void(0)"
+          [class.datatable-icon-right]="false"
+          [class.datatable-icon-down]="false"
+          title="Expand/Collapse Row"
+          (click)="toggleExpandRow(row)"
+        >
+        </a>
+      </ng-template>
+    </vrc-datatable-column>
+
+    <vrc-datatable-column name="Name"></vrc-datatable-column>
+    <vrc-datatable-column name="Gender"></vrc-datatable-column>
+    <vrc-datatable-column name="Company"></vrc-datatable-column>
+  </vrc-datatable>
+</div>

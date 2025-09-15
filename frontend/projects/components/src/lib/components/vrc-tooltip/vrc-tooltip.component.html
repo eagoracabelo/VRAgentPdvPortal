@@ -1,0 +1,62 @@
+<div
+  class="tooltip"
+  [class.small]="small"
+  cdkOverlayOrigin
+  #trigger="cdkOverlayOrigin"
+>
+  @if (icon) {
+    <i
+      vrc-icon-style
+      class="vr"
+      [ngClass]="'vr-' + icon"
+      [class.small-icon]="small"
+    ></i>
+  } @else {
+    <i
+      class="vr vr-info_outlined tooltip-icon"
+      [class.error-icon]="error"
+      [class.small-icon]="small"
+    ></i>
+  }
+
+  @if (!tooltipOverlay()) {
+    <ng-container *ngTemplateOutlet="containerTemplate"></ng-container>
+  }
+</div>
+
+@if (tooltipOverlay()) {
+  <ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOrigin]="trigger"
+    [cdkConnectedOverlayOpen]="tooltipHover()"
+    [cdkConnectedOverlayPositions]="cdkPositions()"
+    [cdkConnectedOverlayPanelClass]="[
+      'tooltip-overlay-panel',
+      'tooltip-panel-' + position(),
+    ]"
+  >
+    <ng-container *ngTemplateOutlet="containerTemplate"></ng-container>
+  </ng-template>
+}
+
+<ng-template #containerTemplate>
+  @if (message) {
+    <small
+      [class]="'tooltip-width-' + width"
+      class="message"
+      [class.error-message]="error"
+      [ngClass]="tooltipOverlay() === false ? position() : ''"
+    >
+      @if (isArray) {
+        <ul>
+          @for (item of message; track $index) {
+            <li>{{ item }}</li>
+          }
+        </ul>
+      }
+      @if (!isArray) {
+        <div>{{ message }}</div>
+      }
+    </small>
+  }
+</ng-template>

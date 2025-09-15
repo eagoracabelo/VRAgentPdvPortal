@@ -1,0 +1,16 @@
+<button
+  type="button"
+  class="vrc-text-editor-button"
+  (click)="!isDisabled && buttonClick.emit()"
+  [title]="title"
+  [disabled]="isDisabled"
+  tabindex="-1"
+>
+  <vrc-icon
+    [name]="iconName"
+    [filter]="iconFilter"
+    [width]="iconWidth"
+    [height]="iconHeight"
+    [filter]="'none'"
+  ></vrc-icon>
+</button>

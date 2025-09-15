@@ -1,0 +1,122 @@
+<div class="card--container">
+  <header class="card__header">
+    <h2>Tables</h2>
+  </header>
+
+  <div class="div__separator"></div>
+
+  <div class="card__body--container">
+    <div class="card__body card__column">
+      <div class="col-sm-12">
+        <p>
+          Certifique-se de usar a marcação de tabela adequadamente formada com
+          <code>&lt;thead&gt;</code> e <code>&lt;tbody&gt;</code> ao construir
+          uma <code>table</code>.
+        </p>
+      </div>
+      <div class="col-sm-12">
+        <h4>Default</h4>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>11</td>
+              <td>Lemmy</td>
+              <td>Kilmister</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>Jeff</td>
+              <td>Hanneman</td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td>Jimi</td>
+              <td>Hendrix</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-sm-12">
+        <h4>Hover</h4>
+        <table class="table table--hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>11</td>
+              <td>Lemmy</td>
+              <td>Kilmister</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>Jeff</td>
+              <td>Hanneman</td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td>Jimi</td>
+              <td>Hendrix</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-sm-12">
+        <h4>Responsive (scrolls horizonatally on smaller screens)</h4>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Band</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>11</td>
+                <td>Lemmy</td>
+                <td>Kilmister</td>
+                <td>Motorhead</td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>Jeff</td>
+                <td>Hanneman</td>
+                <td>Slayer</td>
+              </tr>
+              <tr>
+                <td>12</td>
+                <td>Jim</td>
+                <td>Morrison</td>
+                <td>The Doors</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+        <section class="code-preview">
+          <pre>
+                <vr-code-mirror [value]=template></vr-code-mirror>
+            </pre>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

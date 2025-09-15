@@ -1,0 +1,61 @@
+<div
+  class="datatable-body-cell-label"
+  [style.margin-left.rem]="calcLeftMargin(column, row)"
+  [style.text-align]="textAlign"
+  [style.justify-content]="textAlign"
+  [ngClass]="{
+    hidden: isHidden(),
+  }"
+>
+  @if (
+    column.checkboxable && (!displayCheck || displayCheck(row, column, value))
+  ) {
+    <label class="datatable-checkbox checkbox">
+      <input type="checkbox" [checked]="isSelected" />
+      <span class="checkbox__label" (click)="onCheckboxChange($event)"></span>
+    </label>
+  }
+  @if (column.isTreeColumn) {
+    @if (!column.treeToggleTemplate) {
+      <button
+        class="datatable-tree-button"
+        [disabled]="treeStatus === 'disabled'"
+        (click)="onTreeAction()"
+      >
+        <span>
+          @if (treeStatus === 'loading') {
+            <vrc-icon name="atualizar"></vrc-icon>
+          }
+          @if (treeStatus === 'collapsed') {
+            <vrc-icon name="divisa_cima"></vrc-icon>
+          }
+          @if (treeStatus === 'expanded' || treeStatus === 'disabled') {
+            <vrc-icon name="divisa_inferior"></vrc-icon>
+          }
+        </span>
+      </button>
+    }
+
+    @if (column.treeToggleTemplate) {
+      <ng-template
+        [ngTemplateOutlet]="column.treeToggleTemplate"
+        [ngTemplateOutletContext]="{ cellContext: cellContext }"
+      >
+      </ng-template>
+    }
+  }
+
+  @if (!column.cellTemplate) {
+    <span class="span-cell" [title]="sanitizedValue" [innerHTML]="value">
+    </span>
+  }
+
+  @if (column.cellTemplate) {
+    <ng-template
+      #cellTemplate
+      [ngTemplateOutlet]="column.cellTemplate"
+      [ngTemplateOutletContext]="cellContext"
+    >
+    </ng-template>
+  }
+</div>

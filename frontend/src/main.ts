@@ -1,6 +1,14 @@
-import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { App } from './app/app';
+import { ViewEncapsulation } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-bootstrapApplication(App, appConfig)
+import { AppModule } from './app/app.module';
+
+import 'codemirror/mode/javascript/javascript';
+import 'codemirror/mode/markdown/markdown';
+
+platformBrowserDynamic()
+  .bootstrapModule(AppModule, {
+    ngZoneEventCoalescing: true,
+    defaultEncapsulation: ViewEncapsulation.None,
+  })
   .catch((err) => console.error(err));

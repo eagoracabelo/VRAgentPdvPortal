@@ -1,0 +1,146 @@
+<div (click)="closeCalendar()" class="full-background"></div>
+<div
+  #calendarContainer
+  class="calendar-container"
+  [ngClass]="calendarPosition"
+  [class.date-range-width]="isDateRange"
+  [class.date-time-width]="isDateTime"
+>
+  <div #calendar class="calendar" [ngClass]="{ 'calendar--open': isOpen }">
+    <div class="body-calendar">
+      @if (isOpen) {
+        <div class="header-calendar">
+          <button class="month-year-label" (click)="toggleIsYearView()">
+            @if (!isYearView) {
+              <h4 class="month-year-label__text">
+                @if (!isMonthSelection) {
+                  <span> {{ dates.monthName }} , </span>
+                }
+                {{ dates.calendarYear }}
+              </h4>
+              <i
+                class="vr vr-seta_direcional_esquerda month-year-label__icon"
+                aria-hidden="true"
+              >
+              </i>
+            } @else {
+              <h4 class="month-year-label__text">
+                {{ years[0] }} - {{ years[years.length - 1] }}
+              </h4>
+              <i
+                class="vr vr-seta_direcional_direita month-year-label__icon"
+                aria-hidden="true"
+              >
+              </i>
+            }
+          </button>
+          @if (!isMonthSelection) {
+            <div
+              (click)="isYearView ? previousYearView() : previousMonth()"
+              class="arrow_left"
+            >
+              <i class="vr vr-divisa_esquerda" aria-hidden="true"></i>
+            </div>
+          }
+          @if (!isMonthSelection) {
+            <div
+              (click)="isYearView ? nextYearView() : nextMonth()"
+              class="arrow_right"
+            >
+              <i class="vr vr-divisa_direita" aria-hidden="true"></i>
+            </div>
+          }
+        </div>
+      }
+
+      @if (isOpen && isMonthSelection && !isYearView) {
+        <div class="monthView">
+          @for (month of months; track $index) {
+            <div
+              class="month"
+              (click)="setMonth(month.value)"
+              [class]="month.classes"
+            >
+              {{ month.label }}
+            </div>
+          }
+        </div>
+      } @else {
+        @if (isOpen && !isYearView) {
+          <div class="separator"></div>
+          <div
+            class="date"
+            [ngClass]="{ 'resize-item-date': days.length == 42 }"
+          >
+            <div class="day">D</div>
+            <div class="day">S</div>
+            <div class="day">T</div>
+            <div class="day">Q</div>
+            <div class="day">Q</div>
+            <div class="day">S</div>
+            <div class="day">S</div>
+            @for (day of days; track $index; let i = $index) {
+              <div class="number-wrapper" [class]="day?.class">
+                <div
+                  class="number"
+                  (click)="selectDateOnClick(day)"
+                  [class]="day?.class"
+                  (mouseover)="setRangeTraceStyle(i)"
+                  (mouseout)="removeRangeTraceStyle()"
+                >
+                  {{ day?.day }}
+                </div>
+              </div>
+            }
+          </div>
+          <div class="separator-events"></div>
+          <div class="events">
+            @for (event of events; track $index) {
+              <div class="event">
+                <span [class]="event.type"></span>
+                <div [class]="event.type">{{ event.day }}</div>
+                {{ event.event }}
+              </div>
+            }
+          </div>
+        } @else {
+          <div class="yearView">
+            @for (year of years; track $index) {
+              <div
+                class="year"
+                (click)="setYear(year)"
+                [class.selected-year]="dates.calendarYear === year"
+              >
+                {{ year }}
+              </div>
+            }
+          </div>
+        }
+      }
+    </div>
+    @if (showShortcuts && isDateRange) {
+      <div class="shortcuts">
+        <span class="title">Últimos</span>
+        @for (shortcut of shortcuts; track $index) {
+          <div class="shortcut-wrapper" [class]="shortcut.class">
+            <button
+              class="shortcut"
+              (click)="handleShortcut(shortcut.daysBack)"
+            >
+              {{ shortcut.daysBack }} dias
+            </button>
+          </div>
+        }
+      </div>
+    }
+
+    @if (isDateTime) {
+      <div class="vertical-divider"></div>
+      <vrc-timepicker
+        (timeSelected)="selectTimeOnClick($event)"
+        [startDate]="dates.start"
+        [isOpen]="isOpen"
+      ></vrc-timepicker>
+    }
+  </div>
+</div>

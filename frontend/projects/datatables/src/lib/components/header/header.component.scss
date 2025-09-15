@@ -1,0 +1,22 @@
+.column-group {
+  display: flex;
+  flex-direction: column;
+  border-left: 0.063rem solid var(--border-color-table);
+
+  &:first-child {
+    border-left: 0.063rem solid transparent;
+  }
+
+  span {
+    text-align: center;
+    width: 100%;
+    padding: 0.8rem 0;
+    font-weight: 500;
+    border-bottom: 0.063rem solid var(--border-color-table);
+    color: var(--color-text-table-header);
+  }
+}
+
+.group-columns {
+  display: flex;
+}

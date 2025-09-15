@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="24"
+   height="24"
+   viewBox="0 0 24 24"
+   fill="none"
+   version="1.1"
+   id="svg79"
+   sodipodi:docname="E-mail.svg"
+   inkscape:export-filename="/home/gustavo-coleta/Downloads/E-mail.png"
+   inkscape:export-xdpi="111.46"
+   inkscape:export-ydpi="111.46"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview81"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="16.8125"
+     inkscape:cx="10.944238"
+     inkscape:cy="21.204461"
+     inkscape:window-width="1920"
+     inkscape:window-height="1016"
+     inkscape:window-x="1600"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg79" />
+  <path
+     style="color:#000000;fill:#000000;-inkscape-stroke:none"
+     d="m 4.0566406,5.9296875 c -0.8223505,0 -1.5,0.6776494 -1.5,1.5 v 8.9999995 c 0,0.822351 0.6776495,1.500001 1.5,1.5 H 20.056641 c 0.82235,0 1.5,-0.677649 1.5,-1.5 V 7.4296875 c 0,-0.8223506 -0.67765,-1.5 -1.5,-1.5 z m 0,1 H 20.056641 c 0.285648,0 0.5,0.2143517 0.5,0.5 v 8.9999995 c 0,0.285649 -0.214352,0.5 -0.5,0.5 H 4.0566406 c -0.2856483,0 -0.5,-0.214351 -0.5,-0.5 V 7.4296875 c 0,-0.2856483 0.2143517,-0.5 0.5,-0.5 z"
+     id="rect64" />
+  <path
+     style="color:#000000;fill:#000000;-inkscape-stroke:none"
+     d="m 8.703125,11.076172 -5.5,5.5 0.7070313,0.707031 5.5,-5.5 z"
+     id="path66" />
+  <path
+     style="color:#000000;fill:#000000;-inkscape-stroke:none"
+     d="m 15.410156,11.076172 -0.707031,0.707031 5.5,5.5 0.707031,-0.707031 z"
+     id="path68" />
+  <path
+     style="color:#000000;fill:#000000;-inkscape-stroke:none"
+     d="m 3.8847656,5.9296875 c -0.3486888,0 -0.6481862,0.2407359 -0.7519531,0.5273437 C 3.0290456,6.7436391 3.1051803,7.1205217 3.3730469,7.34375 l 7.7226561,6.435547 c 0.553777,0.461506 1.366145,0.461506 1.919922,0 L 20.740234,7.34375 C 21.00812,7.1205575 21.08422,6.7436682 20.980469,6.4570312 20.876717,6.1703943 20.575249,5.9296875 20.226562,5.9296875 H 9.0566406 Z m 0.5527344,1 H 9.0566406 19.675781 l -7.298828,6.0820315 c -0.188022,0.156693 -0.452603,0.156693 -0.640625,0 z"
+     id="path70" />
+  <defs
+     id="defs77">
+    <clipPath
+       id="clip0_5556_165276">
+      <rect
+         width="24"
+         height="24"
+         fill="white"
+         id="rect74" />
+    </clipPath>
+  </defs>
+</svg>

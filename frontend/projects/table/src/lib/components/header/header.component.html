@@ -1,0 +1,39 @@
+<div
+  role="row"
+  orderable
+  (reorder)="onColumnReordered($event)"
+  (targetChanged)="onTargetChanged($event)"
+  [style.width.rem]="_columnGroupWidths.total"
+  class="table-header-inner"
+>
+  @for (colGroup of _columnsByPin; track $index) {
+    <div
+      [class]="'table-row-' + colGroup.type"
+      [ngStyle]="_styleByGroup[colGroup.type]"
+    >
+      @for (column of colGroup?.columns; track $index) {
+        <table-header-cell
+          role="columnheader"
+          resizeable
+          [resizeEnabled]="column.resizeable"
+          (resize)="onColumnResized($event, column)"
+          [headerHeight]="headerHeight"
+          [isTarget]="column.isTarget"
+          [targetMarkerTemplate]="targetMarkerTemplate"
+          [targetMarkerContext]="column.targetMarkerContext"
+          [column]="column"
+          [sorts]="sorts"
+          [selectionType]="selectionType"
+          [sortAscendingIcon]="sortAscendingIcon"
+          [sortDescendingIcon]="sortDescendingIcon"
+          [sortUnsetIcon]="sortUnsetIcon"
+          [allRowsSelected]="allRowsSelected"
+          (sort)="onSort($event)"
+          (select)="select.emit($event)"
+          (columnContextmenu)="columnContextmenu.emit($event)"
+        >
+        </table-header-cell>
+      }
+    </div>
+  }
+</div>

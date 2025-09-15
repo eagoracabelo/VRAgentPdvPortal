@@ -1,0 +1,18 @@
+<div class="dt-main">
+  <vrc-datatable
+    [rows]="rows"
+    [columnMode]="ColumnMode.force"
+    rowHeight="auto"
+    [externalPaging]="true"
+    [count]="page.totalElements"
+    [selectAllRowsOnPage]="false"
+    (page)="setPage($event)"
+    [pageSizeOptions]="[5, 10, 20, 40, 60, 100]"
+    (exportAll)="onExportAll($event)"
+    [storageKeyColumnPrintingPreference]="'customPageSizeKey'"
+  >
+    <vrc-datatable-column name="Name"></vrc-datatable-column>
+    <vrc-datatable-column name="Gender"></vrc-datatable-column>
+    <vrc-datatable-column name="Company"></vrc-datatable-column>
+  </vrc-datatable>
+</div>

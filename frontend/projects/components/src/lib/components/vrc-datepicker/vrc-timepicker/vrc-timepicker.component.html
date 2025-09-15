@@ -1,0 +1,30 @@
+<div class="timepicker-container">
+  <div #hoursContainer class="time-container">
+    @for (hour of hours; track $index) {
+      <input
+        type="radio"
+        id="{{ hour.id }}"
+        name="hours"
+        [value]="hour.value"
+        (change)="timeChange($event.target.value, 'hour')"
+      />
+      <label for="{{ hour.id }}">
+        <p>{{ hour.value | number: '2.0' }}</p>
+      </label>
+    }
+  </div>
+  <div #minutesContainer class="time-container">
+    @for (minute of minutes; track $index) {
+      <input
+        type="radio"
+        id="{{ minute.id }}"
+        name="minutes"
+        [value]="minute.value"
+        (change)="timeChange($event.target.value, 'minute')"
+      />
+      <label for="{{ minute.id }}">
+        <p>{{ minute.value | number: '2.0' }}</p>
+      </label>
+    }
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="dt-main">
+  <vrc-datatable
+    [rows]="rows"
+    [columnMode]="ColumnMode.force"
+    rowHeight="auto"
+    [externalPaging]="true"
+    [count]="page.totalElements"
+    [selectAllRowsOnPage]="false"
+    (page)="setPage($event)"
+    [pageSizeOptions]="[5, 10, 20, 40, 60, 100]"
+    [activeMoveColumn]="true"
+    [storageKeyMoveColumn]="'translation_page'"
+    (exportAll)="onExportAll($event)"
+  >
+    <vrc-datatable-column
+      prop="name"
+      name="Name"
+      [label]="'COLUNAS.NOME' | translator"
+    ></vrc-datatable-column>
+    <vrc-datatable-column
+      prop="gender"
+      name="Gender"
+      [label]="'COLUNAS.GENERO' | translator"
+    ></vrc-datatable-column>
+    <vrc-datatable-column
+      prop="company"
+      name="Company"
+      [label]="'COLUNAS.EMPRESA' | translator"
+    ></vrc-datatable-column>
+  </vrc-datatable>
+</div>

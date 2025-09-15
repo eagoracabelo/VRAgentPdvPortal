@@ -1,0 +1,96 @@
+.form-group.datepicker-container {
+  position: relative;
+  margin-bottom: 0;
+  padding-right: 0.25rem;
+
+  label {
+    display: flex;
+    align-items: center;
+    min-height: 1.5rem;
+  }
+
+  input {
+    display: flex;
+  }
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vr.vr-calendario {
+  background-size: 1.5rem 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.double-input--container,
+.single-input--container {
+  display: flex;
+  border: 0.063rem solid var(--border-color-form-element);
+  border-radius: 0.5rem;
+  align-items: center;
+  height: 2rem;
+  padding: 0 0.2rem;
+  overflow: hidden;
+
+  input {
+    border: none;
+    background: transparent;
+    padding: 0;
+    width: 5.5rem;
+    text-align: center;
+
+    &:focus {
+      border: none;
+      padding: 0;
+    }
+
+    &.time-date {
+      width: 8.5rem;
+    }
+  }
+
+  &.disabled {
+    button.btn--datepicker {
+      background: var(--background-input-disabled);
+      cursor: not-allowed;
+
+      &:focus-visible {
+        outline: none;
+      }
+
+      i.vr {
+        &:focus-visible {
+          outline: none;
+        }
+      }
+    }
+
+    border: 0.063rem solid var(--border-color-form-element-disabled);
+  }
+
+  button.btn--datepicker {
+    padding: 0;
+    border: none;
+    margin: 0.2rem 0 0 auto;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  &.required {
+    border-bottom: 0.0653rem solid var(--border-bottom-color-input-required);
+  }
+}
+
+.vr-limpar_conteudo {
+  width: 1.2rem;
+  height: 1.2rem;
+  background-size: 1.2rem 1.2rem;
+  cursor: pointer;
+  margin-left: 0.3rem;
+  filter: var(--filter-tooltip-icon);
+  -webkit-filter: var(--filter-tooltip-icon);
+}

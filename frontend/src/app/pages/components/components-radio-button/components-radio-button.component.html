@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="card col-md">
+    <header class="card__header">
+      <h3 class="title">Radio Button</h3>
+    </header>
+    <div class="card__content content">
+      <vrc-tabs>
+        <vrc-tab label="Documentação">
+          <markdown
+            src="./docs/components/vrc-radio-button.md"
+            (load)="onLoad($event)"
+            (error)="onError($event)"
+          >
+          </markdown>
+        </vrc-tab>
+
+        <vrc-tab label="Exemplo">
+          <div class="row">
+            <div class="col-sm-12">
+              <h4>Alinhado Verticalmente</h4>
+            </div>
+            <div class="col-sm-6">
+              <vrc-radio-group classeCss="vertical-align" [(ngModel)]="place">
+                <vrc-radio-button [tooltip]="tooltip" value="Casa"
+                  >Em casa</vrc-radio-button
+                >
+                <vrc-radio-button value="Trabalho"
+                  >No trabalho</vrc-radio-button
+                >
+                <vrc-radio-button value="Viajando">Viajando</vrc-radio-button>
+              </vrc-radio-group>
+            </div>
+            <div class="col-sm-6">Selecionado: {{ place }}</div>
+          </div>
+          <form [formGroup]="formGroup">
+            <div class="row">
+              <div class="col-sm-12">
+                <h4>Alinhado Horizontalmente (Padrão)</h4>
+              </div>
+              <div class="col-sm-6">
+                <vrc-radio-group formControlName="gender">
+                  @for (gender of genders; track $index; let i = $index) {
+                    <vrc-radio-button [value]="gender.value">
+                      {{ gender?.description }}
+                    </vrc-radio-button>
+                  }
+                </vrc-radio-group>
+              </div>
+              <div class="col-sm-6">
+                Selecionado: {{ getField('gender')?.value }}
+              </div>
+            </div>
+          </form>
+        </vrc-tab>
+      </vrc-tabs>
+    </div>
+  </div>
+
+  <vrc-form-debug [form]="formGroup"></vrc-form-debug>
+</div>

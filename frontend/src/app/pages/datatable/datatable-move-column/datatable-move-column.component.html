@@ -1,0 +1,49 @@
+<div class="dt-main">
+  <vrc-datatable
+    [rows]="rows"
+    [columnMode]="ColumnMode.force"
+    rowHeight="auto"
+    [externalPaging]="true"
+    [count]="page.totalElements"
+    [selectAllRowsOnPage]="false"
+    (page)="setPage($event)"
+    [activeMoveColumn]="true"
+    [storageKeyMoveColumn]="'column_move'"
+    [selectionType]="SelectionType.checkbox"
+    (exportAll)="onExportAll($event)"
+    [eventTrackingIdentifier]="'datatable_move_column'"
+  >
+    <vrc-datatable-column
+      [widthFixed]="true"
+      [width]="3.75"
+      [sortable]="false"
+      [canAutoResize]="false"
+      [draggable]="false"
+      [resizeable]="false"
+      [headerCheckboxable]="true"
+      [checkboxable]="true"
+    >
+    </vrc-datatable-column>
+    <vrc-datatable-column
+      name="Id"
+      prop="_id"
+      [draggable]="false"
+      [hideColumn]="false"
+    ></vrc-datatable-column>
+    <vrc-datatable-column name="Name"></vrc-datatable-column>
+    <vrc-datatable-column name="Active" prop="isActive"></vrc-datatable-column>
+    <vrc-datatable-column
+      name="Balance"
+      [isDefaultVisible]="false"
+    ></vrc-datatable-column>
+    <vrc-datatable-column
+      name="Picture"
+      [isDefaultVisible]="false"
+    ></vrc-datatable-column>
+    <vrc-datatable-column name="Age"></vrc-datatable-column>
+    <vrc-datatable-column
+      name="Gender"
+      [isDefaultVisible]="false"
+    ></vrc-datatable-column>
+  </vrc-datatable>
+</div>

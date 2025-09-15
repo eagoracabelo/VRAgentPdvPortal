@@ -1,0 +1,16 @@
+.navbar-menu {
+  .tooltip--container {
+    width: fit-content;
+  }
+
+  .navbar-menu__button-sair {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    vrc-icon {
+      margin-top: -0.063rem;
+      margin-right: 0.25rem;
+    }
+  }
+}

@@ -1,0 +1,52 @@
+<div class="form-group" [ngClass]="classeCss">
+  <label [class.tooltip-label]="tooltip" class="control-label" [attr.for]="id">
+    {{ label }}
+    <span [hidden]="!isRequired" class="required">*</span>
+    @if (tooltip) {
+      <vrc-tooltip
+        class="tooltip"
+        [message]="tooltip.message"
+        [width]="tooltip.width"
+        [small]="tooltip.small"
+        [topRight]="tooltip.topRight"
+        [bottomRight]="tooltip.bottomRight"
+        [topLeft]="tooltip.topLeft"
+        [bottomLeft]="tooltip.bottomLeft"
+      >
+      </vrc-tooltip>
+    }
+  </label>
+  <div class="autocomplete">
+    <input
+      #autocompleteInputRef
+      class="form-control border-input autocomplete-input"
+      [ngClass]="{ error: isError, required: isRequired }"
+      [id]="id"
+      [readOnly]="isReadOnly"
+      [disabled]="isDisabled"
+      [placeholder]="placeholder"
+      type="text"
+      [name]="name"
+      autocomplete="off"
+      spellcheck="false"
+      [(ngModel)]="text"
+      (blur)="onBlur()"
+      (keydown)="onKeyEvent($event)"
+      (focus)="onOpen()"
+      (focusout)="onClose()"
+    />
+    <vrc-error-msg [message]="errorMessage"></vrc-error-msg>
+    @if (isOpen) {
+      <div #autocompleteListOptionsRef class="scroll autocomplete-datalist">
+        @for (option of options; track $index; let i = $index) {
+          <div
+            [class]="'datalist-option' + ' ' + 'datalist-option-' + i"
+            [ngClass]="setClass(option)"
+            (click)="onClicked(i)"
+            [innerHTML]="option?.content | safeHtml"
+          ></div>
+        }
+      </div>
+    }
+  </div>
+</div>

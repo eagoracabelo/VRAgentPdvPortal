@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="card col-md">
+    <header class="card__header">
+      <h3 class="title">Checkbox</h3>
+    </header>
+    <div class="card__content content">
+      <vrc-tabs>
+        <vrc-tab label="Documentação">
+          <markdown
+            src="./docs/components/vrc-checkbox.md"
+            (load)="onLoad($event)"
+            (error)="onError($event)"
+          ></markdown>
+        </vrc-tab>
+
+        <vrc-tab label="Exemplo">
+          <div class="row">
+            <div class="col-sm-12">
+              <h4>Alinhado Verticalmente (Padrão)</h4>
+            </div>
+            <div class="col-sm-12">
+              @for (electronic of electronics; track $index) {
+                <vrc-checkbox [(ngModel)]="electronic.value"
+                  >{{ electronic.name }}
+                </vrc-checkbox>
+              }
+            </div>
+          </div>
+          <form [formGroup]="formGroup">
+            <div class="row">
+              <div class="col-sm-12">
+                <h4>Alinhado Horizontalmente</h4>
+              </div>
+              <div class="col-sm-12 horizontal-aling">
+                @for (
+                  item of formFrameworks?.controls;
+                  track item;
+                  let i = $index
+                ) {
+                  <ng-container formArrayName="frameworks">
+                    <vrc-checkbox [formControlName]="i">
+                      {{ frameworks[i] }}
+                    </vrc-checkbox>
+                  </ng-container>
+                }
+              </div>
+            </div>
+          </form>
+        </vrc-tab>
+      </vrc-tabs>
+    </div>
+  </div>
+
+  <vrc-form-debug [form]="formGroup"></vrc-form-debug>
+</div>

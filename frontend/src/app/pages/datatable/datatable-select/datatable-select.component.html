@@ -1,0 +1,39 @@
+<div class="dt-main">
+  <vrc-datatable
+    [rows]="rows"
+    [columnMode]="ColumnMode.force"
+    rowHeight="auto"
+    [scrollbarH]="true"
+    [externalPaging]="true"
+    [count]="page.totalElements"
+    [selectAllRowsOnPage]="false"
+    (page)="setPage($event)"
+    (activate)="onActivate($event)"
+    (exportAll)="onExportAll($event)"
+    [showMoveButton]="true"
+  >
+    <vrc-datatable-column name="Name"></vrc-datatable-column>
+    <vrc-datatable-column name="Gender"></vrc-datatable-column>
+    <vrc-datatable-column name="Company"></vrc-datatable-column>
+    <vrc-datatable-column
+      name="select"
+      prop="SELECT"
+      cellClass="overflow-visible"
+      [width]="12.0"
+    >
+      <ng-template let-row="row" vrc-datatable-cell-template>
+        <div class="col-sm-11">
+          <vrc-select
+            class="cell-input"
+            [data]="items$ | async"
+            [translate]="false"
+            [hideLabel]="true"
+            [overlay]="true"
+          >
+            {{ 'SELECT' }}
+          </vrc-select>
+        </div>
+      </ng-template>
+    </vrc-datatable-column>
+  </vrc-datatable>
+</div>

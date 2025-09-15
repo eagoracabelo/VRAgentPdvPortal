@@ -1,0 +1,224 @@
+<div class="card--container">
+  <header class="card__header">
+    <h2>Forms</h2>
+  </header>
+
+  <div class="div__separator"></div>
+
+  <div class="card__body--container">
+    <div class="card__body card__column">
+      <div class="card__div--flex">
+        <div>
+          <h6>Input</h6>
+          <input
+            class="u-full-width"
+            type="text"
+            placeholder="Digite aqui..."
+          />
+          <input
+            class="u-full-width"
+            type="text"
+            placeholder="Digite aqui..."
+            disabled
+          />
+          <input
+            class="u-full-width"
+            type="text"
+            value="O texto fica assim"
+            disabled
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="card__body card__column">
+      <div class="card__div--flex">
+        <div>
+          <h6>Input Required</h6>
+          <input
+            class="u-full-width required"
+            type="text"
+            placeholder="test@mydomain.com"
+          />
+          <input
+            class="u-full-width required"
+            type="text"
+            placeholder="Digite o texto aqui..."
+            disabled
+          />
+          <input
+            class="u-full-width required"
+            type="text"
+            placeholder="O texto fica assim"
+            disabled
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="card__body card__column">
+      <div class="card__div--flex">
+        <div>
+          <h6>Input Buscar</h6>
+          <div class="search--container">
+            <div class="search__input">
+              <input placeholder="Buscar" class="u-full-width" type="text" />
+              <div class="search__lens">
+                <i class="vr vr-pesquisa"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card__body card__column">
+      <div class="card__div--flex">
+        <div>
+          <h6>Select</h6>
+          <div>
+            <div>
+              <select class="u-full-width" id="exampleRecipientInput">
+                <option value="-1" disabled selected>Selecione</option>
+                <option value="1">Inquiry</option>
+                <option value="2">Thanks</option>
+                <option value="3">Issues</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <div>
+              <select disabled class="u-full-width">
+                <option value="-1" disabled selected>Selecione</option>
+                <option value="1">Inquiry</option>
+                <option value="2">Thanks</option>
+                <option value="3">Issues</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card__body card__column">
+      <div class="card__div--flex">
+        <div>
+          <h6>Textarea</h6>
+          <textarea
+            id="txtarea"
+            class="u-full-width"
+            placeholder="Hi Karlo &hellip;"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="card__body card__column">
+      <div class="card__div--flex">
+        <div>
+          <h6>Switch</h6>
+          <div class="switch">
+            <label>
+              Off
+              <input type="checkbox" />
+              <span class="lever"></span>
+              On
+            </label>
+          </div>
+
+          <h6>Switch Disabled</h6>
+          <div class="switch">
+            <label>
+              Off
+              <input type="checkbox" disabled />
+              <span class="lever"></span>
+              On (Disabled)
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card__body card__column">
+      <div class="card__div--flex">
+        <div>
+          <h6>Checkbox Disabled</h6>
+          <label class="checkbox">
+            Checkbox
+            <input disabled type="checkbox" name="example1" value="" />
+            <span class="checkbox__label"></span>
+          </label>
+
+          <h6>Checkbox Disabled and Checked</h6>
+          <label class="checkbox">
+            Checkbox
+            <input disabled checked type="checkbox" name="example1" value="" />
+            <span class="checkbox__label"></span>
+          </label>
+
+          <h6>Checkbox</h6>
+          <label class="checkbox">
+            Checkbox
+            <input type="checkbox" name="example2" value="" />
+            <span class="checkbox__label"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card__body card__column">
+      <div class="card__div--flex">
+        <div>
+          <h6>Radio Button Disabled</h6>
+          <span class="radio">
+            <input
+              type="radio"
+              disabled
+              name="raidobutton1"
+              value=""
+              id="radio01"
+            />
+            <label class="radio__label" for="radio01">
+              <span>Radio 01 (Disabled)</span>
+            </label>
+          </span>
+
+          <h6>Radio Button Disabled and Checked</h6>
+          <span class="radio">
+            <input
+              type="radio"
+              disabled
+              name="raidobutton2"
+              value=""
+              id="radio02"
+              checked
+            />
+            <label class="radio__label" for="radio02">
+              <span>Radio 02 (Disabled)</span>
+            </label>
+          </span>
+
+          <h6>Radio Button</h6>
+          <span class="radio">
+            <input type="radio" name="raidobutton" value="" id="radio03" />
+            <label class="radio__label" for="radio03">
+              <span>Radio 03</span>
+            </label>
+          </span>
+          <span class="radio">
+            <input
+              type="radio"
+              name="raidobutton"
+              value=""
+              id="radio04"
+              checked
+            />
+            <label class="radio__label" for="radio04">
+              <span>Radio 04</span>
+            </label>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

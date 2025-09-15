@@ -1,0 +1,77 @@
+
+<div class="main-layout" [class.sidebar-collapsed]="sidebarCollapsed">
+    <!-- Header -->
+    <header class="layout-header">
+        <div class="header-content">
+            <div class="header-left">
+                <button class="sidebar-toggle" (click)="toggleSidebar()" title="Toggle Sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="brand">
+                    <img src="assets/images/vr-logo.png" alt="VR Software" class="brand-logo">
+                    <h1>VRAgent PDV Portal</h1>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="header-btn" title="Notificações">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </button>
+                    <button class="header-btn" title="Configurações">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                    <div class="user-menu">
+                        <img src="assets/images/user-avatar.png" alt="User" class="user-avatar">
+                        <span>Admin</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="layout-sidebar" [class.collapsed]="sidebarCollapsed">
+        <nav class="sidebar-nav">
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a routerLink="/dashboard" routerLinkActive="active" class="nav-link">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/minions" routerLinkActive="active" class="nav-link">
+                        <i class="fas fa-server"></i>
+                        <span class="nav-text">Minions</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/commands" routerLinkActive="active" class="nav-link">
+                        <i class="fas fa-terminal"></i>
+                        <span class="nav-text">Comandos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/activity-logs" routerLinkActive="active" class="nav-link">
+                        <i class="fas fa-history"></i>
+                        <span class="nav-text">Logs de Atividade</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/settings" routerLinkActive="active" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span class="nav-text">Configurações</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="layout-content">
+        <router-outlet></router-outlet>
+    </main>
+</div>

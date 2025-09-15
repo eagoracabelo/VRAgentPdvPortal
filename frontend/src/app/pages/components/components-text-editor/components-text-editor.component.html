@@ -1,0 +1,153 @@
+<div class="row">
+  <div class="card col-md">
+    <header class="card__header">
+      <h3 class="title">VrTextEditor</h3>
+    </header>
+
+    <div class="card__content content">
+      <vrc-tabs>
+        <vrc-tab label="Documentação">
+          <markdown
+            src="./docs/components/vrc-text-editor.md"
+            (load)="onLoad($event)"
+            (error)="onError($event)"
+          ></markdown>
+        </vrc-tab>
+        <vrc-tab label="Exemplo">
+          <div class="example--container">
+            <div class="example--text-editor">
+              <form [formGroup]="form">
+                <vrc-text-editor
+                  id="editor"
+                  formControlName="editor"
+                  (ngModelChange)="onChange($event)"
+                  (saveEditing)="onSaveEditing($event)"
+                  (cancelEditing)="onCancelEditing()"
+                  [isDisabled]="config.isDisabled"
+                  [minHeight]="config.minHeight"
+                  [height]="config.height"
+                  [maxHeight]="config.maxHeight"
+                  [minWidth]="config.minWidth"
+                  [width]="config.width"
+                  [maxWidth]="config.maxWidth"
+                  [placeholder]="config.placeholder"
+                  [clearPasteFormatting]="config.clearPasteFormatting"
+                  [publicationDate]="config.publicationDate"
+                >
+                </vrc-text-editor>
+              </form>
+
+              <div class="example__data">
+                <h4>Value:</h4>
+                <div>{{ form.value.editor | json }}</div>
+              </div>
+            </div>
+
+            <div class="control-panel--container">
+              <div class="row">
+                <div class="control-panel">
+                  <label class="checkbox-label" for="disabledExample">
+                    <input
+                      type="checkbox"
+                      name="disabledExample"
+                      [(ngModel)]="config.isDisabled"
+                      (click)="toggleDisabledExample()"
+                    />
+                    Disabled
+                  </label>
+                </div>
+                <div class="control-panel">
+                  <label class="checkbox-label" for="disabledExample">
+                    <input
+                      type="checkbox"
+                      name="clearPasteFormattingExample"
+                      [(ngModel)]="config.clearPasteFormatting"
+                      (click)="toggleclearPasteFormattingExample()"
+                    />
+                    Clear Paste Formatting
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="control-panel">
+                  <label class="sizing-label" for="minHeightExample">
+                    Min Height
+                    <input
+                      type="text"
+                      name="minHeightExample"
+                      [(ngModel)]="config.minHeight"
+                    />
+                  </label>
+                </div>
+                <div class="control-panel">
+                  <label class="sizing-label" for="heightExample">
+                    Height
+                    <input
+                      type="text"
+                      name="heightExample"
+                      [(ngModel)]="config.height"
+                    />
+                  </label>
+                </div>
+                <div class="control-panel">
+                  <label class="sizing-label" for="maxHeightExample">
+                    Max Height
+                    <input
+                      type="text"
+                      name="maxHeightExample"
+                      [(ngModel)]="config.maxHeight"
+                    />
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="control-panel">
+                  <label class="sizing-label" for="minWidthExample">
+                    Min Width
+                    <input
+                      type="text"
+                      name="minWidthExample"
+                      [(ngModel)]="config.minWidth"
+                    />
+                  </label>
+                </div>
+                <div class="control-panel">
+                  <label class="sizing-label" for="widthExample">
+                    Width
+                    <input
+                      type="text"
+                      name="widthExample"
+                      [(ngModel)]="config.width"
+                    />
+                  </label>
+                </div>
+                <div class="control-panel">
+                  <label class="sizing-label" for="maxWidthExample">
+                    Max Width
+                    <input
+                      type="text"
+                      name="maxWidthExample"
+                      [(ngModel)]="config.maxWidth"
+                    />
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="control-panel">
+                  <label class="placeholder-label" for="placeholderExample">
+                    Placeholder
+                    <input
+                      type="text"
+                      name="placeholderExample"
+                      [(ngModel)]="config.placeholder"
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </vrc-tab>
+      </vrc-tabs>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+.example--container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+
+  .control-panel {
+    input[type='range'],
+    label,
+    select {
+      margin-left: 0.5rem;
+    }
+  }
+
+  .example__treeview {
+    width: 30%;
+    margin-right: 1rem;
+  }
+
+  .example__data {
+    > pre {
+      overflow: scroll;
+      max-height: 25rem;
+      width: 20rem;
+    }
+  }
+}
+
+.template-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.625rem;
+
+  .template-span-left {
+    background-color: var(--color-theme);
+    padding: 0.125rem 0.313rem;
+    border-radius: 0.188rem;
+    color: white;
+  }
+
+  .template-span-right {
+    font-weight: bold;
+  }
+}

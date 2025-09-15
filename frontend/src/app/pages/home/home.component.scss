@@ -1,0 +1,23 @@
+.container-home {
+  text-align: center;
+}
+
+.title-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+
+  img {
+    margin-right: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+.grid-home {
+  display: flex;
+  gap: 1.25rem;
+}

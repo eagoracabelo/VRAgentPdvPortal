@@ -1,0 +1,18 @@
+<div class="form-group" [ngClass]="classeCss">
+  <label class="checkbox" [attr.for]="id">
+    <ng-content></ng-content
+    ><span [hidden]="!isRequired" class="required">*</span>
+    <input
+      #inputCheckbox
+      type="checkbox"
+      class="form-control"
+      [ngClass]="{ error: isError, required: isRequired }"
+      [id]="id"
+      [disabled]="isDisabled"
+      [name]="name"
+      [(ngModel)]="value"
+      (blur)="onBlur()"
+    />
+    <span class="checkbox__label"></span>
+  </label>
+</div>

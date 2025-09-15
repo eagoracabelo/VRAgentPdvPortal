@@ -1,0 +1,38 @@
+@charset 'UTF-8';
+
+// 0. Theme
+@import 'themes/dark', 'themes/light';
+
+// 1. Vendors
+@import 'vendors/normalize';
+
+// 2. Abstracts - Fonts, Variables, functions, mixins, and placeholders
+@import 'abstracts/fonts', 'abstracts/functions', 'abstracts/variables',
+  'abstracts/mixins', 'abstracts/placeholders';
+
+// 3. Base files
+@import 'base/base', 'base/helpers', 'base/typography', 'base/spacing',
+  'base/error', 'base/print';
+
+// 4. Layout-related sections
+@import 'layout/root', 'layout/header', 'layout/navbar', 'layout/sidebar',
+  'layout/control-sidebar', 'layout/footer', 'layout/forms', 'layout/grid';
+
+// 5. Components
+@import 'components/buttons', 'components/cards', 'components/lists',
+  'components/input', 'components/pagination', 'components/radio-checkbox',
+  'components/select-custom', 'components/switch', 'components/tables',
+  'components/tooltip', 'components/media-queries', 'components/search',
+  'components/tabs', 'components/select2';
+
+// 6. Content
+@import 'main/main';
+
+// 7. Grid layout
+@import 'layout/grid-layout';
+
+// 8. Scroll
+@import 'abstracts/scroll';
+
+// 9. Animations
+@import 'animations/animations';

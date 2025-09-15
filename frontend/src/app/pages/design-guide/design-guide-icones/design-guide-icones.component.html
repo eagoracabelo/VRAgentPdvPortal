@@ -1,0 +1,29 @@
+<div class="card--container">
+  <header class="card__header">
+    <h2 class="title">Icones</h2>
+  </header>
+
+  <div class="div__separator"></div>
+
+  <div class="card__body--container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="list-icons">
+          @for (icon of icons; track $index) {
+            <div (click)="sidebarControl(iconElement)" class="icon-preview">
+              <div class="preview">
+                <i #iconElement class="vr" [ngClass]="icon"></i>
+              </div>
+              <div class="tooltip">
+                <span (click)="copyToClipboard(icon)">{{
+                  getDescriptionIcon(icon)
+                }}</span>
+                <span class="tooltiptext">Click p/ copiar</span>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

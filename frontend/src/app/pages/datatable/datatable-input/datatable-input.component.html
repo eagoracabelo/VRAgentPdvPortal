@@ -1,0 +1,159 @@
+<form [formGroup]="formGroup">
+  <ng-container formArrayName="divisaoFornecedorItems">
+    <vrc-datatable
+      [rows]="rows"
+      [columnMode]="ColumnMode.force"
+      rowHeight="auto"
+      [externalPaging]="false"
+      [count]="rows.length"
+      [selected]="selected"
+      [selectionType]="SelectionType.checkbox"
+      [selectAllRowsOnPage]="false"
+      [footerHeight]="null"
+      [activeMoveColumn]="true"
+      [storageKeyMoveColumn]="'divisao-fornecedor-item-action-datatable-list'"
+      (select)="onSelect($event)"
+      [rowClickActiveSelected]="false"
+      [preventDefaultClickEnable]="false"
+      [fileTitle]="'DIVISAO-FORNECEDOR.LOJAS' | translator"
+    >
+      <vrc-datatable-column
+        [widthFixed]="true"
+        [width]="3.75"
+        [sortable]="false"
+        [canAutoResize]="false"
+        [draggable]="false"
+        [resizeable]="false"
+        [headerCheckboxable]="true"
+        [checkboxable]="true"
+        [hideColumn]="false"
+      >
+      </vrc-datatable-column>
+
+      <vrc-datatable-column
+        name="descricaoEmpresa"
+        prop="descricaoEmpresa"
+        label="Empresa"
+      >
+      </vrc-datatable-column>
+
+      <vrc-datatable-column
+        name="descricaoLoja"
+        prop="descricaoLoja"
+        label="Loja"
+      >
+      </vrc-datatable-column>
+
+      <vrc-datatable-column
+        name="frequenciaVisita"
+        prop="frequenciaVisita"
+        label="Frequência Visita (em dias)"
+        cellClass="overflow-visible"
+        [translate]="true"
+      >
+        <ng-template vrc-datatable-header-template>
+          Frequência Visita (em dias) &nbsp;
+          <vrc-tooltip
+            [message]="'Frequência Visita (em dias)'"
+            [error]="true"
+            [width]="10"
+            [bottomLeft]="true"
+            [tooltipOverlay]="true"
+          ></vrc-tooltip>
+        </ng-template>
+        <ng-template
+          let-row="row"
+          let-index="rowIndex"
+          vrc-datatable-cell-template
+        >
+          <div [formGroupName]="index" class="col-sm-7">
+            <vrc-input
+              class="cell-input"
+              type="number"
+              formControlName="frequenciaVisita"
+              [hideLabel]="true"
+              [tooltipSideError]="true"
+              [tooltipBottomLeft]="true"
+              [tooltipOverlay]="true"
+              label="Frequência Visita (em dias)"
+            ></vrc-input>
+          </div>
+        </ng-template>
+      </vrc-datatable-column>
+
+      <vrc-datatable-column
+        name="prazoEntrega"
+        prop="prazoEntrega"
+        label="Prazo de Entrega (em dias)"
+        cellClass="overflow-visible"
+        [translate]="true"
+      >
+        <ng-template vrc-datatable-header-template>
+          Prazo de Entrega (em dias) &nbsp;
+          <vrc-tooltip
+            [message]="'Prazo de Entrega (em dias)'"
+            [error]="true"
+            [width]="10"
+            [topRight]="true"
+            [tooltipOverlay]="true"
+          ></vrc-tooltip>
+        </ng-template>
+        <ng-template
+          let-row="row"
+          let-index="rowIndex"
+          vrc-datatable-cell-template
+        >
+          <div [formGroupName]="index" class="col-sm-7">
+            <vrc-input
+              class="cell-input"
+              type="number"
+              formControlName="prazoEntrega"
+              [hideLabel]="true"
+              [tooltipSideError]="true"
+              [tooltipTopRight]="true"
+              [tooltipOverlay]="true"
+              label="Prazo de Entrega (em dias)"
+            ></vrc-input>
+          </div>
+        </ng-template>
+      </vrc-datatable-column>
+
+      <vrc-datatable-column
+        name="prazoSeguranca"
+        prop="prazoSeguranca"
+        label="Prazo Segurança (em dias)"
+        cellClass="overflow-visible"
+        [translate]="true"
+      >
+        <ng-template vrc-datatable-header-template>
+          Prazo Segurança (em dias) &nbsp;
+          <vrc-tooltip
+            [message]="'Prazo Segurança (em dias)'"
+            [error]="true"
+            [width]="10"
+            [topLeft]="true"
+            [tooltipOverlay]="true"
+          ></vrc-tooltip>
+        </ng-template>
+        <ng-template
+          let-row="row"
+          let-index="rowIndex"
+          vrc-datatable-cell-template
+        >
+          <div [formGroupName]="index" class="col-sm-7">
+            <vrc-input
+              class="cell-input"
+              type="number"
+              formControlName="prazoSeguranca"
+              [hideLabel]="true"
+              [tooltipSideError]="true"
+              [tooltipTopLeft]="true"
+              [tooltipOverlay]="true"
+              label="Prazo Segurança (em dias)"
+            ></vrc-input>
+          </div>
+        </ng-template>
+      </vrc-datatable-column>
+    </vrc-datatable>
+  </ng-container>
+</form>

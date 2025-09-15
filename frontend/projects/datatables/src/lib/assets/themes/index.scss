@@ -1,0 +1,769 @@
+/*
+import 'dark';
+
+  This stylesheet uses scss valiables for most of the colors / background-colors of the table
+  to enable the customization of the displayed table without cloning the stylesheet into the
+  own application.
+
+  To modify table colors, add the following lines to the scss file of your application
+  (this example modifies the color of the selected row - selectionType = single, multi or multiClick):
+
+  --vrc-datatable-selected-active-background: yellow;
+  --vrc-datatable-selected-active-background-hover: rgba(yellow, 0.2);
+
+  @import '~@vrsoftbr/vrc-datatables/vrc-datatable.scss';
+  @import '~@vrsoftbr/vrc-datatables/themes/index.scss';
+
+That's all.
+*/
+
+@import 'dark', 'light';
+
+.vrc-datatable {
+  font-family: 'Roboto', sans-serif;
+
+  .datatable-header,
+  .datatable-footer {
+    background: #eceff1;
+  }
+
+  &.striped {
+    .datatable-row-odd {
+      background: var(--background-color-table-row--odd);
+    }
+  }
+
+  &.single-selection,
+  &.multi-selection,
+  &.multi-click-selection {
+    .datatable-body-row {
+      &.active,
+      &.active .datatable-row-group {
+        border: 0.063rem solid #e8680096;
+      }
+
+      &.active .datatable-row-left,
+      &.active .datatable-row-right {
+        border: none;
+      }
+    }
+  }
+
+  &:not(.cell-selection) {
+    .datatable-body-row {
+      &:not(.active):not(.active-row) {
+        &:hover,
+        &:hover .datatable-row-group {
+          background: var(--vrc-datatable-default-background-hover);
+          transition-property: background;
+          transition-duration: 0.3s;
+          transition-timing-function: linear;
+
+          .vrc-datatable {
+            .datatable-body {
+              .datatable-row-wrapper {
+                .datatable-body-row {
+                  .datatable-row-group {
+                    background: transparent;
+                    transition: none;
+                  }
+                  &.datatable-row-odd {
+                    background: var(--background-color-table-row--odd);
+                  }
+
+                  &:not(.active):not(.active-row) {
+                    &:hover,
+                    &:hover .datatable-row-group {
+                      background: var(--vrc-datatable-default-background-hover);
+                      transition-property: background;
+                      transition-duration: 0.3s;
+                      transition-timing-function: cubic-bezier(
+                        0.075,
+                        0.82,
+                        0.165,
+                        1
+                      );
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        &:focus,
+        &:focus .datatable-row-group {
+          background-color: var(--vrc-datatable-default-background-focus);
+        }
+      }
+
+      .vrc-datatable .datatable-body-row:hover,
+      .vrc-datatable .datatable-body-row:hover .datatable-row-group {
+        background: transparent;
+      }
+    }
+  }
+
+  &.cell-selection {
+    .datatable-body-cell {
+      &:hover,
+      &:hover .datatable-row-group {
+        background-color: var(--vrc-datatable-cellselection-background-hover);
+        transition-property: background;
+        transition-duration: 0.3s;
+        transition-timing-function: linear;
+      }
+
+      &:focus,
+      &:focus .datatable-row-group {
+        background-color: var(--vrc-datatable-cellselection-background-focus);
+      }
+
+      &.active,
+      &.active .datatable-row-group {
+        background-color: var(--vrc-datatable-selected-active-background);
+        color: var(--vrc-datatable-selected-active-color);
+      }
+
+      &.active:hover,
+      &.active:hover .datatable-row-group {
+        background-color: var(--vrc-datatable-selected-active-background-hover);
+        color: var(--vrc-datatable-selected-active-color-hover);
+      }
+
+      &.active:focus,
+      &.active:focus .datatable-row-group {
+        background-color: var(--vrc-datatable-selected-active-background-focus);
+        color: var(--vrc-datatable-selected-active-color-focus);
+      }
+    }
+  }
+
+  /**
+	 * Shared Styles
+	 */
+  .empty-row {
+    height: 3.125rem;
+    text-align: center;
+    padding: 0.5rem 1.2rem;
+    vertical-align: top;
+    border-top: 0;
+  }
+
+  .loading-row {
+    text-align: left;
+    padding: 0.5rem 1.2rem;
+    vertical-align: top;
+    border-top: 0;
+  }
+
+  /**
+	 * Global Row Styles
+	 */
+  .datatable-header,
+  .datatable-body {
+    .datatable-row-left {
+      background-color: var(--vrc-datatable-background);
+      background-position: 100% 0;
+      background-repeat: repeat-y;
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAABCAYAAAD5PA/NAAAAFklEQVQIHWPSkNeSBmJhTQVtbiDNCgASagIIuJX8OgAAAABJRU5ErkJggg==);
+    }
+
+    .datatable-row-right {
+      background-position: 0 0;
+      background-color: var(--vrc-datatable-background);
+      background-repeat: repeat-y;
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAABCAYAAAD5PA/NAAAAFklEQVQI12PQkNdi1VTQ5gbSwkAsDQARLAIGtOSFUAAAAABJRU5ErkJggg==);
+    }
+  }
+
+  /**
+	 * Tools Styles
+	 */
+  .datatable-tools {
+    min-height: 3.125rem;
+  }
+
+  /**
+	 * Header Styles
+	 */
+  .datatable-header {
+    min-height: 2.625rem;
+
+    .datatable-header-cell {
+      text-align: left;
+      padding: 0 0.5rem;
+      background-color: var(--background-table-header);
+      color: var(--color-text-table-header);
+      vertical-align: bottom;
+      font-style: normal;
+      font-variant-ligatures: normal;
+      font-variant-caps: normal;
+      font-variant-numeric: normal;
+      font-variant-east-asian: normal;
+      font-weight: 500;
+      font-stretch: normal;
+      font-size: 0.875rem;
+      line-height: 1.5rem;
+      letter-spacing: 0.009rem;
+
+      .datatable-header-cell-wrapper {
+        position: relative;
+      }
+
+      &.move-colum {
+        .draggable {
+          display: flex;
+          width: calc(100% + 2.188rem);
+          .datatable-checkbox {
+            span {
+              &::after,
+              &::before {
+                width: 1.25rem !important;
+                height: 1.25rem !important;
+              }
+            }
+          }
+
+          &::before,
+          &::after {
+            transition:
+              transform 400ms ease,
+              opacity 400ms ease;
+            opacity: 0.8;
+            transform: scale(1);
+          }
+        }
+      }
+
+      .draggable {
+        &::before,
+        &::after {
+          position: absolute;
+          color: var(--color-default);
+          opacity: 1;
+          filter: none;
+          transform: scale(0);
+          z-index: 9999;
+          pointer-events: none;
+        }
+
+        &::before {
+          content: ' ';
+          margin: -0.375rem 0 0 -0.313rem;
+          height: 2.25rem;
+          width: calc(100% + 2.75rem);
+          border-radius: 0.5rem;
+          border: dashed;
+          border-width: 0.063rem;
+          border-color: #e86800;
+        }
+
+        &::after {
+          display: flex;
+          content: '.';
+          left: 100%;
+          line-height: 0.625rem;
+          width: 0.625rem;
+          height: 1.875rem;
+          margin: 0 0 0 1.25rem;
+          text-shadow:
+            0 0.313rem #e86800,
+            0 0.625rem #e86800,
+            0.313rem 0 #e86800,
+            0.313rem 0.313rem #e86800,
+            0.313rem 0.625rem #e86800;
+        }
+
+        &.hidden {
+          color: var(--color-5);
+
+          &::before,
+          &::after {
+            color: var(--color-5);
+          }
+
+          &::before {
+            border-color: var(--color-5);
+          }
+
+          &::after {
+            text-shadow:
+              0 0.313rem var(--color-5),
+              0 0.625rem var(--color-5),
+              0.313rem 0 var(--color-5),
+              0.313rem 0.313rem var(--color-5),
+              0.313rem 0.625rem var(--color-5);
+          }
+        }
+      }
+
+      &.dragging {
+        .resize-handle {
+          border-right: none;
+        }
+      }
+    }
+
+    .resize-handle {
+      border-right: solid 0.063rem var(--datatable-header-resize-handle-color);
+    }
+  }
+
+  /**
+	 * Body Styles
+	 */
+  .datatable-body {
+    background: var(--background-color-table-row);
+    position: relative;
+
+    .datatable-row-detail {
+      background: var(--datatable-row-detail-background);
+      padding: 0.625rem;
+    }
+
+    .datatable-group-header {
+      background: var(--datatable-group-header-background);
+      border-top: 0.063rem solid var(--datatable-footer-borders-color);
+      padding: 0.3rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--color-text-table-header);
+      cursor: pointer;
+
+      .expand-group-icon {
+        margin-right: 0.5rem;
+      }
+    }
+
+    .datatable-body-row {
+      border: 0.063rem solid transparent;
+
+      .datatable-body-cell {
+        text-align: left;
+        padding: 0 0.5rem;
+        vertical-align: top;
+        color: var(--color-text-table-body);
+        transition: width 0.3s ease;
+        font-style: normal;
+        font-variant-ligatures: normal;
+        font-variant-caps: normal;
+        font-variant-numeric: normal;
+        font-variant-east-asian: normal;
+        font-weight: 400;
+        font-stretch: normal;
+        font-size: 0.875rem;
+        line-height: 2rem;
+        min-height: 2rem;
+        letter-spacing: 0.009rem;
+        border: none;
+        border-right: 0.063rem solid transparent;
+
+        .datatable-body-cell-label {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          height: 100%;
+
+          &.hidden {
+            color: var(--color-5);
+          }
+        }
+
+        .center-icons vrc-icon i {
+          &.vr-email {
+            width: 0.85rem;
+            height: 0.85rem;
+            background-size: 0.85rem 0.85rem;
+          }
+
+          &.vr-editar,
+          &.vr-lixo {
+            width: 1.5rem;
+            height: 1.5rem;
+            background-size: 1.5rem 1.5rem;
+          }
+        }
+      }
+
+      .datatable-body-group-cell {
+        text-align: left;
+        padding: 0 0.65rem;
+        vertical-align: top;
+        border-top: 0;
+        color: var(--datatable-body-cell-color);
+        transition: width 0.3s ease;
+        font-size: 0.75rem;
+        line-height: 1.875rem;
+        font-weight: 400;
+        min-height: 1.875rem;
+      }
+
+      &.active-row {
+        border: 0.063rem solid #e8680096;
+      }
+
+      .datatable-row-add {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+      }
+    }
+
+    .progress-linear {
+      display: block;
+      position: sticky;
+      width: 100%;
+      height: 0.313rem;
+      padding: 0;
+      margin: 0;
+      top: 0;
+
+      .container {
+        display: block;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 0.313rem;
+        -webkit-transform: translate(0, 0) scale(1, 1);
+        transform: translate(0, 0) scale(1, 1);
+        background-color: rgb(170, 209, 249);
+
+        .bar {
+          -webkit-animation: query 0.8s infinite
+            cubic-bezier(0.39, 0.575, 0.565, 1);
+          animation: query 0.8s infinite cubic-bezier(0.39, 0.575, 0.565, 1);
+
+          transition: transform 0.2s linear;
+          background-color: rgb(16, 108, 200);
+
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          width: 100%;
+          height: 0.313rem;
+        }
+      }
+    }
+  }
+
+  /**
+	 * Footer Styles
+	 */
+  .datatable-footer {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1rem;
+    letter-spacing: 0.009rem;
+    color: var(--color-text);
+    background: var(--color-gray-50);
+    border-top: 0.063rem solid var(--datatable-footer-borders-color);
+
+    .page-count {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      span {
+        display: inline-flex;
+        margin: 0;
+        font-size: 0.625rem !important;
+        line-height: 0.75rem !important;
+        padding: 0 0.75rem;
+
+        &:first-child {
+          border-right: 0.063rem solid var(--datatable-footer-borders-color);
+          display: flex;
+          align-items: center;
+        }
+
+        &:last-child {
+          div {
+            margin-right: 0.188rem;
+          }
+        }
+
+        @media screen and (min-width: 62.5rem) {
+          font-size: 0.75rem !important;
+          line-height: 0.875rem !important;
+          padding: 0 0.875rem;
+        }
+
+        @media screen and (min-width: 75rem) {
+          font-size: 0.875rem !important;
+          line-height: 1.125rem !important;
+          padding: 0 1rem;
+        }
+      }
+
+      select {
+        border: none;
+        background: transparent;
+        margin: 0;
+
+        font-size: 0.75rem !important;
+        padding: 0.25rem 0.75rem;
+        line-height: 0.875rem !important;
+
+        @media screen and (min-width: 75rem) {
+          font-size: 0.875rem !important;
+          line-height: 1.125rem !important;
+          padding: 0 1rem;
+        }
+
+        option {
+          color: var(--color-text);
+          background: var(--color-tertiary);
+        }
+      }
+    }
+
+    .datatable-pager {
+      margin: 0 0 0 0.625rem;
+
+      li {
+        vertical-align: middle;
+
+        &.pages-action {
+          border: none;
+          background: transparent;
+
+          a {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            width: 1.5rem;
+
+            i {
+              filter: var(--datatable-pager-buttons-filter);
+            }
+          }
+
+          &:nth-child(2) {
+            margin-right: 0.5rem;
+
+            a {
+              padding-right: 0.063rem;
+            }
+          }
+
+          &:nth-last-child(2) {
+            margin-left: 0.5rem;
+
+            a {
+              padding-left: 0.063rem;
+            }
+          }
+
+          &.disabled {
+            a[role='button'] {
+              i {
+                filter: var(--datatable-pager-buttons-filter--disabled);
+              }
+            }
+          }
+
+          &:not(.disabled) {
+            a {
+              &:hover {
+                border-radius: 50%;
+                background: var(--datatable-pager-buttons-background--hover);
+              }
+            }
+          }
+        }
+
+        &.pages {
+          a {
+            margin: 0 0.15rem;
+          }
+
+          &:not(.active):not(.disabled) {
+            a {
+              &:hover {
+                &::after {
+                  content: '';
+                  position: absolute;
+                  top: 78%;
+                  left: 12.5%;
+                  width: 75%;
+                  height: 0.063rem;
+                  background: var(--color-gray-900);
+                }
+              }
+            }
+          }
+        }
+
+        &.active a {
+          font-weight: 700;
+        }
+      }
+
+      a {
+        font-size: 0.875rem;
+        height: 1.5rem;
+        min-width: 1.5rem;
+        line-height: 1rem;
+        color: var(--color-gray-900);
+        text-decoration: none;
+      }
+
+      .datatable-icon-left,
+      .datatable-icon-skip,
+      .datatable-icon-right,
+      .datatable-icon-prev {
+        font-size: 1.25rem;
+        line-height: 2.063rem;
+        padding: 0 0.188rem;
+      }
+    }
+  }
+
+  // Summary row styles
+  .datatable-summary-row {
+    .datatable-body-row {
+      &:hover {
+        background-color: var(--datatable-summary-row-background-hover);
+      }
+
+      .datatable-body-cell {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+/**
+ * Checkboxes
+**/
+.datatable-checkbox {
+  display: flex;
+  align-items: baseline;
+
+  .checkbox__label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: -0.043rem !important;
+
+    &:after {
+      position: relative;
+      top: auto;
+      left: auto;
+      margin-top: -0.1rem;
+    }
+
+    &.minus-check {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:after {
+        position: relative;
+        border-width: 0 0rem 0.21rem 0;
+        transform: none;
+        top: auto;
+        left: auto;
+        height: auto;
+        margin-top: 0;
+        width: 0.6rem;
+      }
+    }
+  }
+
+  &.checkbox-default {
+    position: relative;
+    margin: 0;
+    cursor: pointer;
+    vertical-align: middle;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0;
+
+    input[type='checkbox'] {
+      position: relative;
+      width: 0;
+      cursor: pointer;
+      outline: none;
+      border-radius: 0.25rem;
+      transform: translateY(25%);
+      margin-bottom: 0;
+
+      ~ span {
+        &.checkbox {
+          &:before {
+            -webkit-transition: all 0.3s ease-in-out;
+            -moz-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+            content: '';
+            position: absolute;
+            top: calc(50% - (1.25rem / 2));
+            left: 0;
+            z-index: 1;
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 0.063rem solid var(--datatable-checkbox-border-color);
+            border-radius: 0.25rem;
+          }
+
+          &:after {
+            content: '';
+            position: absolute;
+            top: calc(50% - (1.25rem / 2));
+            left: 0;
+            width: 1.25rem;
+            height: 1.25rem;
+            background: var(--background-checkbox);
+            cursor: pointer;
+            border-radius: 0.25rem;
+          }
+        }
+      }
+
+      &:checked {
+        ~ span {
+          &.checkbox {
+            &::before {
+              -webkit-transform: rotate(-45deg);
+              -moz-transform: rotate(-45deg);
+              -ms-transform: rotate(-45deg);
+              transform: rotate(-45deg);
+              height: 0.438rem;
+              top: calc(50% - (0.58rem / 2));
+              left: 0.25rem;
+              width: 0.75rem;
+              border-color: var(--datatable-checkbox-checked-border-color);
+              border-width: 0.2rem;
+              border-top-style: none;
+              border-right-style: none;
+              border-radius: 0;
+            }
+            &::after {
+              background: var(--color-default);
+              border: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Progress bar animations
+ */
+@keyframes query {
+  0% {
+    opacity: 1;
+    transform: translateX(35%) scale(0.3, 1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0, 1);
+  }
+}

@@ -1,0 +1,658 @@
+[
+  {
+    "menuLabel": "MENU.OPERACOES",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.PESSOA",
+    "formularioValue": 1000,
+    "rota": "operacao/cadastro/pessoa"
+  },
+  {
+    "menuLabel": "MENU.OPERACOES",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.PRODUTO",
+    "formularioValue": 1001,
+    "rota": "operacao/cadastro/produto"
+  },
+  {
+    "menuLabel": "MENU.OPERACOES",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.MARCA",
+    "formularioValue": 1002,
+    "rota": "operacao/cadastro/marca"
+  },
+  {
+    "menuLabel": "MENU.OPERACOES",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.FAMILIA-PRODUTO",
+    "formularioValue": 1003,
+    "rota": "operacao/cadastro/familia-produto"
+  },
+  {
+    "menuLabel": "MENU.OPERACOES",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.LISTAGEM-PRODUTO",
+    "formularioValue": 1009,
+    "rota": "operacao/cadastro/listagem-produto"
+  },
+  {
+    "menuLabel": "MENU.OPERACOES",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.PRODUTO-SIMILAR",
+    "formularioValue": 1011,
+    "rota": "operacao/cadastro/produto-similar"
+  },
+  {
+    "menuLabel": "MENU.OPERACOES",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.MOTIVO",
+    "formularioValue": 1004,
+    "rota": "operacao/cadastro/motivo"
+  },
+  {
+    "menuLabel": "MENU.OPERACOES",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.LOCAIS-ESTOQUE",
+    "formularioValue": 1005,
+    "rota": "operacao/cadastro/local-estoque"
+  },
+  {
+    "menuLabel": "MENU.OPERACOES",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.CLASSIFICACAO-PRODUTO",
+    "formularioValue": 1006,
+    "rota": "operacao/cadastro/classificacao-produto"
+  },
+  {
+    "menuLabel": "MENU.OPERACOES",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.TIPO-MOVIMENTACAO",
+    "formularioValue": 1007,
+    "rota": "operacao/cadastro/tipo-movimentacao"
+  },
+  {
+    "menuLabel": "MENU.OPERACOES",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.TABELA-NUTRICIONAL",
+    "formularioValue": 1008,
+    "rota": "operacao/cadastro/tabela-nutricional"
+  },
+  {
+    "menuLabel": "MENU.OPERACOES",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.CALENDARIO-LOCAL",
+    "formularioValue": 1010,
+    "rota": "operacao/cadastro/calendario-local"
+  },
+  {
+    "menuLabel": "MENU.OPERACOES",
+    "subMenuLabel": "SUB-MENU.ESTOQUE",
+    "formularioLabel": "FORM.MOVIMENTACAO-ESTOQUE",
+    "formularioValue": 2000,
+    "rota": "operacao/estoque/movimentacao-estoque"
+  },
+  {
+    "menuLabel": "MENU.OPERACOES",
+    "subMenuLabel": "SUB-MENU.ESTOQUE",
+    "formularioLabel": "FORM.BALANCO",
+    "formularioValue": 2002,
+    "rota": "operacao/estoque/balanco"
+  },
+  {
+    "menuLabel": "MENU.OPERACOES",
+    "subMenuLabel": "SUB-MENU.ESTOQUE",
+    "formularioLabel": "FORM.CONGELAMENTO-ESTOQUE",
+    "formularioValue": 2003,
+    "rota": "operacao/estoque/congelamento-estoque"
+  },
+  {
+    "menuLabel": "MENU.OPERACOES",
+    "subMenuLabel": "SUB-MENU.ESTOQUE",
+    "formularioLabel": "FORM.DECOMPOSICAO-PRODUTO",
+    "formularioValue": 2004,
+    "rota": "operacao/estoque/decomposicao-produto"
+  },
+  {
+    "menuLabel": "MENU.OPERACOES",
+    "subMenuLabel": "SUB-MENU.ESTOQUE",
+    "formularioLabel": "FORM.TRANSFORMAR",
+    "formularioValue": 2001,
+    "rota": "operacao/estoque/transformar"
+  },
+  {
+    "menuLabel": "MENU.OPERACOES",
+    "subMenuLabel": "SUB-MENU.ESTOQUE",
+    "formularioLabel": "FORM.PRODUCAO",
+    "formularioValue": 2005,
+    "rota": "operacao/estoque/producao"
+  },
+  {
+    "menuLabel": "MENU.OPERACOES",
+    "subMenuLabel": "SUB-MENU.RELATORIOS",
+    "formularioLabel": "FORM.ENTRADA-SAIDA",
+    "formularioValue": 3004,
+    "rota": "operacao/relatorio/entrada-saida"
+  },
+  {
+    "menuLabel": "MENU.OPERACOES",
+    "subMenuLabel": "SUB-MENU.RELATORIOS",
+    "formularioLabel": "FORM.EXTRATO-MOVIMENTACAO",
+    "formularioValue": 3001,
+    "rota": "operacao/relatorio/extrato-movimentacao"
+  },
+  {
+    "menuLabel": "MENU.OPERACOES",
+    "subMenuLabel": "SUB-MENU.RELATORIOS",
+    "formularioLabel": "FORM.POSICAO-ESTOQUE",
+    "formularioValue": 3000,
+    "rota": "operacao/relatorio/posicao-estoque"
+  },
+  {
+    "menuLabel": "MENU.OPERACOES",
+    "subMenuLabel": "SUB-MENU.ETIQUETA",
+    "formularioLabel": "FORM.MODELO-ETIQUETA",
+    "formularioValue": 5002,
+    "rota": "operacao/etiqueta/modelo-etiqueta"
+  },
+  {
+    "menuLabel": "MENU.OPERACOES",
+    "subMenuLabel": "SUB-MENU.ETIQUETA",
+    "formularioLabel": "FORM.CONFIGURACAO",
+    "formularioValue": 5000,
+    "rota": "operacao/etiqueta/configuracao"
+  },
+  {
+    "menuLabel": "MENU.OPERACOES",
+    "subMenuLabel": "SUB-MENU.ETIQUETA",
+    "formularioLabel": "FORM.EMISSAO",
+    "formularioValue": 5001,
+    "rota": "operacao/etiqueta/emissao"
+  },
+  {
+    "menuLabel": "MENU.COMPRAS",
+    "formularioLabel": "FORM.PEDIDO-COMPRA",
+    "formularioValue": 6000,
+    "rota": "compra/pedido-compra"
+  },
+  {
+    "menuLabel": "MENU.COMPRAS",
+    "formularioLabel": "FORM.SUGESTAO-COMPRA",
+    "formularioValue": 6002,
+    "rota": "compra/sugestao-compra"
+  },
+  {
+    "menuLabel": "MENU.COMPRAS",
+    "subMenuLabel": "SUB-MENU.PRECIFICACAO",
+    "formularioLabel": "FORM.ACERTO-CUSTO",
+    "formularioValue": 7000,
+    "rota": "compra/precificacao/acerto-custo"
+  },
+  {
+    "menuLabel": "MENU.COMPRAS",
+    "subMenuLabel": "SUB-MENU.PRECIFICACAO",
+    "formularioLabel": "FORM.ADMINISTRACAO-PRECO",
+    "formularioValue": 7001,
+    "rota": "compra/precificacao/administracao-precos"
+  },
+  {
+    "menuLabel": "MENU.COMPRAS",
+    "subMenuLabel": "SUB-MENU.PRECIFICACAO",
+    "formularioLabel": "FORM.HISTORICO-PRECO",
+    "formularioValue": 7002,
+    "rota": "compra/precificacao/historico-preco"
+  },
+  {
+    "menuLabel": "MENU.COMPRAS",
+    "subMenuLabel": "SUB-MENU.PRECIFICACAO",
+    "formularioLabel": "FORM.REVISAO-PRECO",
+    "formularioValue": 7003,
+    "rota": "compra/precificacao/revisao-preco"
+  },
+  {
+    "menuLabel": "MENU.COMPRAS",
+    "subMenuLabel": "SUB-MENU.PRECIFICACAO",
+    "formularioLabel": "FORM.ADMINISTRACAO-PRECO-IMEDIATA",
+    "formularioValue": 7004,
+    "rota": "compra/precificacao/administracao-preco-imediata"
+  },
+  {
+    "menuLabel": "MENU.COMPRAS",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.DIVISAO-FORNECEDOR",
+    "formularioValue": 8000,
+    "rota": "compra/cadastro/divisao-fornecedor"
+  },
+  {
+    "menuLabel": "MENU.COMPRAS",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.TABELA-FORNECEDOR",
+    "formularioValue": 8001,
+    "rota": "compra/cadastro/tabela-fornecedor"
+  },
+  {
+    "menuLabel": "MENU.COMPRAS",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.FAMILIA-FORNECEDOR",
+    "formularioValue": 8002,
+    "rota": "compra/cadastro/familia-fornecedor"
+  },
+  {
+    "menuLabel": "MENU.COMPRAS",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.GRUPO-PRECO",
+    "formularioValue": 8003,
+    "rota": "compra/cadastro/grupo-preco"
+  },
+  {
+    "menuLabel": "MENU.COMPRAS",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.TABELA-PRECO-FORNECEDOR",
+    "formularioValue": 8004,
+    "rota": "compra/cadastro/tabela-preco-fornecedor"
+  },
+  {
+    "menuLabel": "MENU.COMPRAS",
+    "subMenuLabel": "SUB-MENU.PENDENCIA",
+    "formularioLabel": "FORM.ANALISE-NEGOCIACAO",
+    "formularioValue": 9000,
+    "rota": "compra/pendencia/analise-negociacao"
+  },
+  {
+    "menuLabel": "MENU.VENDAS",
+    "formularioLabel": "FORM.PEDIDO-VENDA",
+    "formularioValue": 10003,
+    "rota": "venda/pedido-venda"
+  },
+  {
+    "menuLabel": "MENU.VENDAS",
+    "subMenuLabel": "SUB-MENU.OPERACAO",
+    "formularioLabel": "FORM.CONTROLE-VASILHAME",
+    "formularioValue": 10000,
+    "rota": "venda/operacao/controle-vasilhame"
+  },
+  {
+    "menuLabel": "MENU.VENDAS",
+    "subMenuLabel": "SUB-MENU.OPERACAO",
+    "formularioLabel": "FORM.TROCA-DEVOLUCAO",
+    "formularioValue": 10001,
+    "rota": "venda/operacao/troca-devolucao"
+  },
+  {
+    "menuLabel": "MENU.VENDAS",
+    "subMenuLabel": "SUB-MENU.RELATORIOS",
+    "formularioLabel": "FORM.EXTRATO-VENDA",
+    "formularioValue": 11000,
+    "rota": "venda/relatorio/extrato-venda"
+  },
+  {
+    "menuLabel": "MENU.VENDAS",
+    "subMenuLabel": "SUB-MENU.RELATORIOS",
+    "formularioLabel": "FORM.INCONSISTENCIA-VENDAS",
+    "formularioValue": 3003,
+    "rota": "venda/relatorio/inconsistencia-vendas"
+  },
+  {
+    "menuLabel": "MENU.VENDAS",
+    "subMenuLabel": "SUB-MENU.RELATORIOS",
+    "formularioLabel": "FORM.PRODUTO-SEM-VENDA",
+    "formularioValue": 11002,
+    "rota": "venda/relatorio/produto-sem-venda"
+  },
+  {
+    "menuLabel": "MENU.FINANCEIRO",
+    "formularioLabel": "FORM.CONTAS-RECEBER",
+    "formularioValue": 12000,
+    "rota": "financeiro/contas-receber"
+  },
+  {
+    "menuLabel": "MENU.FINANCEIRO",
+    "formularioLabel": "FORM.CONTAS-PAGAR",
+    "formularioValue": 12001,
+    "rota": "financeiro/contas-pagar"
+  },
+  {
+    "menuLabel": "MENU.FINANCEIRO",
+    "formularioLabel": "FORM.BAIXA-TITULO",
+    "formularioValue": 12002,
+    "rota": "financeiro/baixa-titulos"
+  },
+  {
+    "menuLabel": "MENU.FINANCEIRO",
+    "formularioLabel": "FORM.BAIXA-CARTAO",
+    "formularioValue": 12004,
+    "rota": "financeiro/baixa-cartoes"
+  },
+  {
+    "menuLabel": "MENU.FINANCEIRO",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.BANDEIRA",
+    "formularioValue": 13000,
+    "rota": "financeiro/cadastro/bandeira"
+  },
+  {
+    "menuLabel": "MENU.FINANCEIRO",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.TAXA-PARCELAMENTO-BANDEIRA",
+    "formularioValue": 13001,
+    "rota": "financeiro/cadastro/taxa-parcelamento-bandeira"
+  },
+  {
+    "menuLabel": "MENU.FINANCEIRO",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.VENCIMENTO-BANDEIRA",
+    "formularioValue": 13002,
+    "rota": "financeiro/cadastro/vencimento-bandeira"
+  },
+  {
+    "menuLabel": "MENU.FINANCEIRO",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.NEGOCIACAO-OPERADORA",
+    "formularioValue": 13004,
+    "rota": "financeiro/cadastro/negociacao-operadora"
+  },
+  {
+    "menuLabel": "MENU.FINANCEIRO",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.CONDICOES-PAGAMENTO",
+    "formularioValue": 13005,
+    "rota": "financeiro/cadastro/condicao-pagamento"
+  },
+  {
+    "menuLabel": "MENU.FINANCEIRO",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.BANCO-CONTA-CORRENTE",
+    "formularioValue": 13006,
+    "rota": "financeiro/cadastro/banco-conta-corrente"
+  },
+  {
+    "menuLabel": "MENU.FINANCEIRO",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.FORMAS-PAGAMENTO",
+    "formularioValue": 13007,
+    "rota": "financeiro/cadastro/forma-pagamento"
+  },
+  {
+    "menuLabel": "MENU.FINANCEIRO",
+    "subMenuLabel": "SUB-MENU.TESOURARIA",
+    "formularioLabel": "FORM.VISAO-CAIXA",
+    "formularioValue": 14000,
+    "rota": "financeiro/tesouraria/visao-caixa"
+  },
+  {
+    "menuLabel": "MENU.FINANCEIRO",
+    "subMenuLabel": "SUB-MENU.TESOURARIA",
+    "formularioLabel": "FORM.RELATORIO-ABASTECIMENTO-RETIRADA",
+    "formularioValue": 14003,
+    "rota": "financeiro/tesouraria/relatorio-abastecimento-retirada"
+  },
+  {
+    "menuLabel": "MENU.FINANCEIRO",
+    "subMenuLabel": "SUB-MENU.RELATORIOS",
+    "formularioLabel": "FORM.TRANSACAO-TEF",
+    "formularioValue": 14001,
+    "rota": "financeiro/relatorio/transacao-tef"
+  },
+  {
+    "menuLabel": "MENU.FINANCEIRO",
+    "subMenuLabel": "SUB-MENU.RELATORIOS",
+    "formularioLabel": "FORM.ANALISE-SALDO-CREDITO-ROTATIVO",
+    "formularioValue": 15003,
+    "rota": "financeiro/relatorio/analise-saldo-credito-rotativo"
+  },
+  {
+    "menuLabel": "MENU.FINANCEIRO",
+    "subMenuLabel": "SUB-MENU.RELATORIOS",
+    "formularioLabel": "FORM.ANALISE-SALDO-CONVENIO",
+    "formularioValue": 15004,
+    "rota": "financeiro/relatorio/analise-saldo-convenio"
+  },
+  {
+    "menuLabel": "MENU.FINANCEIRO",
+    "subMenuLabel": "SUB-MENU.BANCO",
+    "formularioLabel": "FORM.EXTRATO-BANCARIO",
+    "formularioValue": 16000,
+    "rota": "financeiro/banco/extrato-bancario"
+  },
+  {
+    "menuLabel": "MENU.FINANCEIRO",
+    "subMenuLabel": "SUB-MENU.CONVENIO",
+    "formularioLabel": "FORM.BENEFICIO-CONVENIO-BONUS",
+    "formularioValue": 25000,
+    "rota": "financeiro/convenio/beneficio-convenio-bonus"
+  },
+  {
+    "menuLabel": "MENU.PDV",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.PDV",
+    "formularioValue": 17000,
+    "rota": "pdv/cadastro/ponto-de-venda"
+  },
+  {
+    "menuLabel": "MENU.PDV",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.TECLADO",
+    "formularioValue": 17001,
+    "rota": "pdv/cadastro/teclado"
+  },
+  {
+    "menuLabel": "MENU.PDV",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.OPERADOR",
+    "formularioValue": 17002,
+    "rota": "pdv/cadastro/operador"
+  },
+  {
+    "menuLabel": "MENU.PDV",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.GRUPO-OPERADOR",
+    "formularioValue": 17003,
+    "rota": "pdv/cadastro/grupo-operador"
+  },
+  {
+    "menuLabel": "MENU.PDV",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.MOTIVO-PDV",
+    "formularioValue": 17004,
+    "rota": "pdv/cadastro/motivo"
+  },
+  {
+    "menuLabel": "MENU.PDV",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.PROMOCAO",
+    "formularioValue": 17005,
+    "rota": "pdv/cadastro/promocao"
+  },
+  {
+    "menuLabel": "MENU.PDV",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.LISTAGEM-PRODUTO-PDV",
+    "formularioValue": 17006,
+    "rota": "pdv/cadastro/listagem-produto-pdv"
+  },
+  {
+    "menuLabel": "MENU.PDV",
+    "subMenuLabel": "SUB-MENU.RELATORIOS",
+    "formularioLabel": "FORM.LOG-FUNCAO",
+    "formularioValue": 17900,
+    "rota": "pdv/relatorio/log-funcao"
+  },
+  {
+    "menuLabel": "MENU.PDV",
+    "subMenuLabel": "SUB-MENU.INTEGRACAO",
+    "formularioLabel": "FORM.SCANNTECH",
+    "formularioValue": 17901,
+    "rota": "pdv/integracao/scanntech"
+  },
+  {
+    "menuLabel": "MENU.FISCAL",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.NCM",
+    "formularioValue": 18000,
+    "rota": "fiscal/cadastro/ncm"
+  },
+  {
+    "menuLabel": "MENU.FISCAL",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.CEST",
+    "formularioValue": 18001,
+    "rota": "fiscal/cadastro/cest"
+  },
+  {
+    "menuLabel": "MENU.FISCAL",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.CENARIO-FISCAL",
+    "formularioValue": 18002,
+    "rota": "fiscal/cadastro/cenario-fiscal"
+  },
+  {
+    "menuLabel": "MENU.FISCAL",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.PIS-COFINS",
+    "formularioValue": 18003,
+    "rota": "fiscal/cadastro/pis-cofins"
+  },
+  {
+    "menuLabel": "MENU.FISCAL",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.FUNDAMENTACAO-LEGAL",
+    "formularioValue": 18004,
+    "rota": "fiscal/cadastro/fundamentacao-legal"
+  },
+  {
+    "menuLabel": "MENU.FISCAL",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.NATUREZA-RECEITA",
+    "formularioValue": 18005,
+    "rota": "fiscal/cadastro/natureza-receita"
+  },
+  {
+    "menuLabel": "MENU.FISCAL",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.REGRA-FISCAL",
+    "formularioValue": 18006,
+    "rota": "fiscal/cadastro/regra-fiscal"
+  },
+  {
+    "menuLabel": "MENU.FISCAL",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.CODIGO-AJUSTE-TABELA",
+    "formularioValue": 18008,
+    "rota": "fiscal/cadastro/codigo-ajuste-tabela"
+  },
+  {
+    "menuLabel": "MENU.FISCAL",
+    "subMenuLabel": "SUB-MENU.CADASTROS",
+    "formularioLabel": "FORM.OBSERVACAO-FISCAL",
+    "formularioValue": 18007,
+    "rota": "fiscal/cadastro/observacao-fiscal"
+  },
+  {
+    "menuLabel": "MENU.FISCAL",
+    "subMenuLabel": "SUB-MENU.NOTA-FISCAL",
+    "formularioLabel": "FORM.EMISSAO-NOTA-FISCAL",
+    "formularioValue": 23000,
+    "rota": "fiscal/nota/emissao"
+  },
+  {
+    "menuLabel": "MENU.FISCAL",
+    "subMenuLabel": "SUB-MENU.NOTA-FISCAL",
+    "formularioLabel": "FORM.RECEBIMENTO-NOTA-FISCAL",
+    "formularioValue": 23001,
+    "rota": "fiscal/nota/recebimento"
+  },
+  {
+    "menuLabel": "MENU.FISCAL",
+    "subMenuLabel": "SUB-MENU.SPED",
+    "formularioLabel": "FORM.EFD-ICMS-IPI",
+    "formularioValue": 24000,
+    "rota": "fiscal/sped/efd-icms-ipi"
+  },
+  {
+    "menuLabel": "MENU.FISCAL",
+    "subMenuLabel": "SUB-MENU.SPED",
+    "formularioLabel": "FORM.EFD-CONTRIBUICOES",
+    "formularioValue": 24001,
+    "rota": "fiscal/sped/efd-contribuicoes"
+  },
+  {
+    "menuLabel": "MENU.FISCAL",
+    "subMenuLabel": "SUB-MENU.RELATORIOS",
+    "formularioLabel": "FORM.APURACAO-ESTOQUE",
+    "formularioValue": 26000,
+    "rota": "fiscal/relatorio/apuracao-estoque"
+  },
+  {
+    "menuLabel": "MENU.FISCAL",
+    "subMenuLabel": "SUB-MENU.RELATORIOS",
+    "formularioLabel": "FORM.APURACAO-ICMS",
+    "formularioValue": 26001,
+    "rota": "fiscal/relatorio/apuracao-icms"
+  },
+  {
+    "menuLabel": "MENU.FISCAL",
+    "subMenuLabel": "SUB-MENU.RELATORIOS",
+    "formularioLabel": "FORM.APURACAO-PIS-COFINS",
+    "formularioValue": 26002,
+    "rota": "fiscal/relatorio/apuracao-pis-cofins"
+  },
+  {
+    "menuLabel": "MENU.CONFIGURACOES",
+    "subMenuLabel": "SUB-MENU.GERENCIAMENTO-EMPRESA",
+    "formularioLabel": "FORM.REDE",
+    "formularioValue": 19000,
+    "rota": "configuracoes/gerenciamento-empresa/rede"
+  },
+  {
+    "menuLabel": "MENU.CONFIGURACOES",
+    "subMenuLabel": "SUB-MENU.GERENCIAMENTO-EMPRESA",
+    "formularioLabel": "FORM.EMPRESA",
+    "formularioValue": 19001,
+    "rota": "configuracoes/gerenciamento-empresa/empresa"
+  },
+  {
+    "menuLabel": "MENU.CONFIGURACOES",
+    "subMenuLabel": "SUB-MENU.GERENCIAMENTO-EMPRESA",
+    "formularioLabel": "FORM.LOJA",
+    "formularioValue": 19002,
+    "rota": "configuracoes/gerenciamento-empresa/loja"
+  },
+  {
+    "menuLabel": "MENU.CONFIGURACOES",
+    "subMenuLabel": "SUB-MENU.GERENCIAMENTO-USUARIO",
+    "formularioLabel": "FORM.USUARIO",
+    "formularioValue": 20000,
+    "rota": "configuracoes/usuario-permissao/usuario"
+  },
+  {
+    "menuLabel": "MENU.CONFIGURACOES",
+    "subMenuLabel": "SUB-MENU.GERENCIAMENTO-USUARIO",
+    "formularioLabel": "FORM.SETOR",
+    "formularioValue": 20001,
+    "rota": "configuracoes/usuario-permissao/setor"
+  },
+  {
+    "menuLabel": "MENU.CONFIGURACOES",
+    "subMenuLabel": "SUB-MENU.GERENCIAMENTO-USUARIO",
+    "formularioLabel": "FORM.GRUPO-PERMISSAO",
+    "formularioValue": 20002,
+    "rota": "configuracoes/usuario-permissao/grupo"
+  },
+  {
+    "menuLabel": "MENU.CONFIGURACOES",
+    "subMenuLabel": "SUB-MENU.DADOS-PRIVACIDADE",
+    "formularioLabel": "FORM.TERMO-CONSENTIMENTO-LGPD",
+    "formularioValue": 21000,
+    "rota": "configuracoes/dado-privacidade/termo-consentimento"
+  },
+  {
+    "menuLabel": "MENU.CONFIGURACOES",
+    "formularioLabel": "FORM.PARAMETRIZACAO",
+    "formularioValue": 22000,
+    "rota": "configuracoes/parametrizacao"
+  },
+  {
+    "menuLabel": "MENU.CONFIGURACOES",
+    "formularioLabel": "FORM.MONITOR-FILAS",
+    "formularioValue": 27000,
+    "rota": "configuracoes/monitor-filas"
+  }
+]

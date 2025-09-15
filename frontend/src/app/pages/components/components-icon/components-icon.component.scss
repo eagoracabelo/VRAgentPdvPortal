@@ -1,0 +1,21 @@
+.clear-content {
+  margin-top: 1.25rem;
+}
+
+.my-icon {
+  filter: invert(8%) sepia(100%) saturate(7483%) hue-rotate(241deg)
+    brightness(113%) contrast(127%);
+}
+
+.my-icon-svg {
+  background: url('./../../../../../public/icons/ubuntu.svg');
+  background-repeat: no-repeat;
+  position: initial;
+  display: inline-block;
+}
+
+.my-icon-svg-url {
+  background-repeat: no-repeat;
+  position: initial;
+  display: inline-block;
+}

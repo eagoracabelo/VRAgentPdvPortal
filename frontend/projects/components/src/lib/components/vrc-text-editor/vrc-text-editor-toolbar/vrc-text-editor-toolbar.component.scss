@@ -1,0 +1,31 @@
+:host {
+  display: block;
+  height: 100%;
+}
+.text-editor-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .text-editor-toolbar-set {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.313rem;
+    padding: 0 0.18rem 0.18rem 0;
+    margin-bottom: 0.625rem;
+    border-bottom: 0.063rem solid var(--border-bottom-color-text-editor-toolbar);
+
+    &.isDisabled {
+      cursor: not-allowed;
+    }
+  }
+
+  .text-editor-toolbar-publish p {
+    margin: 0;
+    text-align: right;
+    font-size: 0.75rem;
+    letter-spacing: 0.001rem;
+    color: var(--color-gray-700);
+  }
+}

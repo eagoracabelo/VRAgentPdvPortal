@@ -1,0 +1,119 @@
+@if (!customTabs) {
+  <ul class="nav__tabs" [class]="linePosition" [class.subTab]="subTab">
+    @for (tab of tabs; track tab; let i = $index) {
+      <li
+        (click)="selectTab(i)"
+        [class]="[borderPosition, styleTab]"
+        [class.active]="currentIndex === i"
+        [class.tab--disabled]="tab.disabled"
+      >
+        <span>|</span>
+        <button
+          type="button"
+          [style]="tab.styleButton"
+          class="btn btn--reset btn--tab"
+        >
+          {{ tab?.label }}
+        </button>
+      </li>
+    }
+  </ul>
+} @else {
+  <ul class="custom-tabs">
+    @for (tab of tabs; track $index; let i = $index) {
+      <li
+        class="custom-tabs__item"
+        [class.active]="currentIndex >= i"
+        [class.tab--disabled]="tab.disabled"
+      >
+        <div class="content" (click)="selectTab(i)">
+          <vrc-icon
+            [name]="tab.icon"
+            width="27"
+            height="27"
+            class="content__icon"
+          ></vrc-icon>
+          <div class="content__text">
+            <span class="label">{{ tab.label }}</span>
+            @if (tab.info) {
+              <span class="info"> {{ tab.info }} </span>
+            }
+          </div>
+        </div>
+        <div class="separator"></div>
+      </li>
+    }
+  </ul>
+}
+
+@if (navButtons && buttonsPosition === 'top') {
+  <div class="navigation__buttons">
+    @if (currentIndex > 0) {
+      <button
+        class="back__button nav"
+        [class.disabled]="isTabDisabled(currentIndex - 1)"
+        (click)="selectTab(currentIndex - 1)"
+      >
+        <vrc-icon
+          name="seta_esquerda"
+          width="15"
+          height="15"
+          class="close"
+        ></vrc-icon>
+        {{ navButtonBackText }}
+      </button>
+    }
+    @if (currentIndex < tabs.length - 1) {
+      <button
+        class="forward__button nav"
+        [class.disabled]="isTabDisabled(currentIndex + 1)"
+        (click)="selectTab(currentIndex + 1)"
+      >
+        <vrc-icon
+          name="seta_direita"
+          width="15"
+          height="15"
+          class="close"
+        ></vrc-icon>
+        {{ navButtonForwardText }}
+      </button>
+    }
+  </div>
+}
+
+<ng-content></ng-content>
+
+@if (navButtons && buttonsPosition === 'bottom') {
+  <div class="navigation__buttons_bottom">
+    @if (currentIndex > 0) {
+      <button
+        class="back__button nav"
+        [class.disabled]="isTabDisabled(currentIndex - 1)"
+        (click)="selectTab(currentIndex - 1)"
+      >
+        <vrc-icon
+          name="seta_esquerda"
+          width="15"
+          height="15"
+          class="close"
+        ></vrc-icon>
+        {{ navButtonBackText }}
+      </button>
+    }
+    @if (currentIndex < tabs.length - 1) {
+      <button
+        class="forward__button nav"
+        [class.disabled]="isTabDisabled(currentIndex + 1)"
+        (click)="selectTab(currentIndex + 1)"
+      >
+        <vrc-icon
+          name="seta_direita"
+          width="15"
+          height="15"
+          class="close"
+        ></vrc-icon>
+        {{ navButtonForwardText }}
+      </button>
+    }
+  </div>
+}

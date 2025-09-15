@@ -1,0 +1,64 @@
+:host {
+  display: flex;
+}
+
+.card--container {
+  box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
+  border: none;
+  max-width: 18.75rem;
+
+  &:hover {
+    border: var(--border-theme--card);
+    box-shadow: var(--box-shadow-theme--card);
+  }
+
+  header {
+    &.card__header {
+      justify-content: center;
+
+      h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.625rem;
+      }
+    }
+  }
+
+  .div__separator {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .card__content {
+    height: 100%;
+    margin-bottom: 1rem;
+
+    p {
+      margin-bottom: 0.9375rem;
+    }
+
+    .card_content-footer {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+
+      button,
+      .btn {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .card__footer {
+    .card_footer-content {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+
+      button,
+      a,
+      .btn {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

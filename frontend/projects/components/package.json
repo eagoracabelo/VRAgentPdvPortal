@@ -1,0 +1,44 @@
+{
+  "name": "@vrsoftbr/vr-components",
+  "version": "18.1.42",
+  "peerDependencies": {
+    "@angular/common": ">=18.2.0",
+    "@angular/core": ">=18.2.0",
+    "@vrsoftbr/vr-design-guide": ">=3.5.0",
+    "lodash": ">=4.17.0",
+    "angular-imask": ">=7.6.0",
+    "@ngneat/cashew": ">=4.1.0",
+    "rxjs": ">=7.8.0",
+    "@angular/cdk": ">=18.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false,
+  "description": "Biblioteca de componentes Angular VR Software",
+  "author": {
+    "name": "VRSoftware",
+    "email": "desenvolvimento@vrsoftbr.com",
+    "url": "http://vrsoft.com.br"
+  },
+  "keywords": [
+    "VR",
+    "vr",
+    "vr software",
+    "vrsoftware",
+    "VR Software",
+    "VR SOFTWARE",
+    "VRSOFTWARE",
+    "vr components",
+    "vr componentes",
+    "components",
+    "componentes"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vrsoftbr/VRUI.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
+}

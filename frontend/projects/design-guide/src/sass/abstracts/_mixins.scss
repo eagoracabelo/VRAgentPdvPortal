@@ -1,0 +1,37 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+// Layout
+@import "../mixins/clearfix";
+@import "../mixins/grid-framework";
+@import "../mixins/grid";
+
+@mixin on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+@mixin when-inside($context) {
+  #{$context} & {
+    @content;
+  }
+}
+
+@mixin hover-style {
+  color: var(--color-gray-300);
+  border-color: lighten(#90a4ae, 33.3%);
+  outline: 0;
+}

@@ -1,0 +1,310 @@
+<div class="row">
+  <div class="card col-md">
+    <header class="card__header">
+      <h3 class="title">VrTreeSelect</h3>
+    </header>
+
+    <div class="card__content content">
+      <vrc-tabs>
+        <vrc-tab label="Documentação">
+          <markdown
+            src="./docs/components/vrc-tree-select.md"
+            (load)="onLoad($event)"
+            (error)="onError($event)"
+          ></markdown>
+        </vrc-tab>
+        <vrc-tab label="Exemplo">
+          <div class="single-selection--container">
+            <h4>Configuração mínima / Sem formulário / Defaults</h4>
+            <div class="single-selection--row">
+              <div class="tree-select--container">
+                <vrc-tree-select
+                  [items]="singleSelectionConfiguration.items"
+                  [isRequired]="singleSelectionConfiguration.required"
+                  expandMode="None"
+                  resetAllSelected="true"
+                  (update)="updateMin($event)"
+                  (onUpdateChildrenAndParents)="
+                    updateChildrenAndParents($event)
+                  "
+                >
+                  <span>TreeSelect</span>
+                </vrc-tree-select>
+                <pre> {{ configMinimaSelecionado | json }} </pre>
+              </div>
+
+              <div class="control-panel--container">
+                <div class="control-panel">
+                  <input
+                    type="checkbox"
+                    name="required"
+                    value="singleSelectionConfiguration.required"
+                    (click)="toggleRequired()"
+                  />
+                  <label for="required">Required</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="single-selection--container">
+            <h4>Seleção única / Com nível mínimo</h4>
+            <div class="single-selection--row">
+              <div class="tree-select--container">
+                <vrc-tree-select
+                  [items]="singleSelectionMinLevelConfiguration.items"
+                  [multiple]="singleSelectionMinLevelConfiguration.multiple"
+                  [isRequired]="singleSelectionMinLevelConfiguration.required"
+                  [allowFilter]="
+                    singleSelectionMinLevelConfiguration.showFilter
+                  "
+                  [minLevelToSelect]="
+                    singleSelectionMinLevelConfiguration.minLevelToSelect
+                  "
+                  [resetAllSelected]="
+                    singleSelectionMinLevelConfiguration.resetAllSelected
+                  "
+                  [filterCaseSensitive]="
+                    singleSelectionMinLevelConfiguration.filterCaseSensitive
+                  "
+                  [allowParentSelection]="
+                    singleSelectionMinLevelConfiguration.allowParentSelection
+                  "
+                  (update)="updateMinLevel($event)"
+                  (onUpdateChildrenAndParents)="
+                    updateChildrenAndParents($event)
+                  "
+                >
+                  <span>TreeSelect</span>
+                </vrc-tree-select>
+                <pre> {{ configMinLevelSelecionado | json }} </pre>
+              </div>
+
+              <div class="control-panel--container">
+                <div class="control-panel">
+                  <input
+                    type="checkbox"
+                    name="requiredMinLevel"
+                    value="singleSelectionMinLevelConfiguration.required"
+                    (click)="toggleRequiredMinLevel()"
+                  />
+                  <label for="requiredMinLevel">Required</label>
+                </div>
+                <div class="control-panel">
+                  <input
+                    type="checkbox"
+                    name="showFilterMinLevel"
+                    value="singleSelectionMinLevelConfiguration.showFilter"
+                    (click)="toggleShowFilterMinLevel()"
+                  />
+                  <label for="showFilterMinLevel">ShowFilter</label>
+                </div>
+                <div class="control-panel">
+                  <input
+                    type="checkbox"
+                    name="resetAllSelectedSelectionMinLevel"
+                    value="singleSelectionMinLevelConfiguration.resetAllSelected"
+                    (click)="toggleResetAllSelectedSelectionMinLevel()"
+                  />
+                  <label for="resetAllSelectedSelectionMinLevel"
+                    >resetAllSelected</label
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="single-selection--container">
+            <h4>Seleção única / Com formulário</h4>
+            <div class="single-selection--row">
+              <div class="tree-select--container">
+                <form [formGroup]="formGroup1" (ngSubmit)="onSubmit1()">
+                  <vrc-tree-select
+                    [items]="singleSelectionConfiguration.items"
+                    [control]="treeSelect1Control"
+                    [multiple]="multipleSelectionConfiguration.multiple"
+                    [isRequired]="multipleSelectionConfiguration.required"
+                    [placeholder]="singleSelectionConfiguration.placeholder"
+                    [filterPlaceholder]="
+                      singleSelectionConfiguration.filterPlaceholder
+                    "
+                    [allowFilter]="singleSelectionConfiguration.showFilter"
+                    [isDisabled]="singleSelectionConfiguration.disabled"
+                    [allowParentSelection]="
+                      singleSelectionConfiguration.allowParentSelection
+                    "
+                    [expandMode]="singleSelectionConfiguration.expandMode"
+                    formControlName="treeSelect1"
+                    (update)="update($event)"
+                    (onUpdateChildrenAndParents)="
+                      updateChildrenAndParents($event)
+                    "
+                  >
+                    TreeSelect
+                  </vrc-tree-select>
+                  <button class="btn btn--default" (click)="reset1()">
+                    Reset
+                  </button>
+                  <button type="submit" class="btn btn--default">Submit</button>
+                  <pre> {{ formGroup1.get('treeSelect1')?.value | json }} </pre>
+                </form>
+              </div>
+              <div class="control-panel--container">
+                <div class="control-panel">
+                  <input
+                    type="checkbox"
+                    name="showFilter1"
+                    value="singleSelectionConfiguration.showFilter"
+                    (click)="toggleShowFilter1()"
+                  />
+                  <label for="showFilter1">ShowFilter</label>
+                </div>
+
+                <div class="control-panel">
+                  <input
+                    type="checkbox"
+                    name="disabled1"
+                    value="singleSelectionConfiguration.disabled"
+                    (click)="toggleDisabled1()"
+                  />
+                  <label for="disabled1">Disabled</label>
+                </div>
+
+                <div class="control-panel">
+                  <label for="ExpandMode1">ExpandMode:</label>
+                  <select
+                    #expandMode1
+                    name="ExpandMode1"
+                    (change)="onExpandMode1(expandMode1.value)"
+                    [value]="singleSelectionConfiguration.expandMode"
+                  >
+                    <option value="All">All</option>
+                    <option value="None">None</option>
+                    <option value="Selection">Selection</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="single-selection--container">
+            <h4>Seleção Múltipla / Com formulário</h4>
+            <div class="single-selection--row">
+              <div class="tree-select--container">
+                <form [formGroup]="formGroup2" (ngSubmit)="onSubmit2()">
+                  <vrc-tree-select
+                    [items]="multipleSelectionConfiguration.items"
+                    [control]="treeSelect2Control"
+                    [isRequired]="multipleSelectionConfiguration.required"
+                    [multiple]="multipleSelectionConfiguration.multiple"
+                    [allowParentSelection]="
+                      multipleSelectionConfiguration.allowParentSelection
+                    "
+                    [placeholder]="multipleSelectionConfiguration.placeholder"
+                    [filterPlaceholder]="
+                      multipleSelectionConfiguration.filterPlaceholder
+                    "
+                    [maxVisibleItemCount]="
+                      multipleSelectionConfiguration.maxDisplayed
+                    "
+                    [allowFilter]="multipleSelectionConfiguration.showFilter"
+                    [isDisabled]="multipleSelectionConfiguration.disabled"
+                    [expandMode]="multipleSelectionConfiguration.expandMode"
+                    formControlName="treeSelect2"
+                    (update)="update($event)"
+                    (onUpdateChildrenAndParents)="
+                      updateChildrenAndParents($event)
+                    "
+                    [resetAllSelected]="
+                      multipleSelectionConfiguration.resetAllSelected
+                    "
+                    resetAllSelectedLabel="Limpar Seleção"
+                  >
+                    <span>TreeSelect</span>
+                  </vrc-tree-select>
+                  <button class="btn btn--default" (click)="reset2()">
+                    Reset
+                  </button>
+                  <button type="submit" class="btn btn--default">Submit</button>
+                  <pre> {{ formGroup2.get('treeSelect2')?.value | json }} </pre>
+                </form>
+              </div>
+
+              <div class="control-panel--container">
+                <div class="control-panel">
+                  <input
+                    type="checkbox"
+                    name="resetAllSelected2"
+                    value="multipleSelectionConfiguration.resetAllSelected"
+                    (click)="toggleResetAllSelectedSelection2()"
+                  />
+                  <label for="resetAllSelected2">resetAllSelected</label>
+                </div>
+
+                <div class="control-panel">
+                  <input
+                    type="checkbox"
+                    name="allowParentSelection2"
+                    value="multipleSelectionConfiguration.allowParentSelection"
+                    (click)="toggleAllowParentSelection2()"
+                  />
+                  <label for="allowParentSelection2"
+                    >AllowParentSelection</label
+                  >
+                </div>
+
+                <div class="control-panel">
+                  <input
+                    type="checkbox"
+                    name="showFilter2"
+                    value="multipleSelectionConfiguration.showFilter"
+                    (click)="toggleShowFilter2()"
+                  />
+                  <label for="showFilter2">ShowFilter</label>
+                </div>
+
+                <div class="control-panel">
+                  <input
+                    type="checkbox"
+                    name="disabled2"
+                    value="multipleSelectionConfiguration.disabled"
+                    (click)="toggleDisabled2()"
+                  />
+                  <label for="disabled2">Disabled</label>
+                </div>
+
+                <div class="control-panel">
+                  <label for="ExpandMode2">ExpandMode:</label>
+                  <select
+                    #expandMode2
+                    name="ExpandMode2"
+                    (change)="onExpandMode2(expandMode2.value)"
+                    [value]="multipleSelectionConfiguration.expandMode"
+                  >
+                    <option value="All">All</option>
+                    <option value="None">None</option>
+                    <option value="Selection">Selection</option>
+                  </select>
+                </div>
+
+                <div class="control-panel">
+                  <label for="maxDisplayed2"
+                    >MaxDisplayed
+                    {{ multipleSelectionConfiguration.maxDisplayed }}:</label
+                  >
+                  <input
+                    type="range"
+                    name="maxDisplayed2"
+                    min="1"
+                    max="5"
+                    [(ngModel)]="multipleSelectionConfiguration.maxDisplayed"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </vrc-tab>
+      </vrc-tabs>
+    </div>
+  </div>
+</div>

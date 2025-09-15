@@ -1,0 +1,166 @@
+<div class="form-group datepicker-container" [ngClass]="classeCss">
+  @if (!hideLabel) {
+    <label
+      [class.tooltip-label]="tooltip"
+      class="control-label"
+      [attr.for]="id"
+    >
+      {{ label }}
+      <span [hidden]="!isRequired" class="required">*</span>
+      @if (tooltip) {
+        <vrc-tooltip
+          class="tooltip"
+          [message]="tooltip.message"
+          [width]="tooltip.width"
+          [small]="tooltip.small"
+          [topRight]="tooltip.topRight"
+          [bottomRight]="tooltip.bottomRight"
+          [topLeft]="tooltip.topLeft"
+          [bottomLeft]="tooltip.bottomLeft"
+        >
+        </vrc-tooltip>
+      }
+
+      @if (!isDisabled && (innerValue?.start || innerValue?.end)) {
+        <i
+          class="vr vr-limpar_conteudo"
+          (click)="setStartDate(''); setEndDate('')"
+          aria-hidden="true"
+        ></i>
+      }
+    </label>
+  }
+
+  <div #datepicker>
+    @if (!isDateRange) {
+      <div
+        class="single-input--container"
+        [class.error]="isError"
+        [class.default]="!isReadOnly"
+        [class.disabled]="isDisabled"
+        [class.required]="isRequired"
+        [id]="id + '-fieldRequired'"
+      >
+        <input
+          vrc-datemask
+          [isMonthSelection]="isMonthSelection"
+          [isDateTime]="isDateTime"
+          [ngClass]="{ 'time-date': isDateTime }"
+          class="form-control border-input start-date"
+          [value]="valueText"
+          (change)="setStartDate($event.target.value)"
+          [id]="id + '-fieldRequired'"
+          [readOnly]="isReadOnly"
+          [disabled]="isDisabled"
+          type="text"
+          [name]="name"
+          autocomplete="off"
+          spellcheck="false"
+          (blur)="onBlur()"
+        />
+
+        @if (!isReadOnly && !isDisabled) {
+          <button
+            type="button"
+            (click)="openCalendar()"
+            class="btn btn--default btn--datepicker"
+            tabindex="-1"
+          >
+            <i class="vr vr-calendario"></i>
+          </button>
+        }
+
+        @if (isDisabled) {
+          <button
+            type="button"
+            class="btn btn--default btn--datepicker"
+            tabindex="-1"
+          >
+            <i class="vr vr-calendario"></i>
+          </button>
+        }
+      </div>
+    } @else {
+      <div
+        class="double-input--container"
+        [class.error]="isError"
+        [class.default]="!isReadOnly"
+        [class.disabled]="isDisabled"
+        [class.required]="isRequired"
+        [id]="id + '-fieldRequired'"
+      >
+        <input
+          vrc-datemask
+          class="form-control border-input start-date"
+          [value]="valueTextStart"
+          (input)="setStartDate($event.target.value)"
+          [id]="id + '-fieldRequired'"
+          [readOnly]="isReadOnly"
+          [disabled]="isDisabled"
+          type="text"
+          [name]="name"
+          autocomplete="off"
+          spellcheck="false"
+          (blur)="onBlur()"
+        />
+
+        @if (valueTextStart || valueTextEnd) {
+          <span class="date-separator"> - </span>
+        }
+
+        <input
+          vrc-datemask
+          class="form-control border-input end-date"
+          [value]="valueTextEnd"
+          (input)="setEndDate($event.target.value)"
+          [id]="id + '-fieldRequired'"
+          [readOnly]="isReadOnly"
+          [disabled]="isDisabled"
+          type="text"
+          [name]="name"
+          autocomplete="off"
+          spellcheck="false"
+          (blur)="onBlur()"
+        />
+
+        @if (!isReadOnly && !isDisabled) {
+          <button
+            type="button"
+            (click)="openCalendar()"
+            class="btn btn--default btn--datepicker"
+            tabindex="-1"
+          >
+            <i class="vr vr-calendario"></i>
+          </button>
+        }
+
+        @if (isDisabled) {
+          <button
+            type="button"
+            class="btn btn--default btn--datepicker"
+            tabindex="-1"
+          >
+            <i class="vr vr-calendario"></i>
+          </button>
+        }
+      </div>
+    }
+  </div>
+  <vrc-error-msg [message]="errorMessage"> </vrc-error-msg>
+  <vrc-calendar
+    [isMonthSelection]="isMonthSelection"
+    [isDateRange]="isDateRange"
+    [isDateTime]="isDateTime"
+    [datepicker]="datepicker"
+    [currentDate]="value$.asObservable() | async"
+    [open]="!isHiddenCalendar"
+    [useNonWorkingDays]="useNonWorkingDays"
+    (emitSelectDate)="selectDate($event)"
+    (emitCloseCalendar)="hiddenCalendar()"
+    [hidden]="isHiddenCalendar"
+    [showShortcuts]="showShortcuts"
+    [calendarPosition]="calendarPosition"
+    [disablePastDates]="disablePastDates"
+  >
+  </vrc-calendar>
+</div>

@@ -1,0 +1,69 @@
+:root[theme='light'] {
+  /*------------------------LIGHT-----------------------------------*/
+
+  // common table colors
+  --vrc-table-background: var(--color-background);
+  --vrc-table-box-shadow: 0 0.313rem 0.313rem -0.188rem rgba(0, 0, 0, 0.2),
+    0 0.5rem 0.625rem 0.063rem rgba(0, 0, 0, 0.14), 0 0.188rem 0.875rem 0.125rem rgba(0, 0, 0, 0.12);
+  --vrc-table-row-odd-background: var(--color-neutral-default-ffffff);
+
+  // default row and cell background colors
+  --vrc-table-default-background: var(--color-neutral-default-ffffff);
+  --vrc-table-default-background-hover: var(--color-gray-100);
+  --vrc-table-default-background-focus: var(--color-complementar);
+
+  // default background colors for cell selection style
+  --vrc-table-cellselection-background-hover: var(--color-gray-50);
+  --vrc-table-cellselection-background-focus: var(--color-gray-100);
+
+  // background and text colors for selected cell / row
+  --vrc-table-selected-active-background: #304ffe;
+  --vrc-table-selected-active-color: var(--color-neutral-default-ffffff);
+  --vrc-table-selected-active-background-hover: #193ae4;
+  --vrc-table-selected-active-color-hover: var(--color-neutral-default-ffffff);
+  --vrc-table-selected-active-background-focus: #2041ef;
+  --vrc-table-selected-active-color-focus: var(--color-neutral-default-ffffff);
+
+  // colors for tools elements
+  --table-tools-border-bottom-color: var(--color-gray-300);
+
+  // colors for header elements
+  --table-header-cell-background: var(--color-gray-50);
+  --table-header-cell-color: var(--color-text);
+  --table-header-border-bottom-color: var(--color-gray-700);
+  --table-header-resize-handle-color: var(--color-gray-300);
+  --table-header-title: var(--color-gray-500);
+  // colors for table body elements
+  --table-row-detail-background: var(--color-background);
+  --table-body-cell-color: var(--color-text);
+  --table-group-header-background: var(--color-background);
+  --table-group-header-border-top-color: var(--color-gray-100);
+  --table-group-header-border-bottom-color: var(--color-gray-100);
+
+  // colors for footer elements
+  --table-footer-cell-color: var(--color-text);
+  --table-footer-border-top-color: rgba(102, 102, 102, 0.3);
+  --table-pager-color: var(--color-text);
+  --table-pager-disabled-color: var(--color-gray-600);
+  --table-pager-disabled-background: transparent;
+  --table-pager-active-background: var(--color-default);
+
+  // colors for summary row elements
+  --table-summary-row-background: var(--color-gray-100);
+  --table-summary-row-background-hover: var(--color-gray-100);
+
+   // export tools
+   --table-export-filter-icon: invert(100%) sepia(0%) saturate(7435%) hue-rotate(1deg)
+   brightness(113%) contrast(113%);
+   --table-export-background-overlay: var(--color-gray-700);
+   --table-export-background: var(--color-neutral-default-ffffff);
+   --table-export-box-shadow: 0 0.125rem 0.5rem #00000014;  
+   --table-export-border: var(--color-gray-100);
+   --table-export-color: var(--color-text);
+   --table-export-color-text: var(--color-gray-100);
+
+     // colors for checkbox elements
+  --vr-table-checkbox-border-color: var(--color-gray-600);
+  --vr-table-checkbox-checked-border-color: var(--color-neutral-default-ffffff);
+
+}

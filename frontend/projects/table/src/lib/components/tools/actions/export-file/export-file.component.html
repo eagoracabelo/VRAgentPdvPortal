@@ -1,0 +1,75 @@
+<div class="table-tools-export">
+  <div
+    [hidden]="!isTablesToolsExportOpen"
+    class="table-tools-export-overlay"
+    (click)="toggleTablesToolsExport()"
+  ></div>
+  <button
+    type="button"
+    name="button-action-save"
+    class="btn datatable-tools-btn"
+    (click)="toggleTablesToolsExport()"
+  >
+    <i class="vr vr-exportar_tabela" aria-hidden="true"></i>
+  </button>
+  <ul [hidden]="!isTablesToolsExportOpen" class="table-tools-export-content">
+    <li>{{ 'EXPORT-FILE.EXPORTAR-ENVIAR' | translate }}</li>
+    <li>
+      <div>
+        <span>{{ 'EXPORT-FILE.EXPORTAR' | translate }}</span>
+        <span>{{ 'EXPORT-FILE.SELECIONAR-FORMATO' | translate }}</span>
+        <div>
+          <span class="radio">
+            <input
+              type="radio"
+              name="radiofile"
+              value=""
+              [id]="radioRelatorioId"
+              (change)="setFileType(types.pdf)"
+            />
+            <label class="radio__label" [attr.for]="radioRelatorioId">
+              <span>{{ 'EXPORT-FILE.RELATORIO' | translate }}</span>
+            </label>
+          </span>
+
+          <span class="radio">
+            <input
+              type="radio"
+              name="radiofile"
+              value=""
+              [id]="radioExcelId"
+              (change)="setFileType(types.xls)"
+            />
+            <label class="radio__label" [attr.for]="radioExcelId">
+              <span>{{ 'EXPORT-FILE.EXCEL' | translate }}</span>
+            </label>
+          </span>
+
+          <span class="radio">
+            <input
+              type="radio"
+              name="radiofile"
+              value=""
+              [id]="radioArquivoId"
+              (change)="setFileType(types.txt)"
+            />
+            <label class="radio__label" [attr.for]="radioArquivoId">
+              <span>{{ 'EXPORT-FILE.ARQUIVO' | translate }}</span>
+            </label>
+          </span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <button
+        type="button"
+        [disabled]="!fileType || rows.length === 0"
+        (click)="applyFile()"
+        name="button-action-save"
+        class="btn btn--primary"
+      >
+        {{ 'EXPORT-FILE.APLICAR' | translate }}
+      </button>
+    </li>
+  </ul>
+</div>

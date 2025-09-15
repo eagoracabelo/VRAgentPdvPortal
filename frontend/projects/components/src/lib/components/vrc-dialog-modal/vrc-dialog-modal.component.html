@@ -1,0 +1,31 @@
+<div class="modal">
+  <section class="modal__header">
+    <h3>{{ title }}</h3>
+
+    <vrc-icon
+      name="fechar"
+      width="12"
+      height="12"
+      filter="var(--color-icon)"
+      class="close"
+      (click)="onClose()"
+    ></vrc-icon>
+  </section>
+
+  <section class="modal__content">
+    {{ message }}
+  </section>
+
+  <section class="modal__options">
+    @if (confirm && confirmText) {
+      <button class="btn btn--default" (click)="onConfirm()">
+        {{ confirmText }}
+      </button>
+    }
+    @if (cancel && cancelText) {
+      <button class="btn" (click)="onCancel()">
+        {{ cancelText }}
+      </button>
+    }
+  </section>
+</div>

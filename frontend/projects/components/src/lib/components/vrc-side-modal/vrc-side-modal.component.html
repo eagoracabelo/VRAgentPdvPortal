@@ -1,0 +1,47 @@
+<div
+  #sideModal
+  class="side-modal"
+  [class.active]="active"
+  [class]="classSideModal"
+  cdkDrag
+  [cdkDragBoundary]="dragableParentClass"
+  [cdkDragFreeDragPosition]="dragPosition"
+  [cdkDragDisabled]="!drag"
+>
+  @if (drag) {
+    <div class="icon-handle" cdkDragHandle>
+      <i class="vr vr-mover" aria-hidden="true"></i>
+    </div>
+  }
+  <div class="action">
+    <div
+      class="icon-container"
+      [ngClass]="{ hidden: drag }"
+      (click)="toggleSideModal()"
+    >
+      <i
+        class="vr vr-seta_dupla_direita"
+        [class.active]="active"
+        aria-hidden="true"
+      ></i>
+    </div>
+    @if (isDragable) {
+      <div
+        class="pin-container"
+        [ngClass]="{ pinned: drag, disabled: !active }"
+        (click)="pinToDrag()"
+      >
+        <i class="vr vr-thumbtack" aria-hidden="true"></i>
+      </div>
+    }
+    <div [hidden]="active" class="title-container">
+      <span>{{ title }}</span>
+    </div>
+  </div>
+  <div class="content">
+    <div class="header-separator"></div>
+    <div class="internal-content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

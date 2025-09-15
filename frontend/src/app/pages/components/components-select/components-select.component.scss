@@ -1,0 +1,72 @@
+::ng-deep :root {
+  --background-color-no-style: var(--color-0);
+
+  &[theme='light'] {
+    --background-color-no-style: var(--color-9);
+  }
+}
+
+#select2-17 ::ng-deep .select2-multiple-labels {
+  display: flex;
+  justify-content: space-between;
+}
+
+.noStyle {
+  background-color: var(--background-color-no-style);
+}
+
+.flower-list ::ng-deep .flower {
+  &.white::before {
+    content: '🌼 ';
+  }
+
+  &.red::before {
+    content: '🌹 ';
+  }
+
+  &.yellow::before {
+    content: '🌻 ';
+  }
+}
+
+.margin_row {
+  margin-bottom: 3rem;
+}
+.padding_col {
+  padding: 3rem;
+}
+
+.container-block {
+  display: block;
+  position: relative;
+  height: 500px;
+
+  .container-content {
+    position: absolute;
+    width: 600px;
+    height: 277px;
+    overflow-y: auto;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        width: 100%;
+        height: 32px;
+        padding: 0 4px;
+        margin: 0;
+        border-bottom: 1px solid #ccc;
+      }
+    }
+  }
+}
+
+::ng-deep.reset-form-group {
+  .form-group {
+    margin: 0.1875rem 0;
+  }
+}

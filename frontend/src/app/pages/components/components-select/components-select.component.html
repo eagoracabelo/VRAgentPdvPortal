@@ -1,0 +1,186 @@
+<div class="row">
+  <div class="card col-md">
+    <header class="card__header">
+      <h3 class="title">Select</h3>
+    </header>
+    <div class="card__content content">
+      <vrc-tabs>
+        <vrc-tab label="Documentação">
+          <markdown
+            src="./docs/components/vrc-select.md"
+            (load)="onLoad($event)"
+            (error)="onError($event)"
+          ></markdown>
+        </vrc-tab>
+        <vrc-tab label="Exemplo">
+          <div class="row margin_row">
+            <div class="col-md-4">
+              <h4>Seleção simples</h4>
+              <vrc-select
+                [data]="data2"
+                [value]="value2"
+                (update)="update2($event)"
+                id="selec2-2"
+              >
+              </vrc-select>
+            </div>
+          </div>
+
+          <div class="row margin_row">
+            <div class="col-md-4">
+              <h4>Seleção multipla com FormControl</h4>
+              <form [formGroup]="fg">
+                <vrc-select
+                  [data]="data4"
+                  multiple="true"
+                  id="selec2-10"
+                  formControlName="state"
+                  [isRequired]="multipleSelectionConfiguration.required"
+                >
+                </vrc-select>
+                <button class="btn btn--primary" (click)="print()">
+                  Log Selected
+                </button>
+                <button class="btn btn--default" (click)="resetForm()">
+                  Reset Form
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div class="row margin_row">
+            <div class="col-md-4">
+              <h4>Seleção multipla com duplo check.</h4>
+              <vrc-select
+                classeCss="form-select"
+                displaySearchStatus="default"
+                resetAllSelected="true"
+                [data]="data5"
+                [multiple]="multipleSelectionConfiguration.multiple"
+                [isRequired]="multipleSelectionConfiguration.required"
+                isCheckbox="true"
+                hasMainSelector="true"
+                [maxVisibleItem]="multipleSelectionConfiguration.maxDisplayed"
+                [placeholder]="multipleSelectionConfiguration.placeholder"
+                [placeHolderSearch]="
+                  multipleSelectionConfiguration.placeHolderSearch
+                "
+              >
+                Tipo
+              </vrc-select>
+            </div>
+            <div class="col-md-4 padding_col">
+              <vrc-input
+                id="input01"
+                label="Placeholder Busca"
+                [(ngModel)]="multipleSelectionConfiguration.placeHolderSearch"
+              ></vrc-input>
+              <div class="control-panel">
+                <label for="maxDisplayed2"
+                  >MaxDisplayed
+                  {{ multipleSelectionConfiguration.maxDisplayed }}:</label
+                >
+                <input
+                  type="range"
+                  name="maxDisplayed"
+                  min="1"
+                  max="5"
+                  [(ngModel)]="multipleSelectionConfiguration.maxDisplayed"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row margin_row">
+            <div class="col-md-4">
+              <h4>Seleção Multipla com agrupamento</h4>
+              <vrc-select
+                [data]="data1"
+                [value]="value1"
+                (update)="update1($event)"
+                (change)="change1($event)"
+                (blur)="blur1($event)"
+                (focus)="focus1($event)"
+                (open)="open1($event)"
+                (close)="close1($event)"
+                (search)="search1($event)"
+                id="selec2-1"
+              >
+              </vrc-select>
+            </div>
+          </div>
+
+          <div class="row margin_row">
+            <div class="col-md-4">
+              <h4>Select com Lupa</h4>
+              <vrc-select
+                [data]="data1"
+                [value]="value1"
+                [isRequired]="true"
+                [enableExternalSearch]="true"
+                (externalSearchEvent$)="externalSearchEvent()"
+              >
+              </vrc-select>
+            </div>
+          </div>
+
+          <div class="row margin_row">
+            <div class="col-md-4">
+              <h4>Select com Lupa Desabilitado</h4>
+              <vrc-select
+                [data]="data1"
+                [value]="value1"
+                [isRequired]="true"
+                [enableExternalSearch]="true"
+                (externalSearchEvent$)="externalSearchEvent()"
+                [isDisabled]="true"
+              >
+              </vrc-select>
+            </div>
+          </div>
+
+          <div class="row margin_row">
+            <div class="col-md-4">
+              <h4>Select com div overflow</h4>
+              <div class="container-block">
+                <div class="container-content">
+                  <ul>
+                    @for (item of [].constructor(20); track $index) {
+                      <li>
+                        <vrc-select
+                          class="reset-form-group"
+                          [data]="data2"
+                          [translate]="false"
+                          [hideLabel]="true"
+                          resetAllSelected="true"
+                          [overlay]="true"
+                          listPosition="below"
+                        >
+                          {{ 'SELECT' }}
+                        </vrc-select>
+                      </li>
+                    }
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row margin_row">
+            <div class="col-md-4">
+              <h4>Select com máscara Alfanumérico</h4>
+              <vrc-select
+                [data]="data1"
+                customSearchEnabled="true"
+                [mask]="maskAlphaNumeric"
+                [unmasked]="true"
+                [placeHolderSearch]="'Buscar (A–Z/0–9)'"
+                (search)="searchMasked($event)"
+              >
+              </vrc-select>
+            </div>
+          </div>
+        </vrc-tab>
+      </vrc-tabs>
+    </div>
+  </div>
+</div>

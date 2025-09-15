@@ -1,0 +1,45 @@
+{
+  "TESTE": "WORKING",
+  "PAGE-SIZE": {
+    "MOSTRAR": "Show",
+    "POR-PAGINA": "per page"
+  },
+  "MOVE-COLUMN": {
+    "EDITAR": "Edit table",
+    "CANCELAR": "Cancel editing",
+    "SALVAR": "Save table changes"
+  },
+  "TOGGLE-COLUMN": {
+    "OCULTAR": "Hide column",
+    "CONFIG": {
+      "OCULTAR-EXIBIR": "HIDE / SHOW COLUMNS",
+      "APLICAR": "APPLY"
+    }
+  },
+  "EXPORT-FILE": {
+    "EXPORTAR-ENVIAR": "Export and send files",
+    "EXPORTAR": "Export",
+    "SELECIONAR-FORMATO": "Select file format",
+    "RELATORIO": "Report",
+    "EXCEL": "Excel",
+    "ARQUIVO": "File",
+    "APLICAR": "APPLY"
+  },
+  "EXPORT-CONFIG": {
+    "PAGINA": "PAGE",
+    "ATUAL": "CURRENT",
+    "TODAS": "ALL",
+    "COLUNA": "COLUMN",
+    "GERAR": "GENERATE",
+    "PDF": {
+      "IMPRESSAO": "PRINT",
+      "RETRATO": "PORTRAIT",
+      "PAISAGEM": "LANDSCAPE"
+    }
+  },
+  "MESSAGE": {
+    "NO-DATA": "No data found",
+    "TOTAL": "total",
+    "SELECTED": "selected"
+  }
+}

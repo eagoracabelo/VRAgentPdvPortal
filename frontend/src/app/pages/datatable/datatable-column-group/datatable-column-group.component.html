@@ -1,0 +1,22 @@
+<div class="dt-main">
+  <vrc-datatable
+    [rows]="rows"
+    [columnMode]="ColumnMode.force"
+    rowHeight="auto"
+    [count]="page.totalElements"
+    [selectAllRowsOnPage]="false"
+    (page)="setPage($event)"
+    [selectionType]="SelectionType.single"
+    headerHeight="auto"
+  >
+    <vrc-datatable-column
+      name="Name"
+      columnGroup="Pessoa"
+    ></vrc-datatable-column>
+    <vrc-datatable-column
+      name="Gender"
+      columnGroup="Pessoa"
+    ></vrc-datatable-column>
+    <vrc-datatable-column name="Company"></vrc-datatable-column>
+  </vrc-datatable>
+</div>

@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="card col-md">
+    <header class="card__header">
+      <h3 class="title">Side Modal</h3>
+    </header>
+    <div class="card__content content">
+      <vrc-tabs>
+        <vrc-tab label="Documentação">
+          <markdown
+            src="./docs/components/vrc-side-modal.md"
+            (load)="onLoad($event)"
+            (error)="onError($event)"
+          ></markdown>
+        </vrc-tab>
+
+        <vrc-tab label="Exemplo">
+          <div class="example">
+            <h6>Localizado na lateral direita da tela</h6>
+            <br />
+            <h6>Propriedades</h6>
+            <ul>
+              <li>title="Informações adicionais"</li>
+              <li>width="35vw"</li>
+              <li>height="45vh"</li>
+              <li>top="unset"</li>
+            </ul>
+            <h6>ng-content: conteudo interno</h6>
+          </div>
+          <vrc-side-modal
+            title="Informações adicionais"
+            width="35vw"
+            height="45vh"
+            top="unset"
+          >
+            <span>conteudo interno</span>
+          </vrc-side-modal>
+        </vrc-tab>
+      </vrc-tabs>
+    </div>
+  </div>
+</div>

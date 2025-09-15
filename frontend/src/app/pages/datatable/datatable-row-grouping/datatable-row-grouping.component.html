@@ -1,0 +1,93 @@
+<div class="dt-main">
+  <vrc-datatable
+    #myTable
+    [groupRowsBy]="'gender'"
+    [rows]="rows"
+    [scrollbarH]="true"
+    [columnMode]="ColumnMode.force"
+    rowHeight="auto"
+    [selectionType]="SelectionType.checkbox"
+    [count]="page.totalElements"
+    [selectAllRowsOnPage]="false"
+    [displayCheck]="displayCheck"
+    (page)="setPage($event)"
+    [clickableRows]="clickableRows"
+    (exportAll)="onExportAll($event)"
+    [showToolsBar]="true"
+    [disableExportAll]="false"
+  >
+    <vrc-datatable-group-header
+      #myGroupHeader
+      (toggle)="onDetailToggle($event)"
+    >
+      <ng-template
+        let-group="group"
+        let-expanded="expanded"
+        vrc-datatable-group-header-template
+      >
+        <div class="group-title" (click)="toggleExpandGroup(group)">
+          <vrc-icon
+            name="seta_simples_direita"
+            class="expand-group-icon"
+            [class.expanded]="expanded"
+          >
+          </vrc-icon>
+          {{ group.key }}
+        </div>
+      </ng-template>
+    </vrc-datatable-group-header>
+    <vrc-datatable-row-detail
+      #myDetailRow
+      [rowHeight]="5"
+      (toggle)="onDetailToggle($event)"
+    >
+      <ng-template
+        let-row="row"
+        let-expanded="expanded"
+        vrc-datatable-row-detail-template
+      >
+        <div style="padding-left: 35px">
+          <div><strong>Address</strong></div>
+          <div>row detail content sample</div>
+        </div>
+      </ng-template>
+    </vrc-datatable-row-detail>
+    <vrc-datatable-column
+      [resizeable]="false"
+      [sortable]="false"
+      [draggable]="false"
+      [canAutoResize]="false"
+    >
+      <ng-template
+        let-row="row"
+        let-expanded="expanded"
+        vrc-datatable-cell-template
+      >
+        <a
+          href="javascript:void(0)"
+          [class.datatable-icon-right]="false"
+          [class.datatable-icon-down]="false"
+          title="Expand/Collapse Row"
+          (click)="toggleExpandRow(row)"
+        >
+        </a>
+      </ng-template>
+    </vrc-datatable-column>
+
+    <vrc-datatable-column
+      [widthFixed]="true"
+      [width]="3.75"
+      [sortable]="false"
+      [canAutoResize]="false"
+      [draggable]="false"
+      [resizeable]="false"
+      [headerCheckboxable]="true"
+      [checkboxable]="true"
+      [hideColumn]="false"
+    >
+    </vrc-datatable-column>
+    <vrc-datatable-column name="Name"></vrc-datatable-column>
+    <vrc-datatable-column name="Gender"></vrc-datatable-column>
+    <vrc-datatable-column name="Company"></vrc-datatable-column>
+  </vrc-datatable>
+</div>

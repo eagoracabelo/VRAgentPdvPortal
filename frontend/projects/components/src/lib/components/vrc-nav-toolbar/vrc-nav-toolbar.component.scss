@@ -1,0 +1,50 @@
+::ng-deep :root {
+  --background-nav-tools: var(--color-1);
+
+  &[theme='light'] {
+    --background-nav-tools: var(--color-default-background-7);
+  }
+}
+
+div.container-actions {
+  display: block;
+  width: calc(100% - 3.75rem);
+  top: 2.5rem;
+  left: 3.75rem;
+  height: 2.5rem;
+  position: fixed;
+  background-color: var(--background-nav-tools);
+  z-index: 2;
+
+  > .actions-content {
+    display: flex;
+    height: inherit;
+    padding-right: 1.875rem;
+    padding-left: 0.8125rem;
+
+    .actions-content__content-left {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 20%;
+      height: 2.5rem;
+      font:
+        normal normal bold 0.875rem/1.1875rem Roboto,
+        sans-serif;
+      letter-spacing: 0rem;
+      color: var(--color-text);
+    }
+
+    .content-actions-items__content-right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      z-index: 1;
+      width: 80%;
+
+      .action-item {
+        opacity: 1;
+      }
+    }
+  }
+}

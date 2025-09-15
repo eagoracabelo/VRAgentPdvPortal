@@ -1,0 +1,336 @@
+<div class="row">
+  <div class="card col-md">
+    <header class="card__header">
+      <h3 class="title">Tabs</h3>
+    </header>
+    <div class="card__content content">
+      <vrc-tabs>
+        <vrc-tab label="Documentação">
+          <markdown
+            src="./docs/components/vrc-tabs.md"
+            (load)="onLoad($event)"
+            (error)="onError($event)"
+          ></markdown>
+        </vrc-tab>
+        <vrc-tab label="Exemplo">
+          @for (exemplo of exemplos; track $index; let i = $index) {
+            <h3>
+              {{ exemplo.title }} (borderPosition={{ exemplo.borderPosition }},
+              linePosition={{ exemplo.linePosition }}), style={{
+                exemplo.style
+              }})
+            </h3>
+            <vrc-tabs
+              (onTabChange$)="onTabChange($event)"
+              borderPosition="{{ exemplo.borderPosition }}"
+              linePosition="{{ exemplo.linePosition }}"
+              styleTab="{{ exemplo.style }}"
+              [subTab]="exemplo.subTab"
+            >
+              <vrc-tab label="Primeiro">
+                <div class="col-sm-12">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Libero, cum. Consequatur iste assumenda at sapiente nemo ut
+                  deleniti reprehenderit dolorem accusamus, iusto est labore
+                  voluptatibus corrupti doloribus voluptatem ratione molestiae.
+                </div>
+              </vrc-tab>
+              <vrc-tab label="Segundo" [disabled]="i === 0 ? true : false">
+                <div class="col-sm-12">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic
+                  consequuntur laudantium vero itaque impedit molestiae nulla
+                  cumque dolores, ipsum, culpa vel odit necessitatibus
+                  reiciendis? Temporibus quasi vero sunt aliquam harum.
+                </div>
+                <div class="col-sm-12">
+                  <h4>Striped</h4>
+                  <table class="table table--striped">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>11</td>
+                        <td>Lemmy</td>
+                        <td>Kilmister</td>
+                      </tr>
+                      <tr>
+                        <td>10</td>
+                        <td>Jeff</td>
+                        <td>Hanneman</td>
+                      </tr>
+                      <tr>
+                        <td>12</td>
+                        <td>Jimi</td>
+                        <td>Hendrix</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </vrc-tab>
+              <vrc-tab
+                label="Terceiro"
+                styleButton="color: var(--color-danger)"
+              >
+                <div class="col-sm-12">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Suscipit, fuga optio neque perferendis dolorum necessitatibus?
+                  Animi quos facilis est distinctio, ab reprehenderit facere
+                  labore, temporibus molestias quod eaque recusandae dolorum.
+                </div>
+                <br />
+                <div class="col-sm-12 aling">
+                  <div class="col-sm-6">
+                    <ul class="list">
+                      <li>Listas não ordenadas têm estilos básicos</li>
+                      <li>
+                        Eles usam o estilo da lista de círculos
+                        <ul>
+                          <li>
+                            Listas aninhadas estilizadas para se sentirem bem
+                          </li>
+                          <li>Pode aninhar qualquer tipo de lista no outro</li>
+                        </ul>
+                      </li>
+                      <li>Apenas mais itens de lista</li>
+                    </ul>
+                  </div>
+                  <div class="col-sm-6">
+                    <ol class="list">
+                      <li>As listas ordenadas também têm estilos básicos</li>
+                      <li>
+                        Eles usam o estilo da lista decimal
+                        <ul>
+                          <li>Pedidos e não ordenados podem ser aninhados</li>
+                          <li>Pode aninhar qualquer tipo de lista no outro</li>
+                        </ul>
+                      </li>
+                      <li>Último item da lista apenas para diversão</li>
+                    </ol>
+                  </div>
+                </div>
+              </vrc-tab>
+            </vrc-tabs>
+          }
+          <h3>8. Custom tabs</h3>
+          <vrc-tabs
+            (onTabChange$)="onTabChange($event)"
+            [customTabs]="true"
+            [navButtons]="true"
+          >
+            <vrc-tab label="Pesquisa de Produtos" icon="search_fill">
+              <div class="col-sm-12">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero,
+                cum. Consequatur iste assumenda at sapiente nemo ut deleniti
+                reprehenderit dolorem accusamus, iusto est labore voluptatibus
+                corrupti doloribus voluptatem ratione molestiae.
+              </div>
+            </vrc-tab>
+            <vrc-tab
+              label="Produtos Administrados"
+              icon="check_fill"
+              info="0 produtos"
+            >
+              <div class="col-sm-12">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic
+                consequuntur laudantium vero itaque impedit molestiae nulla
+                cumque dolores, ipsum, culpa vel odit necessitatibus reiciendis?
+                Temporibus quasi vero sunt aliquam harum.
+              </div>
+              <div class="col-sm-12">
+                <h4>Striped</h4>
+                <table class="table table--striped">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>11</td>
+                      <td>Lemmy</td>
+                      <td>Kilmister</td>
+                    </tr>
+                    <tr>
+                      <td>10</td>
+                      <td>Jeff</td>
+                      <td>Hanneman</td>
+                    </tr>
+                    <tr>
+                      <td>12</td>
+                      <td>Jimi</td>
+                      <td>Hendrix</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </vrc-tab>
+            <vrc-tab label="Resumo" icon="resumo" [disabled]="true">
+              <div class="col-sm-12">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Suscipit, fuga optio neque perferendis dolorum necessitatibus?
+                Animi quos facilis est distinctio, ab reprehenderit facere
+                labore, temporibus molestias quod eaque recusandae dolorum.
+              </div>
+              <br />
+              <div class="col-sm-12 aling">
+                <div class="col-sm-6">
+                  <ul class="list">
+                    <li>Listas não ordenadas têm estilos básicos</li>
+                    <li>
+                      Eles usam o estilo da lista de círculos
+                      <ul>
+                        <li>
+                          Listas aninhadas estilizadas para se sentirem bem
+                        </li>
+                        <li>Pode aninhar qualquer tipo de lista no outro</li>
+                      </ul>
+                    </li>
+                    <li>Apenas mais itens de lista</li>
+                  </ul>
+                </div>
+                <div class="col-sm-6">
+                  <ol class="list">
+                    <li>As listas ordenadas também têm estilos básicos</li>
+                    <li>
+                      Eles usam o estilo da lista decimal
+                      <ul>
+                        <li>Pedidos e não ordenados podem ser aninhados</li>
+                        <li>Pode aninhar qualquer tipo de lista no outro</li>
+                      </ul>
+                    </li>
+                    <li>Último item da lista apenas para diversão</li>
+                  </ol>
+                </div>
+              </div>
+            </vrc-tab>
+          </vrc-tabs>
+
+          <h3>8. Linear Steps Custom tabs</h3>
+          <vrc-tabs
+            (onTabChange$)="onTabChange($event)"
+            [customTabs]="true"
+            [navButtons]="true"
+            [linearSteps]="true"
+            [linearStepsStartIndex]="0"
+          >
+            <vrc-tab label="Pesquisa de Produtos" icon="search_fill">
+              <div class="col-sm-12">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero,
+                cum. Consequatur iste assumenda at sapiente nemo ut deleniti
+                reprehenderit dolorem accusamus, iusto est labore voluptatibus
+                corrupti doloribus voluptatem ratione molestiae.
+              </div>
+            </vrc-tab>
+
+            <vrc-tab label="Exclusão de Produtos" icon="lixo">
+              <div class="col-sm-12">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero,
+                cum. Consequatur iste assumenda at sapiente nemo ut deleniti
+                reprehenderit dolorem accusamus, iusto est labore voluptatibus
+                corrupti doloribus voluptatem ratione molestiae.
+              </div>
+            </vrc-tab>
+
+            <vrc-tab label="Config de Produtos" icon="configuracoes">
+              <div class="col-sm-12">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero,
+                cum. Consequatur iste assumenda at sapiente nemo ut deleniti
+                reprehenderit dolorem accusamus, iusto est labore voluptatibus
+                corrupti doloribus voluptatem ratione molestiae.
+              </div>
+            </vrc-tab>
+
+            <vrc-tab
+              label="Produtos Administrados"
+              icon="check_fill"
+              info="0 produtos"
+              [disabled]="true"
+            >
+              <div class="col-sm-12">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic
+                consequuntur laudantium vero itaque impedit molestiae nulla
+                cumque dolores, ipsum, culpa vel odit necessitatibus reiciendis?
+                Temporibus quasi vero sunt aliquam harum.
+              </div>
+              <div class="col-sm-12">
+                <h4>Striped</h4>
+                <table class="table table--striped">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>11</td>
+                      <td>Lemmy</td>
+                      <td>Kilmister</td>
+                    </tr>
+                    <tr>
+                      <td>10</td>
+                      <td>Jeff</td>
+                      <td>Hanneman</td>
+                    </tr>
+                    <tr>
+                      <td>12</td>
+                      <td>Jimi</td>
+                      <td>Hendrix</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </vrc-tab>
+            <vrc-tab label="Resumo" icon="resumo">
+              <div class="col-sm-12">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Suscipit, fuga optio neque perferendis dolorum necessitatibus?
+                Animi quos facilis est distinctio, ab reprehenderit facere
+                labore, temporibus molestias quod eaque recusandae dolorum.
+              </div>
+              <br />
+              <div class="col-sm-12 aling">
+                <div class="col-sm-6">
+                  <ul class="list">
+                    <li>Listas não ordenadas têm estilos básicos</li>
+                    <li>
+                      Eles usam o estilo da lista de círculos
+                      <ul>
+                        <li>
+                          Listas aninhadas estilizadas para se sentirem bem
+                        </li>
+                        <li>Pode aninhar qualquer tipo de lista no outro</li>
+                      </ul>
+                    </li>
+                    <li>Apenas mais itens de lista</li>
+                  </ul>
+                </div>
+                <div class="col-sm-6">
+                  <ol class="list">
+                    <li>As listas ordenadas também têm estilos básicos</li>
+                    <li>
+                      Eles usam o estilo da lista decimal
+                      <ul>
+                        <li>Pedidos e não ordenados podem ser aninhados</li>
+                        <li>Pode aninhar qualquer tipo de lista no outro</li>
+                      </ul>
+                    </li>
+                    <li>Último item da lista apenas para diversão</li>
+                  </ol>
+                </div>
+              </div>
+            </vrc-tab>
+          </vrc-tabs>
+        </vrc-tab>
+      </vrc-tabs>
+    </div>
+  </div>
+</div>

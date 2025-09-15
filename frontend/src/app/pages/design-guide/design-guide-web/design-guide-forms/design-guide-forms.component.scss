@@ -1,0 +1,38 @@
+/* Spin Buttons modified */
+input[type="number"].arrows {
+
+  -moz-appearance: textfield;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAAKUlEQVQYlWNgwAT/sYhhKPiPT+F/LJgEsHv37v+EMGkmkuImoh2NoQAANlcun/q4OoYAAAAASUVORK5CYII=) no-repeat center center;
+    width: 1.5em;
+    opacity: .5;
+    /* shows Spin Buttons per default (Chrome >= 39) */
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &::-webkit-inner-spin-button {
+
+    &:hover,
+    &:active {
+      opacity: .7;
+    }
+  }
+}
+
+.switch {
+  margin-right: 1rem;
+}
+
+.search--container, .checkbox, .radio {
+  margin-bottom: .875rem;
+}
+
+.div--spacing {
+  margin-bottom: .5rem;
+}

@@ -1,0 +1,62 @@
+:root {
+  /* selection */
+  --select2-selection-border-radius: .125rem;
+  --select2-selection-background: var(--background-color-select);
+  --select2-selection-disabled-background: transparent;
+  --select2-selection-disabled-border-color: var(--border-color-select-theme);
+  --select2-selection-disabled-text-color: var(--color-gray-300);
+  --select2-selection-border-color: var(--border-color-select-theme);
+  --select2-selection-focus-border-color: var(--border-color-input--active);
+  --select2-selection-text-color: var(--color-text);
+
+  /* selection: choice item (multiple) */
+  --select2-selection-choice-background: var(--color-gray-900);
+  --select2-selection-choice-text-color: var(--color-neutral-default-121212);
+  --select2-selection-choice-border-color: var(--border-color-input--active);
+  --select2-selection-choice-close-color: var(--color-gray-600);
+  --select2-selection-choice-hover-close-color: var(
+    --background-select-body-hover
+  );
+
+  /* placeholder */
+
+  --select2-placeholder-color: var(
+    --color-placeholder,
+    --color-gray-300
+  );
+
+  /* arrow */
+  --select2-arrow-color: var(--color-text);
+
+  /* dropdown panel */
+  --select2-dropdown-background: var(--background-color-select);
+  --select2-dropdown-border-color: .063rem solid var(--color-gray-600);
+  --select2-dropdown-box-shadow: 0rem .188rem .375rem #00000029;
+
+  /* dropdown option */
+  --select2-option-text-color: var(--color-text);
+  --select2-option-disabled-text-color: var(--color-gray-600);
+  --select2-option-disabled-background: transparent;
+  --select2-option-selected-text-color: var(--color-text);
+  --select2-option-selected-background: var(--color-neutral-default-121212);
+  --select2-option-highlighted-text-color: var(
+    --color-text-default,
+    --color-neutral-default-ffffff
+  );
+  --select2-option-highlighted-background: var(
+    --color-default,
+    --color-primary-600
+  );
+  --select2-option-group-text-color: var(--color-gray-500);
+  --select2-option-group-background: transparent;
+
+  /* hint */
+  --select2-hint-text-color: var(--color-gray-600);
+
+  &[theme="light"] {
+    --select2-selection-choice-background: var(--color-gray-50);
+    --select2-option-selected-background: var(--color-gray-50);
+    --select2-selection-disabled-border-color: var(--color-gray-400);
+    --select2-selection-disabled-text-color: var(--color-gray-600);
+  }
+}

@@ -1,0 +1,43 @@
+@for (colGroup of _columnsByPin; track $index; let i = $index) {
+  <div
+    class="datatable-row-{{ colGroup.type }} datatable-row-group"
+    [ngStyle]="_groupStyles[colGroup.type]"
+    [ngClass]="{ clickable: clickableRows }"
+  >
+    @for (column of colGroup.columns; track $index; let ii = $index) {
+      <datatable-body-cell
+        role="cell"
+        [style]="
+          isGroupEdgeIndex(ii)
+            ? 'border-right: 0.063rem solid var(--border-color-table)'
+            : ''
+        "
+        tabindex="-1"
+        [row]="row"
+        [group]="group"
+        [expanded]="expanded"
+        [isSelected]="isSelected"
+        [rowIndex]="rowIndex"
+        [column]="column"
+        [rowHeight]="rowHeight"
+        [displayCheck]="displayCheck"
+        [treeStatus]="treeStatus"
+        (activate)="onActivate($event, ii)"
+        (treeAction)="onTreeAction()"
+        [isEditColumn]="isEditColumn"
+        [preventDefaultClickEnable]="preventDefaultClickEnable"
+      >
+      </datatable-body-cell>
+    }
+  </div>
+}
+
+@if (rowAdd && rowAdd.templateAddQuery) {
+  <div class="datatable-row-add">
+    <ng-template
+      [ngTemplateOutlet]="rowAdd.templateAddQuery"
+      [ngTemplateOutletContext]="{ row: row }"
+    >
+    </ng-template>
+  </div>
+}

@@ -1,0 +1,86 @@
+<div role="table" visibilityObserver (visible)="recalculate()">
+  @if (exportFile) {
+    <table-tools
+      [rows]="_internalRows"
+      [columns]="_internalColumns"
+      [pageSizeOptions]="pageSizeOptions"
+      [translation]="translation"
+    ></table-tools>
+  }
+
+  @if (headerHeight) {
+    <table-header
+      role="rowgroup"
+      [sorts]="sorts"
+      [scrollbarH]="scrollbarH"
+      [innerWidth]="_innerWidth"
+      [offsetX]="_offsetX | async"
+      [dealsWithGroup]="groupedRows !== undefined"
+      [columns]="_internalColumns"
+      [headerHeight]="headerHeight"
+      [targetMarkerTemplate]="targetMarkerTemplate"
+      [sortAscendingIcon]="cssClasses.sortAscending"
+      [sortDescendingIcon]="cssClasses.sortDescending"
+      [sortUnsetIcon]="cssClasses.sortUnset"
+      [allRowsSelected]="allRowsSelected"
+      [selectionType]="selectionType"
+      (sort)="onColumnSort($event)"
+      (resize)="onColumnResize($event)"
+      (reorder)="onColumnReorder($event)"
+      (select)="onHeaderSelect($event)"
+      (columnContextmenu)="onColumnContextmenu($event)"
+    >
+    </table-header>
+  }
+  <table-body
+    role="rowgroup"
+    class="scroll"
+    [groupRowsBy]="groupRowsBy"
+    [groupedRows]="groupedRows"
+    [rows]="_internalRows"
+    [groupExpansionDefault]="groupExpansionDefault"
+    [scrollbarV]="scrollbarV"
+    [scrollbarH]="scrollbarH"
+    [virtualization]="virtualization"
+    [loadingIndicator]="loadingIndicator"
+    [rowHeight]="rowHeight"
+    [rowCount]="rowCount"
+    [offset]="offset"
+    [trackByProp]="trackByProp"
+    [columns]="_internalColumns"
+    [pageSize]="pageSize"
+    [offsetX]="_offsetX | async"
+    [rowDetail]="rowDetail"
+    [groupHeader]="groupHeader"
+    [selected]="selected"
+    [innerWidth]="_innerWidth"
+    [bodyHeight]="bodyHeight"
+    [selectionType]="selectionType"
+    [emptyMessage]="messages.emptyMessage"
+    [rowIdentity]="rowIdentity"
+    [rowClass]="rowClass"
+    [selectCheck]="selectCheck"
+    [displayCheck]="displayCheck"
+    [summaryRow]="summaryRow"
+    [summaryHeight]="summaryHeight"
+    [summaryPosition]="summaryPosition"
+    (activate)="activate.emit($event)"
+    (rowContextmenu)="onRowContextmenu($event)"
+    (select)="onBodySelect($event)"
+    (scroll)="onBodyScroll($event)"
+    (treeAction)="onTreeAction($event)"
+    [clickableRows]="clickableRows"
+  >
+  </table-body>
+
+  @if (footerHeight) {
+    <table-footer
+      [footerHeight]="footerHeight"
+      [footerTemplate]="footer"
+      [totalMessage]="messages.totalMessage"
+      [selectedCount]="selected.length"
+      [selectedMessage]="!!selectionType && messages.selectedMessage"
+    >
+    </table-footer>
+  }
+</div>

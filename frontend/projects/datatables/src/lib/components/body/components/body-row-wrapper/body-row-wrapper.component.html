@@ -1,0 +1,30 @@
+@if (groupHeader && groupHeader.template) {
+  <div class="datatable-group-header">
+    @if (groupHeader && groupHeader.template) {
+      <ng-template
+        [ngTemplateOutlet]="groupHeader.template"
+        [ngTemplateOutletContext]="groupContext"
+      >
+      </ng-template>
+    }
+  </div>
+}
+
+@if (
+  (groupHeader && groupHeader.template && expanded) ||
+  !groupHeader ||
+  !groupHeader.template
+) {
+  <ng-content></ng-content>
+}
+@if (rowDetail && rowDetail.template && expanded) {
+  <div [style.height.rem]="detailRowHeight" class="datatable-row-detail">
+    @if (rowDetail && rowDetail.template) {
+      <ng-template
+        [ngTemplateOutlet]="rowDetail.template"
+        [ngTemplateOutletContext]="rowContext"
+      >
+      </ng-template>
+    }
+  </div>
+}

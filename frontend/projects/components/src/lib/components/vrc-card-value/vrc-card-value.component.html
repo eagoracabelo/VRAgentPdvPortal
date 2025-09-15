@@ -1,0 +1,30 @@
+<div class="card-value" [class]="classCard">
+  <span class="title">
+    {{ title }}
+    @if (tooltip) {
+      <vrc-tooltip
+        class="tooltip"
+        [message]="tooltip.message"
+        [width]="tooltip.width"
+        [small]="tooltip.small"
+        [topRight]="tooltip.topRight"
+        [bottomRight]="tooltip.bottomRight"
+        [topLeft]="tooltip.topLeft"
+        [bottomLeft]="tooltip.bottomLeft"
+      >
+      </vrc-tooltip>
+    }
+  </span>
+  <span class="value" [class]="classValueColor">
+    {{ mask ? (value | imask: mask) : value }}
+  </span>
+  <span class="secondary-value" [class]="classValueColor">
+    {{
+      secondaryValue
+        ? secondaryMask
+          ? (secondaryValue | imask: secondaryMask)
+          : secondaryValue
+        : ''
+    }}
+  </span>
+</div>

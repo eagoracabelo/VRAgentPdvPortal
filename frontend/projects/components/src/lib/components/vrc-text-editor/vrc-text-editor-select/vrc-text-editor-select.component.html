@@ -1,0 +1,50 @@
+<span
+  class="text-editor-font text-editor-picker"
+  [ngClass]="{ 'text-editor-expanded': isOpen }"
+>
+  <button
+    [tabIndex]="-1"
+    #labelButton
+    id="labelButton"
+    tabindex="0"
+    type="button"
+    role="button"
+    class="text-editor-picker-label"
+    (click)="!isDisabled && toggleOpen($event)"
+    [disabled]="isDisabled"
+    [class.disabled]="isDisabled"
+  >
+    <p>{{ selectedOption.label }}</p>
+    <vrc-icon
+      name="divisa_inferior"
+      [height]="10"
+      [width]="10"
+      [filter]="'none'"
+    ></vrc-icon>
+  </button>
+  <span class="text-editor-picker-options">
+    @for (item of options; track $index; let i = $index) {
+      <button
+        tabindex="-1"
+        type="button"
+        role="button"
+        class="text-editor-picker-item"
+        [class.selected]="item === value"
+        (click)="optionSelect(item, $event)"
+      >
+        <p>{{ item.label }}</p>
+        @if (item.value === value) {
+          <vrc-icon
+            name="check"
+            [height]="12"
+            [width]="12"
+            [filter]="'none'"
+          ></vrc-icon>
+        }
+      </button>
+    }
+    @if (!options.length) {
+      <span class="dropdown-item">No items for select</span>
+    }
+  </span>
+</span>

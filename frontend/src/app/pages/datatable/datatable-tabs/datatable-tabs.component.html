@@ -1,0 +1,154 @@
+<vrc-tabs (onTabChange$)="onSelectedTab($event)">
+  <vrc-tab label="Primeiro">
+    <div class="col-sm-12">
+      <div class="dt-main">
+        <vrc-datatable
+          class="tb-1"
+          [rows]="rowsTab1"
+          [columnMode]="ColumnMode.force"
+          rowHeight="auto"
+          [externalPaging]="true"
+          [count]="pageTab1.totalElements"
+          [selectAllRowsOnPage]="false"
+          (page)="setPageTab1($event)"
+          (activate)="onActivateTab1($event)"
+          (exportAll)="onExportAllTab1($event)"
+          [showMoveButton]="true"
+        >
+          <vrc-datatable-column name="Name"></vrc-datatable-column>
+          <vrc-datatable-column name="Gender"></vrc-datatable-column>
+          <vrc-datatable-column name="Company"></vrc-datatable-column>
+        </vrc-datatable>
+      </div>
+    </div>
+  </vrc-tab>
+  <vrc-tab label="Segundo"
+    ><div class="col-sm-12">
+      <div class="dt-main">
+        <vrc-datatable
+          [forceCalculateColumns]="forceCalculateColumns"
+          class="tb-2"
+          [rows]="rowsTab2"
+          [columnMode]="ColumnMode.force"
+          rowHeight="auto"
+          [externalPaging]="true"
+          [count]="pageTab2.totalElements"
+          [selectAllRowsOnPage]="false"
+          (page)="setPageTab2($event)"
+          [scrollbarH]="true"
+          (exportAll)="onExportAllTab2($event)"
+          [fireEventButtons]="fireEventButtonsTab2"
+          [fixedFireEventButtons]="true"
+        >
+          <vrc-datatable-column name="Id" dataType="id"></vrc-datatable-column>
+
+          <vrc-datatable-column
+            name="PadStart"
+            dataType="id"
+            padStart="15"
+          ></vrc-datatable-column>
+
+          <vrc-datatable-column
+            name="Numerico"
+            dataType="numerico"
+          ></vrc-datatable-column>
+
+          <vrc-datatable-column
+            name="Texto"
+            dataType="texto"
+          ></vrc-datatable-column>
+
+          <vrc-datatable-column
+            name="Inteiro"
+            dataType="inteiro"
+          ></vrc-datatable-column>
+
+          <vrc-datatable-column
+            name="cep"
+            dataType="cep"
+          ></vrc-datatable-column>
+          <vrc-datatable-column
+            name="cpf"
+            dataType="cpf"
+          ></vrc-datatable-column>
+          <vrc-datatable-column
+            name="cnpj"
+            dataType="cnpj"
+          ></vrc-datatable-column>
+          <vrc-datatable-column
+            name="ncm"
+            dataType="ncm"
+          ></vrc-datatable-column>
+
+          <vrc-datatable-column
+            name="Mercadologico"
+            dataType="mercadologico"
+          ></vrc-datatable-column>
+
+          <vrc-datatable-column
+            name="Data"
+            dataType="data"
+          ></vrc-datatable-column>
+          <vrc-datatable-column
+            name="Hora"
+            dataType="hora"
+          ></vrc-datatable-column>
+
+          <vrc-datatable-column
+            name="Data/Hora"
+            dataType="dataHora"
+          ></vrc-datatable-column>
+
+          <vrc-datatable-column
+            name="Telefone"
+            dataType="telefone"
+          ></vrc-datatable-column>
+
+          <vrc-datatable-column
+            name="Customizado"
+            dataType="texto"
+            [dataCustomMask]="customMask"
+          ></vrc-datatable-column>
+        </vrc-datatable>
+      </div></div
+  ></vrc-tab>
+  <vrc-tab label="Terceiro"
+    ><div class="col-sm-12">
+      <div class="dt-main">
+        <vrc-datatable
+          class="tb-3"
+          [rows]="rowsTab3"
+          [columnMode]="ColumnMode.force"
+          rowHeight="auto"
+          [externalPaging]="true"
+          [count]="pageTab3.totalElements"
+          [selected]="selectedTab3"
+          [selectionType]="SelectionType.checkbox"
+          [selectAllRowsOnPage]="false"
+          [displayCheck]="displayCheckTab3"
+          [fireEventButtons]="fireEventButtonsTab3"
+          [fixedFireEventButtons]="true"
+          [errorRows]="errorRows"
+          (page)="setPageTab3($event)"
+          (select)="onSelectTab3($event)"
+          (activate)="onActivateTab3($event)"
+          (exportAll)="onExportAllTab3($event)"
+          [showMoveButton]="true"
+        >
+          <vrc-datatable-column
+            [width]="3.75"
+            [sortable]="false"
+            [canAutoResize]="false"
+            [draggable]="false"
+            [resizeable]="false"
+            [headerCheckboxable]="true"
+            [checkboxable]="true"
+          >
+          </vrc-datatable-column>
+          <vrc-datatable-column name="Name"></vrc-datatable-column>
+          <vrc-datatable-column name="Gender"></vrc-datatable-column>
+          <vrc-datatable-column name="Company"></vrc-datatable-column>
+        </vrc-datatable>
+      </div></div
+  ></vrc-tab>
+</vrc-tabs>

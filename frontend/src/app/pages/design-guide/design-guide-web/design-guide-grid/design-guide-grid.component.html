@@ -1,0 +1,119 @@
+<div class="card--container">
+  <header class="card__header">
+    <h2>Grid</h2>
+  </header>
+  <div class="card__body--container">
+    <div class="card__body card__column">
+      <div class="col-sm-12">
+        <p>
+          A grid é fluida de 12 colunas com largura máxima de ≥1200px, que
+          diminui com o dispositivo do navegador em tamanhos menores, para
+          responsividade das colunas adicionar as opcões das grids, e todas as
+          colunas serão redimensionadas de acordo. A sintaxe é simples e torna a
+          codificação responsiva muito mais fácil.
+        </p>
+      </div>
+      <div class="col-sm-12">
+        <div class="responsive-table">
+          <table class="table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>
+                  <small>Tablets (≥768px)</small>
+                </th>
+                <th>
+                  <small>Desktops (≥992px)</small>
+                </th>
+                <th>
+                  <small>Desktops (≥1200px)</small>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="text-nowrap" scope="row">Container width</th>
+                <td>750px</td>
+                <td>970px</td>
+                <td>1170px</td>
+              </tr>
+              <tr>
+                <th class="text-nowrap" scope="row">Class prefix</th>
+                <td><code>.col-sm-</code></td>
+                <td><code>.col-md-</code></td>
+                <td><code>.col-lg-</code></td>
+              </tr>
+              <tr>
+                <th class="text-nowrap" scope="row"># of columns</th>
+                <td colspan="4">12</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card__body--container">
+      <div class="card__title">
+        <h4>Divisão por grids</h4>
+      </div>
+      <div class="card__body card__column">
+        <div class="gridview">
+          <div>
+            <div class="col-sm-2 col-md-2 col-lg-2 field">col 2</div>
+            <div class="col-sm-10 col-md-10 col-lg-10 field">col 10</div>
+          </div>
+          <div>
+            <div class="col-sm-3 col-md-3 col-lg-3 field">col 3</div>
+            <div class="col-sm-9 col-md-9 col-lg-9 field">col 9</div>
+          </div>
+          <div>
+            <div class="col-sm-4 col-md-4 col-lg-4 field">col 4</div>
+            <div class="col-sm-8 col-md-8 col-lg-8 field">col 8</div>
+          </div>
+          <div>
+            <div class="col-sm-5 col-md-5 col-lg-5 field">col 5</div>
+            <div class="col-sm-7 col-md-7 col-lg-7 field">col 7</div>
+          </div>
+          <div>
+            <div class="col-sm-6 col-md-6 col-lg-6 field">col 6</div>
+            <div class="col-sm-6 col-md-6 col-lg-6 field">col 6</div>
+          </div>
+          <div>
+            <div class="col-sm-7 col-md-7 col-lg-7 field">col 7</div>
+            <div class="col-sm-5 col-md-5 col-lg-5 field">col 5</div>
+          </div>
+          <div>
+            <div class="col-sm-8 col-md-8 col-lg-8 field">col 8</div>
+            <div class="col-sm-4 col-md-4 col-lg-4 field">col 4</div>
+          </div>
+          <div>
+            <div class="col-sm-9 col-md-9 col-lg-9 field">col 9</div>
+            <div class="col-sm-3 col-md-3 col-lg-3 field">col 3</div>
+          </div>
+          <div>
+            <div class="col-sm-10 col-md-10 col-lg-10 field">col 10</div>
+            <div class="col-sm-2 col-md-2 col-lg-2 field">col 2</div>
+          </div>
+          <div>
+            <div class="col-sm-11 col-md-11 col-lg-11 field">col 11</div>
+            <div class="col-sm-1 col-md-1 col-lg-1 field">col 1</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card__body--container">
+      <div class="card__title">
+        <h4>Exemplo</h4>
+      </div>
+      <div class="card__body card__column">
+        <section class="code-preview">
+          <pre>
+        <vr-code-mirror [value]=template></vr-code-mirror>
+      </pre>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

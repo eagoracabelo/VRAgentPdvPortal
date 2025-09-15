@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="card col-md">
+    <header class="card__header">
+      <h3 class="title">Autocomplete</h3>
+    </header>
+    <div class="card__content content">
+      <vrc-tabs>
+        <vrc-tab label="Documentação">
+          <markdown
+            src="./docs/components/vrc-autocomplete.md"
+            (load)="onLoad($event)"
+            (error)="onError($event)"
+          >
+          </markdown>
+        </vrc-tab>
+
+        <vrc-tab label="Exemplo (Básico)">
+          <div class="row">
+            <vrc-autocomplete
+              class="col-sm-3"
+              label="Estado"
+              [enableCalcListOptionsTopPosition]="true"
+              [(ngModel)]="value"
+              (update)="log($event)"
+            >
+              @for (estado of estados; track $index) {
+                <vrc-option [text]="estado.nome" [value]="estado.id">
+                  <span>{{ estado?.id + ' ' + estado?.nome }}</span>
+                </vrc-option>
+              }
+            </vrc-autocomplete>
+          </div>
+        </vrc-tab>
+
+        <vrc-tab label="Exemplo (Com Filtro)">
+          <div class="row">
+            <form [formGroup]="formGroup">
+              <vrc-autocomplete
+                class="col-sm-3"
+                id="vrc2"
+                label="Estado"
+                formControlName="estado"
+              >
+                @for (estado of filteredOptions; track estado) {
+                  <vrc-option [value]="estado.id" [text]="estado.nome">
+                    <span>{{ estado?.id + ' ' + estado?.nome }}</span>
+                  </vrc-option>
+                }
+              </vrc-autocomplete>
+            </form>
+          </div>
+        </vrc-tab>
+      </vrc-tabs>
+    </div>
+  </div>
+
+  <!-- <vrc-form-debug [form]="formGroup"></vrc-form-debug> -->
+</div>

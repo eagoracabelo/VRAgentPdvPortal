@@ -1,0 +1,53 @@
+{
+  "name": "@vrsoftbr/vr-design-guide",
+  "version": "18.1.42",
+  "description": "Design Guide para aplicações Web da VR Software",
+  "author": {
+    "name": "VRSoftware",
+    "email": "desenvolvimento@vrsoftbr.com",
+    "url": "http://vrsoft.com.br"
+  },
+  "scripts": {
+    "gulp": "gulp build",
+    "prebuild": "npm install --legacy-peer-deps",
+    "build": "npm run gulp",
+    "prepublishOnly": "npm run build"
+  },
+  "main": "dist",
+  "devDependencies": {
+    "@types/gulp": "4.0.17",
+    "@types/gulp-clean-css": "4.3.4",
+    "@types/gulp-header": "2.0.4",
+    "@types/gulp-postcss": "8.0.6",
+    "@types/gulp-rename": "2.0.6",
+    "@types/gulp-replace": "1.1.0",
+    "@types/gulp-sass": "5.0.4",
+    "@types/sass": "1.45.0",
+    "autoprefixer": "10.4.20",
+    "gulp": "5.0.0",
+    "gulp-clean": "0.4.0",
+    "gulp-clean-css": "4.3.0",
+    "gulp-google-webfonts": "4.1.0",
+    "gulp-header": "2.0.9",
+    "gulp-postcss": "10.0.0",
+    "gulp-rename": "2.0.0",
+    "gulp-replace": "1.1.4",
+    "gulp-sass": "5.1.0",
+    "node-sass": "9.0.0",
+    "postcss": "8.4.41",
+    "postcss-cli": "11.0.0",
+    "sass": "1.77.8"
+  },
+  "keywords": [
+    "vr software",
+    "vr"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vrsoftbr/VRUI.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
+}

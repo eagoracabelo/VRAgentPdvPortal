@@ -1,0 +1,69 @@
+// -----------------------------------------------------------------------------
+// Contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+.main-header {
+  .navbar {
+    background: var(--background-navbar);
+
+    .nav {
+      > li {
+        > a {
+          color: var(--color_4);
+
+          &:hover {
+            background: var(--background_13);
+            color: var(--color_15);
+          }
+
+          &:active {
+            background: var(--background_13);
+            color: var(--color_15);
+          }
+
+          &:focus {
+            background: var(--background_13);
+            color: var(--color_15);
+          }
+        }
+      }
+
+      .open {
+        > a {
+          background: var(--background_13);
+          color: var(--color_15);
+
+          &:hover {
+            background: var(--background_13);
+            color: var(--color_15);
+          }
+
+          &:focus {
+            background: var(--background_13);
+            color: var(--color_15);
+          }
+        }
+      }
+
+      > .active {
+        > a {
+          background: var(--background_13);
+          color: var(--color_15);
+        }
+      }
+    }
+
+    .sidebar-toggle {
+      color: var(--color_4);
+
+      &:hover {
+        color: var(--color_15);
+        background: var(--background_13);
+      }
+    }
+  }
+
+  li.user-header {
+    background-color: var(--background_color_12);
+  }
+}

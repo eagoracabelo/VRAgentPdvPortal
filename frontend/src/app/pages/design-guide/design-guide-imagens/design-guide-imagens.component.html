@@ -1,0 +1,33 @@
+<div class="card--container">
+  <header class="card__header">
+    <h2 class="title">Imagens</h2>
+  </header>
+
+  <div class="div__separator"></div>
+
+  <div class="card__body--container">
+    @for (item of allImages; track $index) {
+      <div class="row">
+        <h4>{{ item.nome }}</h4>
+        <div class="col-xs-12">
+          <div class="list-images">
+            @for (image of item?.images; track $index) {
+              <div class="image-preview">
+                <div class="preview">
+                  <i class="vr" [ngClass]="image"></i>
+                </div>
+                <div class="tooltip">
+                  <span class="preview-text" (click)="copyToClipboard(image)">{{
+                    getDescriptionIcon(image)
+                  }}</span>
+
+                  <span class="tooltiptext">Click p/ copiar</span>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

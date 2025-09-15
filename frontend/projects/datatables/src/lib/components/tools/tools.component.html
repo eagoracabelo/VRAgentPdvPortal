@@ -1,0 +1,44 @@
+<div class="datatable-tools-left-group"></div>
+<div class="datatable-tools-right-group">
+  @if (
+    (fixedFireEventButtons || selectedCount > 0) && fireEventButtons.length > 0
+  ) {
+    <fire-event-selected
+      [selectedCount]="selectedCount"
+      [fireEventButtons]="fireEventButtons"
+      [fixedFireEventButtons]="fixedFireEventButtons"
+      [selectionType]="selectionType"
+      (resetSelected)="onResetSelected()"
+    ></fire-event-selected>
+  }
+
+  @if (showMoveButton && selectedCount) {
+    <move-selected-event></move-selected-event>
+  }
+
+  @if (activeMoveColumn) {
+    <move-column
+      [storageKeyMoveColumn]="storageKeyMoveColumn"
+      [columns]="columns"
+      (isEditColumn)="editColumn($event)"
+      (reloadData)="onReloadData($event)"
+      [eventTrackingIdentifier]="eventTrackingIdentifier()"
+    ></move-column>
+  }
+
+  @if (activeExportFile) {
+    <export-file
+      (exportAll)="onExportAll($event)"
+      [fileTitle]="fileTitle"
+      [rows]="rows"
+      [columns]="columns"
+      [disableExportAll]="disableExportAll"
+      [storageKeyColumnPrintingPreference]="storageKeyColumnPrintingPreference"
+      [onlyLandscapeView]="onlyLandscapeView"
+      [preSelectedColumns]="preSelectedColumns"
+      [selectedPrintPageType]="selectedPrintPageType"
+      [eventTrackingIdentifier]="eventTrackingIdentifier()"
+      [groupedRows]="groupedRows"
+    ></export-file>
+  }
+</div>

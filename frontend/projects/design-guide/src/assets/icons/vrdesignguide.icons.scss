@@ -1,0 +1,1735 @@
+@mixin icon($name) {
+  width: 1.5rem;
+  height: 1.5rem;
+  background: url('../../assets/icons/svg/#{$name}');
+  background-repeat: no-repeat !important;
+  background-size: 1.5rem 1.5rem;
+  position: initial;
+  -webkit-filter: var(--color-icon-default);
+  filter: var(--color-icon-default);
+}
+
+@mixin sidebarIcon($name) {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: url('../../assets/icons/svg/#{$name}');
+  background-repeat: no-repeat !important;
+  background-size: 2.5rem 2.5rem;
+  position: initial;
+  -webkit-filter: var(--color-icon-default);
+  filter: var(--color-icon-default);
+}
+
+@mixin sidebarDirectionalArrows($name) {
+  width: 0.625rem;
+  height: 0.625rem;
+  background: url('../../assets/icons/svg/#{$name}');
+  background-repeat: no-repeat !important;
+  background-size: 0.625rem 0.625rem;
+  position: initial;
+  -webkit-filter: var(--color-icon-default);
+  filter: var(--color-icon-default);
+}
+
+.vr {
+  display: inline-block;
+}
+
+.vr-abrir {
+  @include icon('abrir.svg');
+}
+
+.vr-analise_de_oferta {
+  @include icon('analise_de_oferta.svg');
+}
+
+.vr-analise_compra_venda {
+  @include icon('analise_compra_venda.svg');
+}
+
+.vr-arquivo {
+  @include icon('arquivo.svg');
+}
+
+.vr-arrastar_direita {
+  @include icon('arrastar_direita.svg');
+}
+
+.vr-arrastar_dois_lados {
+  @include icon('arrastar_dois_lados.svg');
+}
+
+.vr-arrastar_esquerda {
+  @include icon('arrastar_esquerda.svg');
+}
+
+.vr-atencao {
+  @include icon('atencao.svg');
+}
+
+.vr-atendido {
+  @include icon('atendido.svg');
+}
+
+.vr-ativo {
+  @include icon('ativo.svg');
+}
+
+.vr-balanco {
+  @include icon('balanco.svg');
+}
+
+.vr-busca_cnpj {
+  @include icon('busca_cnpj.svg');
+}
+
+.vr-bonificacao {
+  @include icon('bonificacao.svg');
+}
+
+.vr-bonificacao_recebimento_nota {
+  @include icon('bonificacao_recebimento_nota.svg');
+}
+
+.vr-cadastro {
+  @include sidebarIcon('cadastro.svg');
+  height: 2.125rem;
+  background-size: 2.5rem 2.125rem;
+}
+
+.vr-cadastro_preenchido {
+  @include sidebarIcon('cadastro_preenchido.svg');
+  height: 2.125rem;
+  background-size: 2.5rem 2.125rem;
+}
+
+.vr-cadastro_produto {
+  @include icon('cadastro-produto.svg');
+}
+
+.vr-cadeado_aberto {
+  @include icon('cadeado_aberto.svg');
+}
+
+.vr-cadeado_fechado {
+  @include icon('cadeado_fechado.svg');
+}
+
+.vr-caixa {
+  @include icon('caixa.svg');
+}
+
+.vr-caixa_aberta {
+  @include icon('caixa_aberta.svg');
+}
+
+.vr-calculadora {
+  @include icon('calculadora.svg');
+}
+
+.vr-calendario {
+  @include icon('calendario.svg');
+}
+
+.vr-caminhao {
+  @include icon('caminhao.svg');
+}
+
+.vr-carregamento {
+  @include icon('carregamento.svg');
+}
+
+.vr-carrinho_compras {
+  @include icon('carrinho_compras.svg');
+}
+
+.vr-cartao_pessoal {
+  @include icon('cartao_pessoal.svg');
+}
+
+.vr-cartoes {
+  @include icon('cartoes.svg');
+}
+
+.vr-casa {
+  @include icon('casa.svg');
+}
+
+.vr-cesta-basica {
+  @include icon('cesta-basica.svg');
+}
+
+.vr-check {
+  @include icon('check.svg');
+}
+
+.vr-circulo_check {
+  @include icon('circulo_check.svg');
+}
+
+.vr-circulo_fechar {
+  @include icon('circulo_fechar.svg');
+}
+
+.vr-circulo_parcial {
+  @include icon('circulo_parcial.svg');
+}
+
+.vr-circulo_mais {
+  @include icon('circulo_mais.svg');
+}
+
+.vr-codigo {
+  @include icon('codigo.svg');
+}
+
+.vr-compra {
+  @include icon('compra.svg');
+}
+
+.vr-comprador {
+  @include icon('comprador.svg');
+}
+
+.vr-conferencia_nota_fiscal_entrada {
+  @include icon('conferencia_nota_fiscal_entrada.svg');
+}
+
+.vr-configuracoes {
+  @include icon('configuracoes.svg');
+}
+
+.vr-consistencia {
+  @include icon('consistencia.svg');
+}
+
+.vr-consistido {
+  @include icon('consistido.svg');
+}
+
+.vr-consumo {
+  @include icon('consumo.svg');
+}
+
+.vr-contas_a_pagar {
+  @include icon('contas_a_pagar.svg');
+}
+
+.vr-contas_a_receber {
+  @include icon('contas_a_receber.svg');
+}
+
+.vr-cotacao_cliente {
+  @include icon('cotacao_cliente.svg');
+}
+
+.vr-cotacao_fornecedor {
+  @include icon('cotacao_fornecedor.svg');
+}
+
+.vr-currency-dollar-circle-plus {
+  @include icon('currency-dollar-circle-plus.svg');
+}
+
+.vr-analise_cotacao_fornecedor {
+  @include icon('analise_cotacao_fornecedor.svg');
+}
+
+.vr-desabilitado {
+  @include icon('desabilitado.svg');
+}
+
+.vr-despesa {
+  @include icon('despesa.svg');
+}
+
+.vr-detalhamento {
+  @include icon('detalhamento.svg');
+}
+
+.vr-div {
+  @include icon('div.svg');
+}
+
+.vr-divisa_cima {
+  @include icon('divisa_cima.svg');
+}
+
+.vr-divisa_direita {
+  @include icon('divisa_direita.svg');
+}
+
+.vr-divisa_esquerda {
+  @include icon('divisa_esquerda.svg');
+}
+
+.vr-divisa_inferior {
+  @include icon('divisa_inferior.svg');
+}
+
+.vr-download {
+  @include icon('download.svg');
+}
+
+.vr-dro {
+  @include icon('dro.svg');
+}
+
+.vr-editar {
+  @include icon('editar.svg');
+}
+
+.vr-editar_tabela {
+  @include icon('editar-tabela.svg');
+}
+
+.vr-embalagem {
+  @include icon('embalagem.svg');
+}
+
+.vr-emissor_etiqueta {
+  @include icon('emissor_etiqueta.svg');
+}
+
+.vr-emoticon_feliz {
+  @include icon('emoticon_feliz.svg');
+}
+
+.vr-emoticon_triste {
+  @include icon('emoticon_triste.svg');
+}
+
+.vr-entrada {
+  @include icon('entrada.svg');
+}
+
+.vr-estoque {
+  @include icon('estoque.svg');
+}
+
+.vr-estoque_online {
+  @include icon('estoque_online.svg');
+}
+
+.vr-estoque-2 {
+  @include icon('estoque-2.svg');
+}
+
+.vr-estoque-3 {
+  @include icon('estoque-3.svg');
+}
+
+.vr-motorista {
+  @include icon('motorista.svg');
+}
+
+.vr-posto {
+  @include icon('posto.svg');
+}
+
+
+.vr-expandir {
+  @include icon('expandir.svg');
+}
+
+.vr-expandir_2setas {
+  @include icon('expandir_2setas.svg');
+}
+
+.vr-expandir_setas {
+  @include icon('expandir_setas.svg');
+}
+
+.vr-fabricante {
+  @include icon('fabricante.svg');
+}
+
+.vr-favoritos {
+  @include icon('favoritos.svg');
+}
+
+.vr-favoritos_preenchido {
+  @include icon('favoritos_preenchido.svg');
+}
+
+.vr-fechar {
+  @include icon('fechar.svg');
+}
+
+.vr-ferramentas {
+  @include icon('ferramentas.svg');
+}
+
+.vr-filtro {
+  @include icon('filtro.svg');
+}
+
+.vr-filtro_aplicado {
+  @include icon('filtro_aplicado.svg');
+}
+
+.vr-filtro_removido {
+  @include icon('filtro_removido.svg');
+}
+
+.vr-finalizadora {
+  @include icon('finalizadora.svg');
+}
+
+.vr-financeiro {
+  @include icon('financeiro.svg');
+}
+
+.vr-flash {
+  @include icon('flash.svg');
+}
+
+.vr-fluxo_de_caixa {
+  @include icon('fluxo_de_caixa.svg');
+}
+
+.vr-fornecedor {
+  @include icon('fornecedor.svg');
+}
+
+.vr-grafico {
+  @include icon('grafico.svg');
+}
+
+.vr-grafico_pizza {
+  @include icon('grafico_pizza.svg');
+}
+
+.vr-habilitado {
+  @include icon('habilitado.svg');
+}
+
+.vr-home {
+  @include icon('home.svg');
+}
+
+.vr-horario {
+  @include icon('horario.svg');
+}
+
+.vr-info {
+  @include icon('info.svg');
+}
+
+.vr-info_outlined {
+  @include icon('info_outlined.svg');
+}
+
+.vr-icon {
+  @include icon('icon.svg');
+}
+
+.vr-id_card {
+  @include icon('id_card.svg');
+}
+
+.vr-impressora {
+  @include icon('impressora.svg');
+}
+
+.vr-limpar {
+  @include icon('limpar.svg');
+}
+
+.vr-pesquisa_satisfacao {
+  @include icon('pesquisa_satisfacao.svg');
+}
+
+.vr-lixo {
+  @include icon('lixo.svg');
+}
+
+.vr-loja {
+  @include icon('loja.svg');
+}
+
+.vr-luz_apagada {
+  @include icon('luz_apagada.svg');
+}
+
+.vr-luz_acesa {
+  @include icon('luz_acesa.svg');
+}
+
+.vr-mais {
+  @include icon('mais.svg');
+}
+
+.vr-marcador {
+  @include icon('marcador.svg');
+}
+
+.vr-menos {
+  @include icon('menos.svg');
+}
+
+.vr-menu {
+  @include icon('menu.svg');
+}
+
+.vr-menu_2 {
+  @include icon('menu_2.svg');
+}
+
+.vr-mercadologico {
+  @include icon('mercadologico.svg');
+}
+
+.vr-meu_valor {
+  @include icon('meu_valor.svg');
+}
+
+.vr-mobile {
+  @include icon('mobile.svg');
+}
+
+.vr-moedas {
+  @include icon('moedas.svg');
+}
+
+.vr-motivo_cancelamento {
+  @include icon('motivo_cancelamento.svg');
+}
+
+.vr-motivo_desconto {
+  @include icon('motivo_desconto.svg');
+}
+
+.vr-motivo_protecao_dados {
+  @include icon('motivo_protecao_dados.svg');
+}
+
+.vr-nao_consistido {
+  @include icon('nao_consistido.svg');
+}
+
+.vr-nota_fiscal {
+  @include icon('nota_fiscal.svg');
+}
+
+.vr-nota_fiscal_entrada {
+  @include icon('nota_fiscal_entrada.svg');
+}
+
+.vr-nota_fiscal_saida {
+  @include icon('nota_fiscal_saida.svg');
+}
+
+.vr-notificacoes {
+  @include icon('notificacoes.svg');
+}
+
+.vr-oferta {
+  @include icon('oferta.svg');
+}
+
+.vr-orcamento_compra {
+  @include icon('orcamento_compra.svg');
+}
+
+.vr-pdv {
+  @include icon('pdv.svg');
+}
+
+.vr-pedido_compra {
+  @include icon('pedido_compra.svg');
+}
+
+.vr-solicitacao_compra {
+  @include icon('solicitacao_compra.svg');
+}
+
+.vr-analise_solicitacao_compra {
+  @include icon('analise_solicitacao_produto.svg');
+}
+
+.vr-perda {
+  @include icon('perda.svg');
+}
+
+.vr-perfil {
+  @include icon('perfil.svg');
+}
+
+.vr-pesquisa {
+  @include icon('pesquisa.svg');
+}
+
+.vr-pesquisa_pdv {
+  @include icon('pesquisa_pdv.svg');
+}
+
+.vr-pesquisa_totem {
+  @include icon('pesquisa_totem.svg');
+}
+
+.vr-precificacao {
+  @include icon('precificacao.svg');
+}
+
+.vr-check_fill {
+  @include icon('check_fill.svg');
+}
+
+.vr-rateio {
+  @include icon('rateio.svg');
+}
+
+.vr-resumo {
+  @include icon('resumo.svg');
+}
+
+.vr-revisao_preco {
+  @include icon('revisao_preco.svg');
+}
+
+.vr-historico_preco {
+  @include icon('historico_preco.svg');
+}
+
+.vr-bloqueado {
+  @include icon('bloqueado.svg');
+}
+
+.vr-aprovar_preco {
+  @include icon('aprovar_preco.svg');
+}
+
+.vr-search_fill {
+  @include icon('search_fill.svg');
+}
+
+.vr-preco {
+  @include icon('preco.svg');
+}
+
+.vr-preco_alterado {
+  @include icon('preco_alterado.svg');
+}
+
+.vr-preco_alterado_1 {
+  @include icon('preco_alterado_1.svg');
+}
+
+.vr-producao {
+  @include icon('producao.svg');
+}
+
+.vr-producao_produto {
+  @include icon('producao_produto.svg');
+}
+
+.vr-produto {
+  @include icon('produto.svg');
+}
+
+.vr-promocao {
+  @include icon('promocao.svg');
+}
+
+.vr-push_error {
+  @include icon('push_error.svg');
+}
+
+.vr-push_info {
+  @include icon('push_info.svg');
+}
+
+.vr-push_success {
+  @include icon('push_success.svg');
+}
+
+.vr-push_warning {
+  @include icon('push_warning.svg');
+}
+
+.vr-quebra {
+  @include icon('quebra.svg');
+}
+
+.vr-relogio {
+  @include icon('relogio.svg');
+}
+
+.vr-relogio_atualizacao {
+  @include icon('relogio_atualizacao.svg');
+}
+
+.vr-reposicao {
+  @include icon('reposicao.svg');
+}
+
+.vr-retrair {
+  @include icon('retrair.svg');
+}
+
+.vr-retrair_2setas {
+  @include icon('retrair_2setas.svg');
+}
+
+.vr-retrair_setas {
+  @include icon('retrair_setas.svg');
+}
+
+.vr-ruptura {
+  @include icon('ruptura.svg');
+}
+
+.vr-saida {
+  @include icon('saida.svg');
+}
+
+.vr-sair {
+  @include icon('sair.svg');
+}
+
+.vr-salvar {
+  @include icon('salvar.svg');
+}
+
+.vr-sem_resultados {
+  @include icon('sem_resultados.svg');
+}
+
+.vr-servico {
+  @include icon('servico.svg');
+}
+
+.vr-seta_direita {
+  @include icon('seta_direita.svg');
+}
+
+.vr-seta_dupla_direita {
+  @include icon('seta_dupla_direita.svg');
+}
+
+.vr-seta_dupla_esquerda {
+  @include icon('seta_dupla_esquerda.svg');
+}
+
+.vr-seta_esquerda {
+  @include icon('seta_esquerda.svg');
+}
+
+.vr-seta_simples_direita {
+  @include icon('seta_simples_direita.svg');
+}
+
+.vr-seta_simples_esquerda {
+  @include icon('seta_simples_esquerda.svg');
+}
+
+.vr-seta_anterior {
+  @include icon('seta_anterior.svg');
+}
+
+.vr-seta_proximo {
+  @include icon('seta_proximo.svg');
+}
+
+.vr-setas {
+  @include icon('setas.svg');
+}
+
+.vr-sugestoes {
+  @include icon('sugestoes.svg');
+}
+
+.vr-thumbtack {
+  @include icon('thumbtack.svg');
+}
+
+.vr-tipo_entrada {
+  @include icon('tipo_entrada.svg');
+}
+
+.vr-transferencia {
+  @include icon('transferencia.svg');
+}
+
+.vr-transmitir {
+  @include icon('transmitir.svg');
+}
+
+.vr-transformar {
+  @include icon('transformar.svg');
+}
+
+.vr-troca {
+  @include icon('troca.svg');
+}
+
+.vr-tutorial {
+  @include icon('tutorial.svg');
+}
+
+.vr-usuario {
+  @include icon('usuario.svg');
+}
+
+.vr-validade {
+  @include icon('validade.svg');
+}
+
+.vr-valor {
+  @include icon('valor.svg');
+}
+
+.vr-venda_cupom_medio {
+  @include icon('venda_cupom_medio.svg');
+}
+
+.vr-venda_pdv {
+  @include icon('venda_pdv.svg');
+}
+
+.vr-venda_periodo {
+  @include icon('venda_periodo.svg');
+}
+
+.vr-venda_promocao {
+  @include icon('venda_promocao.svg');
+}
+
+.vr-ver {
+  @include icon('ver.svg');
+}
+
+.vr-ver_desabilitado {
+  @include icon('ver_desabilitado.svg');
+}
+
+.vr-visao_geral {
+  @include icon('visao_geral.svg');
+}
+
+.vr-voltar {
+  @include icon('voltar.svg');
+}
+
+.vr-web {
+  @include icon('web.svg');
+}
+
+.vr-copyright_branco {
+  @include icon('copyright_branco.svg');
+}
+
+.vr-copyright_cinza {
+  @include icon('copyright_cinza.svg');
+}
+
+.vr-copyright_preto {
+  @include icon('copyright_preto.svg');
+}
+
+.vr-limpar_conteudo {
+  @include icon('limpar_conteudo.svg');
+}
+
+.vr-administracao_preco_imediata {
+  @include icon('administracao_preco_imediata.svg');
+}
+
+.vr-error_fill {
+  @include icon('error_fill.svg');
+}
+
+.vr-operacao {
+  @include icon('operacao.svg');
+}
+
+.vr-troca_devolucao {
+  @include icon('troca_devolucao.svg');
+}
+
+.vr-error_fill_preenchido {
+  @include icon('error_fill_preenchido.svg');
+}
+
+.vr-warning_fill {
+  @include icon('warning_fill.svg');
+}
+
+.vr-info_fill {
+  @include icon('info_fill.svg');
+}
+
+.vr-calculo {
+  @include icon('calculo.svg');
+}
+
+.vr-email {
+  @include icon('email.svg');
+}
+
+.vr-email_aberto {
+  @include icon('email_aberto.svg');
+}
+
+.vr-email_lido {
+  @include icon('email_lido.svg');
+}
+
+.vr-pointer {
+  @include icon('pointer.svg');
+}
+
+.vr-recuperar_senha {
+  @include icon('recuperar_senha.svg');
+}
+
+.vr-vrsoftware_branco {
+  @include icon('vrsoftware_branco.svg');
+}
+
+.vr-visualizar_preenchido {
+  @include icon('visualizar_preenchido.svg');
+}
+
+.vr-visualizar {
+  @include icon('visualizar.svg');
+}
+
+.vr-exportar_tabela_preenchido {
+  @include icon('exportar_tabela_preenchido.svg');
+}
+
+.vr-exportar_tabela {
+  @include icon('exportar_tabela.svg');
+}
+
+.vr-exportar_balanca {
+  @include icon('exportar_balanca.svg');
+}
+
+.vr-alterar_tabela_preenchido {
+  @include icon('alterar_tabela_preenchido.svg');
+}
+
+.vr-alterar_tabela {
+  @include icon('alterar_tabela.svg');
+}
+
+.vr-impressora_preenchido {
+  @include icon('impressora_preenchido.svg');
+}
+
+.vr-impressora {
+  @include icon('impressora.svg');
+}
+
+.vr-principal_preenchido {
+  @include icon('principal_preenchido.svg');
+}
+
+.vr-principal {
+  @include icon('principal.svg');
+}
+
+.vr-contabilidade_preenchido {
+  @include icon('contabilidade_preenchido.svg');
+}
+
+.vr-contabilidade {
+  @include icon('contabilidade.svg');
+}
+
+.vr-ativo_imobilizado_preenchido {
+  @include icon('ativo_imobilizado_preenchido.svg');
+}
+
+.vr-ativo_imobilizado {
+  @include icon('ativo_imobilizado.svg');
+}
+
+.vr-administracao_preenchido {
+  @include icon('administracao_preenchido.svg');
+}
+
+.vr-administracao_precos {
+  @include icon('administracao_precos.svg');
+}
+
+.vr-administracao {
+  @include icon('administracao.svg');
+}
+
+.vr-paginacao_seta_esquerda_preenchido {
+  @include icon('paginacao_seta_esquerda_preenchido.svg');
+}
+
+.vr-paginacao_seta_esquerda {
+  @include icon('paginacao_seta_esquerda.svg');
+}
+
+.vr-paginacao_seta_direita_preenchido {
+  @include icon('paginacao_seta_direita_preenchido.svg');
+}
+
+.vr-paginacao_seta_direita {
+  @include icon('paginacao_seta_direita.svg');
+}
+
+.vr-rede_preenchido {
+  @include icon('rede_preenchido.svg');
+}
+
+.vr-rede {
+  @include icon('rede.svg');
+}
+
+.vr-rede {
+  @include icon('rede.svg');
+}
+
+.vr-empresa {
+  @include icon('empresa.svg');
+}
+
+.vr-excessao_permissao {
+  @include icon('excessao_permissao.svg');
+}
+
+.vr-alerta {
+  @include icon('alerta.svg');
+}
+
+.vr-desvinculado {
+  @include icon('desvinculado.svg');
+}
+
+.vr-vinculo {
+  @include icon('vinculo.svg');
+}
+
+.vr-grupo_permissoes {
+  @include icon('grupo_permissoes.svg');
+}
+
+.vr-circulo_usuario {
+  @include icon('circulo_usuario.svg');
+}
+
+.vr-permissoes {
+  @include icon('permissoes.svg');
+}
+
+.vr-colar {
+  @include icon('colar.svg');
+}
+
+.vr-repetir_acao {
+  @include icon('repetir_acao.svg');
+}
+
+.vr-historico {
+  @include icon('historico.svg');
+}
+
+.vr-click {
+  @include icon('click.svg');
+}
+
+.vr-editar_em_lote {
+  @include icon('editar_em_lote.svg');
+}
+
+.vr-editar_excluir {
+  @include icon('editar_excluir.svg');
+}
+
+.vr-arrastar_colunas_tabela {
+  @include icon('arrastar_colunas_tabela.svg');
+}
+
+.vr-editar_lote {
+  @include icon('editar_lote.svg');
+}
+
+.vr-inativar {
+  @include icon('inativar.svg');
+}
+
+.vr-consultar {
+  @include icon('consultar.svg');
+}
+
+.vr-busca-localizacao {
+  @include icon('busca-localizacao.svg');
+}
+
+.vr-quadrado_menos {
+  @include icon('quadrado_menos.svg');
+}
+
+.vr-quadrado_mais {
+  @include icon('quadrado_mais.svg');
+}
+
+.vr-copiar {
+  @include icon('copiar.svg');
+}
+
+.vr-duvidas {
+  @include icon('duvidas.svg');
+}
+
+.vr-tracking {
+  @include icon('tracking.svg');
+}
+
+.vr-imagem {
+  @include icon('imagem.svg');
+}
+
+.vr-setor {
+  @include icon('setor.svg');
+}
+
+.vr-configuracao {
+  @include sidebarIcon('configuracao.svg');
+  height: 2.125rem;
+  background-size: 2.5rem 2.125rem;
+}
+
+.vr-cadastro_motivo {
+  @include sidebarIcon('cadastro_motivo.svg');
+}
+
+.vr-divisao_fornecedor {
+  @include sidebarIcon('divisao_fornecedor.svg');
+}
+
+.vr-condicao_pagamento {
+  @include sidebarIcon('condicao_pagamento.svg');
+}
+
+.vr-forma_pagamento {
+  @include sidebarIcon('forma_pagamento.svg');
+}
+
+.vr-cadastro-produto {
+  @include sidebarIcon('cadastro-produto.svg');
+}
+
+.vr-usuarios {
+  @include sidebarIcon('usuarios.svg');
+}
+
+.vr-grupos {
+  @include sidebarIcon('grupo.svg');
+}
+
+.vr-seta_baixo {
+  @include sidebarIcon('seta_baixo.svg');
+}
+
+.vr-seta_cima {
+  @include sidebarIcon('seta_cima.svg');
+}
+
+.vr-seta_direcional_direita {
+  @include sidebarDirectionalArrows('seta_direcional_direita.svg');
+}
+
+.vr-seta_direcional_esquerda {
+  @include sidebarDirectionalArrows('seta_direcional_esquerda.svg');
+}
+
+.vr-reenviar_email {
+  @include icon('reenviar_email.svg');
+}
+
+.vr-termo_consentimento {
+  @include icon('termo_consentimento.svg');
+}
+
+.vr-adicionar_hiperlink {
+  @include icon('adicionar_hiperlink.svg');
+}
+
+.vr-remover_hiperlink {
+  @include icon('remover_hiperlink.svg');
+}
+
+.vr-tamanho_da_fonte {
+  @include icon('tamanho_da_fonte.svg');
+}
+
+.vr-alinhar_direita {
+  @include icon('alinhar_direita.svg');
+}
+
+.vr-alinhar_centro {
+  @include icon('alinhar_centro.svg');
+}
+
+.vr-alinhar_esquerda {
+  @include icon('alinhar_esquerda.svg');
+}
+
+.vr-sublinhado {
+  @include icon('sublinhado.svg');
+}
+
+.vr-negrito {
+  @include icon('negrito.svg');
+}
+
+.vr-italico {
+  @include icon('italico.svg');
+}
+
+.vr-kanban {
+  @include icon('kanban.svg');
+}
+
+.vr-tachado {
+  @include icon('tachado.svg');
+}
+
+.vr-familia_fornecedor {
+  @include icon('familia_fornecedor_produto.svg');
+}
+
+.vr-familia_produto {
+  @include icon('familia_fornecedor_produto.svg');
+}
+
+.vr-tabela_fornecedor {
+  @include icon('tabela_fornecedor.svg');
+}
+
+.vr-marca {
+  @include icon('marca.svg');
+}
+
+.vr-banco_conta_corrente {
+  @include icon('banco_conta_corrente.svg');
+}
+
+.vr-circulo_seta_direita {
+  @include icon('circulo_seta_direita.svg');
+}
+
+.vr-local_estoque {
+  @include icon('local_estoque.svg');
+}
+
+.vr-classificacao_produto {
+  @include icon('classificacao_produto.svg');
+}
+
+.vr-tipo_movimentacao {
+  @include icon('tipo_movimentacao.svg');
+}
+
+.vr-taxa_parcelamento_bandeira {
+  @include icon('taxa_parcelamento_bandeira.svg');
+}
+
+.vr-congelamento_estoque {
+  @include icon('congelamento_estoque.svg');
+}
+
+.vr-vencimento_bandeira {
+  @include icon('vencimento_bandeira.svg');
+}
+
+.vr-permissoes_adicionais {
+  @include icon('permissoes_adicionais.svg');
+}
+
+.vr-grupo_preco {
+  @include icon('grupo_preco.svg');
+}
+
+.vr-mover {
+  @include icon('mover.svg');
+}
+
+.vr-compartilhar {
+  @include icon('compartilhar.svg');
+}
+
+.vr-cadeado {
+  @include icon('lock.svg');
+}
+
+.vr-visualizar_desabilitado {
+  @include icon('hidden_view.svg');
+}
+
+.vr-suporte_sistema {
+  @include icon('suporte_sistema.svg');
+}
+
+.vr-suporte_sistema_circulo {
+  @include icon('suporte_sistema_circulo.svg');
+}
+
+.vr-pdv_estacao {
+  @include icon('pdv_estacao.svg');
+}
+
+.vr-keyboard {
+  @include icon('keyboard.svg');
+}
+
+.vr-list {
+  @include icon('list.svg');
+}
+
+.vr-upload {
+  @include icon('upload.svg');
+}
+
+.vr-relogio_time {
+  @include icon('relogio_time.svg');
+}
+
+.vr-cadeado_refresh {
+  @include icon('cadeado_refresh.svg');
+}
+
+.vr-movimentacao-estoque {
+  @include icon('movimentacao_estoque.svg');
+}
+
+.vr-historico-pagamentos {
+  @include icon('historico_pagamentos.svg');
+}
+
+.vr-ultimas-vendas {
+  @include icon('ultimas_vendas.svg');
+}
+
+.vr-pis_cofins {
+  @include icon('pis_cofins.svg');
+}
+
+.vr-cenario_fiscal {
+  @include icon('cenario_fiscal.svg');
+}
+
+.vr-cartao-credito {
+  @include icon('credit_card.svg');
+}
+
+.vr-fundamentacao_legal {
+  @include icon('fundamentacao_legal.svg');
+}
+
+.vr-natureza_receita {
+  @include icon('natureza_receita.svg');
+}
+
+.vr-regra_fiscal {
+  @include icon('regra_fiscal.svg');
+}
+
+.vr-finalizar {
+  @include icon('finalizar.svg');
+}
+
+.vr-estornar {
+  @include icon('estornar.svg');
+}
+
+.vr-alerta_interrogacao {
+  @include icon('alerta_interrogacao.svg');
+}
+
+.vr-emissao_nota_fiscal {
+  @include icon('emissao_nota_fiscal.svg');
+}
+
+.vr-emissao {
+  @include icon('emissao.svg');
+}
+
+.vr-etiqueta {
+  @include icon('etiqueta.svg');
+}
+
+.vr-acerto_custo {
+  @include icon('acerto_custo.svg');
+}
+
+.vr-tabela_nutricional {
+  @include icon('tabela_nutricional.svg');
+}
+
+.vr-baixa_titulo {
+  @include icon('baixa_titulo.svg');
+}
+
+.vr-pasta_aberta {
+  @include icon('pasta_aberta.svg');
+}
+
+.vr-negociacao_operadora {
+  @include icon('negociacao_operadora.svg');
+}
+
+.vr-link_externo {
+  @include icon('link_externo.svg');
+}
+
+.vr-recebimento_nota_fiscal {
+  @include icon('recebimento_nota_fiscal.svg');
+}
+
+.vr-divergencia {
+  @include icon('divergencia.svg');
+}
+
+.vr-divergencia_unfill {
+  @include icon('divergencia_unfill.svg');
+}
+
+.vr-contador {
+  @include icon('contador.svg');
+}
+
+.vr-conciliacao {
+  @include icon('conciliacao.svg');
+}
+
+.vr-pesquisa_fill {
+  @include icon('pesquisa_fill.svg');
+}
+
+.vr-balanco_fill {
+  @include icon('balanco_fill.svg');
+}
+
+.vr-analise_negociacao_troca {
+  @include icon('analise_negociacao_troca.svg');
+}
+
+.vr-document {
+  @include icon('document.svg');
+}
+
+.vr-banco {
+  @include icon('banco.svg');
+}
+
+.vr-sugestao_compra {
+  @include icon('sugestao_compra.svg');
+}
+
+.vr-produto_sem_venda {
+  @include icon('produto_sem_venda.svg');
+}
+
+.vr-extrato {
+  @include icon('extrato.svg');
+}
+
+.vr-detalhamento-venda {
+  @include icon('relatorio.svg');
+}
+
+.vr-produto_similar {
+  @include icon('produto_similar.svg');
+}
+
+.vr-beneficio_convenio_bonus {
+  @include icon('beneficio_convenio_bonus.svg');
+}
+
+.vr-convenio {
+  @include icon('convenio.svg');
+}
+
+.vr-relatorio {
+  @include icon('relatorio.svg');
+}
+
+.vr-encaminhar {
+  @include icon('encaminhar.svg');
+}
+
+.vr-monitor_xml {
+  @include icon('monitor_xml.svg');
+}
+
+.vr-atualizar {
+  @include icon('atualizar.svg');
+}
+
+.vr-manifestar {
+  @include icon('manifestar.svg');
+}
+
+.vr-inutilizar {
+  @include icon('inutilizar.svg');
+}
+
+.vr-exportar {
+  @include icon('exportar.svg');
+}
+
+.vr-sped {
+  @include icon('sped.svg');
+}
+
+.vr-controle_vasilhame {
+  @include icon('controle_vasilhame.svg');
+}
+
+.vr-emitir {
+  @include icon('emitir.svg');
+}
+
+.vr-transacao-tef {
+  @include icon('transacao_tef.svg');
+}
+
+.vr-pendencia {
+  @include icon('pendencia.svg');
+}
+
+.vr-posicao_estoque {
+  @include icon('posicao_estoque.svg');
+}
+
+.vr-analise_saldo_convenio {
+  @include icon('analise_saldo_convenio.svg');
+}
+
+.vr-analise_transacao_convenio {
+  @include icon('analise_transacao_convenio.svg');
+}
+
+.vr-analise_saldo_credito_rotativo {
+  @include icon('analise_saldo_credito_rotativo.svg');
+}
+
+.vr-observacao_fiscal {
+  @include icon('observacao_fiscal.svg');
+}
+
+.vr-codigo_ajuste_tabela {
+  @include icon('codigo_ajuste_tabela.svg');
+}
+
+.vr-importar {
+  @include icon('importar.svg');
+}
+
+.vr-emergency_home {
+  @include icon('emergency_home.svg');
+}
+
+.vr-help {
+  @include icon('help.svg');
+}
+
+.vr-log {
+  @include icon('log.svg');
+}
+
+.vr-modelo-etiqueta {
+  @include icon('modelo_etiqueta.svg');
+}
+
+.vr-relatorio-entrada-saida {
+  @include icon('relatorio_entrada_saida.svg');
+}
+
+.vr-curva-abc {
+  @include icon('curva-abc.svg');
+}
+
+.vr-decomposicao_produto {
+  @include icon('decomposicao_produto.svg');
+}
+
+.vr-integracao {
+  @include icon('integracao.svg');
+}
+
+.vr-scanntech_logo {
+  @include icon('scanntech_logo.svg');
+}
+
+.vr-contas_receber_atalho {
+  @include icon('contas_receber_atalho.svg');
+}
+
+.vr-vertical-align-bottom {
+  @include icon('vertical_align_bottom.svg');
+}
+
+.vr-vertical-align-center {
+  @include icon('vertical_align_center.svg');
+}
+
+.vr-vertical-align-top {
+  @include icon('vertical_align_top.svg');
+}
+
+.vr-relatorio_inventario {
+  @include icon('relatorio_inventario.svg');
+}
+
+.vr-cambio {
+  @include icon('cambio.svg');
+}
+
+.vr-exclamation_fill {
+  @include icon('exclamation_fill.svg');
+}
+
+.vr-abastecimento-retirada {
+  @include icon('abastecimento-retirada.svg');
+}
+
+.vr-suporte-tecnico {
+  @include icon('suporte-tecnico.svg');
+}
+
+.vr-dashboard {
+  @include icon('dashboard.svg');
+}
+
+.vr-timbrado {
+  @include icon('timbrado.svg');
+}
+
+.vr-tributo {
+  @include icon('tributo.svg');
+}
+
+.vr-play {
+  @include icon('play.svg');
+}
+
+.vr-pause {
+  @include icon('pause.svg');
+}
+
+.vr-cancelar {
+  @include icon('cancelar.svg');
+}
+
+.vr-cheque {
+  @include icon('cheque.svg');
+}
+
+.vr-modelo-cheque {
+  @include icon('modelo-cheque.svg');
+}
+
+.vr-configuracao-cheque {
+  @include icon('configuracao-cheque.svg');
+}
+
+.vr-entrada-produto {
+  @include icon('entrada-produto.svg');
+}
+
+.vr-analise-bonificacao {
+  @include icon('relatorio_analise_bonificação.svg');
+}
+
+.vr-coletor {
+  @include icon('coletor.svg');
+}
+
+.vr-repositorio {
+  @include icon('repositorio.svg');
+}
+
+.vr-analise_pagamentos {
+  @include icon('analise_pagamentos.svg');
+}
+
+.vr-controle-orcamento {
+  @include icon('controle_orcamento.svg');
+}
+
+.vr-analise_promocoes {
+  @include icon('analise_promocoes.svg');
+}
+
+.vr-gitbook {
+  @include icon('gitbook.svg');
+}
+
+.vr-masterfisco {
+  @include icon('masterfisco.svg');
+}
+
+.vr-integracao-menu {
+  @include icon('integracao-menu.svg');
+}
+
+.vr-liberar {
+  @include icon('liberar.svg');
+}
+
+.vr-produto-mais-menos-vendido {
+  @include icon('produto-mais-menos-vendido.svg');
+}
+
+.vr-carta-correcao {
+  @include icon('carta_correcao.svg');
+}
+
+.vr-analise-margem {
+  @include icon('analise_de_margem.svg');
+}
+
+.vr-file-search {
+  @include icon('file_search.svg');
+}
+
+.vr-carga {
+  @include icon('carga.svg');
+}
+
+.vr-orcamento {
+  @include icon('orcamento.svg');
+}
+
+.vr-orcamento-fornecedor {
+  @include icon('orcamento_fornecedor.svg');
+}
+
+.vr-crm {
+  @include icon('crm.svg');
+}
+
+.vr-orcamento-comprador {
+  @include icon('orcamento_comprador.svg');
+}
+
+.vr-aguardando-conferencia {
+  @include icon('aguardando-conferencia.svg');
+}
+
+.vr-divergencia-conferencia {
+  @include icon('divergencia-conferencia.svg');
+}
+
+.vr-parcialmente-conferido {
+  @include icon('parcialmente-conferido.svg');
+}
+
+.vr-liberar-conferencia {
+  @include icon('liberar-conferencia.svg');
+}
+
+.vr-reconferencia {
+  @include icon('reconferencia.svg');
+}

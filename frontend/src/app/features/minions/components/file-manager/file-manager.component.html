@@ -1,0 +1,45 @@
+<div class="file-manager">
+    <div class="card">
+        <div class="card-header">
+            <h3>Gerenciamento de Arquivos</h3>
+            <p class="text-muted">Copie ou mova arquivos no minion {{ minionId }}</p>
+        </div>
+
+        <div class="card-body">
+            <form [formGroup]="fileForm" (ngSubmit)="manageFile()">
+                <div class="form-group">
+                    <label for="sourcePath">Caminho de Origem</label>
+                    <input type="text" id="sourcePath" formControlName="sourcePath" class="form-control"
+                        placeholder="/path/to/source/file.txt"
+                        [class.is-invalid]="fileForm.get('sourcePath')?.invalid && fileForm.get('sourcePath')?.touched">
+                    <div class="invalid-feedback"
+                        *ngIf="fileForm.get('sourcePath')?.invalid && fileForm.get('sourcePath')?.touched">
+                        Caminho de origem é obrigatório
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="destinationPath">Caminho de Destino</label>
+                    <input type="text" id="destinationPath" formControlName="destinationPath" class="form-control"
+                        placeholder="/path/to/destination/file.txt"
+                        [class.is-invalid]="fileForm.get('destinationPath')?.invalid && fileForm.get('destinationPath')?.touched">
+                    <div class="invalid-feedback"
+                        *ngIf="fileForm.get('destinationPath')?.invalid && fileForm.get('destinationPath')?.touched">
+                        Caminho de destino é obrigatório
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" [disabled]="fileForm.invalid || loading">
+                        <i class="fas fa-copy" *ngIf="!loading"></i>
+                        <i class="fas fa-spinner fa-spin" *ngIf="loading"></i>
+                        {{ loading ? 'Processando...' : 'Gerenciar Arquivo' }}
+                    </button>
+                    <button type="button" class="btn btn-secondary" (click)="resetForm()" [disabled]="loading">
+                        Limpar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,125 @@
+<div class="form-group" [ngClass]="classeCss">
+  <label
+    [class.tooltip-label]="tooltip"
+    #label
+    class="control-label select2-label"
+    [attr.for]="id"
+  >
+    <ng-content></ng-content>
+    <span [hidden]="!isRequired" class="required">*</span>
+    @if (tooltip) {
+      <vrc-tooltip
+        class="tooltip"
+        [message]="tooltip.message"
+        [width]="tooltip.width"
+        [small]="tooltip.small"
+        [topRight]="tooltip.topRight"
+        [bottomRight]="tooltip.bottomRight"
+        [topLeft]="tooltip.topLeft"
+        [bottomLeft]="tooltip.bottomLeft"
+      >
+      </vrc-tooltip>
+    }
+  </label>
+  <div tabindex="0" class="tree-select--container" [off-click]="clickedOutside">
+    <div
+      class="tree-select btn"
+      [class.disabled]="isDisabled"
+      [class.error]="isError"
+      (click)="toggle($event)"
+      [class.tree-select--multiple]="multiple"
+      [class.tree-select--single]="!multiple"
+      [class.required]="isRequired"
+      [id]="id + '-fieldRequired'"
+      [title]="title"
+    >
+      <span
+        tabindex="-1"
+        class="tree-select__selected--container"
+        [class.tree-selected-container-text]="!multiple"
+        [class.selected-container-item]="multiple"
+      >
+        @if (selection.length <= 0) {
+          <span class="tree-select__selected">
+            {{ placeholder }}
+          </span>
+        }
+
+        @for (itm of visibleSelection; track $index) {
+          <span
+            [class.selected-item-text]="!multiple"
+            [class.selected-item-item]="multiple"
+            [class.btn]="multiple"
+          >
+            <span> {{ itm.text }} </span>
+
+            @if (multiple && !isDisabled) {
+              <i class="vr vr-fechar" (click)="removeItem($event, itm)"></i>
+            }
+          </span>
+        }
+      </span>
+      <div class="enabled" [ngClass]="{ hidden: !showMoreLink }">
+        <span class="pull-right more-items-icon"> + {{ exceedAmount }} </span>
+      </div>
+      <div class="dropdown-icon">
+        <i class="vr vr-divisa_inferior"></i>
+      </div>
+    </div>
+
+    <div
+      class="tree-select-dropdown--container"
+      [class.tree-select-dropdown--container--open]="isOpen"
+    >
+      @if (!isDisabled && isOpen && internalItems && internalItems.length > 0) {
+        <div class="tree-select-dropdown" role="menu">
+          @if (allowFilter) {
+            <div class="tree-select-dropdown-search">
+              <div class="search__button">
+                <input
+                  name="filterText"
+                  type="text"
+                  [(ngModel)]="filter"
+                  (click)="setInputFocus()"
+                  (blur)="setInputFocusOut()"
+                  class="tree-select-dropdown--filter input_search"
+                  [placeholder]="filterPlaceholder"
+                  type="search"
+                  role="textbox"
+                  autocomplete="off"
+                  autocorrect="off"
+                  autocapitalize="off"
+                  spellcheck="false"
+                />
+                <span class="vr vr-pesquisa"></span>
+              </div>
+            </div>
+          }
+
+          <div class="tree-select-results">
+            <ul class="tree-select-results__options" role="tree">
+              @for (item of internalItems | itemPipe; track $index) {
+                <li role="menuitem">
+                  <tree-select-item
+                    [item]="item"
+                    [onTouchedCallBack]="onTouchedCallback"
+                  ></tree-select-item>
+                </li>
+              }
+            </ul>
+          </div>
+          @if (resetAllSelected) {
+            <div class="tree-select-reset" [class.disabled]="!internalItems">
+              <span (click)="reset($event)">
+                {{ resetAllSelectedLabel }}
+              </span>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+  @if (!isOpen) {
+    <vrc-error-msg [message]="errorMessage"></vrc-error-msg>
+  }
+</div>

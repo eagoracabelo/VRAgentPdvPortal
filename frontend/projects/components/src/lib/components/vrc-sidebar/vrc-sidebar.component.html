@@ -1,0 +1,150 @@
+<aside
+  class="main-sidebar"
+  [ngClass]="{
+    '--hidden': sidebarLevel === 0,
+    '--middle': sidebarLevel === 1,
+    '--full': sidebarLevel === 2,
+  }"
+>
+  <div class="main-sidebar__toggle--container">
+    @if (isSidebarRightLevel()) {
+      <button
+        type="button"
+        (click)="toggleSidebar(0, 1)"
+        class="btn--reset main-sidebar__toggle-arrow"
+      >
+        <vrc-icon name="seta_direcional_direita"></vrc-icon>
+      </button>
+    }
+    @if (isSidebarLeftLevel()) {
+      <button
+        type="button"
+        (click)="toggleSidebar(1, 0)"
+        class="btn--reset main-sidebar__toggle-arrow"
+      >
+        <vrc-icon name="seta_direcional_esquerda"></vrc-icon>
+      </button>
+    }
+  </div>
+
+  @if (menuItens && menuItens.length > 0) {
+    <div class="main-sidebar__menu--container">
+      <ng-container
+        [ngTemplateOutlet]="recursiveMenu"
+        [ngTemplateOutletContext]="{ $implicit: menuItens }"
+      >
+      </ng-container>
+
+      <ng-template #recursiveMenu let-menus>
+        @if (menus.length > 0) {
+          <div class="main-sidebar__menu scroll" data-widget="tree">
+            @for (menu of menus; track $index) {
+              @if (menu.submenu.length > 0) {
+                <div class="main-sidebar__menu-item" vrMenuBreak>
+                  <div [id]="menu.id" class="main-sidebar__submenu--container">
+                    <a
+                      [routerLink]="menu.rota"
+                      class="main-sidebar__link--disabled"
+                    >
+                      <vrc-icon [name]="menu.icone"></vrc-icon>
+                      <span>{{ menu.titulo | vrctranslator }}</span>
+                    </a>
+                    <ng-container
+                      [ngTemplateOutlet]="recursiveSubMenu"
+                      [ngTemplateOutletContext]="{
+                        $implicit: menu.submenu,
+                        expanded: menu.expanded,
+                        headerTitle: menu.titulo,
+                      }"
+                    >
+                    </ng-container>
+                  </div>
+                </div>
+              } @else {
+                <div class="main-sidebar__menu-item">
+                  <div class="main-sidebar__submenu--container">
+                    <a [id]="menu.id" [routerLink]="menu.rota">
+                      <vrc-icon [name]="menu.icone"></vrc-icon>
+                      <span>{{ menu.titulo | vrctranslator }}</span>
+                    </a>
+                  </div>
+                </div>
+              }
+            }
+
+            <ng-template
+              #recursiveSubMenu
+              let-submenus
+              let-expanded="expanded"
+              let-headerTitle="headerTitle"
+            >
+              <div
+                class="main-sidebar__submenu scroll"
+                (mouseenter)="forceHiddenToggleButton()"
+                (mouseleave)="removeForcedHidden()"
+              >
+                <div class="main-sidebar__title">
+                  <span>{{ headerTitle | vrctranslator }}</span>
+                </div>
+                <div class="main-sidebar__separator"></div>
+                @for (smenu of submenus; track $index) {
+                  @if (smenu.submenu.length > 0) {
+                    <div class="main-sidebar__submenu-item">
+                      <a
+                        [id]="smenu.id"
+                        [routerLink]="smenu.rota"
+                        class="main-sidebar__submenu-title--container main-sidebar__link--disabled"
+                      >
+                        <vrc-icon [name]="smenu.icone"></vrc-icon>
+                        <span class="main-sidebar__submenu-title">{{
+                          smenu.titulo | vrctranslator
+                        }}</span>
+                      </a>
+                      <ng-container
+                        [ngTemplateOutlet]="recursiveSubMenu"
+                        [ngTemplateOutletContext]="{
+                          $implicit: smenu.submenu,
+                          expanded: smenu.expanded,
+                          headerTitle: smenu.titulo,
+                        }"
+                      ></ng-container>
+                    </div>
+                  } @else {
+                    <div class="main-sidebar__submenu--container--last">
+                      <a
+                        [id]="smenu.id"
+                        class="main-sidebar__submenu-title--container"
+                        [routerLink]="smenu.rota"
+                      >
+                        <vrc-icon [name]="smenu.icone"></vrc-icon>
+                        <span class="main-sidebar__submenu-title">{{
+                          smenu.titulo | vrctranslator
+                        }}</span>
+                      </a>
+                    </div>
+                  }
+                }
+              </div>
+            </ng-template>
+          </div>
+        }
+      </ng-template>
+    </div>
+  }
+
+  <div class="main-sidebar__footer--container">
+    <footer class="main-sidebar__footer">
+      <a
+        target="_blank"
+        rel="noopener"
+        href="https://www.vrsoft.com.br/"
+        class="main-sidebar__copyright"
+      >
+        <i class="main-sidebar__logo-vr logo-vr-light"></i>
+        @if (!!systemVersion) {
+          <span class="main-sidebar__version"> {{ systemVersion }}</span>
+        }
+      </a>
+    </footer>
+  </div>
+</aside>

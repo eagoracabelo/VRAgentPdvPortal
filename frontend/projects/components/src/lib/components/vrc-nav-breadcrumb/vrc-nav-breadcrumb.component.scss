@@ -1,0 +1,45 @@
+.navbar__breadcrumb {
+  margin-left: 1.5rem;
+  margin-top: 1.25rem;
+
+  .breadcrumb {
+    margin: 0;
+
+    a:hover,
+    span:hover {
+      &:not(.not-link) {
+        opacity: 0.6;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+
+    li {
+      list-style: none;
+      float: left;
+      margin-left: 0.125rem;
+      color: var(--navbar-title-text-color);
+
+      > span,
+      &::after {
+        font-size: 0.75rem;
+      }
+    }
+
+    li:last-child {
+      margin-right: 1.25rem;
+
+      > span {
+        font-weight: 700;
+      }
+    }
+
+    li::after {
+      content: '/';
+    }
+
+    li:last-child::after {
+      content: '';
+    }
+  }
+}

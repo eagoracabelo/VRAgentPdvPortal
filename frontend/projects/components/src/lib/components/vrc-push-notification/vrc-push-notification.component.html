@@ -1,0 +1,60 @@
+<div
+  class="notifications-container"
+  [@fadeAnimationNotification]="notifications | isVisible"
+>
+  @for (notification of notifications; track $index) {
+    <div
+      [ngClass]="[notification.cssClass]"
+      [attr.notify-id]="notification.id"
+      class="notify"
+      (mouseenter)="freezeNotification(notification)"
+      (mouseleave)="unFreezeNotification(notification)"
+    >
+      <em class="notify-icon vr" [ngClass]="[notification.cssIcon]"></em>
+      <div class="notify-wrapper">
+        @if (notification?.title) {
+          <header class="notify-header">
+            <span class="notify-header__title">
+              {{ notification.title }}
+            </span>
+            <em
+              class="notify-header__close vr vr-fechar"
+              (click)="
+                clearNotification(notification.message, notification.title)
+              "
+            ></em>
+          </header>
+        }
+
+        <section class="notify-content">
+          @if (notification?.exibirMensagemNotificacao != false) {
+            <span class="notify-content__message">
+              {{ notification.message }}
+            </span>
+          }
+
+          @if (notification?.buttonText) {
+            <button
+              class="notify-content__button"
+              (click)="
+                clearNotification(
+                  notification.message,
+                  notification.title,
+                  true
+                )
+              "
+            >
+              {{ notification.buttonText }}
+            </button>
+          }
+        </section>
+      </div>
+      @if (!notification?.title) {
+        <em
+          class="notify-content__close vr vr-fechar"
+          (click)="clearNotification(notification.message, notification.title)"
+        ></em>
+      }
+    </div>
+  }
+</div>

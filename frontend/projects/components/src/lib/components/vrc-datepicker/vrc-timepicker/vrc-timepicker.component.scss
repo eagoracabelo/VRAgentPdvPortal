@@ -1,0 +1,43 @@
+.timepicker-container {
+  display: flex;
+  max-height: 18.75rem;
+
+  .time-container {
+    overflow-y: scroll;
+    min-width: 2rem;
+    padding: 0 0.5rem;
+
+    & + .time-container {
+      margin-left: 0.3rem;
+    }
+
+    input {
+      opacity: 0;
+      width: 0;
+      position: fixed;
+
+      &:checked + label p {
+        background-color: var(--color-theme);
+        opacity: 1;
+        color: var(--color-tertiary);
+      }
+    }
+
+    label {
+      cursor: pointer;
+
+      p {
+        text-align: center;
+        padding: 0.5rem;
+        border-radius: 0.2rem;
+        width: 3rem;
+        margin-bottom: 0;
+
+        &:hover {
+          background-color: var(--color-primary-400);
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}

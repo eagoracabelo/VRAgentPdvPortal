@@ -1,0 +1,36 @@
+{
+  "name": "@vrsoftbr/vr-table",
+  "version": "18.1.42",
+  "peerDependencies": {
+    "@angular/common": "^18.1.0",
+    "@angular/core": "^18.1.0",
+    "@vrsoftbr/vr-design-guide": ">=3.5.0",
+    "@vrsoftbr/vr-file-export": "^1.0.6",
+    "jspdf": "2.4.0",
+    "rxjs": ">=7.8.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false,
+  "description": "Biblioteca Table Angular VR Software",
+  "author": {
+    "name": "VRSoftware",
+    "email": "desenvolvimento@vrsoft.com",
+    "url": "http://vrsoft.com.br"
+  },
+  "keywords": [
+    "VR",
+    "vr",
+    "vr software",
+    "vrsoftware",
+    "VR Software",
+    "VR SOFTWARE",
+    "VRSOFTWARE",
+    "vr table"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vrsoftbr/VRUI.git"
+  }
+}

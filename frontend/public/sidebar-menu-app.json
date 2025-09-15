@@ -1,0 +1,616 @@
+{
+  "menu": [
+    {
+      "id": 1,
+      "titulo": "MENU.HOME",
+      "tooltip": "MENU.HOME",
+      "icone": "dashboard",
+      "rota": "/",
+      "expanded": false,
+      "submenu": []
+    },
+    {
+      "id": 2,
+      "titulo": "MENU.DESIGN-GUIDE",
+      "tooltip": "MENU.DESIGN-GUIDE",
+      "icone": "relatorio",
+      "rota": "/design-guide",
+      "expanded": false,
+      "submenu": [
+        {
+          "id": 1,
+          "titulo": "COMMONS.DOCUMENTATION",
+          "tooltip": "COMMONS.DOCUMENTATION",
+          "icone": "marcador",
+          "rota": "/design-guide/doc",
+          "expanded": false,
+          "submenu": []
+        },
+        {
+          "id": 2,
+          "titulo": "SUB-MENU.ICONES",
+          "tooltip": "SUB-MENU.ICONES",
+          "icone": "marcador",
+          "rota": "/design-guide/icones",
+          "expanded": false,
+          "submenu": []
+        },
+        {
+          "id": 3,
+          "titulo": "SUB-MENU.PRODUTOS",
+          "tooltip": "SUB-MENU.PRODUTOS",
+          "icone": "marcador",
+          "rota": "/design-guide/produtos",
+          "expanded": false,
+          "submenu": [
+            {
+              "id": 18,
+              "titulo": "SUB-MENU.LOGOS",
+              "tooltip": "SUB-MENU.LOGOS",
+              "icone": "marcador",
+              "rota": "/design-guide/produtos/logos",
+              "expanded": false,
+              "submenu": []
+            },
+            {
+              "id": 19,
+              "titulo": "SUB-MENU.PALETA-CORES",
+              "tooltip": "SUB-MENU.PALETA-CORES",
+              "icone": "marcador",
+              "rota": "/design-guide/produtos/paleta",
+              "expanded": false,
+              "submenu": []
+            }
+          ]
+        },
+
+        {
+          "id": 20,
+          "titulo": "SUB-MENU.ANIMACOES",
+          "tooltip": "SUB-MENU.ANIMACOES",
+          "icone": "marcador",
+          "rota": "/design-guide/animacoes",
+          "expanded": false,
+          "submenu": []
+        },
+        {
+          "id": 4,
+          "titulo": "SUB-MENU.WEB",
+          "tooltip": "SUB-MENU.WEB",
+          "icone": "marcador",
+          "rota": "/design-guide/web",
+          "expanded": false,
+          "submenu": [
+            {
+              "id": 4,
+              "titulo": "SUB-MENU.GRID",
+              "tooltip": "SUB-MENU.GRID",
+              "icone": "marcador",
+              "rota": "/design-guide/web/grid",
+              "expanded": false,
+              "submenu": []
+            },
+            {
+              "id": 5,
+              "titulo": "SUB-MENU.SPACING",
+              "tooltip": "SUB-MENU.SPACING",
+              "icone": "marcador",
+              "rota": "/design-guide/web/spacing",
+              "expanded": false,
+              "submenu": []
+            },
+            {
+              "id": 6,
+              "titulo": "SUB-MENU.CARD",
+              "tooltip": "SUB-MENU.CARD",
+              "icone": "marcador",
+              "rota": "/design-guide/web/card",
+              "expanded": false,
+              "submenu": []
+            },
+            {
+              "id": 7,
+              "titulo": "SUB-MENU.TYPOGRAPHY",
+              "tooltip": "SUB-MENU.TYPOGRAPHY",
+              "icone": "marcador",
+              "rota": "/design-guide/web/typography",
+              "expanded": false,
+              "submenu": []
+            },
+            {
+              "id": 8,
+              "titulo": "SUB-MENU.BUTTONS",
+              "tooltip": "SUB-MENU.BUTTONS",
+              "icone": "marcador",
+              "rota": "/design-guide/web/buttons",
+              "expanded": false,
+              "submenu": []
+            },
+            {
+              "id": 9,
+              "titulo": "SUB-MENU.FORMS",
+              "tooltip": "SUB-MENU.FORMS",
+              "icone": "marcador",
+              "rota": "/design-guide/web/forms",
+              "expanded": false,
+              "submenu": []
+            },
+            {
+              "id": 10,
+              "titulo": "SUB-MENU.TOOLTIPS",
+              "tooltip": "SUB-MENU.TOOLTIPS",
+              "icone": "marcador",
+              "rota": "/design-guide/web/tooltips",
+              "expanded": false,
+              "submenu": []
+            },
+            {
+              "id": 11,
+              "titulo": "SUB-MENU.TABLES",
+              "tooltip": "SUB-MENU.TABLES",
+              "icone": "marcador",
+              "rota": "/design-guide/web/tables",
+              "expanded": false,
+              "submenu": []
+            },
+            {
+              "id": 12,
+              "titulo": "SUB-MENU.PAGINATION",
+              "tooltip": "SUB-MENU.PAGINATION",
+              "icone": "marcador",
+              "rota": "/design-guide/web/pagination",
+              "expanded": false,
+              "submenu": []
+            },
+            {
+              "id": 13,
+              "titulo": "SUB-MENU.LISTS",
+              "tooltip": "SUB-MENU.LISTS",
+              "icone": "marcador",
+              "rota": "/design-guide/web/lists",
+              "expanded": false,
+              "submenu": []
+            },
+            {
+              "id": 14,
+              "titulo": "SUB-MENU.CODE",
+              "tooltip": "SUB-MENU.CODE",
+              "icone": "marcador",
+              "rota": "/design-guide/web/code",
+              "expanded": false,
+              "submenu": []
+            },
+            {
+              "id": 15,
+              "titulo": "SUB-MENU.QUERIES",
+              "tooltip": "SUB-MENU.QUERIES",
+              "icone": "marcador",
+              "rota": "/design-guide/web/queries",
+              "expanded": false,
+              "submenu": []
+            },
+            {
+              "id": 16,
+              "titulo": "SUB-MENU.UTILITIES",
+              "tooltip": "SUB-MENU.UTILITIES",
+              "icone": "marcador",
+              "rota": "/design-guide/web/utilities",
+              "expanded": false,
+              "submenu": []
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "titulo": "SUB-MENU.IMAGENS",
+          "tooltip": "SUB-MENU.IMAGENS",
+          "icone": "marcador",
+          "rota": "/design-guide/imagens",
+          "expanded": false,
+          "submenu": []
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "titulo": "MENU.COMPONENTS",
+      "tooltip": "MENU.COMPONENTS",
+      "icone": "local_estoque",
+      "rota": "/components",
+      "expanded": false,
+      "submenu": [
+        {
+          "id": 1,
+          "titulo": "COMMONS.DOCUMENTATION",
+          "tooltip": "COMMONS.DOCUMENTATION",
+          "icone": "marcador",
+          "rota": "/components/doc",
+          "expanded": false,
+          "submenu": []
+        },
+        {
+          "id": 2,
+          "titulo": "SUB-MENU.FORMS",
+          "tooltip": "SUB-MENU.FORMS",
+          "expended": false,
+          "icone": "marcador",
+          "rota": "/components/forms",
+          "submenu": [
+            {
+              "id": 3,
+              "titulo": "SUB-MENU.AUTOCOMPLETE",
+              "tooltip": "SUB-MENU.AUTOCOMPLETE",
+              "expended": false,
+              "icone": "marcador",
+              "rota": "/components/forms/autocomplete",
+              "submenu": []
+            },
+            {
+              "id": 4,
+              "titulo": "SUB-MENU.CHECKBOX",
+              "tooltip": "SUB-MENU.CHECKBOX",
+              "expended": false,
+              "icone": "marcador",
+              "rota": "/components/forms/checkbox",
+              "submenu": []
+            },
+            {
+              "id": 5,
+              "titulo": "SUB-MENU.DATEPICKER",
+              "tooltip": "SUB-MENU.DATEPICKER",
+              "expended": false,
+              "icone": "marcador",
+              "rota": "/components/forms/datepicker",
+              "submenu": []
+            },
+            {
+              "id": 6,
+              "titulo": "SUB-MENU.INPUT",
+              "tooltip": "SUB-MENU.INPUT",
+              "expended": false,
+              "icone": "marcador",
+              "rota": "/components/forms/input",
+              "submenu": []
+            },
+            {
+              "id": 7,
+              "titulo": "SUB-MENU.RADIO-BUTTON",
+              "tooltip": "SUB-MENU.RADIO-BUTTON",
+              "expended": false,
+              "icone": "marcador",
+              "rota": "/components/forms/radiobutton",
+              "submenu": []
+            },
+            {
+              "id": 8,
+              "titulo": "SUB-MENU.SELECT",
+              "tooltip": "SUB-MENU.SELECT",
+              "expended": false,
+              "icone": "marcador",
+              "rota": "/components/forms/select",
+              "submenu": []
+            },
+            {
+              "id": 10,
+              "titulo": "SUB-MENU.TEXTAREA",
+              "tooltip": "SUB-MENU.TEXTAREA",
+              "expended": false,
+              "icone": "marcador",
+              "rota": "/components/forms/textarea",
+              "submenu": []
+            },
+            {
+              "id": 100,
+              "titulo": "SUB-MENU.TREE-SELECT",
+              "tooltip": "SUB-MENU.TREE-SELECT",
+              "expended": false,
+              "icone": "marcador",
+              "rota": "/components/forms/treeselect",
+              "submenu": []
+            },
+            {
+              "id": 101,
+              "titulo": "SUB-MENU.TREE-VIEW",
+              "tooltip": "SUB-MENU.TREE-VIEW",
+              "expended": false,
+              "icone": "marcador",
+              "rota": "/components/forms/treeview",
+              "submenu": []
+            }
+          ]
+        },
+        {
+          "id": 27,
+          "titulo": "SUB-MENU.SIDE-MODAL",
+          "tooltip": "SUB-MENU.SIDE-MODAL",
+          "expended": false,
+          "icone": "marcador",
+          "rota": "/components/side-modal",
+          "submenu": []
+        },
+        {
+          "id": 26,
+          "titulo": "SUB-MENU.CARD-VALUE",
+          "tooltip": "SUB-MENU.CARD-VALUE",
+          "expended": false,
+          "icone": "marcador",
+          "rota": "/components/card-value",
+          "submenu": []
+        },
+        {
+          "id": 11,
+          "titulo": "SUB-MENU.NOTIFY",
+          "tooltip": "SUB-MENU.NOTIFY",
+          "expended": false,
+          "icone": "marcador",
+          "rota": "/components/notify",
+          "submenu": []
+        },
+        {
+          "id": 12,
+          "titulo": "SUB-MENU.ICON",
+          "tooltip": "SUB-MENU.ICON",
+          "expended": false,
+          "icone": "marcador",
+          "rota": "/components/icon",
+          "submenu": []
+        },
+        {
+          "id": 13,
+          "titulo": "SUB-MENU.TABS",
+          "tooltip": "SUB-MENU.TABS",
+          "expended": false,
+          "icone": "marcador",
+          "rota": "/components/tabs",
+          "submenu": []
+        },
+        {
+          "id": 20,
+          "titulo": "SUB-MENU.NAV-TOOLBAR",
+          "tooltip": "SUB-MENU.NAV-TOOLBAR",
+          "expended": false,
+          "icone": "marcador",
+          "rota": "/components/nav-toolbar",
+          "submenu": []
+        },
+        {
+          "id": 21,
+          "titulo": "SUB-MENU.MODAL",
+          "tooltip": "SUB-MENU.MODAL",
+          "expended": false,
+          "icone": "marcador",
+          "rota": "/components/modal",
+          "submenu": [
+            {
+              "id": 22,
+              "titulo": "SUB-MENU.DIALOG-MODAL",
+              "tooltip": "SUB-MENU.DIALOG-MODAL",
+              "expended": false,
+              "icone": "marcador",
+              "rota": "/components/modal/dialog-modal",
+              "submenu": []
+            },
+            {
+              "id": 23,
+              "titulo": "SUB-MENU.DIALOG-MODAL-CUSTOM",
+              "tooltip": "SUB-MENU.DIALOG-MODAL-CUSTOM",
+              "expended": false,
+              "icone": "marcador",
+              "rota": "/components/modal/dialog-modal-custom",
+              "submenu": []
+            }
+          ]
+        },
+        {
+          "id": 24,
+          "titulo": "SUB-MENU.TOOLTIP",
+          "tooltip": "SUB-MENU.TOOLTIP",
+          "expended": false,
+          "icone": "marcador",
+          "rota": "/components/tooltip",
+          "submenu": []
+        },
+        {
+          "id": 25,
+          "titulo": "SUB-MENU.TEXT-EDITOR",
+          "tooltip": "SUB-MENU.TEXT-EDITOR",
+          "expended": false,
+          "icone": "marcador",
+          "rota": "/components/text-editor",
+          "submenu": []
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "titulo": "MENU.DATATABLES",
+      "tooltip": "MENU.DATATABLES",
+      "icone": "kanban",
+      "rota": "/datatables",
+      "expanded": false,
+      "submenu": [
+        {
+          "id": 1,
+          "titulo": "COMMONS.DOCUMENTATION",
+          "tooltip": "COMMONS.DOCUMENTATION",
+          "icone": "marcador",
+          "rota": "/datatables/doc",
+          "expanded": false,
+          "submenu": []
+        },
+        {
+          "id": 2,
+          "titulo": "SUB-MENU.DT-BASICO",
+          "tooltip": "SUB-MENU.DT-BASICO",
+          "icone": "marcador",
+          "rota": "/datatables/basico",
+          "expanded": false,
+          "submenu": []
+        },
+        {
+          "id": 3,
+          "titulo": "SUB-MENU.DT-CHECKBOX",
+          "tooltip": "SUB-MENU.DT-CHECKBOX",
+          "icone": "marcador",
+          "rota": "/datatables/checkbox",
+          "expanded": false,
+          "submenu": []
+        },
+        {
+          "id": 4,
+          "titulo": "SUB-MENU.DT-FORMATACOES",
+          "tooltip": "SUB-MENU.DT-FORMATACOES",
+          "icone": "marcador",
+          "rota": "/datatables/formatacoes",
+          "expanded": false,
+          "submenu": []
+        },
+        {
+          "id": 5,
+          "titulo": "SUB-MENU.DT-COLMUN-MOVE",
+          "tooltip": "SUB-MENU.DT-COLUMN-MOVE",
+          "icone": "marcador",
+          "rota": "/datatables/column-move",
+          "expanded": false,
+          "submenu": []
+        },
+        {
+          "id": 6,
+          "titulo": "SUB-MENU.DT-CUSTOM-PAGE-SIZE",
+          "tooltip": "SUB-MENU.DT-CUSTOM-PAGE-SIZE",
+          "icone": "marcador",
+          "rota": "/datatables/custom-page-size",
+          "expanded": false,
+          "submenu": []
+        },
+        {
+          "id": 7,
+          "titulo": "SUB-MENU.DT-TRANSLATION",
+          "tooltip": "SUB-MENU.DT-TRANSLATION",
+          "icone": "marcador",
+          "rota": "/datatables/translation",
+          "expanded": false,
+          "submenu": []
+        },
+        {
+          "id": 8,
+          "titulo": "SUB-MENU.DT-ROW-SELECTION",
+          "tooltip": "SUB-MENU.DT-ROW-SELECTION",
+          "icone": "marcador",
+          "rota": "/datatables/row-selection",
+          "expanded": false,
+          "submenu": []
+        },
+        {
+          "id": 9,
+          "titulo": "SUB-MENU.DT-COLUMN-GROUP",
+          "tooltip": "SUB-MENU.DT-COLUMN-GROUP",
+          "icone": "marcador",
+          "rota": "/datatables/column-group",
+          "expanded": false,
+          "submenu": []
+        },
+        {
+          "id": 10,
+          "titulo": "SUB-MENU.DT-ROW-GROUP",
+          "tooltip": "SUB-MENU.DT-ROW-GROUP",
+          "icone": "marcador",
+          "rota": "/datatables/row-group",
+          "expanded": false,
+          "submenu": []
+        },
+        {
+          "id": 11,
+          "titulo": "SUB-MENU.DT-SELECT",
+          "tooltip": "SUB-MENU.DT-SELECT",
+          "icone": "marcador",
+          "rota": "/datatables/select",
+          "expanded": false,
+          "submenu": []
+        },
+        {
+          "id": 12,
+          "titulo": "SUB-MENU.DT-SELECT-SCROLL",
+          "tooltip": "SUB-MENU.DT-SELECT-SCROLL",
+          "icone": "marcador",
+          "rota": "/datatables/select-scroll",
+          "expanded": false,
+          "submenu": []
+        },
+        {
+          "id": 13,
+          "titulo": "SUB-MENU.DT-TABS",
+          "tooltip": "SUB-MENU.DT-TABS",
+          "icone": "marcador",
+          "rota": "/datatables/tabs",
+          "expanded": false,
+          "submenu": []
+        },
+        {
+          "id": 14,
+          "titulo": "SUB-MENU.DT-SERVER-SCROLLING",
+          "tooltip": "SUB-MENU.DT-SERVER-SCROLLING",
+          "icone": "marcador",
+          "rota": "/datatables/server-scrolling",
+          "expanded": false,
+          "submenu": []
+        },
+        {
+          "id": 15,
+          "titulo": "SUB-MENU.DT-TREE",
+          "tooltip": "SUB-MENU.DT-TREE",
+          "icone": "marcador",
+          "rota": "/datatables/tree",
+          "expanded": false,
+          "submenu": []
+        },
+        {
+          "id": 15,
+          "titulo": "SUB-MENU.DT-INPUT",
+          "tooltip": "SUB-MENU.DT-INPUT",
+          "icone": "marcador",
+          "rota": "/datatables/input",
+          "expanded": false,
+          "submenu": []
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "titulo": "MENU.TABLE",
+      "tooltip": "MENU.TABLE",
+      "icone": "etiqueta",
+      "rota": "/table",
+      "expanded": false,
+      "submenu": [
+        {
+          "id": 1,
+          "titulo": "COMMONS.DOCUMENTATION",
+          "tooltip": "COMMONS.DOCUMENTATION",
+          "icone": "marcador",
+          "rota": "/table/doc",
+          "expanded": false,
+          "submenu": []
+        },
+        {
+          "id": 2,
+          "titulo": "SUB-MENU.CHECKBOX",
+          "tooltip": "SUB-MENU.CHECKBOX",
+          "icone": "marcador",
+          "rota": "/table/checkbox",
+          "expanded": false,
+          "submenu": []
+        },
+        {
+          "id": 3,
+          "titulo": "SUB-MENU.OBJECT",
+          "tooltip": "SUB-MENU.OBJECT",
+          "icone": "marcador",
+          "rota": "/table/object",
+          "expanded": false,
+          "submenu": []
+        }
+      ]
+    }
+  ]
+}

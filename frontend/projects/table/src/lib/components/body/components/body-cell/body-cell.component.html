@@ -1,0 +1,27 @@
+<div
+  class="table-body-cell-label"
+  [style.margin-left.rem]="calcLeftMargin(column, row)"
+  [style.text-align]="textAlign"
+>
+  @if (
+    column.checkboxable && (!displayCheck || displayCheck(row, column, value))
+  ) {
+    <label class="table-checkbox">
+      <input type="checkbox" [checked]="isSelected" />
+      <span class="checkbox" (click)="onCheckboxChange($event)"></span>
+    </label>
+  }
+
+  @if (!column.cellTemplate) {
+    <span [title]="sanitizedValue" [innerHTML]="value"> </span>
+  }
+
+  @if (column.cellTemplate) {
+    <ng-template
+      #cellTemplate
+      [ngTemplateOutlet]="column.cellTemplate"
+      [ngTemplateOutletContext]="cellContext"
+    >
+    </ng-template>
+  }
+</div>

@@ -1,0 +1,11 @@
+@keyframes down {
+  from {
+    transform: translateY(-3.125rem);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.down {
+  animation: down 200ms forwards;
+}

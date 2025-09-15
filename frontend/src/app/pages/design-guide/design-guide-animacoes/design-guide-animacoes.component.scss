@@ -1,0 +1,15 @@
+.presentation__container {
+  position: relative;
+  height: 12.5rem;
+  width: 100%;
+
+  > .presentation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 12.5rem;
+    border-radius: .75rem;
+    background-color: var(--background-color-presentation);
+    border: .063rem dashed var(--color-text);
+  }
+}

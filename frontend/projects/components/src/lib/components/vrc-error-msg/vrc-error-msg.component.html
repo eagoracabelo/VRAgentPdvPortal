@@ -1,0 +1,24 @@
+@if (!!message) {
+  <div>
+    @if (!tooltipSideError) {
+      <div class="error__conteiner">
+        <small class="error__message"> {{ message }} </small>
+      </div>
+    }
+
+    @if (tooltipSideError) {
+      <div class="error-tooltip">
+        <vrc-tooltip
+          [message]="message"
+          [error]="true"
+          [width]="10"
+          [bottomRight]="tooltipBottomRight"
+          [bottomLeft]="tooltipBottomLeft"
+          [topRight]="tooltipTopRight"
+          [topLeft]="tooltipTopLeft"
+          [tooltipOverlay]="tooltipOverlay"
+        ></vrc-tooltip>
+      </div>
+    }
+  </div>
+}
