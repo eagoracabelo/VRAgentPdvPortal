@@ -1,0 +1,27 @@
+{
+    "return": [
+        {
+            "tag": "salt/wheel/20250915031226505212",
+            "data": {
+                "fun": "wheel.key.list_all",
+                "jid": "20250915031226505212",
+                "tag": "salt/wheel/20250915031226505212",
+                "user": "saltuser",
+                "_stamp": "2025-09-15T03:12:26.548177",
+                "return": {
+                    "minions": [],
+                    "minions_pre": [
+                        "vrpdv-win-001"
+                    ],
+                    "minions_rejected": [],
+                    "minions_denied": [],
+                    "local": [
+                        "master.pem",
+                        "master.pub"
+                    ]
+                },
+                "success": true
+            }
+        }
+    ]
+}

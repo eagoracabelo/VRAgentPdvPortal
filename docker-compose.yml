@@ -1,0 +1,65 @@
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: vragentpdvportal
+      POSTGRES_USER: vruser
+      POSTGRES_PASSWORD: vrpassword
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vruser -d vragentpdvportal"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - salt-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: vragentpdvportal-api
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/vragentpdvportal
+      SPRING_DATASOURCE_USERNAME: vruser
+      SPRING_DATASOURCE_PASSWORD: vrpassword
+      # SALT_API_URL: http://host.docker.internal:8000
+      SALT_API_URL: https://157.151.8.168:8000
+      SALT_API_USERNAME: saltuser
+      SALT_API_PASSWORD: 123abc
+      SALT_API_EAUTH: pam
+    ports:
+      - "8080:8080"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - salt-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: vragentpdvportal-ui
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - salt-network
+
+networks:
+  salt-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
