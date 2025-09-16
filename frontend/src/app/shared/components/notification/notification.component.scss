@@ -1,0 +1,118 @@
+.notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1050;
+  max-width: 400px;
+  min-width: 300px;
+
+  .alert {
+    margin-bottom: 0;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 1rem;
+
+    .d-flex {
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .notification-icon {
+      font-size: 1.25rem;
+      margin-top: 0.125rem;
+    }
+
+    .notification-content {
+      flex: 1;
+
+      .notification-title {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+      }
+
+      .notification-message {
+        font-size: 0.875rem;
+        line-height: 1.4;
+      }
+    }
+
+    .btn-close {
+      margin-left: auto;
+      margin-top: -0.25rem;
+    }
+
+    // Cores específicas para cada tipo
+    &.alert-success {
+      background-color: #d4edda;
+      border-color: #c3e6cb;
+      color: #155724;
+
+      .notification-icon {
+        color: #28a745;
+      }
+    }
+
+    &.alert-error,
+    &.alert-danger {
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
+      color: #721c24;
+
+      .notification-icon {
+        color: #dc3545;
+      }
+    }
+
+    &.alert-warning {
+      background-color: #fff3cd;
+      border-color: #ffeaa7;
+      color: #856404;
+
+      .notification-icon {
+        color: #ffc107;
+      }
+    }
+
+    &.alert-info {
+      background-color: #d1ecf1;
+      border-color: #bee5eb;
+      color: #0c5460;
+
+      .notification-icon {
+        color: #17a2b8;
+      }
+    }
+  }
+
+  // Animação de entrada
+  .alert.fade.show {
+    animation: slideInRight 0.3s ease-out;
+  }
+
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  // Responsividade
+  @media (max-width: 768px) {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+    min-width: auto;
+
+    .alert {
+      font-size: 0.875rem;
+      padding: 0.875rem;
+    }
+  }
+}

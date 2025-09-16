@@ -5,6 +5,7 @@ import { SaltApiService } from '../../../../core/service/salt-api.service';
 import { MockSaltApiService } from '../../../../core/service/mock-salt-api.service';
 import { MinionUseCase } from '../../../../core/application/use-cases/minion.use-case';
 import { AdminOverview, JobDto } from '../../../../core/domain/models/management.model';
+import { NotificationMessage } from '../../../../shared/components/notification/notification.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,6 +23,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   error: string | null = null;
   selectedMinion = '*';
   refreshInterval = 60000; // 60 segundos - Salt API pode ser lenta
+  notification: NotificationMessage | null = null;
 
   constructor(
     private saltApiService: SaltApiService,
@@ -129,5 +131,103 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   getLastUpdateTime(): string {
     return new Date().toLocaleTimeString('pt-BR');
+  }
+
+  onVersionOperationComplete(event: { operation: string, success: boolean, message: string }): void {
+    console.log('Operação de versão completada:', event);
+
+    if (event.success) {
+      // Mostrar notificação de sucesso
+      this.showNotification({
+        type: 'success',
+        title: `${this.capitalizeOperation(event.operation)} realizado com sucesso`,
+        message: event.message,
+        duration: 5000
+      });
+
+      // Recarregar dados do dashboard após operações de deploy/rollback
+      if (['deploy', 'rollback'].includes(event.operation)) {
+        setTimeout(() => {
+          this.refreshAllData().subscribe({
+            next: (overview) => {
+              this.adminOverview$ = of(overview);
+            },
+            error: (error) => {
+              console.error('Erro ao recarregar dashboard após operação:', error);
+            }
+          });
+        }, 1000); // Aguardar 1 segundo para a operação ser processada
+      }
+    } else {
+      // Mostrar notificação de erro
+      this.showNotification({
+        type: 'error',
+        title: `Erro no ${this.capitalizeOperation(event.operation)}`,
+        message: event.message,
+        duration: 8000
+      });
+    }
+  }
+
+  onMinionOperationComplete(event: { operation: string, success: boolean, message: string, minionId: string }): void {
+    console.log('Operação de minion completada:', event);
+
+    if (event.success) {
+      // Mostrar notificação de sucesso
+      this.showNotification({
+        type: 'success',
+        title: `${this.capitalizeMinionOperation(event.operation)} realizado com sucesso`,
+        message: event.message,
+        duration: 5000
+      });
+
+      // Recarregar dados do dashboard após operações de minion para atualizar contadores
+      setTimeout(() => {
+        this.refreshAllData().subscribe({
+          next: (overview: AdminOverview) => {
+            this.adminOverview$ = of(overview);
+          },
+          error: (error: any) => {
+            console.error('Erro ao recarregar dashboard após operação de minion:', error);
+          }
+        });
+      }, 1000);
+    } else {
+      // Mostrar notificação de erro
+      this.showNotification({
+        type: 'error',
+        title: `Erro no ${this.capitalizeMinionOperation(event.operation)}`,
+        message: event.message,
+        duration: 8000
+      });
+    }
+  }
+
+  private showNotification(notification: NotificationMessage): void {
+    this.notification = notification;
+  }
+
+  onNotificationClose(): void {
+    this.notification = null;
+  }
+
+  private capitalizeOperation(operation: string): string {
+    const operations: { [key: string]: string } = {
+      'upload': 'Upload',
+      'deploy': 'Deploy',
+      'rollback': 'Rollback',
+      'test': 'Teste',
+      'delete': 'Exclusão'
+    };
+    return operations[operation] || operation;
+  }
+
+  private capitalizeMinionOperation(operation: string): string {
+    const operations: { [key: string]: string } = {
+      'accept': 'Aprovação de Minion',
+      'reject': 'Rejeição de Minion',
+      'deny': 'Negação de Minion'
+    };
+    return operations[operation] || operation;
   }
 }

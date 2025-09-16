@@ -35,6 +35,36 @@ class MinionsController(
             .onErrorReturn(ResponseEntity.status(500).body(mapOf("error" to "Erro ao aceitar chave")))
     }
 
+    @PostMapping("/{keyId}/reject")
+    fun rejectKey(@PathVariable keyId: String): Mono<ResponseEntity<Any>> {
+        val userId = getCurrentUserId()
+        return saltApiService.rejectKey(keyId, userId)
+            .map { result ->
+                ResponseEntity.ok(result)
+            }
+            .onErrorReturn(ResponseEntity.status(500).body(mapOf("error" to "Erro ao rejeitar chave")))
+    }
+
+    @PostMapping("/{keyId}/deny")
+    fun denyKey(@PathVariable keyId: String): Mono<ResponseEntity<Any>> {
+        val userId = getCurrentUserId()
+        return saltApiService.denyKey(keyId, userId)
+            .map { result ->
+                ResponseEntity.ok(result)
+            }
+            .onErrorReturn(ResponseEntity.status(500).body(mapOf("error" to "Erro ao negar chave")))
+    }
+
+    @GetMapping("/{minionId}/info")
+    fun getMinionInfo(@PathVariable minionId: String): Mono<ResponseEntity<Any>> {
+        val userId = getCurrentUserId()
+        return saltApiService.getMinionInfo(minionId, userId)
+            .map { result ->
+                ResponseEntity.ok(result)
+            }
+            .onErrorReturn(ResponseEntity.status(500).body(mapOf("error" to "Erro ao obter informações do minion")))
+    }
+
     @PostMapping("/{minionId}/command")
     fun executeCommand(
         @PathVariable minionId: String,

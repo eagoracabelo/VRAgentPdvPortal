@@ -1,0 +1,380 @@
+/* pending-minions.component.scss */
+
+.pending-minions-widget {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  
+  .widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-bottom: 1px solid #dee2e6;
+    
+    .header-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      
+      .widget-title {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #495057;
+        
+        i {
+          margin-right: 8px;
+        }
+      }
+      
+      .pending-count {
+        background: #6c757d;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        min-width: 24px;
+        text-align: center;
+        
+        &.has-pending {
+          background: #ffc107;
+          color: #212529;
+          animation: pulse-warning 2s infinite;
+        }
+      }
+    }
+    
+    .batch-actions {
+      display: flex;
+      gap: 8px;
+      
+      .btn {
+        padding: 6px 12px;
+        font-size: 0.875rem;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        
+        &:hover:not(:disabled) {
+          transform: translateY(-1px);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        &:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+        }
+        
+        i {
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+  
+  .loading-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 20px;
+    color: #6c757d;
+    font-size: 0.9rem;
+  }
+  
+  .alert {
+    margin: 16px 20px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    
+    i {
+      margin-right: 8px;
+    }
+  }
+  
+  .minions-container {
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      
+      .empty-icon {
+        font-size: 3rem;
+        margin-bottom: 16px;
+        
+        i {
+          opacity: 0.3;
+        }
+      }
+      
+      h5 {
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+      
+      p {
+        font-size: 0.9rem;
+        max-width: 300px;
+        margin: 0 auto;
+        line-height: 1.4;
+      }
+    }
+    
+    .minions-list {
+      max-height: 400px;
+      overflow-y: auto;
+      
+      .minion-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 20px;
+        border-bottom: 1px solid #f1f3f4;
+        transition: all 0.2s ease;
+        
+        &:last-child {
+          border-bottom: none;
+        }
+        
+        &:hover {
+          background-color: #f8f9fa;
+        }
+        
+        &.processing {
+          background-color: #fff3cd;
+          opacity: 0.8;
+        }
+        
+        .minion-info {
+          display: flex;
+          align-items: center;
+          flex: 1;
+          gap: 16px;
+          
+          .minion-identity {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            
+            i {
+              font-size: 1.1rem;
+            }
+            
+            .minion-id {
+              font-family: 'Courier New', monospace;
+              font-weight: 500;
+              color: #495057;
+              font-size: 0.9rem;
+              max-width: 200px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              cursor: help;
+            }
+          }
+          
+          .minion-status {
+            .badge {
+              font-size: 0.75rem;
+              padding: 4px 8px;
+              border-radius: 4px;
+              
+              i {
+                margin-right: 4px;
+                font-size: 0.7rem;
+              }
+            }
+          }
+        }
+        
+        .processing-indicator {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          color: #6f42c1;
+          font-size: 0.875rem;
+        }
+        
+        .minion-actions {
+          display: flex;
+          gap: 6px;
+          
+          .btn {
+            padding: 6px 10px;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            border: none;
+            transition: all 0.2s ease;
+            
+            &:hover {
+              transform: translateY(-1px);
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            }
+            
+            &.btn-success {
+              background: #28a745;
+              
+              &:hover {
+                background: #218838;
+              }
+            }
+            
+            &.btn-warning {
+              background: #ffc107;
+              color: #212529;
+              
+              &:hover {
+                background: #e0a800;
+              }
+            }
+            
+            &.btn-danger {
+              background: #dc3545;
+              
+              &:hover {
+                background: #c82333;
+              }
+            }
+            
+            i {
+              font-size: 0.75rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .widget-footer {
+    padding: 12px 20px;
+    background: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    
+    small {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      line-height: 1.3;
+      
+      i {
+        font-size: 0.75rem;
+        opacity: 0.7;
+      }
+    }
+  }
+  
+  .auto-refresh-indicator {
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+    
+    small {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.75rem;
+      opacity: 0.6;
+      
+      i {
+        animation: spin 2s linear infinite;
+      }
+    }
+  }
+}
+
+// Animações
+@keyframes pulse-warning {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Responsividade
+@media (max-width: 768px) {
+  .pending-minions-widget {
+    .widget-header {
+      flex-direction: column;
+      gap: 12px;
+      align-items: stretch;
+      
+      .header-info {
+        justify-content: center;
+      }
+      
+      .batch-actions {
+        justify-content: center;
+        
+        .btn {
+          flex: 1;
+          max-width: 120px;
+        }
+      }
+    }
+    
+    .minions-container {
+      .minions-list {
+        .minion-item {
+          flex-direction: column;
+          gap: 12px;
+          align-items: stretch;
+          
+          .minion-info {
+            justify-content: center;
+          }
+          
+          .minion-actions {
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Estados de hover melhorados
+.minion-item {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: transparent;
+    transition: background-color 0.2s ease;
+  }
+  
+  &:hover::before {
+    background: #ffc107;
+  }
+  
+  &.processing::before {
+    background: #6f42c1;
+    animation: pulse-processing 1.5s infinite;
+  }
+}
+
+@keyframes pulse-processing {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

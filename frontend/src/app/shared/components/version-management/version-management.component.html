@@ -1,0 +1,282 @@
+<div class="version-management-container">
+  <!-- Header -->
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">
+        <i class="fas fa-code-branch"></i>
+        Gerenciamento de Versões VRPdv
+      </h3>
+      <div class="card-actions">
+        <button 
+          class="btn btn-sm btn-outline-primary" 
+          (click)="loadVersionData()" 
+          [disabled]="loading">
+          <i class="fas fa-sync-alt" [class.fa-spin]="loading"></i>
+          Atualizar
+        </button>
+      </div>
+    </div>
+
+    <!-- Error Alert -->
+    <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+      <i class="fas fa-exclamation-triangle"></i>
+      {{ error }}
+      <button type="button" class="btn-close" (click)="clearError()"></button>
+    </div>
+
+    <!-- Loading -->
+    <div *ngIf="loading && !error" class="text-center p-3">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Carregando...</span>
+      </div>
+      <p class="mt-2 text-muted">Carregando informações de versão...</p>
+    </div>
+  </div>
+
+  <!-- Upload Nova Versão -->
+  <div class="card mt-3">
+    <div class="card-header">
+      <h4 class="card-title">
+        <i class="fas fa-upload"></i>
+        Upload Nova Versão
+      </h4>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="uploadNewVersion()" #uploadForm="ngForm">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="versionFile" class="form-label">Arquivo da Versão *</label>
+              <input 
+                type="file"
+                class="form-control"
+                id="versionFile"
+                accept=".zip,.tar.gz,.jar"
+                (change)="onFileSelected($event)"
+                required>
+              <div class="form-text">
+                Formatos aceitos: .zip, .tar.gz, .jar
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="versionNumber" class="form-label">Número da Versão *</label>
+              <input 
+                type="text"
+                class="form-control"
+                id="versionNumber"
+                [(ngModel)]="newVersionNumber"
+                name="versionNumber"
+                placeholder="Ex: 1.2.3"
+                pattern="^\d+\.\d+\.\d+.*"
+                required>
+              <div class="form-text">
+                Formato: major.minor.patch (ex: 1.2.3)
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="mb-3">
+              <label for="versionDescription" class="form-label">Descrição (Opcional)</label>
+              <textarea 
+                class="form-control"
+                id="versionDescription"
+                [(ngModel)]="versionDescription"
+                name="versionDescription"
+                rows="2"
+                placeholder="Descreva as principais mudanças desta versão..."></textarea>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="mb-3">
+              <div class="form-check mt-4">
+                <input 
+                  class="form-check-input"
+                  type="checkbox"
+                  id="autoApply"
+                  [(ngModel)]="autoApply"
+                  name="autoApply">
+                <label class="form-check-label" for="autoApply">
+                  Aplicar automaticamente após upload
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex gap-2">
+          <button 
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="loading || !selectedFile || !newVersionNumber.trim()">
+            <i class="fas fa-upload"></i>
+            Fazer Upload
+          </button>
+          <button 
+            type="button"
+            class="btn btn-outline-secondary"
+            (click)="resetUploadForm()">
+            <i class="fas fa-times"></i>
+            Limpar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Versões Disponíveis -->
+  <div class="card mt-3">
+    <div class="card-header">
+      <h4 class="card-title">
+        <i class="fas fa-list"></i>
+        Versões Disponíveis
+      </h4>
+    </div>
+    <div class="card-body">
+      <div *ngIf="availableVersions.length === 0 && !loading" class="text-center p-4 text-muted">
+        <i class="fas fa-inbox fa-3x mb-3"></i>
+        <p>Nenhuma versão disponível</p>
+      </div>
+
+      <div *ngIf="availableVersions.length > 0" class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Versão</th>
+              <th>Descrição</th>
+              <th>Tamanho</th>
+              <th>Data Upload</th>
+              <th>Status</th>
+              <th class="text-center">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let version of availableVersions">
+              <td>
+                <strong>{{ version.version }}</strong>
+              </td>
+              <td>
+                <span *ngIf="version.description">{{ version.description }}</span>
+                <em *ngIf="!version.description" class="text-muted">Sem descrição</em>
+              </td>
+              <td>
+                <span *ngIf="version.fileSize">{{ formatFileSize(version.fileSize) }}</span>
+                <span *ngIf="!version.fileSize" class="text-muted">-</span>
+              </td>
+              <td>
+                <span *ngIf="version.uploadDate">{{ formatDate(version.uploadDate) }}</span>
+                <span *ngIf="!version.uploadDate" class="text-muted">-</span>
+              </td>
+              <td>
+                <span class="badge" [ngClass]="getVersionStatusClass(version.status || 'AVAILABLE')">
+                  {{ version.status || 'AVAILABLE' }}
+                </span>
+              </td>
+              <td class="text-center">
+                <div class="btn-group btn-group-sm" role="group">
+                  <button 
+                    class="btn btn-success"
+                    (click)="deployVersion(version.version)"
+                    [disabled]="deploymentInProgress"
+                    title="Deploy">
+                    <i class="fas fa-rocket"></i>
+                  </button>
+                  <button 
+                    class="btn btn-warning"
+                    (click)="rollbackToVersion(version.version)"
+                    [disabled]="deploymentInProgress"
+                    title="Rollback">
+                    <i class="fas fa-undo"></i>
+                  </button>
+                  <button 
+                    class="btn btn-info"
+                    (click)="testVersion(version.version)"
+                    [disabled]="loading"
+                    title="Testar">
+                    <i class="fas fa-vial"></i>
+                  </button>
+                  <button 
+                    class="btn btn-danger"
+                    (click)="deleteVersion(version.version)"
+                    [disabled]="loading"
+                    title="Deletar">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Status dos Minions -->
+  <div class="card mt-3">
+    <div class="card-header">
+      <h4 class="card-title">
+        <i class="fas fa-server"></i>
+        Status das Versões nos Minions
+      </h4>
+    </div>
+    <div class="card-body">
+      <div *ngIf="getObjectKeys(currentVersions).length === 0 && !loading" class="text-center p-4 text-muted">
+        <i class="fas fa-server fa-3x mb-3"></i>
+        <p>Nenhum minion encontrado</p>
+      </div>
+
+      <div *ngIf="getObjectKeys(currentVersions).length > 0" class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Minion ID</th>
+              <th>Versão Atual</th>
+              <th>Status</th>
+              <th>Última Atualização</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let minion of getObjectKeys(currentVersions)">
+              <td>
+                <strong>{{ minion }}</strong>
+              </td>
+              <td>
+                <code>{{ getCurrentVersionForMinion(minion) }}</code>
+              </td>
+              <td>
+                <span class="badge" [ngClass]="getStatusClass(getMinionStatus(minion))">
+                  {{ getMinionStatus(minion) }}
+                </span>
+              </td>
+              <td>
+                <span *ngIf="currentVersions[minion]?.lastUpdated">
+                  {{ formatDate(currentVersions[minion].lastUpdated) }}
+                </span>
+                <span *ngIf="!currentVersions[minion]?.lastUpdated" class="text-muted">-</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Deploy Progress -->
+  <div *ngIf="deploymentInProgress" class="card mt-3 border-warning">
+    <div class="card-body">
+      <div class="d-flex align-items-center">
+        <div class="spinner-border text-warning me-3" role="status">
+          <span class="visually-hidden">Processando...</span>
+        </div>
+        <div>
+          <h5 class="mb-1">Operação em Progresso</h5>
+          <p class="mb-0 text-muted">Aguarde enquanto a operação é executada nos minions...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

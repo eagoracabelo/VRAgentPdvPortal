@@ -25,6 +25,24 @@ export class MinionRepository {
         );
     }
 
+    rejectKey(keyId: string): Observable<any> {
+        return this.http.post(`${this.baseUrl}/${keyId}/reject`, {}).pipe(
+            catchError(this.handleError)
+        );
+    }
+
+    denyKey(keyId: string): Observable<any> {
+        return this.http.post(`${this.baseUrl}/${keyId}/deny`, {}).pipe(
+            catchError(this.handleError)
+        );
+    }
+
+    getMinionInfo(minionId: string): Observable<any> {
+        return this.http.get(`${this.baseUrl}/${minionId}/info`).pipe(
+            catchError(this.handleError)
+        );
+    }
+
     executeCommand(minionId: string, command: CommandRequest): Observable<any> {
         return this.http.post(`${this.baseUrl}/${minionId}/command`, command).pipe(
             catchError(this.handleError)

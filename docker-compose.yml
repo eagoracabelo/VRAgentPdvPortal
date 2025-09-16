@@ -54,7 +54,7 @@ services:
     environment:
       - GITHUB_TOKEN=$GITHUB_TOKEN
     ports:
-      - '4400:80'
+      - '4400:4200'
     depends_on:
       - backend
     restart: unless-stopped

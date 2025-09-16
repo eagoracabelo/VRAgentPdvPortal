@@ -1,0 +1,134 @@
+<!-- pending-minions.component.html -->
+<div class="pending-minions-widget">
+  <!-- Header com contadores -->
+  <div class="widget-header">
+    <div class="header-info">
+      <h3 class="widget-title">
+        <i class="fas fa-clock text-warning"></i>
+        Minions Pendentes
+      </h3>
+      <span class="pending-count" [class.has-pending]="pendingMinions.length > 0">
+        {{ pendingMinions.length }}
+      </span>
+    </div>
+    
+    <!-- Ações em lote -->
+    <div class="batch-actions" *ngIf="pendingMinions.length > 0">
+      <button 
+        class="btn btn-success btn-sm"
+        (click)="acceptAllMinions()"
+        [disabled]="processingMinions.size > 0"
+        title="Aceitar todos os minions pendentes">
+        <i class="fas fa-check-double"></i>
+        Aceitar Todos
+      </button>
+      
+      <button 
+        class="btn btn-warning btn-sm"
+        (click)="rejectAllMinions()"
+        [disabled]="processingMinions.size > 0"
+        title="Rejeitar todos os minions pendentes">
+        <i class="fas fa-times-circle"></i>
+        Rejeitar Todos
+      </button>
+    </div>
+  </div>
+
+  <!-- Estados de carregamento e erro -->
+  <div *ngIf="loading" class="loading-state">
+    <div class="spinner-border spinner-border-sm text-primary" role="status">
+      <span class="visually-hidden">Carregando...</span>
+    </div>
+    <span class="ms-2">Carregando minions pendentes...</span>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <i class="fas fa-exclamation-triangle"></i>
+    {{ error }}
+    <button type="button" class="btn-close" (click)="clearError()" aria-label="Close"></button>
+  </div>
+
+  <!-- Lista de minions pendentes -->
+  <div class="minions-container" *ngIf="!loading">
+    <!-- Estado vazio -->
+    <div *ngIf="pendingMinions.length === 0" class="empty-state">
+      <div class="empty-icon">
+        <i class="fas fa-server text-muted"></i>
+      </div>
+      <h5 class="text-muted">Nenhum minion pendente</h5>
+      <p class="text-muted mb-0">Todos os minions foram processados ou não há novos dispositivos aguardando aprovação.</p>
+    </div>
+
+    <!-- Lista de minions -->
+    <div *ngIf="pendingMinions.length > 0" class="minions-list">
+      <div 
+        *ngFor="let minionId of pendingMinions; trackBy: trackByMinionId" 
+        class="minion-item"
+        [class.processing]="isProcessing(minionId)">
+        
+        <div class="minion-info">
+          <div class="minion-identity">
+            <i class="fas fa-server text-warning"></i>
+            <span class="minion-id" [title]="getMinionTooltip(minionId)">
+              {{ formatMinionId(minionId) }}
+            </span>
+          </div>
+          
+          <div class="minion-status">
+            <span class="badge bg-warning text-dark">
+              <i class="fas fa-clock"></i>
+              Pendente
+            </span>
+          </div>
+        </div>
+
+        <!-- Spinner durante processamento -->
+        <div *ngIf="isProcessing(minionId)" class="processing-indicator">
+          <div class="spinner-border spinner-border-sm text-primary" role="status">
+            <span class="visually-hidden">Processando...</span>
+          </div>
+        </div>
+
+        <!-- Ações individuais -->
+        <div *ngIf="!isProcessing(minionId)" class="minion-actions">
+          <button 
+            class="btn btn-success btn-sm"
+            (click)="acceptMinion(minionId)"
+            title="Aceitar este minion">
+            <i class="fas fa-check"></i>
+          </button>
+          
+          <button 
+            class="btn btn-warning btn-sm"
+            (click)="rejectMinion(minionId)"
+            title="Rejeitar este minion (pode ser revertido)">
+            <i class="fas fa-times"></i>
+          </button>
+          
+          <button 
+            class="btn btn-danger btn-sm"
+            (click)="denyMinion(minionId)"
+            title="Negar permanentemente este minion">
+            <i class="fas fa-ban"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rodapé com informações adicionais -->
+    <div *ngIf="pendingMinions.length > 0" class="widget-footer">
+      <small class="text-muted">
+        <i class="fas fa-info-circle"></i>
+        Aceitar permite que o minion se conecte. Rejeitar pode ser revertido posteriormente. Negar é permanente.
+      </small>
+    </div>
+  </div>
+
+  <!-- Atualização automática -->
+  <div class="auto-refresh-indicator" *ngIf="autoRefresh && !loading">
+    <small class="text-muted">
+      <i class="fas fa-sync-alt"></i>
+      Atualizando automaticamente...
+    </small>
+  </div>
+</div>

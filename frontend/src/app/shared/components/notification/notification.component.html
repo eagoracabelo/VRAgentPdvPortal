@@ -1,0 +1,17 @@
+<div *ngIf="notification" class="notification-container">
+  <div class="alert alert-dismissible fade show" [ngClass]="getAlertClass()" role="alert">
+    <div class="d-flex align-items-start">
+      <i [ngClass]="getIconClass()" class="notification-icon"></i>
+      <div class="notification-content">
+        <strong class="notification-title">{{ notification.title }}</strong>
+        <div class="notification-message">{{ notification.message }}</div>
+      </div>
+      <button 
+        type="button" 
+        class="btn-close" 
+        (click)="onClose()"
+        aria-label="Fechar">
+      </button>
+    </div>
+  </div>
+</div>

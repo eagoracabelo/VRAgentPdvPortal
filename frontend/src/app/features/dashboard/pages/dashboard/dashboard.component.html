@@ -31,12 +31,24 @@
         <button class="btn-close" (click)="clearError()">×</button>
     </div>
 
+    <!-- Notificações -->
+    <app-notification 
+        [notification]="notification" 
+        (close)="onNotificationClose()">
+    </app-notification>
+
     <!-- Conteúdo principal -->
     <div class="dashboard-content" *ngIf="adminOverview$ | async as overview">
 
         <!-- Status dos Minions -->
         <app-minion-status-grid [minionsStatus]="overview.minionsStatus">
         </app-minion-status-grid>
+
+        <!-- Minions Pendentes para Aprovação -->
+        <app-pending-minions 
+            [autoRefresh]="true"
+            (operationComplete)="onMinionOperationComplete($event)">
+        </app-pending-minions>
 
         <!-- Métricas de Performance -->
         <app-performance-metrics [cpuData]="overview.systemSummary.cpu" [memoryData]="overview.systemSummary.memory"
@@ -46,6 +58,12 @@
         <!-- Jobs Recentes -->
         <app-recent-jobs [jobs]="overview.recentJobs" [maxItems]="10">
         </app-recent-jobs>
+
+        <!-- Gerenciamento de Versões VRPdv -->
+        <app-version-management 
+            [selectedMinions]="selectedMinion"
+            (operationComplete)="onVersionOperationComplete($event)">
+        </app-version-management>
 
     </div>
 
@@ -66,4 +84,10 @@
             <p>Aguarde enquanto carregamos os dados do SaltStack...</p>
         </div>
     </div>
+
+    <!-- Notificações -->
+    <app-notification 
+        [notification]="notification"
+        (close)="onNotificationClose()">
+    </app-notification>
 </div>

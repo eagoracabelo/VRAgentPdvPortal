@@ -159,6 +159,96 @@ class SaltService(
             }
     }
 
+    fun rejectKey(keyId: String, userId: Long): Mono<Any> {
+        return login()
+            .flatMap { token ->
+                webClient.post()
+                    .uri("${saltApiProperties.url}/")
+                    .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                    .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
+                    .header("X-Auth-Token", token)
+                    .bodyValue(
+                        """
+                        {
+                          "client": "wheel",
+                          "fun": "key.reject",
+                          "match": "$keyId"
+                        }
+                    """.trimIndent()
+                    )
+                    .retrieve()
+                    .bodyToMono(Map::class.java)
+                    .map { response ->
+                        val result = response["return"] as? Map<String, Any> ?: emptyMap()
+                        result as Any
+                    }
+                    .doOnSuccess { result ->
+                        activityLogService.logSuccess(
+                            userId = userId,
+                            action = "REJECT_KEY",
+                            target = keyId,
+                            details = mapOf(
+                                "success" to true,
+                                "timestamp" to System.currentTimeMillis()
+                            )
+                        )
+                    }
+                    .doOnError { error ->
+                        activityLogService.logFailure(
+                            userId = userId,
+                            action = "REJECT_KEY",
+                            target = keyId,
+                            errorMessage = error.message ?: "Erro ao rejeitar chave"
+                        )
+                    }
+            }
+    }
+
+    fun denyKey(keyId: String, userId: Long): Mono<Any> {
+        return login()
+            .flatMap { token ->
+                webClient.post()
+                    .uri("${saltApiProperties.url}/")
+                    .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                    .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
+                    .header("X-Auth-Token", token)
+                    .bodyValue(
+                        """
+                        {
+                          "client": "wheel",
+                          "fun": "key.delete",
+                          "match": "$keyId"
+                        }
+                    """.trimIndent()
+                    )
+                    .retrieve()
+                    .bodyToMono(Map::class.java)
+                    .map { response ->
+                        val result = response["return"] as? Map<String, Any> ?: emptyMap()
+                        result as Any
+                    }
+                    .doOnSuccess { result ->
+                        activityLogService.logSuccess(
+                            userId = userId,
+                            action = "DENY_KEY",
+                            target = keyId,
+                            details = mapOf(
+                                "success" to true,
+                                "timestamp" to System.currentTimeMillis()
+                            )
+                        )
+                    }
+                    .doOnError { error ->
+                        activityLogService.logFailure(
+                            userId = userId,
+                            action = "DENY_KEY",
+                            target = keyId,
+                            errorMessage = error.message ?: "Erro ao negar chave"
+                        )
+                    }
+            }
+    }
+
     fun executeCommand(target: String, command: String, userId: Long): Mono<Any> {
         return login()
             .flatMap { token ->
@@ -301,6 +391,68 @@ class SaltService(
                                 "source" to sourcePath,
                                 "destination" to destinationPath
                             )
+                        )
+                    }
+            }
+    }
+
+    fun getMinionInfo(minionId: String, userId: Long): Mono<Any> {
+        return login()
+            .flatMap { token ->
+                webClient.post()
+                    .uri("${saltApiProperties.url}/")
+                    .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                    .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
+                    .header("X-Auth-Token", token)
+                    .bodyValue(
+                        """
+                        {
+                          "client": "local",
+                          "tgt": "$minionId",
+                          "fun": "grains.items"
+                        }
+                    """.trimIndent()
+                    )
+                    .retrieve()
+                    .bodyToMono(Map::class.java)
+                    .map { response ->
+                        val returnList = response["return"] as? List<*> ?: emptyList<Any>()
+                        val minionData = returnList.firstOrNull() as? Map<*, *> ?: emptyMap<Any, Any>()
+                        val grains = minionData[minionId] as? Map<*, *> ?: emptyMap<Any, Any>()
+                        
+                        mapOf(
+                            "id" to minionId,
+                            "os" to (grains["os"] ?: "unknown"),
+                            "os_family" to (grains["osfamily"] ?: "unknown"),
+                            "osrelease" to (grains["osrelease"] ?: "unknown"),
+                            "oscodename" to (grains["oscodename"] ?: "unknown"),
+                            "kernel" to (grains["kernel"] ?: "unknown"),
+                            "kernelrelease" to (grains["kernelrelease"] ?: "unknown"),
+                            "cpu_model" to (grains["cpu_model"] ?: "unknown"),
+                            "cpuarch" to (grains["cpuarch"] ?: "unknown"),
+                            "num_cpus" to (grains["num_cpus"] ?: 0),
+                            "mem_total" to (grains["mem_total"] ?: 0),
+                            "ip4_interfaces" to (grains["ip4_interfaces"] ?: emptyMap<String, Any>()),
+                            "fqdn" to (grains["fqdn"] ?: "unknown"),
+                            "host" to (grains["host"] ?: "unknown"),
+                            "saltversion" to (grains["saltversion"] ?: "unknown"),
+                            "pythonversion" to (grains["pythonversion"] ?: emptyList<Any>())
+                        ) as Any
+                    }
+                    .doOnSuccess { result ->
+                        activityLogService.logSuccess(
+                            userId = userId,
+                            action = "GET_MINION_INFO",
+                            target = minionId,
+                            details = mapOf("success" to true)
+                        )
+                    }
+                    .doOnError { error ->
+                        activityLogService.logFailure(
+                            userId = userId,
+                            action = "GET_MINION_INFO",
+                            target = minionId,
+                            errorMessage = error.message ?: "Erro ao obter informações do minion"
                         )
                     }
             }

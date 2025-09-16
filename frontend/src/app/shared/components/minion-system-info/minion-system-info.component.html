@@ -1,0 +1,128 @@
+<!-- minion-system-info.component.html -->
+<div class="minion-system-info" [class.compact]="compact">
+  
+  <!-- Loading State -->
+  <div *ngIf="loading" class="loading-state">
+    <div class="spinner-border spinner-border-sm" role="status">
+      <span class="visually-hidden">Carregando...</span>
+    </div>
+    <span class="ms-2">Carregando informações...</span>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error && !loading" class="error-state">
+    <i class="fas fa-exclamation-triangle text-warning"></i>
+    <span class="ms-2">{{ error }}</span>
+  </div>
+
+  <!-- System Info Display -->
+  <div *ngIf="systemInfo && !loading && !error" class="system-info-content">
+    
+    <!-- Compact View -->
+    <div *ngIf="compact" class="compact-view">
+      <div class="os-badge">
+        <i [class]="getOSIcon()" [style.color]="getOSColor()"></i>
+        <span class="os-name">{{ getDisplayName() }}</span>
+      </div>
+      <div class="arch-info">
+        <i [class]="getArchitectureIcon()" class="text-muted"></i>
+        <span class="arch-text">{{ systemInfo.cpuarch }}</span>
+      </div>
+    </div>
+
+    <!-- Detailed View -->
+    <div *ngIf="!compact" class="detailed-view">
+      
+      <!-- System Information Header -->
+      <div class="info-header">
+        <div class="os-info">
+          <i [class]="getOSIcon()" [style.color]="getOSColor()" class="os-icon"></i>
+          <div class="os-details">
+            <h5 class="os-title">{{ getDisplayName() }}</h5>
+            <small class="text-muted">{{ systemInfo.kernel }} {{ systemInfo.kernelrelease }}</small>
+          </div>
+        </div>
+        <div class="system-badge">
+          <span class="badge bg-primary">{{ systemInfo.cpuarch }}</span>
+        </div>
+      </div>
+
+      <!-- System Specifications -->
+      <div class="specs-grid">
+        
+        <!-- CPU Information -->
+        <div class="spec-item">
+          <div class="spec-icon">
+            <i class="fas fa-microchip text-primary"></i>
+          </div>
+          <div class="spec-details">
+            <div class="spec-label">Processador</div>
+            <div class="spec-value">{{ systemInfo.cpu_model || 'N/A' }}</div>
+            <small class="text-muted">{{ systemInfo.num_cpus }} núcleo(s)</small>
+          </div>
+        </div>
+
+        <!-- Memory Information -->
+        <div class="spec-item">
+          <div class="spec-icon">
+            <i class="fas fa-memory text-success"></i>
+          </div>
+          <div class="spec-details">
+            <div class="spec-label">Memória RAM</div>
+            <div class="spec-value">{{ formatMemory(systemInfo.mem_total * 1024 * 1024) }}</div>
+            <small class="text-muted">Total disponível</small>
+          </div>
+        </div>
+
+        <!-- Network Information -->
+        <div class="spec-item">
+          <div class="spec-icon">
+            <i class="fas fa-network-wired text-info"></i>
+          </div>
+          <div class="spec-details">
+            <div class="spec-label">Endereço IP</div>
+            <div class="spec-value">{{ getMainIP() }}</div>
+            <small class="text-muted">{{ systemInfo.fqdn || systemInfo.host }}</small>
+          </div>
+        </div>
+
+        <!-- Salt Version -->
+        <div class="spec-item">
+          <div class="spec-icon">
+            <i class="fas fa-cube text-warning"></i>
+          </div>
+          <div class="spec-details">
+            <div class="spec-label">Salt Version</div>
+            <div class="spec-value">{{ systemInfo.saltversion }}</div>
+            <small class="text-muted">Python {{ systemInfo.pythonversion?.[0] }}.{{ systemInfo.pythonversion?.[1] }}</small>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Additional Network Interfaces (if multiple) -->
+      <div *ngIf="systemInfo.ip4_interfaces && Object.keys(systemInfo.ip4_interfaces).length > 1" class="network-interfaces">
+        <h6 class="interfaces-title">
+          <i class="fas fa-ethernet me-2"></i>
+          Interfaces de Rede
+        </h6>
+        <div class="interfaces-list">
+          <div *ngFor="let interface of Object.entries(systemInfo.ip4_interfaces)" class="interface-item">
+            <span class="interface-name">{{ interface[0] }}:</span>
+            <span class="interface-ips">{{ (interface[1] as string[]).join(', ') }}</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Refresh Button -->
+  <div *ngIf="!loading && !compact" class="refresh-section">
+    <button class="btn btn-outline-secondary btn-sm" (click)="loadSystemInfo()" [disabled]="loading">
+      <i class="fas fa-sync-alt" [class.fa-spin]="loading"></i>
+      Atualizar
+    </button>
+  </div>
+
+</div>
