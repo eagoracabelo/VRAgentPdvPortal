@@ -1,5 +1,6 @@
 package br.com.vrsoftware.vragentpdv.service
 
+import br.com.vrsoftware.vragentpdv.config.SaltApiConfig
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
@@ -7,26 +8,17 @@ import org.springframework.stereotype.Service
 import org.springframework.web.reactive.function.client.WebClient
 import reactor.core.publisher.Mono
 import java.util.concurrent.ConcurrentHashMap
+import kotlin.collections.set
 import kotlin.text.get
 
 @Service
 class SaltService(
     private val webClient: WebClient,
-    private val activityLogService: ActivityLogService
+    private val activityLogService: ActivityLogService,
+    private val saltApiConfig: SaltApiConfig
 ) {
 
-    @Value("\${salt.api.url}")
-    private lateinit var saltApiUrl: String
-
-    @Value("\${salt.api.username}")
-    private lateinit var username: String
-
-    @Value("\${salt.api.password}")
-    private lateinit var password: String
-
-    @Value("\${salt.api.eauth}")
-    private lateinit var eauth: String
-
+    private val saltApiProperties = saltApiConfig.saltApiProperties()
     private val tokenCache = ConcurrentHashMap<String, String>()
 
     fun login(): Mono<String> {
@@ -36,13 +28,13 @@ class SaltService(
         }
 
         val loginRequest = mapOf(
-            "username" to username,
-            "password" to password,
-            "eauth" to eauth
+            "username" to saltApiProperties.username,
+            "password" to saltApiProperties.password,
+            "eauth" to saltApiProperties.eauth
         )
 
         return webClient.post()
-            .uri("$saltApiUrl/login")
+            .uri("${saltApiProperties.url}/login")
             .contentType(MediaType.APPLICATION_JSON)
             .bodyValue(loginRequest)
             .retrieve()
@@ -61,7 +53,7 @@ class SaltService(
         return login()
             .flatMap { token ->
                 webClient.post()
-                    .uri("$saltApiUrl/")
+                    .uri("${saltApiProperties.url}/")
                     .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                     .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
                     .header("X-Auth-Token", token)
@@ -126,7 +118,7 @@ class SaltService(
         return login()
             .flatMap { token ->
                 webClient.post()
-                    .uri("$saltApiUrl/")
+                    .uri("${saltApiProperties.url}/")
                     .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                     .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
                     .header("X-Auth-Token", token)
@@ -171,7 +163,7 @@ class SaltService(
         return login()
             .flatMap { token ->
                 webClient.post()
-                    .uri("$saltApiUrl/")
+                    .uri("${saltApiProperties.url}/")
                     .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                     .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
                     .header("X-Auth-Token", token)
@@ -224,7 +216,7 @@ class SaltService(
         return login()
             .flatMap { token ->
                 webClient.post()
-                    .uri("$saltApiUrl/")
+                    .uri("${saltApiProperties.url}/")
                     .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                     .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
                     .header("X-Auth-Token", token)
@@ -267,7 +259,7 @@ class SaltService(
         return login()
             .flatMap { token ->
                 webClient.post()
-                    .uri("$saltApiUrl/")
+                    .uri("${saltApiProperties.url}/")
                     .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                     .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
                     .header("X-Auth-Token", token)

@@ -44,33 +44,6 @@ services:
     networks:
       - salt-network
 
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile.dev
-      args:
-        - GITHUB_TOKEN=${GITHUB_TOKEN}
-    container_name: vragentpdvportal-ui-dev
-    environment:
-      - GITHUB_TOKEN=${GITHUB_TOKEN}
-      - NODE_ENV=development
-    ports:
-      - '4400:4200'
-    depends_on:
-      - backend
-    volumes:
-      # Montar apenas código fonte para hot-reload
-      - ./frontend/src:/app/src:rw
-      - ./frontend/angular.json:/app/angular.json:ro
-      - ./frontend/tsconfig.json:/app/tsconfig.json:ro
-      - ./frontend/tsconfig.app.json:/app/tsconfig.app.json:ro
-      # NÃO montar package.json para não interferir nas dependências instaladas
-      # NÃO montar node_modules - deixar usar o do container
-      - /app/node_modules
-      - /app/.angular
-    networks:
-      - salt-network
-
 networks:
   salt-network:
     driver: bridge
