@@ -1,0 +1,55 @@
+<!-- filepath: frontend/src/app/shared/components/performance-metrics/performance-metrics.component.html -->
+<div class="performance-metrics">
+    <!-- CPU Metrics -->
+    <div class="metric-section cpu-section">
+        <h3><i class="fas fa-microchip"></i> CPU Usage</h3>
+        <div class="metric-list">
+            <div class="metric-item" *ngFor="let cpu of cpuData">
+                <span class="minion-id">{{ cpu.minionId }}</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" [style.width.%]="cpu.usage" [class.high]="cpu.usage > 80"
+                        [class.medium]="cpu.usage > 60 && cpu.usage <= 80">
+                    </div>
+                </div>
+                <span class="metric-value">{{ cpu.usage }}%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Memory Metrics -->
+    <div class="metric-section memory-section">
+        <h3><i class="fas fa-memory"></i> Memory Usage</h3>
+        <div class="metric-list">
+            <div class="metric-item" *ngFor="let memory of memoryData">
+                <span class="minion-id">{{ memory.minionId }}</span>
+                <div class="progress-bar">
+                    <div class="progress-fill memory" [style.width.%]="getMemoryUsagePercent(memory)"
+                        [class.high]="getMemoryUsagePercent(memory) > 80"
+                        [class.medium]="getMemoryUsagePercent(memory) > 60 && getMemoryUsagePercent(memory) <= 80">
+                    </div>
+                </div>
+                <span class="metric-value">
+                    {{ formatBytes(memory.used) }} / {{ formatBytes(memory.total) }}
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Disk Metrics -->
+    <div class="metric-section disk-section">
+        <h3><i class="fas fa-hdd"></i> Disk Usage</h3>
+        <div class="metric-list">
+            <div class="metric-item" *ngFor="let disk of diskData">
+                <span class="minion-id">{{ disk.minionId }}</span>
+                <span class="mount-point">{{ disk.mountPoint }}</span>
+                <div class="progress-bar">
+                    <div class="progress-fill disk" [style.width.%]="disk.usedPercent"
+                        [class.high]="disk.usedPercent > 90"
+                        [class.medium]="disk.usedPercent > 70 && disk.usedPercent <= 90">
+                    </div>
+                </div>
+                <span class="metric-value">{{ disk.usedPercent }}%</span>
+            </div>
+        </div>
+    </div>
+</div>

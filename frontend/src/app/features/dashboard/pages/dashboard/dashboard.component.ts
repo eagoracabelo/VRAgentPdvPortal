@@ -1,94 +1,89 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-
-interface DashboardStats {
-  totalMinions: number;
-  acceptedMinions: number;
-  pendingMinions: number;
-  rejectedMinions: number;
-  systemHealth: 'healthy' | 'warning' | 'error';
-}
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable, Subject, combineLatest, timer } from 'rxjs';
+import { takeUntil, switchMap, finalize } from 'rxjs/operators';
+import { SaltApiService } from '../../../../core/service/salt-api.service';
+import { MinionUseCase } from '../../../../core/application/use-cases/minion.use-case';
+import { AdminOverview, JobDto } from '../../../../core/domain/models/management.model';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
-  stats: DashboardStats = {
-    totalMinions: 0,
-    acceptedMinions: 0,
-    pendingMinions: 0,
-    rejectedMinions: 0,
-    systemHealth: 'healthy'
-  };
+export class DashboardComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
 
-  recentActivities: any[] = [];
+  // Dados do Salt API
+  adminOverview$!: Observable<AdminOverview>;
+
+  // Estados
   loading = false;
+  error: string | null = null;
+  selectedMinion = '*';
+  refreshInterval = 30000; // 30 segundos
+
+  constructor(
+    private saltApiService: SaltApiService,
+    private minionUseCase: MinionUseCase
+  ) { }
 
   ngOnInit(): void {
-    this.loadDashboardData();
+    this.setupDataStreams();
+    this.startAutoRefresh();
   }
 
-  loadDashboardData(): void {
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  private setupDataStreams(): void {
+    this.adminOverview$ = this.saltApiService.getAdminOverview(this.selectedMinion);
+  }
+
+  private startAutoRefresh(): void {
+    timer(0, this.refreshInterval).pipe(
+      switchMap(() => this.refreshAllData()),
+      takeUntil(this.destroy$)
+    ).subscribe({
+      error: (error) => {
+        this.error = 'Erro ao carregar dados do SaltStack';
+        console.error('Erro:', error);
+      }
+    });
+  }
+
+  refreshAllData(): Observable<AdminOverview> {
     this.loading = true;
-    // Simular carregamento
-    setTimeout(() => {
-      this.stats = {
-        totalMinions: 15,
-        acceptedMinions: 12,
-        pendingMinions: 2,
-        rejectedMinions: 1,
-        systemHealth: 'healthy'
-      };
+    this.error = null;
 
-      this.recentActivities = [
-        {
-          id: 1,
-          action: 'Minion Aceito',
-          target: 'pdv-001',
-          timestamp: new Date(Date.now() - 5 * 60000),
-          status: 'success'
-        },
-        {
-          id: 2,
-          action: 'Comando Executado',
-          target: 'pdv-002',
-          timestamp: new Date(Date.now() - 15 * 60000),
-          status: 'success'
-        },
-        {
-          id: 3,
-          action: 'Falha na Conexão',
-          target: 'pdv-003',
-          timestamp: new Date(Date.now() - 30 * 60000),
-          status: 'error'
-        }
-      ];
-
-      this.loading = false;
-    }, 1500);
+    return this.saltApiService.getAdminOverview(this.selectedMinion).pipe(
+      finalize(() => this.loading = false)
+    );
   }
 
-  refreshData(): void {
-    this.loadDashboardData();
+  pingAllMinions(): void {
+    this.saltApiService.pingAllMinions().subscribe({
+      next: (result) => {
+        console.log('Ping results:', result);
+      },
+      error: (error) => {
+        this.error = 'Erro ao executar ping nos minions';
+        console.error(error);
+      }
+    });
   }
 
-  getHealthStatusIcon(): string {
-    const icons = {
-      healthy: 'fas fa-check-circle text-success',
-      warning: 'fas fa-exclamation-triangle text-warning',
-      error: 'fas fa-times-circle text-danger'
-    };
-    return icons[this.stats.systemHealth];
+  onMinionSelect(minionId: string): void {
+    this.selectedMinion = minionId;
+    this.setupDataStreams();
   }
 
-  getHealthStatusText(): string {
-    const texts = {
-      healthy: 'Sistema Saudável',
-      warning: 'Atenção Necessária',
-      error: 'Problemas Detectados'
-    };
-    return texts[this.stats.systemHealth];
+  clearError(): void {
+    this.error = null;
+  }
+
+  getLastUpdateTime(): string {
+    return new Date().toLocaleTimeString('pt-BR');
   }
 }

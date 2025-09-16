@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { CommandRequest, FileManagementRequest, MinionKeys } from '../../domain/models/index';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+import { MinionKeys, CommandRequest, FileManagementRequest } from '../../domain/models/index';
 
 @Injectable({
     providedIn: 'root'
@@ -12,22 +13,48 @@ export class MinionRepository {
     constructor(private http: HttpClient) { }
 
     getAllMinions(): Observable<MinionKeys> {
-        return this.http.get<MinionKeys>(this.baseUrl);
+        return this.http.get<MinionKeys>(this.baseUrl).pipe(
+            retry(3),
+            catchError(this.handleError)
+        );
     }
 
     acceptKey(keyId: string): Observable<any> {
-        return this.http.post(`${this.baseUrl}/${keyId}/accept`, {});
+        return this.http.post(`${this.baseUrl}/${keyId}/accept`, {}).pipe(
+            catchError(this.handleError)
+        );
     }
 
     executeCommand(minionId: string, command: CommandRequest): Observable<any> {
-        return this.http.post(`${this.baseUrl}/${minionId}/command`, command);
+        return this.http.post(`${this.baseUrl}/${minionId}/command`, command).pipe(
+            catchError(this.handleError)
+        );
     }
 
     updateVRAgentePdv(minionId: string): Observable<any> {
-        return this.http.post(`${this.baseUrl}/${minionId}/update`, {});
+        return this.http.post(`${this.baseUrl}/${minionId}/update`, {}).pipe(
+            catchError(this.handleError)
+        );
     }
 
     manageFile(minionId: string, fileRequest: FileManagementRequest): Observable<any> {
-        return this.http.post(`${this.baseUrl}/${minionId}/file`, fileRequest);
+        return this.http.post(`${this.baseUrl}/${minionId}/file`, fileRequest).pipe(
+            catchError(this.handleError)
+        );
+    }
+
+    private handleError(error: HttpErrorResponse) {
+        let errorMessage = 'Erro desconhecido';
+
+        if (error.error instanceof ErrorEvent) {
+            // Erro do lado do cliente
+            errorMessage = `Erro: ${error.error.message}`;
+        } else {
+            // Erro do lado do servidor
+            errorMessage = `Erro ${error.status}: ${error.message}`;
+        }
+
+        console.error('Erro na API:', errorMessage);
+        return throwError(() => errorMessage);
     }
 }

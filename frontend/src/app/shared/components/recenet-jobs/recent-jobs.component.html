@@ -1,0 +1,31 @@
+<div class="recent-jobs">
+    <div class="jobs-header">
+        <h3>Jobs Recentes</h3>
+        <span class="jobs-count">{{ jobs.length }} jobs</span>
+    </div>
+
+    <div class="jobs-list">
+        <div class="job-item" *ngFor="let job of jobs.slice(0, maxItems)" [class]="'status-' + job.status">
+            <div class="job-info">
+                <div class="job-header">
+                    <span class="job-id">{{ job.jid }}</span>
+                    <span class="job-timestamp">{{ job.timestamp | date:'dd/MM HH:mm:ss' }}</span>
+                </div>
+                <div class="job-details">
+                    <span class="job-function">{{ job.function }}</span>
+                    <span class="job-target">{{ job.target }}</span>
+                    <span class="job-user">por {{ job.user }}</span>
+                </div>
+            </div>
+            <div class="job-status">
+                <i [class]="getJobStatusIcon(job.status)"></i>
+                <span>{{ job.status }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="no-jobs" *ngIf="jobs.length === 0">
+        <i class="fas fa-tasks"></i>
+        <p>Nenhum job executado recentemente</p>
+    </div>
+</div>

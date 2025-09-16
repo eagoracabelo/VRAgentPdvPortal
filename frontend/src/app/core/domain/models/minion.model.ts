@@ -1,3 +1,10 @@
+export interface MinionKeys {
+    minions: string[];
+    minions_pre: string[];
+    minions_rejected: string[];
+    minions_denied: string[];
+}
+
 export interface Minion {
     id: string;
     status: MinionStatus;
@@ -12,9 +19,10 @@ export enum MinionStatus {
     DENIED = 'denied'
 }
 
-export interface MinionKeys {
-    minions: string[];
-    minions_pre: string[];
-    minions_rejected: string[];
-    minions_denied: string[];
+export interface MinionStats {
+    total: number;
+    accepted: number;
+    pending: number;
+    rejected: number;
+    denied: number;
 }

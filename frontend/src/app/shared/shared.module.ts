@@ -2,33 +2,28 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-// Importar componentes VR (ajustar conforme disponibilidade)
-// import { VRCardModule } from '../../projects/vr-card/src/public-api';
-// import { VRButtonModule } from '../../projects/vr-button/src/public-api';
-// import { VRTableModule } from '../../projects/vr-table/src/public-api';
-// import { VRModalModule } from '../../projects/vr-modal/src/public-api';
+import { PerformanceMetricsComponent } from './components/performance-metrics/performance-metrics.component';
+import { RecentJobsComponent } from './components/recenet-jobs/recent-jobs.component';
+import { MinionStatusGridComponent } from './components/minion-status-grid/minion-status-grid.component';
 
 @NgModule({
     declarations: [
-        // Componentes locais
+        PerformanceMetricsComponent,
+        RecentJobsComponent,
+        MinionStatusGridComponent
     ],
     imports: [
         CommonModule,
         FormsModule,
-        ReactiveFormsModule,
-        // VRCardModule,
-        // VRButtonModule,
-        // VRTableModule,
-        // VRModalModule
+        ReactiveFormsModule
     ],
     exports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        // VRCardModule,
-        // VRButtonModule,
-        // VRTableModule,
-        // VRModalModule
+        PerformanceMetricsComponent,
+        RecentJobsComponent,
+        MinionStatusGridComponent
     ]
 })
 export class SharedModule { }

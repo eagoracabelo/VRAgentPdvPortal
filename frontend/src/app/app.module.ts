@@ -8,6 +8,9 @@ import { SharedModule } from './shared/shared.module';
 import { DashboardModule } from './features/dashboard/dashboard.module';
 import { MinionsModule } from './features/minions/minions.module';
 
+// Serviços
+import { SaltApiService } from '../app/core/service/salt-api.service';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -18,9 +21,11 @@ import { MinionsModule } from './features/minions/minions.module';
     SharedModule,
     DashboardModule,
     MinionsModule,
-    AppRoutingModule // AppRoutingModule deve vir por último
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    SaltApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
