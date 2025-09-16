@@ -9,6 +9,9 @@ import br.com.vrsoftware.vragentpdv.model.dto.monitor.DiskInfoDto
 import br.com.vrsoftware.vragentpdv.model.dto.monitor.MemoryInfoDto
 import br.com.vrsoftware.vragentpdv.model.dto.monitor.NetworkMonitorDto
 import br.com.vrsoftware.vragentpdv.model.dto.monitor.ProcessInfoDto
+import br.com.vrsoftware.vragentpdv.model.dto.sls.SlsListDto
+import br.com.vrsoftware.vragentpdv.model.dto.sls.SlsOperationDto
+import br.com.vrsoftware.vragentpdv.model.dto.sls.SlsOperationResultDto
 import br.com.vrsoftware.vragentpdv.model.dto.system.HardwareInfoDto
 import br.com.vrsoftware.vragentpdv.model.dto.system.NetworkInfoDto
 import br.com.vrsoftware.vragentpdv.model.dto.system.OsInfoDto
@@ -198,8 +201,76 @@ class SaltManagementController(
     fun getAdminOverview(@RequestParam(defaultValue = "*") target: String): Map<String, Any> {
         return mapOf(
             "minions_status" to saltApiService.executeCommand("salt-run", "manage.status"),
-        "recent_jobs" to getJobsList().take(10),
-        "system_summary" to getSystemSummary(target)
+            "recent_jobs" to getJobsList().take(10),
+            "system_summary" to getSystemSummary(target)
+        )
+    }
+
+    @GetMapping("/sls/list")
+    fun getAvailableSls(): SlsListDto {
+        val statesResult = saltApiService.executeCommand("salt-run", "state.show_top")
+        val filesResult = saltApiService.executeCommand("salt-run", "fileserver.file_list saltenv=base")
+        return saltApiService.parseSlsList(statesResult, filesResult)
+    }
+
+    @GetMapping("/sls/{slsName}/content")
+    fun getSlsContent(@PathVariable slsName: String): Map<String, String> {
+        val result = saltApiService.executeCommand("salt-run", "state.show_sls $slsName")
+        return saltApiService.parseSlsContent(result, slsName)
+    }
+
+    @GetMapping("/sls/{slsName}/file")
+    fun getSlsFile(@PathVariable slsName: String): Map<String, Any> {
+        // Tenta ler o arquivo SLS diretamente
+        val result = saltApiService.executeCommand("salt-run", "cp.get_file salt://$slsName.sls /tmp/$slsName.sls")
+        val contentResult = saltApiService.executeCommand("salt-run", "cmd.run 'cat /srv/salt/$slsName.sls'")
+        return saltApiService.parseSlsFile(contentResult, slsName)
+    }
+
+    @PostMapping("/sls/create")
+    fun createSls(@RequestBody slsOperation: SlsOperationDto): SlsOperationResultDto {
+        return saltApiService.createSlsFile(slsOperation)
+    }
+
+    @PutMapping("/sls/{slsName}")
+    fun updateSls(
+        @PathVariable slsName: String,
+        @RequestBody slsOperation: SlsOperationDto
+    ): SlsOperationResultDto {
+        val operation = slsOperation.copy(name = slsName, operation = "UPDATE")
+        return saltApiService.updateSlsFile(operation)
+    }
+
+    @DeleteMapping("/sls/{slsName}")
+    fun deleteSls(@PathVariable slsName: String): SlsOperationResultDto {
+        val operation = SlsOperationDto(name = slsName, content = "", operation = "DELETE")
+        return saltApiService.deleteSlsFile(operation)
+    }
+
+    @PostMapping("/sls/{slsName}/apply")
+    fun applySlsState(
+        @PathVariable slsName: String,
+        @RequestParam(defaultValue = "*") target: String
+    ): Map<String, Any?> {
+        val result = saltApiService.executeCommand("salt", target, "state.apply $slsName")
+        return saltApiService.parseGenericResult(result)
+    }
+
+    @PostMapping("/sls/{slsName}/test")
+    fun testSlsState(
+        @PathVariable slsName: String,
+        @RequestParam(defaultValue = "*") target: String
+    ): Map<String, Any?> {
+        val result = saltApiService.executeCommand("salt", target, "state.apply $slsName test=True")
+        return saltApiService.parseGenericResult(result)
+    }
+
+    @GetMapping("/sls/validate/{slsName}")
+    fun validateSls(@PathVariable slsName: String): Map<String, Any> {
+        val result = saltApiService.executeCommand("salt-run", "state.show_sls $slsName")
+        return mapOf(
+            "valid" to (result != null && result !is String),
+            "content" to result
         )
     }
 }

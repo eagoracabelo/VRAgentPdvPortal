@@ -1,5 +1,8 @@
 package br.com.vrsoftware.vragentpdv.service
 
+import br.com.vrsoftware.vragentpdv.model.dto.sls.SlsListDto
+import br.com.vrsoftware.vragentpdv.model.dto.sls.SlsOperationDto
+import br.com.vrsoftware.vragentpdv.model.dto.sls.SlsOperationResultDto
 import br.com.vrsoftware.vragentpdv.model.dto.jobs.JobDetailDto
 import br.com.vrsoftware.vragentpdv.model.dto.jobs.JobDto
 import br.com.vrsoftware.vragentpdv.model.dto.jobs.PillarDataDto
@@ -10,6 +13,7 @@ import br.com.vrsoftware.vragentpdv.model.dto.monitor.DiskInfoDto
 import br.com.vrsoftware.vragentpdv.model.dto.monitor.MemoryInfoDto
 import br.com.vrsoftware.vragentpdv.model.dto.monitor.NetworkMonitorDto
 import br.com.vrsoftware.vragentpdv.model.dto.monitor.ProcessInfoDto
+import br.com.vrsoftware.vragentpdv.model.dto.sls.SlsFileDto
 import br.com.vrsoftware.vragentpdv.model.dto.system.HardwareInfoDto
 import br.com.vrsoftware.vragentpdv.model.dto.system.NetworkInfoDto
 import br.com.vrsoftware.vragentpdv.model.dto.system.OsInfoDto
@@ -373,6 +377,160 @@ class SaltApiService(
             }
 
             else -> emptyList()
+        }
+    }
+
+    fun parseSlsList(statesResult: Any, filesResult: Any): SlsListDto {
+        val states = mutableListOf<String>()
+        val files = mutableListOf<SlsFileDto>()
+
+        // Parse dos arquivos do fileserver
+        when (filesResult) {
+            is List<*> -> {
+                filesResult.filterIsInstance<String>()
+                    .filter { it.endsWith(".sls") }
+                    .forEach { fileName ->
+                        val slsName = fileName.removeSuffix(".sls")
+                        states.add(slsName)
+                        files.add(SlsFileDto(name = slsName, path = fileName))
+                    }
+            }
+
+            is Map<*, *> -> {
+                // Se a resposta vier como map (alguns comandos retornam assim)
+                filesResult.values.filterIsInstance<List<*>>()
+                    .flatten()
+                    .filterIsInstance<String>()
+                    .filter { it.endsWith(".sls") }
+                    .forEach { fileName ->
+                        val slsName = fileName.removeSuffix(".sls")
+                        states.add(slsName)
+                        files.add(SlsFileDto(name = slsName, path = fileName))
+                    }
+            }
+        }
+
+        // Parse do resultado de estados (se disponível)
+        when (statesResult) {
+            is String -> {
+                // Se for resultado de comando find, parsear as linhas
+                statesResult.split("\n")
+                    .filter { it.isNotBlank() && it.endsWith(".sls") }
+                    .forEach { filePath ->
+                        val fileName = filePath.substringAfterLast("/")
+                        val slsName = fileName.removeSuffix(".sls")
+                        if (!states.contains(slsName)) {
+                            states.add(slsName)
+                            files.add(SlsFileDto(name = slsName, path = fileName))
+                        }
+                    }
+            }
+        }
+
+        return SlsListDto(
+            availableStates = states.distinct().sorted(),
+            slsFiles = files.distinctBy { it.name }.sortedBy { it.name }
+        )
+    }
+
+    fun parseSlsContent(result: Any, slsName: String): Map<String, String> {
+        return when (result) {
+            is String -> mapOf("content" to result, "name" to slsName)
+            is Map<*, *> -> {
+                @Suppress("UNCHECKED_CAST")
+                val content = (result as Map<String, Any>).toString()
+                mapOf("content" to content, "name" to slsName)
+            }
+
+            else -> mapOf("content" to "", "name" to slsName, "error" to "Could not parse content")
+        }
+    }
+
+    fun parseSlsFile(result: Any, slsName: String): Map<String, Any> {
+        return when (result) {
+            is String -> mapOf(
+                "name" to slsName,
+                "content" to result,
+                "exists" to true
+            )
+
+            else -> mapOf(
+                "name" to slsName,
+                "content" to "",
+                "exists" to false,
+                "error" to "File not found or could not be read"
+            )
+        }
+    }
+
+    fun createSlsFile(slsOperation: SlsOperationDto): SlsOperationResultDto {
+        return try {
+            // Usando comando para criar arquivo SLS
+            val filePath = "/srv/salt/${slsOperation.name}.sls"
+            val tempFile = "/tmp/${slsOperation.name}.sls"
+
+            // Escreve conteúdo em arquivo temporário e move para destino
+            val writeCommand = "echo '${slsOperation.content.replace("'", "\\'")}' > $tempFile && mv $tempFile $filePath"
+            val result = executeCommand("salt-run", "cmd.run '$writeCommand'")
+
+            SlsOperationResultDto(
+                success = true,
+                message = "SLS file created successfully",
+                slsName = slsOperation.name,
+                operation = "CREATE"
+            )
+        } catch (e: Exception) {
+            SlsOperationResultDto(
+                success = false,
+                message = "Error creating SLS file: ${e.message}",
+                slsName = slsOperation.name,
+                operation = "CREATE"
+            )
+        }
+    }
+
+    fun updateSlsFile(slsOperation: SlsOperationDto): SlsOperationResultDto {
+        return try {
+            val filePath = "/srv/salt/${slsOperation.name}.sls"
+            val tempFile = "/tmp/${slsOperation.name}.sls"
+
+            val writeCommand = "echo '${slsOperation.content.replace("'", "\\'")}' > $tempFile && mv $tempFile $filePath"
+            val result = executeCommand("salt-run", "cmd.run '$writeCommand'")
+
+            SlsOperationResultDto(
+                success = true,
+                message = "SLS file updated successfully",
+                slsName = slsOperation.name,
+                operation = "UPDATE"
+            )
+        } catch (e: Exception) {
+            SlsOperationResultDto(
+                success = false,
+                message = "Error updating SLS file: ${e.message}",
+                slsName = slsOperation.name,
+                operation = "UPDATE"
+            )
+        }
+    }
+
+    fun deleteSlsFile(slsOperation: SlsOperationDto): SlsOperationResultDto {
+        return try {
+            val filePath = "/srv/salt/${slsOperation.name}.sls"
+            val result = executeCommand("salt-run", "cmd.run 'rm -f $filePath'")
+
+            SlsOperationResultDto(
+                success = true,
+                message = "SLS file deleted successfully",
+                slsName = slsOperation.name,
+                operation = "DELETE"
+            )
+        } catch (e: Exception) {
+            SlsOperationResultDto(
+                success = false,
+                message = "Error deleting SLS file: ${e.message}",
+                slsName = slsOperation.name,
+                operation = "DELETE"
+            )
         }
     }
 }
