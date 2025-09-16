@@ -199,18 +199,41 @@ class SaltManagementController(
 
     @GetMapping("/admin/overview")
     fun getAdminOverview(@RequestParam(defaultValue = "*") target: String): Map<String, Any> {
+        val statusResult = saltApiService.executeCommand("salt-run", "manage.status")
+        
+        // Parse minions status to match frontend expectations
+        val minionsStatus = when (statusResult) {
+            is Map<*, *> -> {
+                mapOf(
+                    "up" to (statusResult["up"] ?: statusResult["minions"] ?: emptyList<String>()),
+                    "down" to (statusResult["down"] ?: emptyList<String>()),
+                    "pending" to (statusResult["pending"] ?: statusResult["minions_pre"] ?: emptyList<String>())
+                )
+            }
+            else -> mapOf(
+                "up" to emptyList<String>(),
+                "down" to emptyList<String>(),
+                "pending" to emptyList<String>()
+            )
+        }
+        
         return mapOf(
-            "minions_status" to saltApiService.executeCommand("salt-run", "manage.status"),
-            "recent_jobs" to getJobsList().take(10),
-            "system_summary" to getSystemSummary(target)
+            "minionsStatus" to minionsStatus,
+            "recentJobs" to getJobsList().take(10),
+            "systemSummary" to getSystemSummary(target)
         )
     }
 
     @GetMapping("/sls/list")
     fun getAvailableSls(): SlsListDto {
-        val statesResult = saltApiService.executeCommand("salt-run", "state.show_top")
-        val filesResult = saltApiService.executeCommand("salt-run", "fileserver.file_list saltenv=base")
-        return saltApiService.parseSlsList(statesResult, filesResult)
+        return try {
+            val listCommand = "find /srv/salt -name '*.sls' -type f 2>/dev/null || echo 'No SLS files found'"
+            val result = saltApiService.executeCommand("salt-run", "cmd.run '$listCommand'")
+
+            saltApiService.parseSlsListSimple(result)
+        } catch (e: Exception) {
+            SlsListDto(availableStates = emptyList(), slsFiles = emptyList())
+        }
     }
 
     @GetMapping("/sls/{slsName}/content")

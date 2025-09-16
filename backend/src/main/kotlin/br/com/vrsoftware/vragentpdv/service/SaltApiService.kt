@@ -380,56 +380,35 @@ class SaltApiService(
         }
     }
 
-    fun parseSlsList(statesResult: Any, filesResult: Any): SlsListDto {
-        val states = mutableListOf<String>()
-        val files = mutableListOf<SlsFileDto>()
-
-        // Parse dos arquivos do fileserver
-        when (filesResult) {
-            is List<*> -> {
-                filesResult.filterIsInstance<String>()
-                    .filter { it.endsWith(".sls") }
-                    .forEach { fileName ->
-                        val slsName = fileName.removeSuffix(".sls")
-                        states.add(slsName)
-                        files.add(SlsFileDto(name = slsName, path = fileName))
-                    }
-            }
-
-            is Map<*, *> -> {
-                // Se a resposta vier como map (alguns comandos retornam assim)
-                filesResult.values.filterIsInstance<List<*>>()
-                    .flatten()
-                    .filterIsInstance<String>()
-                    .filter { it.endsWith(".sls") }
-                    .forEach { fileName ->
-                        val slsName = fileName.removeSuffix(".sls")
-                        states.add(slsName)
-                        files.add(SlsFileDto(name = slsName, path = fileName))
-                    }
-            }
-        }
-
-        // Parse do resultado de estados (se disponível)
-        when (statesResult) {
+    fun parseSlsListSimple(result: Any): SlsListDto {
+        val files = when (result) {
             is String -> {
-                // Se for resultado de comando find, parsear as linhas
-                statesResult.split("\n")
-                    .filter { it.isNotBlank() && it.endsWith(".sls") }
-                    .forEach { filePath ->
-                        val fileName = filePath.substringAfterLast("/")
-                        val slsName = fileName.removeSuffix(".sls")
-                        if (!states.contains(slsName)) {
-                            states.add(slsName)
-                            files.add(SlsFileDto(name = slsName, path = fileName))
+                if (result.contains("No SLS files found")) {
+                    emptyList()
+                } else {
+                    result.split("\n")
+                        .filter { it.isNotBlank() && it.contains("/srv/salt") && it.endsWith(".sls") }
+                        .map { filePath ->
+                            val fileName = filePath.substringAfterLast("/")
+                            val slsName = fileName.removeSuffix(".sls")
+                            SlsFileDto(
+                                name = slsName,
+                                path = filePath,
+                                lastModified = null
+                            )
                         }
-                    }
+                }
+            }
+
+            else -> {
+                logger.warn("Resultado inesperado ao listar SLS: {}", result)
+                emptyList()
             }
         }
 
         return SlsListDto(
-            availableStates = states.distinct().sorted(),
-            slsFiles = files.distinctBy { it.name }.sortedBy { it.name }
+            availableStates = files.map { it.name }.sorted(),
+            slsFiles = files.sortedBy { it.name }
         )
     }
 
