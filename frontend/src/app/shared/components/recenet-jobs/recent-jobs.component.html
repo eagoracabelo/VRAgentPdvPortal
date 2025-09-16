@@ -1,31 +1,87 @@
 <div class="recent-jobs">
-    <div class="jobs-header">
-        <h3>Jobs Recentes</h3>
-        <span class="jobs-count">{{ jobs.length }} jobs</span>
-    </div>
-
-    <div class="jobs-list">
-        <div class="job-item" *ngFor="let job of jobs.slice(0, maxItems)" [class]="'status-' + job.status">
-            <div class="job-info">
-                <div class="job-header">
-                    <span class="job-id">{{ job.jid }}</span>
-                    <span class="job-timestamp">{{ job.timestamp | date:'dd/MM HH:mm:ss' }}</span>
-                </div>
-                <div class="job-details">
-                    <span class="job-function">{{ job.function }}</span>
-                    <span class="job-target">{{ job.target }}</span>
-                    <span class="job-user">por {{ job.user }}</span>
-                </div>
+  <h3>Jobs Recentes</h3>
+  
+  <div class="jobs-list" *ngIf="getDisplayJobs().length > 0">
+    <div class="job-item" *ngFor="let job of getDisplayJobs(); trackBy: trackByJobId">
+      <div class="job-header">
+        <div class="job-info">
+          <div class="job-icon">
+            <i [class]="getJobTypeIcon(job.function)"></i>
+          </div>
+          <div class="job-details">
+            <div class="job-title">
+              <span class="job-id">#{{ job.jid || job.id }}</span>
+              <span class="job-function">{{ truncateFunction(job.function) }}</span>
             </div>
-            <div class="job-status">
-                <i [class]="getJobStatusIcon(job.status)"></i>
-                <span>{{ job.status }}</span>
+            <div class="job-meta">
+              <span class="job-target">{{ job.target || '*' }}</span>
+              <span class="job-user" *ngIf="job.user">by {{ job.user }}</span>
             </div>
+          </div>
         </div>
-    </div>
+        <div class="job-status">
+          <span class="status-indicator" [class]="getJobStatusClass(job.success !== false)">
+            <i [class]="getJobStatusIcon(job.success !== false)"></i>
+          </span>
+        </div>
+      </div>
 
-    <div class="no-jobs" *ngIf="jobs.length === 0">
-        <i class="fas fa-tasks"></i>
-        <p>Nenhum job executado recentemente</p>
+      <div class="job-footer">
+        <div class="job-timestamps">
+          <span class="start-time">
+            <i class="fas fa-play"></i>
+            Início: {{ formatDateTime(job.startTime || job.start_time || job.timestamp) }}
+          </span>
+          <span class="duration" *ngIf="job.startTime || job.start_time">
+            <i class="fas fa-clock"></i>
+            Duração: {{ formatDuration(job.startTime || job.start_time, job.endTime || job.end_time) }}
+          </span>
+        </div>
+        <div class="job-actions">
+          <button class="btn-small" (click)="viewJobDetails(job)" title="Ver detalhes">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="btn-small" (click)="rerunJob(job)" title="Executar novamente">
+            <i class="fas fa-redo"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Progress bar for running jobs -->
+      <div class="job-progress" *ngIf="job.running">
+        <div class="progress-bar">
+          <div class="progress-fill indeterminate"></div>
+        </div>
+        <span class="progress-label">Executando...</span>
+      </div>
+
+      <!-- Job result summary -->
+      <div class="job-result" *ngIf="job.result && Object.keys(job.result).length > 0">
+        <div class="result-summary">
+          <span class="result-count success" *ngIf="job.success_count">
+            <i class="fas fa-check"></i> {{ job.success_count }}
+          </span>
+          <span class="result-count error" *ngIf="job.error_count">
+            <i class="fas fa-times"></i> {{ job.error_count }}
+          </span>
+          <span class="result-count total">
+            Total: {{ Object.keys(job.result).length }}
+          </span>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <div class="empty-state" *ngIf="getDisplayJobs().length === 0">
+    <i class="fas fa-tasks"></i>
+    <h4>Nenhum job recente</h4>
+    <p>Os jobs executados aparecerão aqui quando estiverem disponíveis.</p>
+  </div>
+
+  <div class="jobs-footer" *ngIf="jobs.length > maxItems">
+    <button class="btn-link" (click)="viewAllJobs()">
+      Ver todos os {{ jobs.length }} jobs
+      <i class="fas fa-arrow-right"></i>
+    </button>
+  </div>
 </div>

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators';
+import { environment } from '../../../environments/environment.development';
 import {
     SystemInfoDto,
     CpuInfoDto,
@@ -66,8 +68,21 @@ export class SaltApiService {
 
     // Admin Overview
     getAdminOverview(target: string = '*'): Observable<AdminOverview> {
+        console.log(`[SaltApiService] Iniciando chamada para admin/overview com target: ${target}`);
+        const startTime = Date.now();
+
         return this.http.get<AdminOverview>(`${this.baseUrl}/admin/overview`, {
             params: { target }
-        });
+        }).pipe(
+            tap(response => {
+                const duration = Date.now() - startTime;
+                console.log(`[SaltApiService] admin/overview respondeu em ${duration}ms`, response);
+            }),
+            catchError(error => {
+                const duration = Date.now() - startTime;
+                console.error(`[SaltApiService] admin/overview falhou após ${duration}ms`, error);
+                throw error;
+            })
+        );
     }
 }

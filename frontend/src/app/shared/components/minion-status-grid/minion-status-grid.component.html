@@ -1,0 +1,64 @@
+<div class="minion-status-grid">
+  <h3>Status dos Minions</h3>
+  
+  <div class="status-summary">
+    <div class="status-card up">
+      <div class="status-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <div class="status-info">
+        <span class="count">{{ getMinionsUp().length }}</span>
+        <span class="label">Online</span>
+      </div>
+    </div>
+
+    <div class="status-card down">
+      <div class="status-icon">
+        <i class="fas fa-times-circle"></i>
+      </div>
+      <div class="status-info">
+        <span class="count">{{ getMinionsDown().length }}</span>
+        <span class="label">Offline</span>
+      </div>
+    </div>
+
+    <div class="status-card total">
+      <div class="status-icon">
+        <i class="fas fa-server"></i>
+      </div>
+      <div class="status-info">
+        <span class="count">{{ getTotalMinions() }}</span>
+        <span class="label">Total</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="status-progress" *ngIf="getTotalMinions() > 0">
+    <div class="progress-bar">
+      <div class="progress-fill" [style.width.%]="getUpPercentage()"></div>
+    </div>
+    <span class="progress-label">{{ getUpPercentage() | number:'1.1-1' }}% Online</span>
+  </div>
+
+  <!-- Lista detalhada de minions -->
+  <div class="minion-lists" *ngIf="getTotalMinions() > 0">
+    <div class="minion-list up" *ngIf="getMinionsUp().length > 0">
+      <h4><i class="fas fa-check-circle"></i> Minions Online</h4>
+      <div class="minion-items">
+        <span class="minion-item" *ngFor="let minion of getMinionsUp()">{{ minion }}</span>
+      </div>
+    </div>
+
+    <div class="minion-list down" *ngIf="getMinionsDown().length > 0">
+      <h4><i class="fas fa-times-circle"></i> Minions Offline</h4>
+      <div class="minion-items">
+        <span class="minion-item" *ngFor="let minion of getMinionsDown()">{{ minion }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="no-minions" *ngIf="getTotalMinions() === 0">
+    <i class="fas fa-server"></i>
+    <p>Nenhum minion encontrado</p>
+  </div>
+</div>

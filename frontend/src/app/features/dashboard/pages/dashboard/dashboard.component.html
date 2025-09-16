@@ -54,6 +54,16 @@
         <div class="loading-content">
             <div class="spinner"></div>
             <p>Carregando dados do SaltStack...</p>
+            <small>A API Salt pode demorar alguns segundos para responder</small>
+        </div>
+    </div>
+
+    <!-- Estado inicial quando não há dados -->
+    <div class="initial-state" *ngIf="!loading && !(adminOverview$ | async) && !error">
+        <div class="initial-content">
+            <i class="fas fa-server"></i>
+            <h3>Carregando Dashboard</h3>
+            <p>Aguarde enquanto carregamos os dados do SaltStack...</p>
         </div>
     </div>
 </div>

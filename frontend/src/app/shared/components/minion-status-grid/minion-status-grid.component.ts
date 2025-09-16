@@ -1,27 +1,29 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'app-minion-status-grid',
-    templateUrl: './minion-status-grid.component.html',
-    styleUrls: ['./minion-status-grid.component.scss']
+  selector: 'app-minion-status-grid',
+  templateUrl: './minion-status-grid.component.html',
+  styleUrls: ['./minion-status-grid.component.scss']
 })
 export class MinionStatusGridComponent {
-    @Input() minionsStatus: any = null;
+  @Input() minionsStatus: any = {};
+  
+  constructor() { }
 
-    getOnlineCount(): number {
-        return this.minionsStatus?.up?.length || 0;
-    }
+  getMinionsUp(): string[] {
+    return this.minionsStatus?.up || [];
+  }
 
-    getOfflineCount(): number {
-        return this.minionsStatus?.down?.length || 0;
-    }
+  getMinionsDown(): string[] {
+    return this.minionsStatus?.down || [];
+  }
 
-    getPendingCount(): number {
-        // Implementar lógica para minions pendentes se disponível
-        return 0;
-    }
+  getTotalMinions(): number {
+    return this.getMinionsUp().length + this.getMinionsDown().length;
+  }
 
-    getTotalCount(): number {
-        return this.getOnlineCount() + this.getOfflineCount() + this.getPendingCount();
-    }
+  getUpPercentage(): number {
+    const total = this.getTotalMinions();
+    return total > 0 ? (this.getMinionsUp().length / total) * 100 : 0;
+  }
 }

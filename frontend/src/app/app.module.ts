@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +10,7 @@ import { MinionsModule } from './features/minions/minions.module';
 
 // Serviços
 import { SaltApiService } from '../app/core/service/salt-api.service';
+import { TimeoutInterceptor } from './core/interceptors/timeout.interceptor';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,12 @@ import { SaltApiService } from '../app/core/service/salt-api.service';
     AppRoutingModule
   ],
   providers: [
-    SaltApiService
+    SaltApiService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TimeoutInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
