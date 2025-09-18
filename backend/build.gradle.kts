@@ -66,15 +66,26 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-validation") // Adicionado para suporte a validação
+
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 
+    implementation("jakarta.validation:jakarta.validation-api:3.1.1")
+
+    // Implementação do Hibernate Validator
+    implementation("org.hibernate.validator:hibernate-validator:8.0.1.Final")
+
     implementation("com.vladmihalcea:hibernate-types-60:2.21.1")
 
     implementation("org.flywaydb:flyway-core:10.10.0")
     implementation("org.flywaydb:flyway-database-postgresql:10.10.0")
+
+    // Apache HttpClient 5 com versão compatível com Spring Boot 3.5.x
+    implementation("org.apache.httpcomponents.client5:httpclient5:5.3")
 
     runtimeOnly("org.postgresql:postgresql")
 

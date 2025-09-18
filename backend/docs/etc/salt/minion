@@ -1,0 +1,16 @@
+master: [master-server-ip]
+id: desktop-app-host-001
+
+# Configuração de segurança
+master_finger: 'XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX'
+
+# Grains customizados
+grains:
+  role: desktop-app-host
+  environment: production
+  app_path: /opt/desktop-app
+  properties_path: /opt/desktop-app/config/application.properties
+
+# Logging
+log_level: info
+log_file: /var/log/salt/minion

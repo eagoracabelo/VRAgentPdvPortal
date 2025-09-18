@@ -1,0 +1,44 @@
+# Configuração de segurança
+interface: 127.0.0.1  # Bind apenas no localhost
+publish_port: 4505
+ret_port: 4506
+
+# Autenticação
+auto_accept: False
+autosign_file: /etc/salt/autosign.conf
+
+# API Externa (restrita)
+external_auth:
+  pam:
+    saltuser:
+      - .*
+      - '@wheel'
+      - '@runner'
+
+# Configuração de logging
+log_level: info
+log_file: /var/log/salt/master
+
+# Workers
+worker_threads: 5
+
+# File server
+fileserver_backend:
+  - roots
+  - git
+
+file_roots:
+  base:
+    - /srv/salt/base
+  dev:
+    - /srv/salt/dev
+  prod:
+    - /srv/salt/prod
+
+pillar_roots:
+  base:
+    - /srv/pillar/base
+  dev:
+    - /srv/pillar/dev
+  prod:
+    - /srv/pillar/prod

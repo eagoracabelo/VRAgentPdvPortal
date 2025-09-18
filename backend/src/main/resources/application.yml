@@ -1,26 +1,59 @@
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+  tomcat:
+    max-threads: 100
+    max-connections: 1000
+
 spring:
   application:
     name: VRAgentPdv
   datasource:
     url: jdbc:postgresql://localhost:5432/vragentpdvportal
-    username: vruser
-    password: vrpassword
+    username: ${DB_USERNAME:vruser}
+    password: ${DB_PASSWORD:vrpassword}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: validate
     show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
   flyway:
     enabled: true
     locations: classpath:db/migration
     baseline-on-migrate: true
     validate-on-migrate: true
 
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+salt:
+  api:
+    url: https://127.0.0.1:8000
+    username: ${SALT_USERNAME:saltuser}
+    password: ${SALT_PASSWORD:saltpass}
+    timeout: 30s
+
 logging:
   level:
-    org.flywaydb: DEBUG
-    org.springframework.boot.autoconfigure.flyway: DEBUG
-    br.com.vrsoftware.vragentpdv: DEBUG
-    org.springframework.web.servlet.DispatcherServlet: DEBUG
+    br.com.vrsoftware.vragentpdv: INFO
     org.springframework.web: DEBUG
-    reactor.netty: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
